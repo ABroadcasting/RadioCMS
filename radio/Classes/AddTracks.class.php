@@ -21,7 +21,7 @@
 
 		public function addTrack($filename) {			$playlistId = $this->request->getGetVar('playlist_id');			$filenameTemp = $this->getRealPath($filename);
 
-			if (!$this->meneger->isMp3($filenameTemp)) {				return false;			}
+			if (!$this->meneger->isMp3($filenameTemp)) {				return false;			}
 			$filename = $this->filter->cleanFileName($filenameTemp);
 
 			if ($this->isAlreadyExists($filename)) {				return false;			}

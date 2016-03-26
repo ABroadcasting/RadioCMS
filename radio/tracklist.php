@@ -15,7 +15,8 @@
 	foreach ($tracklist->getLastTrackList(9) as $title) {
 	    if (defined('EXTERNAL_CHARSET')) {
 	        $title = @iconv('utf-8', EXTERNAL_CHARSET, $title);
-	    } 		$lastSongs[] = $title;
+	    }
+ 		$lastSongs[] = $title;
 	}
 
 	$trackplay9 = isset($lastSongs[8]) ? $lastSongs[8] : "";

@@ -19,14 +19,16 @@
 
         	if ($this->ssh->connected) {
 				$this->update();
-        	}		}
+        	}
+		}
 
 		public function handler() {
         	if ($this->request->hasPostVar('next_x')) {
         		$this->nextTrack();
         	}
 
-        	if ($this->request->hasPostVar('on_x')) {        		$this->updateSetting(1);
+        	if ($this->request->hasPostVar('on_x')) {
+        		$this->updateSetting(1);
         		if (!$this->isIcecastRunned()) {
         			$this->startIcecast();
         		}
@@ -129,7 +131,13 @@
 			$data = $this->ssh->getResponse($this->cmd_ps." ezstream");
 			$data1 = explode("\n", $data);
         	foreach ($data1 as $value) {
-        		$data2 = explode("?",$value);
+                if (strpos($value, '?') !== false) {
+                    $data2 = explode("?", $value);
+                }
+                if (strpos($value, '  -  ') !== false) {
+                    $data2 = explode("  -  ", $value);
+                }
+        		
         		$data3 = "";
         		if (!empty($data2[1])) {
         		 	$data3 .=$data2[1];
@@ -137,6 +145,7 @@
         		if (!empty($data2[2])) {
         		 	$data3 .=$data2[2];
         		}
+  
         		if (
         			(strpos($data3,"bash -c") === false) and
         			(strpos($data3,"csh -c") === false) and
@@ -159,7 +168,9 @@
         	return $cmd_ice;
 		}
 
-		public function getStreams() {			$tochka = Statistic::create()->getEzstreamPoint();			$query = "SELECT * FROM  `settings` WHERE `name`='stream' LIMIT 1";
+		public function getStreams() {
+			$tochka = Statistic::create()->getEzstreamPoint();
+			$query = "SELECT * FROM  `settings` WHERE `name`='stream' LIMIT 1";
  			$line = $this->db->getLine($query);
 			$system_stream = $line['value'];
 
@@ -175,41 +186,32 @@
 
 			$query = "SELECT * FROM  `settings` WHERE `name`='listeners' LIMIT 1";
             $line = $this->db->getLine($query);
-			$listeners = $line['value'];
- 			$listeners = explode("||",$listeners);
-
+			
+			$json = json_decode($line['value']);
+			
 			$return = array();
-			if (!empty($listeners))
- 			foreach ($listeners as $value) {
- 				$value = explode(",", $value);
-                if (!empty($value[5]))
- 				foreach ($stream as $v) {
-					if ($value[0] == $v) {
-						$index = $v;						$return[$index]['tochka'] = $value[0];
-						$return[$index]['listeners'] = $value[3];
-						$status_cur_song = Tracklist::create()->extractCurrentSong($value);
-                        if (!empty($status_cur_song)) {
-                            preg_match("/([^$]*?) - ([^$]+) - ([^$]+)/", $status_cur_song, $matches);
-                        }
-                        
-                        if (!empty($matches)) {
-                            $status_cur_song = $matches[2]." - ".$matches[3];
-                        }    
-
-						if (strpos(URL, "http://") === false) {
-							$adres = "http://".URL;
-						} else {
-						    $adres = URL;
-						}
-
-						$link = $adres.':'.PORT."/".$tochka.'.m3u';
-						$return[$index]['link'] = str_replace("\n","",$link);
-
-						if (empty($status_cur_song)) {							$status_cur_song = "Нет данных";
-						}
-						$return[$index]['cur_song'] = $status_cur_song;
+			if (isset($json->icestats->source)) {
+				if (is_array($json->icestats->source)) {
+					foreach ($json->icestats->source as $source) {
+						$return[] = array(
+							'tochka' => substr($source->listenurl, strrpos($source->listenurl, "/") + 1, strlen($source->listenurl)),
+							'listeners' => $source->listeners,
+							'link' => "{$source->listenurl}.m3u",
+							'cur_song' => $source->title
+						);
 					}
+				} else {
+					$source = $json->icestats->source;
+					$return[] = array(
+						'tochka' => substr($source->listenurl, strrpos($source->listenurl, "/") + 1, strlen($source->listenurl)),
+						'listeners' => $source->listeners,
+						'link' => "{$source->listenurl}.m3u",
+						'cur_song' => $source->title
+					);
 				}
 			}
-			return $return;		}	}
+			
+			return $return;
+		}
+	}
 ?>

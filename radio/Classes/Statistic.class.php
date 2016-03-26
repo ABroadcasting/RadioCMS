@@ -137,9 +137,12 @@
                                 ),                      	                   							
 		);
 
-		public function updateAll() {  			$status = $this->requestIcecastStatus();
-			$this->updateListeners();  			$this->updateStatistic($status);
-  			$this->updateClients($status);		}
+		public function updateAll() {
+  			$status = $this->requestIcecastStatus();
+			$this->updateListeners();
+  			$this->updateStatistic($status);
+  			$this->updateClients($status);
+		}
         
         public function updateMain() {
             $status = $this->requestIcecastStatus();
@@ -147,10 +150,16 @@
             $this->updateStatistic($status);
         }
 
-		public function getIcon($agent) {        	foreach ($this->icons as $name=>$player) {
+		public function getIcon($agent) {
+        	foreach ($this->icons as $name=>$player) {
         		$clients = explode(",", $player['clients']);
-        		foreach ($clients as $client) {        			if (strpos(strtolower($agent), strtolower(trim($client)))!==false) {        				return self::ICON_PATH.$player['icon'];        			}
-        		}        	}		}
+        		foreach ($clients as $client) {
+        			if (strpos(strtolower($agent), strtolower(trim($client)))!==false) {
+        				return self::ICON_PATH.$player['icon'];
+        			}
+        		}
+        	}
+		}
 
 		public function getClient($agent) {
         	foreach ($this->icons as $name=>$player) {
@@ -165,28 +174,38 @@
         	return $agent;
 		}
 
-		public function getTime($time) {  			$hour = floor($time/3600);
+		public function getTime($time) {
+  			$hour = floor($time/3600);
     		$min = floor(($time%3600)/60);
     		$sec = ($time%3600)%60;
 
     		$time = "";
 
-			if ($hour != 0) {				$time .= "$hour ч. ";
+			if ($hour != 0) {
+				$time .= "$hour ч. ";
 			}
-			if ($min != 0) {				$time .= "$min мин. ";
+			if ($min != 0) {
+				$time .= "$min мин. ";
 			}
-			if (($hour == 0) and ($min == 0) and ($sec != 0)) {				$time .= "$sec сек.";
+			if (($hour == 0) and ($min == 0) and ($sec != 0)) {
+				$time .= "$sec сек.";
 			}
-			if (($hour == 0) and ($min == 0) and ($sec == 0)) {				$time .= "1 сек.";
+			if (($hour == 0) and ($min == 0) and ($sec == 0)) {
+				$time .= "1 сек.";
 			}
 
-			return $time;		}
+			return $time;
+		}
 
-		public function getClients() {			$query = "SELECT * FROM `statistic` WHERE `type` = 'graph' ORDER BY `time` DESC";
-			return $this->db->getLines($query);		}
+		public function getClients() {
+			$query = "SELECT * FROM `statistic` WHERE `type` = 'graph' ORDER BY `time` DESC";
+			return $this->db->getLines($query);
+		}
 
-		public function getLastSongs() {			$query = "SELECT * FROM `tracklist` ORDER BY `time` DESC";
-			return $this->db->getLines($query);		}
+		public function getLastSongs() {
+			$query = "SELECT * FROM `tracklist` ORDER BY `time` DESC";
+			return $this->db->getLines($query);
+		}
 		
 		public function getSystemStreamArray() {
 			$streams = explode(",", $this->setting->getSystemStream());
@@ -198,25 +217,39 @@
 
 			return $return;
 		}
+		
+		private function extractUrlsBySourcesAndStreams($sources, $streams) {
+			if (!is_array($sources)) {
+				$sources = array($sources);
+			}
+			
+			$urls = array();
+			foreach ($sources as $source) {
+				foreach ($streams as $v) {
+					$point = substr($source->listenurl, strrpos($source->listenurl, "/") + 1, strlen($source->listenurl));
+					if (trim($point) == trim($v)) {
+						if (strpos(IP, "http://") === false) {
+							$addr = "http://" . IP;
+						}
+						$urls[] = $addr . ":" . PORT . "/admin/listclients.xsl?mount=/" . $point;
+					}
+				}	
+			}
+			
+			return $urls;
+		}
 
-		public function updateClients($status) {			$query = "SELECT * FROM  `settings` WHERE `name` = 'listeners' LIMIT 1";
+		public function updateClients($status) {
+			$query = "SELECT * FROM  `settings` WHERE `name` = 'listeners' LIMIT 1";
 			$line = $this->db->getLine($query);
  			$full_numbers = explode("||", $line['value']);
  			$streams = $this->getSystemStreamArray();
-
-    		$i = 1;
-			$url = "";
-			if (!empty($full_numbers)) {
-			 	foreach ($full_numbers as $value) {
-			 		$value = explode(",", $value);
-			 		foreach ($streams as $v) {
-						if (trim($value[0])==trim($v)) {
-			                if (strpos(IP, "http://") === false) {			                	$addr = "http://".IP;
-			                }							$url[$i] = $addr.":".PORT."/admin/listclients.xsl?mount="."/".$value[0];
-							$i++;
-						}
-			        }
-			    }
+			
+			$json = json_decode($line['value']);
+			
+			$url = array();
+			if (isset($json->icestats->source)) {
+				$url = $this->extractUrlsBySourcesAndStreams($json->icestats->source, $streams);
 			}
 
 			$count_mount = count($url)+1;
@@ -228,58 +261,37 @@
 				$query = "DELETE FROM `statistic` WHERE `type` = 'graph' and `date` < $date_today";
 				$this->db->queryNull($query);
 				
-				if (!empty($url[$ik]))
-				while ($ik < $count_mount) {
+				if (!empty($url))
+				foreach ($url as $link) {
 					$ch = curl_init();
 					curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-					curl_setopt($ch, CURLOPT_URL, $url[$ik]);
+					curl_setopt($ch, CURLOPT_URL, $link);
 					curl_setopt($ch, CURLOPT_USERPWD, ICE_LOGIN.":".ICE_PASS);
 					$result = curl_exec($ch);
+
 					curl_close($ch);
-					$pattern = '#(<tr>\n)?<td align=\"center\">(.*?)</td>#';
-					preg_match_all($pattern,$result,$matches);
 
-					$i = -1;
-					$result = array();
-					$country = array();
-					$result_flag = array();
-					$country_name = array();
-					foreach($matches[2] as $key=>$value) {
-					   if ($matches[1][$key]) $i++; // если был <tr> -- новая строка таблицы
-					   $result_flag[$i][] = $value;
-					}
-
-					$k = 0;
-					$s = count($result_flag);
-
-					for ($i=0; $i<$s; $i++) {
-					    $ipadres[$i] = $result_flag[$i][0];
-					    $timesec[$i] = $result_flag[$i][1];
-					    $client[$i] = $result_flag[$i][2];
-
-
-					    $cIp = "";
-					    $cTimeSec = "";
-					    $cClient = "";
-
-						if (!empty($ipadres[$i])) {
-					    	$cIp = $ipadres[$i];
-					    }
-					    if (!empty($timesec[$i])) {
-					    	$cTimeSec = $timesec[$i];
-					    }
-					    if (!empty($client[$i])) {
-					    	$cClient = $client[$i];
-					    }
-
-					    $query = "INSERT INTO `statistic` (`type` ,`ip` ,`country` ,`country_name` ,`time` ,`client` ,`date`)
-					       VALUES ('graph', '".$cIp."', '','', '".$cTimeSec."', '".$cClient."', '".$date."')";
+					preg_match_all('/<tr.*?>(.*?)<\\/[\s]*tr>/s', $result, $matches);
+					
+					foreach ($matches[1] as $row) {
+						preg_match_all("/<td.*?>(.*?)<\/td>/", $row, $td_matches);
+						
+						if (!is_numeric($td_matches[1][1])) {
+							continue;
+						}
+						
+						$cIp = addslashes($td_matches[1][0]);
+						$cTimeSec = addslashes($td_matches[1][1]);
+						$cClient = addslashes($td_matches[1][2]);
+						$date = time();
+						
+						$query = "INSERT INTO `statistic` (`type` ,`ip` ,`country` ,`country_name` ,`time` ,`client` ,`date`)
+					       VALUES ('graph', '" . $cIp . "', '','', '" . $cTimeSec ."', '". $cClient ."', '" . $date . "')";
 						$this->db->queryNull($query);
-
 					}
-					$ik++;
 				}
-			}		}
+			}
+		}
 
 		public function updateListeners() {
 			$query = "SELECT * FROM `statistic` WHERE `type` = 'day'";
@@ -299,30 +311,12 @@
 			}
 		}	
 
-		public function updateStatistic($status) {
-			$page = $status;
-			$cf_ez_url = $this->getEzstreamPoint();			$page = str_replace("<pre>", "", $page); //extract data
-			$page = str_replace("</pre>", ",", $page); //extract data
-			$page = str_replace("\n","",$page);
-			$numbers = explode(",/", $page);
-
-			unset($numbers[0]);
-			foreach ($numbers as $value) {
-				if (isset($full_numbers)) {
-					$full_numbers .= "||$value";
-				} else {
-					$full_numbers = "$value";
-				}
-			}
-
-			if (!isset($full_numbers)) {
-				$full_numbers = "";
-			}	
-			
-			$full_numbers = addslashes($full_numbers);
+		public function updateStatistic($jsonStatusText) {
+			$full_numbers = addslashes($jsonStatusText);
 
 			$query = "SELECT * FROM  `settings` WHERE `name`='listeners' LIMIT 1";
 			$line = $this->db->getLine($query);
+
 			if (!empty($line)) {
 				$query="UPDATE `settings` SET `value` = '$full_numbers' WHERE `name`= 'listeners';";
 				$this->db->queryNull($query);
@@ -332,56 +326,52 @@
 			}
         }
 
-		public function getStreamCount() {        	$stream = $this->getSystemStreamArray();
-			$stream = array_unique($stream);
-   			$potok = 0;
-            $listeners = 0;
+		public function getStreamCount() {
 
             $query="SELECT * FROM  `settings` WHERE `name`='listeners' LIMIT 1";
  			$line = $this->db->getLine($query);
 
-			if (!empty($line['value'])) {
-	 			$full_numbers = explode("||", $line['value']);
-				foreach ($full_numbers as $value) {
-	 				$value = explode(",",$value);
-	 				foreach ($stream as $v) {
-						if ($value[0]==$v) {
-							$listeners = $listeners+$value[3];
-							$potok = $potok+1;
-						}
-		      		}
-	    		}
-    		}
+			$json = json_decode($line['value']);
 
-    		return $potok;		}
+ 			$potok = 0;
+			$listeners = 0;
+			if (isset($json->icestats->source)) {
+				foreach ($json->icestats->source as $source) {
+					$listeners += $source->listeners;
+					$potok += 1;
+				}
+			}
 
-		public function getListeners() {        	$stream = $this->getSystemStreamArray();
-			$stream = array_unique($stream);
-   			$potok = 0;
-            $listeners = 0;
+			return $potok;
+		}
+
+		public function getListeners() {
             $query = "SELECT * FROM  `settings` WHERE `name`='listeners' LIMIT 1";
  			$line = $this->db->getLine($query);
+			
+			$json = json_decode($line['value']);
 
- 			if (!empty($line['value'])) {
-	 			$full_numbers = explode("||", $line['value']);
-				foreach ($full_numbers as $value) {
-	 				$value = explode(",", $value);
-	 				foreach ($stream as $v) {
-						if ($value[0]==$v) {
-							$listeners = $listeners+$value[3];
-							$potok = $potok+1;;
-						}
-		      		}
-	    		}
-			}	
-			
-    		if (empty($listeners)) {    			$listeners = 0;
-    		}
-			
+ 			$potok = 0;
+			$listeners = 0;
+			if (isset($json->icestats->source)) {
+				if (is_array($json->icestats->source)) {
+					foreach ($json->icestats->source as $source) {
+						$listeners += $source->listeners;
+						$potok += 1;
+					}
+				} else {
+					$listeners += $json->icestats->source->listeners;
+				}
+			} else {
+				$listeners = 0;
+			}
+
 			return $listeners;
 		}
 
-		public function getEzstreamPoint() {			$rf_ez = file(CF_EZSTREAM);			if ($rf_ez) {
+		public function getEzstreamPoint() {
+			$rf_ez = file(CF_EZSTREAM);
+			if ($rf_ez) {
 				for ($i=0; $i<count($rf_ez); $i++) {
 					if (strpos($rf_ez[$i], '<url>')!==false) {
 						$cf_ez_url = $rf_ez[$i];
@@ -394,18 +384,26 @@
 			$cf_ez_url = $cf_ez_url[3];
     		$cf_ez_url = str_replace("\n", "", $cf_ez_url);
 
-    		return trim($cf_ez_url);		}
+    		return trim($cf_ez_url);
+		}
 
-		public function requestIcecastStatus() {        	$fp = @fsockopen(IP, PORT, $errno, $errstr, 1);
+		public function requestIcecastStatus() {
+        	$fp = @fsockopen(IP, PORT, $errno, $errstr, 1);
 			if (empty($fp)) {
 				return false;
-			} else {				fputs($fp,"GET /status2.xsl HTTP/1.0\r\nUser-Agent: Icecast2 XSL Parser (Mozilla Compatible)\r\n\r\n"); //get status2.xsl
+			} else {
+				fputs($fp, "GET /status-json.xsl HTTP/1.0\r\nUser-Agent: Icecast2 XSL Parser (Mozilla Compatible)\r\n\r\n");
  				$page = "";
  				while(!feof($fp)) {
   					$page .= fgets($fp, 1000);
 				}
 				fclose($fp);
-				return $page;			}		}
+				
+				$jsonText = substr($page, strpos($page, "{"));
+				
+				return $jsonText;
+			}
+		}
 
 		public function updateDirectory() {
 			$url = "http://radiocms.ru/stations.php?name=".DIR_NAME.

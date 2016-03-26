@@ -10,9 +10,11 @@
             
             return self::$object;
         }
-        		private function __construct() {
+        
+		private function __construct() {
 			$this->request = Request::create();
-			if ($this->connection = ssh2_connect(IP, 22)) {
+
+			if ($this->connection = ssh2_connect(IP, 22)) {
 				$this->connected = true;
 			} else {
 				$this->connected = false;
@@ -20,13 +22,18 @@
 			if(
 				$this->connected and
 				ssh2_auth_password($this->connection, SSH_USER, SSH_PASS)
-			) {				$this->connected = true;
-			} else {				$this->connected = false;			}		}
+			) {
+				$this->connected = true;
+			} else {
+				$this->connected = false;
+			}
+		}
 
 		public function getResponse($command) {
 		 	if (!$stream = ssh2_exec($this->connection, $command )){
             	echo "fail: unable to execute command\n";
-        	} else{				stream_set_blocking( $stream, true );
+        	} else{
+				stream_set_blocking( $stream, true );
             	$data = "";
     			while( $buf = fread($stream,4096) ){
                 	$data .= $buf;
@@ -34,14 +41,24 @@
        			fclose($stream);
        		}
 
-       		return $data;		}
+       		return $data;
+		}
 
-		public function sshExec($command) {			if (!$this->connected) {				return false;
+		public function sshExec($command) {
+			if (!$this->connected) {
+				return false;
 			}
 
-			ssh2_exec($this->connection, $command);		}
+			ssh2_exec($this->connection, $command);
+		}
 
-		public function isConnected() {			if ($this->connected) {				return true;			} else {				return false;			}		}
+		public function isConnected() {
+			if ($this->connected) {
+				return true;
+			} else {
+				return false;
+			}
+		}
 
 		public function getWgetCommand() {
 			$data = $this->getResponse("uname -a");
@@ -71,5 +88,6 @@
             } else {
                 return false;
             }
-        }	}
+        }
+	}
 ?>

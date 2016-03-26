@@ -7,29 +7,42 @@
             return new self();
         }
         
-		private function __construct() {			$this->request = Request::create();
+		private function __construct() {
+			$this->request = Request::create();
             $this->filename = $this->request->getRadioPath()."_config.php";
-            $this->file = file($this->filename);		}
+            $this->file = file($this->filename);
+		}
 
-		public function getWgetCron() {			return Ssh::create()->getWgetCommand()." http://".$this->request->getServerVar('HTTP_HOST')."/radio/"."event.php -O event.php";		}
+		public function getWgetCron() {
+			return Ssh::create()->getWgetCommand()." http://".$this->request->getServerVar('HTTP_HOST')."/radio/"."event.php -O event.php";
+		}
 
-		public function getPhpCron() {  			$file_adres = "полый/путь/до/php ".$this->request->getServerVar('DOCUMENT_ROOT')."/radio/"."event.php";
+		public function getPhpCron() {
+  			$file_adres = "полый/путь/до/php ".$this->request->getServerVar('DOCUMENT_ROOT')."/radio/"."event.php";
 			$file_adres = str_replace("//","/",$file_adres);
-			return $file_adres;		}
+			return $file_adres;
+		}
 
-		public function ifHag5() {			$user = $this->request->getPostVar('user');
+		public function ifHag5() {
+			$user = $this->request->getPostVar('user');
 			$password = $this->request->getPostVar('password');
 
-			if (empty($user) or empty($password)) {				return "<p>Поля не могу быть пустыми</p>";			}
+			if (empty($user) or empty($password)) {
+				return "<p>Поля не могу быть пустыми</p>";
+			}
 
-			$this->saveConfig('USER', $user);            $this->saveConfig('PASSWORD', $password);
+			$this->saveConfig('USER', $user);
+            $this->saveConfig('PASSWORD', $password);
 
-            Header("Location: install.php?hag=6");		}
+            Header("Location: install.php?hag=6");
+		}
 
 		public function ifHag4() {
 			$play_list_file = $this->request->getPostVar('playlist');
 			$cf_ezstream = $this->request->getPostVar('cf_ezstream');
-			$cf_icecast = $this->request->getPostVar('cf_icecast');			if (empty($play_list_file) or empty($cf_ezstream) or empty($cf_icecast)) {				return "<p>Заполнены не все поля.</p>";
+			$cf_icecast = $this->request->getPostVar('cf_icecast');
+			if (empty($play_list_file) or empty($cf_ezstream) or empty($cf_icecast)) {
+				return "<p>Заполнены не все поля.</p>";
 			}
             
             if (!file_exists($cf_icecast)){
@@ -40,7 +53,8 @@
                 return "<p>Файл конфигурации ezstream не существует.</p>";
             }
             
-			if (!file_exists($play_list_file)) {				return "<p>Файл плейлиста не существует.</p>";
+			if (!file_exists($play_list_file)) {
+				return "<p>Файл плейлиста не существует.</p>";
 			}
 
             $pos_vhoh = strrpos($play_list_file, "/");
@@ -63,7 +77,8 @@
 			$this->saveConfig('ICE_LOGIN', $xml->authentication->{'admin-user'});
 			$this->saveConfig('ICE_PASS', $xml->authentication->{'admin-password'});
 
-			Header("Location: install.php?hag=5");		}
+			Header("Location: install.php?hag=5");
+		}
 
 		public function ifHag3() {
 			$con = @ssh2_connect($this->request->getPostVar('ip'), 22);
@@ -75,9 +90,11 @@
     		$this->saveConfig('PORT', $this->request->getPostVar('port'));
     		$this->saveConfig('SSH_USER', $this->request->getPostVar('ssh_user'));
     		$this->saveConfig('SSH_PASS', $this->request->getPostVar('ssh_pass'));
-    		Header("Location: install.php?hag=4");		}
+    		Header("Location: install.php?hag=4");
+		}
 
-		public function ifHag2() {			$link = @mysql_connect(
+		public function ifHag2() {
+			$link = @mysql_connect(
 				$this->request->getPostVar('db_host'),
 				$this->request->getPostVar('db_login'),
 				$this->request->getPostVar('db_password')
@@ -88,10 +105,16 @@
 				$this->saveConfig('DB_HOST', $this->request->getPostVar('db_host'));
 				$this->saveConfig('DB_LOGIN', $this->request->getPostVar('db_login'));
 				$this->saveConfig('DB_PASSWORD', $this->request->getPostVar('db_password'));
-				$this->saveConfig('DB_NAME', $this->request->getPostVar('db_name'));				$this->createTable($this->request->getPostVar('db_name'));
-				Header("Location: install.php?hag=3");			} else {				return "<p>Не удалось установить соеденение</p>";			}		}
+				$this->saveConfig('DB_NAME', $this->request->getPostVar('db_name'));
+				$this->createTable($this->request->getPostVar('db_name'));
+				Header("Location: install.php?hag=3");
+			} else {
+				return "<p>Не удалось установить соеденение</p>";
+			}
+		}
 
-		public function createTable($db_name) {			mysql_query("SET NAMES 'utf8'") 
+		public function createTable($db_name) {
+			mysql_query("SET NAMES 'utf8'") 
 				or die("Install query failed : " . mysql_error());
 			mysql_query("ALTER DATABASE `".$db_name."` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci")
 			 or die("Install query failed : " . mysql_error());
@@ -224,9 +247,16 @@
 			 or die("Install query failed : " . mysql_error());
 			 			 
              $this->saveSetting('main_text', 'Здесь вы можете хранить общие записи..');
-             $this->saveSetting('online', '0');		}
+             $this->saveSetting('online', '0');
+		}
 
-		public function getPerms($file) {        	if (is_writable($file)) {        		return '<span class="green"><b>доступен для записи</b></span>';        	} else {        		return '<span class="red"><b>недоступен для записи</b></span>';        	}		}
+		public function getPerms($file) {
+        	if (is_writable($file)) {
+        		return '<span class="green"><b>доступен для записи</b></span>';
+        	} else {
+        		return '<span class="red"><b>недоступен для записи</b></span>';
+        	}
+		}
 
 		public function ifPerms($file) {
         	if (is_writable($file)) {
@@ -246,7 +276,13 @@
    			}
 		}
 
-		public function getSsh2() {			if (function_exists("ssh2_connect")) {				return '<span class="green"><b>установлена</b></span>';			} else {				return '<span class="red"><b>не установлена</b></span>';			}		}
+		public function getSsh2() {
+			if (function_exists("ssh2_connect")) {
+				return '<span class="green"><b>установлена</b></span>';
+			} else {
+				return '<span class="red"><b>не установлена</b></span>';
+			}
+		}
         
         public function getXML() {
             if (function_exists("simplexml_load_file")) {
@@ -280,14 +316,21 @@
 			}
 		}
 
-		public function isGreen($string) {			if (strpos($string, 'green') !== false) {				return true;			} else {				return false;			}		}
+		public function isGreen($string) {
+			if (strpos($string, 'green') !== false) {
+				return true;
+			} else {
+				return false;
+			}
+		}
 
 		public function addStatistic() {
 			$add_site = "http://radiocms.ru/stations.php?i_url=".URL."&i_ip=".IP;
 			$this->request->get($add_site);
 		}
 
-		public function ifHag1() {            if (
+		public function ifHag1() {
+            if (
             	$this->isGreen(
             		$this->getPerms($this->request->getMusicPath())
             	)	 and
@@ -315,7 +358,12 @@
                 $this->isGreen(
                     $this->getXML()
                 )
-            ) {            	return true;            } else {            	return false;            }		}
+            ) {
+            	return true;
+            } else {
+            	return false;
+            }
+		}
 		
         public function saveConfig($const, $value) {     
             $value = htmlspecialchars($value, ENT_QUOTES, "utf-8");
@@ -348,5 +396,6 @@
         
         public function queryNull($query) {
             mysql_query($query) or die($this->debug());
-        }	}
+        }
+	}
 ?>

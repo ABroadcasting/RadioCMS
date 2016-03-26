@@ -1,6 +1,6 @@
 <?php
 	ob_start();
-	$vers = "2.5";
+	$vers = "2.6";
     
     include('Include.php');
     
@@ -58,7 +58,8 @@
 		<form method="POST" action="<?php echo $action; ?>">
 <!-- ///////// 3 /////////////////////////////////////////////////////////////////// 3 ////////// -->
 <?php
-	if ($hag == 3) {?>
+	if ($hag == 3) {
+?>
 			<table border="0" width="97%" cellpadding="0" class="paddingtable">
 				<tr>
 					<td width="15%" valign="top">IP-адрес:<br>
@@ -215,7 +216,8 @@
 <!-- ///////// 2 /////////////////////////////////////////////////////////////////// 2 ////////// -->
 
 <?php
-	if ($hag == 2) {?>
+	if ($hag == 2) {
+?>
 			<table border="0" width="97%" cellpadding="0" class="paddingtable">
 				<tr>
 					<td width="150" valign="top"><span lang="en-us">Сервер:</span><br>
@@ -259,7 +261,9 @@
 				</tr>
 			</table>
 <?php
-		if ($request->hasPostVar("hag2")) {			echo $ins->ifHag2();		}
+		if ($request->hasPostVar("hag2")) {
+			echo $ins->ifHag2();
+		}
 ?>
 			<p>
 				<input class="button" type="button" value="Назад" name="B1" onClick="location.href='?hag=1'">
@@ -352,11 +356,13 @@
 			</table>
 	<br>
 <?php
-	if ($ins->ifHag1()) {?>
+	if ($ins->ifHag1()) {
+?>
 			<input class="button" type="button" value="Продолжить" name="B1" onClick="location.href='?hag=2'">
 <?php
 	} else {
-?>			Устраните проблемы что бы продолжить установку.
+?>
+			Устраните проблемы что бы продолжить установку.
 <?php
 	}
 

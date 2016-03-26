@@ -5,9 +5,11 @@
             return new self();
         }
         
-		private function __construct() {			$this->request = Request::create();
+		private function __construct() {
+			$this->request = Request::create();
 			$this->ssh = Ssh::create();
-			$this->db = MySql::create();		}
+			$this->db = MySql::create();
+		}
 
 		public function isAllowZakaz() {
 			$query = "SELECT * FROM `playlist` WHERE `now` = 1 AND `allow_zakaz` = 0 ";
@@ -15,18 +17,29 @@
 
 			if (!empty($line)) {
 				return false;
-			} else{            	return true;			}		}
+			} else{
+            	return true;
+			}
+		}
 
 		public function updateEzstream() {
 			if ($jobid = $this->getEzstreamJobId()) {
 				$this->ssh->sshExec("kill -s HUP ".$jobid);
-			}		}
+			}
+		}
 
-		private function getEzstreamJobId() {			$data = $this->ssh->getResponse("ps ax | grep ezstream");
+		private function getEzstreamJobId() {
+			$data = $this->ssh->getResponse("ps ax | grep ezstream");
         	$data1 = explode("\n", $data);
 
 	        foreach ($data1 as $value) {
-	        	$data2 = explode("?",$value);
+                if (strpos($value, '?') !== false) {
+                    $data2 = explode("?", $value);
+                }
+                if (strpos($value, '  -  ') !== false) {
+                    $data2 = explode("  -  ", $value);
+                }
+                
 	        	$data3 = "";
 
 	        	if (!empty($data2[1])) {
@@ -35,7 +48,7 @@
 	        	if (!empty($data2[2])) {
 	        		$data3 .= $data2[2];
 	        	}
-
+                
 	        	if (
 	        		(!strpos($data3,"bash -c")) and
 	        		(!strpos($data3,"csh -c")) and
@@ -46,7 +59,8 @@
 	        	}
 	        }
 
-	        return false;		}
+	        return false;
+		}
 
 		public function getEvens($event_id = 1, $get_auto = 0) {
 			$now_time = time();
@@ -131,7 +145,8 @@
 			$day = str_replace("Sunday", "7", $day);
 
 			return $day;
-		}	}
+		}
+	}
 
 	function cmp($a, $b) {
 		$cmp = 0;
