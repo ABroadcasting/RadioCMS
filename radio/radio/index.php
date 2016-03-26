@@ -13,7 +13,8 @@
 		<div class="border">
 <?php
 
-	if ($user['admin'] == 0) {?>
+	if ($user['admin'] == 0) {
+?>
 			Вы зашли как <i>DJ</i>. Вам открыт доступ к модулям 'Стастистика' и частично к  'Ваши DJ' и 'Статус'.
 <?php
     } else {
@@ -30,8 +31,10 @@
 <?php
 	$count = $file->getCountTempFiles();
 	$pokazat = "";
-	if ($count >= 1 and TEMP_UPLOAD != "") {		$pokazat = " — <a href='/radio/meneger.php?fold=".$request->getMusicPath().TEMP_UPLOAD."'>Посмотреть</a>";
-	} else {		$count = 0;
+	if ($count >= 1 and TEMP_UPLOAD != "") {
+		$pokazat = " — <a href='/radio/meneger.php?fold=".$request->getMusicPath().TEMP_UPLOAD."'>Посмотреть</a>";
+	} else {
+		$count = 0;
 	}
 ?>
 			Файлов во временной папке Upload: <b><?=$count?></b><?=$pokazat?>
@@ -41,7 +44,7 @@
 <?php
     if (!$ssh->checkEzstreamCompatibility()) {
 ?>
-            <div><span class="red">Установлен ezstream не с сайта RadioCMS, существуют ограничения на длинну id3-тегов</span></div>
+            <div><span class="red">Установлен ezstream без поддержки LibTag, существуют ограничения на длинну id3-тегов</span></div>
 <?php
     }   
 ?>
@@ -57,8 +60,11 @@
 ?>
 			<div>Ваше радио <span class="green">отображается</span> в каталоге RadioCMS</div>
 <?php
-	} else {?>			<div>Ваше радио <span class="red">не отображается</span> в каталоге RadioCMS — <a href='setting_dir.php'>Исправить</a></div>
-<?php	}
+	} else {
+?>
+			<div>Ваше радио <span class="red">не отображается</span> в каталоге RadioCMS — <a href='setting_dir.php'>Исправить</a></div>
+<?php
+	}
 ?>
 <?php
 	if ( file_exists("install.php")) {

@@ -73,7 +73,7 @@
         public function checkEzstreamCompatibility() {
             $data = $this->getResponse("ezstream -V");
 
-            if (strpos($data, "radiocms") > 1) {
+            if (strpos($data, "ext") > 1) {
                 return true;
             } else {
                 return false;
