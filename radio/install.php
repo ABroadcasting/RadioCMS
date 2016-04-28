@@ -30,7 +30,7 @@
 	<body topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0" marginwidth="0" marginheight="0">
 		<table border="0" width="100%" cellspacing="0" cellpadding="0">
 			<tr>
-				<td width="2" align="right"><img border="0" src="images/navi_01.jpg" width="1" height="122"></td>
+				<td width="2" align="right"><img border="0" src="images/separator.jpg" width="1" height="122"></td>
 				<td>
 				<table border="0" width="100%" cellspacing="0" cellpadding="0">
 					<tr>
@@ -45,10 +45,10 @@
 						</td>
 					</tr>
 					<tr>
-						<td background="images/navi_16.jpg"><img border="0" src="images/navi_05.jpg" width="100" height="84"><img border="0" src="images/navi_06.jpg" width="1" height="84"><img border="0" src="images/navi_07.jpg" width="100" height="84"><img border="0" src="images/navi_06.jpg" width="1" height="84"><img border="0" src="images/navi_09.jpg" width="100" height="84"><img border="0" src="images/navi_06.jpg" width="1" height="84"><img border="0" src="images/navi_11.jpg" width="100" height="84"><img border="0" src="images/navi_06.jpg" width="1" height="84"><img border="0" src="images/navi_17.jpg" width="100" height="84"><img border="0" src="images/navi_06.jpg" width="1" height="84"><img border="0" src="images/navi_13.jpg" width="100" height="84"><img border="0" src="images/navi_06.jpg" width="1" height="84"></tr>
+						<td background="images/navi_16.jpg"><img border="0" src="images/navi_05.jpg" width="100" height="84"><img border="0" src="images/separator.jpg" width="1" height="84"><img border="0" src="images/navi_07.jpg" width="100" height="84"><img border="0" src="images/separator.jpg" width="1" height="84"><img border="0" src="images/navi_09.jpg" width="100" height="84"><img border="0" src="images/separator.jpg" width="1" height="84"><img border="0" src="images/navi_11.jpg" width="100" height="84"><img border="0" src="images/separator.jpg" width="1" height="84"><img border="0" src="images/navi_17.jpg" width="100" height="84"><img border="0" src="images/separator.jpg" width="1" height="84"><img border="0" src="images/navi_13.jpg" width="100" height="84"><img border="0" src="images/separator.jpg" width="1" height="84"></tr>
 				</table>
 				</td>
-				<td width="2" align="left"><img border="0" src="images/navi_04.jpg" width="1" height="122"></td>
+				<td width="2" align="left"><img border="0" src="images/separator.jpg" width="1" height="122"></td>
 			</tr>
 		</table>
 

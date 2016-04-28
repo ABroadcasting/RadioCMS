@@ -40,12 +40,14 @@
 
 
 	foreach ($links as $index=>$link) {
-		$white = false;  		foreach ($link['files'] as $file) {
+		$white = false;
+  		foreach ($link['files'] as $file) {
 			if ($request->getServerVar('SCRIPT_NAME') == "/radio/$file.php") {
 				$white = true;
 			}
 		}
-		if ($white) {?>
+		if ($white) {
+?>
 			<a href="<?=$link['href']?>"><img border="0" src="<?=$link['activeImage']?>" width="100" height="84"></a>
 <?php
 		} else {
@@ -57,7 +59,8 @@
 	}
 ?>
 <?php
-	function printMenuDelimiter($links, $index) {
+	function printMenuDelimiter($links, $index) {
+
   		$white =  false;
   		 foreach ($links[$index]['files'] as $file) {
 			if ($_SERVER['SCRIPT_NAME'] == "/radio/$file.php") {
@@ -70,11 +73,14 @@
 				$white = true;
 			}
 		}
-        if ($white) {?>
+        if ($white) {
+?>
 			<img border="0" src="images/navi_white_06.jpg" width="1" height="84">
 <?php
 		} else {
 ?>
-			<img border="0" src="images/navi_06.jpg" width="1" height="84">
-<?php        }	}
+			<img border="0" src="images/separator.jpg" width="1" height="84">
+<?php
+        }
+	}
 ?>
