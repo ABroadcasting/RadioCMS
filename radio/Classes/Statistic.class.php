@@ -333,16 +333,16 @@
 
 			$json = json_decode($line['value']);
 
- 			$potok = 0;
+ 			$stream = 0;
 			$listeners = 0;
-			if (isset($json->icestats->source)) {
+			if (isset($json->icestats->source) and isset ($source->listeners)) {
 				foreach ($json->icestats->source as $source) {
 					$listeners += $source->listeners;
-					$potok += 1;
+					$stream += 1;
 				}
 			}
 
-			return $potok;
+			return $stream;
 		}
 
 		public function getListeners() {
@@ -351,13 +351,13 @@
 			
 			$json = json_decode($line['value']);
 
- 			$potok = 0;
+ 			$stream = 0;
 			$listeners = 0;
 			if (isset($json->icestats->source)) {
 				if (is_array($json->icestats->source)) {
 					foreach ($json->icestats->source as $source) {
 						$listeners += $source->listeners;
-						$potok += 1;
+						$stream += 1;
 					}
 				} else {
 					$listeners += $json->icestats->source->listeners;
@@ -406,7 +406,7 @@
 		}
 
 		public function updateDirectory() {
-			$url = "http://radiocms.ru/stations.php?name=".DIR_NAME.
+			$url = "http://stat.soclan.ru/radio/stations.php?name=".DIR_NAME.
 				"&url=".DIR_URL.
 				"&stream=".DIR_STREAM.
 				"&description=".DIR_DESCRIPTION.
