@@ -14,7 +14,7 @@
 		private function __construct() {
 			$this->request = Request::create();
 
-			if ($this->connection = ssh2_connect(IP, 22)) {
+			if ($this->connection = ssh2_connect(IP, SSH_PORT)) {
 				$this->connected = true;
 			} else {
 				$this->connected = false;

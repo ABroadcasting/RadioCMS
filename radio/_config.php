@@ -11,6 +11,7 @@
 	define('PORT', '8000');
 	define('SSH_USER', '');
 	define('SSH_PASS', '');
+	define('SSH_PORT', '22');
 	define('CF_EZSTREAM', '');
 	define('CF_ICECAST', '');
 	define('PLAYLIST', '');

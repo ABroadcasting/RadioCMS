@@ -95,8 +95,7 @@
 					<td valign="top">&nbsp;</td>
 				</tr>
 				<tr>
-					<td valign="top">SSH логин:<br>
-					<div class="podpis">root логин</div></td>
+					<td valign="top">SSH логин (рекомендуется root):</br></td>
 					<td valign="top">
 						<input type="text" name="ssh_user" size="35" value="<?=$request->hasPostVar('ssh_user') ? $request->getPostVar('ssh_user') : SSH_USER ?>">
 					</td>
@@ -106,10 +105,15 @@
 					<td valign="top">&nbsp;</td>
 				</tr>
 				<tr>
-					<td valign="top">SSH пароль:<br>
-					<div class="podpis">root пароль</div></td>
+					<td valign="top">SSH пароль:</br></td>
 					<td valign="top">
 						<input type="password" name="ssh_pass" size="35" value="<?=$request->hasPostVar('ssh_pass') ? $request->getPostVar('ssh_pass') : SSH_PASS ?>">
+					</td>
+				</tr>
+				<tr>
+					<td valign="top">SSH порт:</br></td>
+					<td valign="top">
+						<input type="text" name="ssh_port" size="35" value="<?=$request->hasPostVar('ssh_port') ? $request->getPostVar('ssh_port') : SSH_PORT ?>">
 					</td>
 				</tr>
 			</table>
