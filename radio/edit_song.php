@@ -9,13 +9,13 @@
 	$song->handler();
 ?>
 	<div class="body">
-		<div class="navi_white"><a href="playlist.php">Плейлисты</a></div>
-		<div class="navi"><a href="playlist_edit.php">Создать плейлист</a></div>
-		<div class="navi"><a href="playlist_zakaz.php">Заказы</a></div>
-		<div class="navi"><a href="playlist_proverki.php">Проверки</a></div>
+		<div class="navi_white"><a href="playlist.php">Playlists</a></div>
+		<div class="navi"><a href="playlist_edit.php">Create playlist</a></div>
+		<div class="navi"><a href="playlist_zakaz.php">Orders</a></div>
+		<div class="navi"><a href="playlist_proverki.php">Checks</a></div>
 		<br><br>
 		<form method="POST" action="">
-			<div class="title">Редактирование песни</div>
+			<div class="title">Edit songs</div>
 			<div class="border">
 
 <?php
@@ -66,7 +66,7 @@
 				    <tr>
 					    <td>
 					    	Заказы<br>
-					    	<div class="podpis">Количество заказов</div>
+					    	<div class="podpis">Orders number</div>
 					    </td>
 				        <td>
 				        	<input size="40" type="text" name="zakazano" value="<?=$line['zakazano']?>">
@@ -84,7 +84,7 @@
 				    <tr>
 					    <td>
 					    	Переместить в<br>
-					    	<div class="podpis">Переместить в другой плейлист\папку</div>
+					    	<div class="podpis">Move to other folder/playlist</div>
 					    </td>
 				        <td>
 				        	<select size="1" name="position">
@@ -137,15 +137,15 @@
 <?php
 	if ($request->getGetVar('playlist_id') == "povtor") {
 ?>
-				<input class="button" type="button" value="Назад" name="back" onClick="location.href='playlist_proverki.php?povtor=yes'" />
+				<input class="button" type="button" value="Back" name="back" onClick="location.href='playlist_proverki.php?povtor=yes'" />
 <?php
 	} else {
 ?>
-				<input class="button" type="button" value="Назад" name="back" onClick="location.href='playlist_view.php?playlist_id=<?=$request->getGetVar('playlist_id')?>&sort=<?=$request->getGetVar('sort')?>&start=<?=$request->getGetVar('start')?>&search=<?=$request->getGetVar('search')?>'" />
+				<input class="button" type="button" value="Back" name="back" onClick="location.href='playlist_view.php?playlist_id=<?=$request->getGetVar('playlist_id')?>&sort=<?=$request->getGetVar('sort')?>&start=<?=$request->getGetVar('start')?>&search=<?=$request->getGetVar('search')?>'" />
 <?php
 	}
 ?>
-				<input class="button" value="Сохранить" name="submit" type="submit"> <input class="button" value="Сохранить и назад" name="submit_and_save" type="submit">
+				<input class="button" value="Сохранить" name="submit" type="submit"> <input class="button" value="Save and back" name="submit_and_save" type="submit">
 			</div>
 		</form>
 	</div>

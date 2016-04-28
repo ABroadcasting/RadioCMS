@@ -42,19 +42,19 @@
 			$cf_ezstream = $this->request->getPostVar('cf_ezstream');
 			$cf_icecast = $this->request->getPostVar('cf_icecast');
 			if (empty($play_list_file) or empty($cf_ezstream) or empty($cf_icecast)) {
-				return "<p>Заполнены не все поля.</p>";
+				return "<p>Please fill all fields.</p>";
 			}
             
             if (!file_exists($cf_icecast)){
-                return"<p>Файл конфигурации icecast не существует.</p>";
+                return"<p>Icecast configuration file not found.</p>";
             }
             
             if (!file_exists($cf_ezstream)) {
-                return "<p>Файл конфигурации ezstream не существует.</p>";
+                return "<p>Ezstream configuration file not found.</p>";
             }
             
 			if (!file_exists($play_list_file)) {
-				return "<p>Файл плейлиста не существует.</p>";
+				return "<p>Playlist file not found.</p>";
 			}
 
             $pos_vhoh = strrpos($play_list_file, "/");
@@ -83,7 +83,7 @@
 		public function ifHag3() {
 			$con = @ssh2_connect($this->request->getPostVar('ip'), 22);
 			if(!@ssh2_auth_password($con, $this->request->getPostVar('ssh_user'), $this->request->getPostVar('ssh_pass'))) {
-				return "<p>Неправильный логин или пароль.</p>";
+				return "<p>Wrong login or password.</p>";
     		}
     		$this->saveConfig('IP', $this->request->getPostVar('ip'));
     		$this->saveConfig('URL', $this->request->getPostVar('url'));
@@ -109,7 +109,7 @@
 				$this->createTable($this->request->getPostVar('db_name'));
 				Header("Location: install.php?hag=3");
 			} else {
-				return "<p>Не удалось установить соеденение</p>";
+				return "<p>Connection can not be established.</p>";
 			}
 		}
 
@@ -252,9 +252,9 @@
 
 		public function getPerms($file) {
         	if (is_writable($file)) {
-        		return '<span class="green"><b>доступен для записи</b></span>';
+        		return '<span class="green"><b>is writable</b></span>';
         	} else {
-        		return '<span class="red"><b>недоступен для записи</b></span>';
+        		return '<span class="red"><b>is not writable</b></span>';
         	}
 		}
 
@@ -278,41 +278,41 @@
 
 		public function getSsh2() {
 			if (function_exists("ssh2_connect")) {
-				return '<span class="green"><b>установлена</b></span>';
+				return '<span class="green"><b>installed</b></span>';
 			} else {
-				return '<span class="red"><b>не установлена</b></span>';
+				return '<span class="red"><b>not installed</b></span>';
 			}
 		}
         
         public function getXML() {
             if (function_exists("simplexml_load_file")) {
-                return '<span class="green"><b>установлена</b></span>';
+                return '<span class="green"><b>installed</b></span>';
             } else {
-                return '<span class="red"><b>не установлена</b></span>';
+                return '<span class="red"><b>not installed</b></span>';
             }
         }
 
 		public function getCurl() {
 			if (function_exists("curl_init")) {
-				return '<span class="green"><b>установлена</b></span>';
+				return '<span class="green"><b>installed</b></span>';
 			} else {
-				return '<span class="red"><b>не установлена</b></span>';
+				return '<span class="red"><b>not installed</b></span>';
 			}
 		}
 
 		public function getIconv() {
 			if (function_exists("iconv")) {
-				return '<span class="green"><b>установлена</b></span>';
+				return '<span class="green"><b>installed</b></span>';
 			} else {
-				return '<span class="red"><b>не установлена</b></span>';
+				return '<span class="red"><b>not installed</b></span>';
 			}
 		}
 
 		public function getGd() {
 			if (function_exists("imageCreate")) {
-				return '<span class="green"><b>установлена</b></span>';
+				return '<span class="green"><b>installed</b></span>';
 			} else {
-				return '<span class="red"><b>не установлена</b></span>';
+				return '<span class="red"><b>not installed</b></span>';
 			}
 		}
 
@@ -325,7 +325,7 @@
 		}
 
 		public function addStatistic() {
-			$add_site = "http://radiocms.ru/stations.php?i_url=".URL."&i_ip=".IP;
+			$add_site = "http://stat.soclan.ru/radio/stations.php?i_url=".URL."&i_ip=".IP;
 			$this->request->get($add_site);
 		}
 

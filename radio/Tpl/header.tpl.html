@@ -22,11 +22,13 @@
 								<a href="/radio/"><img border="0" src="images/navi_02.jpg" width="588" height="38"></a></td>
 								<td background="images/navi_03.jpg" valign="top"><div class="navi_text">
 		<?php
-			if (strpos(URL,'http://') === false) {				$adres2 = 'http://'.URL;
-			} else {				$adres2 = URL;
+			if (strpos(URL,'http://') === false) {
+				$adres2 = 'http://'.URL;
+			} else {
+				$adres2 = URL;
 			}
 		?>
-									<a href="<?=$adres2?>" target="_blank"><?=IP?></a> | <?=date("H:i")?> | <a href="top.php?exit=yes">Выход</a><br>Вы зашли как <?=$prava?></div></td>
+									<a href="<?=$adres2?>" target="_blank"><?=IP?></a> | <?=date("H:i")?> | <a href="top.php?exit=yes">Logout</a><br>you log in as <?=$prava?></div></td>
 							</tr>
 						</table>
 						</td>

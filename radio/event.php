@@ -11,10 +11,11 @@
     $request = Request::create();
 	$event = Event::create();
 
-	if ( (DIR_SHOW == "on") and (rand(1,5) == 1) ) {		$statistic->updateDirectory();
+	if ( (DIR_SHOW == "on") and (rand(1,5) == 1) ) {
+		$statistic->updateDirectory();
 	}
 
-	echo "<br>Отладочная информация <br>";
+	echo "<br>Debug information <br>";
 
 	$net_povtorov_array = $tracklist->getNoRepeatArray();
     $update_filename = $tracklist->getNowFilename();
@@ -101,7 +102,8 @@
 
 					shuffle($play_list_array);
 					// Время
-					if ($event1_duration < $vremya_trecka*60) {						$event1_duration = $event1_duration+$vremya_trecka*60;
+					if ($event1_duration < $vremya_trecka*60) {
+						$event1_duration = $event1_duration+$vremya_trecka*60;
 					}
 					$allow_time_tmp = $allow_time_tmp + $event1_duration;
 					$allow_time = $allow_time_tmp;
@@ -115,7 +117,8 @@
 						}
 					}
 					// Время
-					if ($event1_duration < $vremya_trecka*60) {						$event1_duration = $event1_duration+$vremya_trecka*60;
+					if ($event1_duration < $vremya_trecka*60) {
+						$event1_duration = $event1_duration+$vremya_trecka*60;
 					}
 					$allow_time_tmp = $allow_time_tmp + $event1_duration;
 					$allow_time = $allow_time_tmp;
@@ -129,7 +132,8 @@
 						}
 					}
 					// Время
-					if ($event1_duration < $vremya_trecka*60) {						$event1_duration = $event1_duration+$vremya_trecka*60;
+					if ($event1_duration < $vremya_trecka*60) {
+						$event1_duration = $event1_duration+$vremya_trecka*60;
 					}
 					$allow_time_tmp = $allow_time_tmp + $event1_duration;
 					$allow_time = $allow_time_tmp;
@@ -214,7 +218,8 @@
 
 						shuffle($play_list_array);
 						// Время
-						if ($event1_duration < $vremya_trecka*60) {							$event1_duration = $event1_duration+$vremya_trecka*60;
+						if ($event1_duration < $vremya_trecka*60) {
+							$event1_duration = $event1_duration+$vremya_trecka*60;
 						}
 						$allow_time_tmp = $allow_time_tmp + $event1_duration;
 						$allow_time = $allow_time_tmp;
@@ -226,7 +231,8 @@
 							$play_list_array[] = $line['filename']."\n";
 						}
 						// Время
-						if ($event1_duration < $vremya_trecka*60) {							$event1_duration = $event1_duration+$vremya_trecka*60;
+						if ($event1_duration < $vremya_trecka*60) {
+							$event1_duration = $event1_duration+$vremya_trecka*60;
 						}
 						$allow_time_tmp = $allow_time_tmp + $event1_duration;
 						$allow_time = $allow_time_tmp;
@@ -238,7 +244,8 @@
 							$play_list_array[] = $line['filename']."\n";
 						}
 						// Время
-						if ($event1_duration < $vremya_trecka*60) {							$event1_duration = $event1_duration+$vremya_trecka*60;
+						if ($event1_duration < $vremya_trecka*60) {
+							$event1_duration = $event1_duration+$vremya_trecka*60;
 						}
 						$allow_time_tmp = $allow_time_tmp + $event1_duration;
 						$allow_time = $allow_time_tmp;
@@ -279,7 +286,8 @@
 	$query = "SELECT * FROM `zakaz` ORDER BY `id` ASC";
 	$result = mysql_query($query) or die("Query failed10 : " . mysql_error());
 	$est_zakaz = mysql_fetch_array($result, MYSQL_ASSOC);
-	if  (!$est_zakaz) {		echo "Нет заказов<br>";
+	if  (!$est_zakaz) {
+		echo "Нет заказов<br>";
 	} else {
 		echo "Есть заказы<br>";
 	}
@@ -423,7 +431,9 @@
       		$play_list_array_skolko = count($play_list_array);
 			for ( $ips=0; $ips<NO_REPEAT; $ips++ )  {
 				for ( $ipn=0; $ipn<$play_list_array_skolko; $ipn++ )  {
-                   	if (empty($net_povtorov_array[$ips]) or empty($play_list_array[$ipn])) {                    	continue;                    }
+                   	if (empty($net_povtorov_array[$ips]) or empty($play_list_array[$ipn])) {
+                    	continue;
+                    }
                     $poisk = strpos($play_list_array[$ipn], $net_povtorov_array[$ips]);
                     if ($poisk !== false) {
                     	unset($play_list_array[$ipn]);
@@ -485,7 +495,8 @@
 	                   		continue;
 	                   	}
 	                   	$poisk = strpos($play_list_array[$ipn], $net_povtorov_array[$ips]);
-	                   	if ($poisk !== false) {	                   		unset($play_list_array[$ipn]);
+	                   	if ($poisk !== false) {
+	                   		unset($play_list_array[$ipn]);
 	                   	}
 	               	}
 				}
@@ -501,9 +512,12 @@
 				$play_list_array_skolko = count($play_list_array);
 				for ( $ips=0; $ips<NO_REPEAT; $ips++ )  {
 	            	for ( $ipn=0; $ipn<$play_list_array_skolko; $ipn++ )  {
-	                	if (empty($net_povtorov_array[$ips]) or empty($play_list_array[$ipn])) {	               			continue;	               		}
+	                	if (empty($net_povtorov_array[$ips]) or empty($play_list_array[$ipn])) {
+	               			continue;
+	               		}
 	               		$poisk = strpos($play_list_array[$ipn], $net_povtorov_array[$ips]);
-	                	if ($poisk !== false) {	                   		unset($play_list_array[$ipn]);
+	                	if ($poisk !== false) {
+	                   		unset($play_list_array[$ipn]);
 	                   	}
 	                }
 				}

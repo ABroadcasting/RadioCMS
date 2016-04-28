@@ -13,12 +13,15 @@
             return self::$object;
         }
 
-		private function __construct() {			$this->db = MySql::create();
+		private function __construct() {
+			$this->db = MySql::create();
 			$this->request = Request::create();
             $this->filename = $this->request->getRadioPath()."_config.php";
-            $this->file = file($this->filename);		}
+            $this->file = file($this->filename);
+		}
 
-		public function handler() {			if ($this->request->hasPostVar('main_text')) {
+		public function handler() {
+			if ($this->request->hasPostVar('main_text')) {
 				$this->saveMainText();
 			}
 			//setting
@@ -90,29 +93,39 @@
 			}
 			if ($this->request->hasPostVar('dir_bitrate')) {
 				$this->saveConfig('DIR_BITRATE', $this->request->getPostVar('dir_bitrate'));
-			}		}
+			}
+		}
 
 		public function updateLogin($login) {
         	$query = "UPDATE `login` SET `dj` = '$login' WHERE `hash` = '".$this->request->getCookieVar('hash')."'";
-			$this->db->queryNull($query);		}
+			$this->db->queryNull($query);
+		}
 
-		public function getSystemStream() {			$query = "SELECT * FROM  `settings` WHERE `name` = 'stream' LIMIT 1";
+		public function getSystemStream() {
+			$query = "SELECT * FROM  `settings` WHERE `name` = 'stream' LIMIT 1";
             $line = $this->db->getLine($query);
-			return $line['value'];		}
+			return $line['value'];
+		}
 
 		public function saveMainText() {
-		    $this->saveSetting('main_text', $this->request->getPostVar('main_text'));		}
+		    $this->saveSetting('main_text', $this->request->getPostVar('main_text'));
+		}
 
-		public function getDescription() {			$query = "SELECT * FROM `settings` WHERE `name` = 'main_text' LIMIT 1";
+		public function getDescription() {
+			$query = "SELECT * FROM `settings` WHERE `name` = 'main_text' LIMIT 1";
 			$line = $this->db->getLine($query);
-			return $line['value'];		}
+			return $line['value'];
+		}
 
-		public function checkNetPovtorov() {			$query = "SELECT id FROM `songlist`";
+		public function checkNetPovtorov() {
+			$query = "SELECT id FROM `songlist`";
 			if ($this->db->getCountRow($query) <= NO_REPEAT) {
-				return 'значение больше чем песен в плейлистах';
-			}		}
+				return 'Value is greater then playlist content';
+			}
+		}
 
-		public function saveConfig($const, $value) {     			$value = htmlspecialchars($value, ENT_QUOTES, "utf-8");
+		public function saveConfig($const, $value) {     
+			$value = htmlspecialchars($value, ENT_QUOTES, "utf-8");
 			for ($i=0; $i<count($this->file); $i++) {
 				if (strpos($this->file[$i], "define('$const'")) {
 					$this->file[$i] = "\t"."define('$const', '$value');".$this->per;
@@ -123,7 +136,8 @@
 			}
 		}
 
-		public function saveSetting($name, $value) {			$query = "SELECT * FROM  `settings` WHERE `name`='$name' LIMIT 1";
+		public function saveSetting($name, $value) {
+			$query = "SELECT * FROM  `settings` WHERE `name`='$name' LIMIT 1";
  			$line = $this->db->getLine($query);
 			if (!empty($line)) {
 				$query = "UPDATE `settings` SET `value` = '".addslashes($value)."' WHERE `name`= '$name';";
@@ -131,5 +145,7 @@
 			} else {
 				$query = "INSERT INTO `settings` ( `name` , `value` ) VALUES ('$name', '".addslashes($value)."');";
  				$this->db->queryNull($query);;
-			}		}	}
+			}
+		}
+	}
 ?>

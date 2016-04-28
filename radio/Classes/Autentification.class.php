@@ -12,29 +12,39 @@
             return self::$object;
         }
         
-		private function __construct() {			 $this->dateTime = Date::create();
+		private function __construct() {
+			 $this->dateTime = Date::create();
 			 $this->db = MySql::create();
-			 $this->request = Request::create();		}
+			 $this->request = Request::create();
+		}
 
 		public function handler() {
-			$this->deleteOldAuth();			if ($this->request->hasGetVar('exit')) {				$this->logout();			}
+			$this->deleteOldAuth();
+			if ($this->request->hasGetVar('exit')) {
+				$this->logout();
+			}
 			if (
 				$this->request->hasPostVar('user') and
 				$this->request->hasPostVar('password')
 			) {
                 $this->login();
 			}
-			$this->securityRun();		}
+			$this->securityRun();
+		}
 
-		public function logout() {			if ($this->request->hasCookieVar('hash')) {
+		public function logout() {
+			if ($this->request->hasCookieVar('hash')) {
 	    		$use_hash = $this->request->getCookieVar('hash');
 	    		$query = " DELETE FROM `login` WHERE `hash` = '$use_hash' ";
     			$this->db->queryNull($query);
     		}
 
-    		Header("Location: /radio/");		}
+    		Header("Location: /radio/");
+		}
 
-		public function getUser() {			if (!$this->request->hasCookieVar('hash')) {				return false;
+		public function getUser() {
+			if (!$this->request->hasCookieVar('hash')) {
+				return false;
 			}
 
 			$query = "SELECT * FROM `login`";
@@ -48,21 +58,25 @@
 				}
 			}
 
-			if (empty($user)) {				return false;			}
+			if (empty($user)) {
+				return false;
+			}
 
             $this->updateLoginEntry($user['hash']);
             $this->setCookieVar($user['hash']);
 
-			return $user;		}
+			return $user;
+		}
 
-		public function securityRun() {  			if (
+		public function securityRun() {
+  			if (
 				$this->request->hasPostVar('user') and
 				$this->request->hasPostVar('password')
 			) {
 				$query = "SELECT * FROM `login` WHERE `ip` = '".$this->request->getIp()."'";
 				$line = $this->db->getLine($query);
 				if ($line['raz'] >= 5) {
-  					echo "<br><center style=\"font-family: Arial, Helvetica, sans-serif; font-size: 15px;\">Слишком много попыток, попробуйте через 15 минут.</center>";
+  					echo "<br><center style=\"font-family: Arial, Helvetica, sans-serif; font-size: 15px;\">Too many retries, try again in 15 minutes.</center>";
   					exit;
 				}
 
@@ -73,16 +87,19 @@
 					$query="INSERT INTO `login` ( `ip` , `raz` ,`time` ) VALUES ('".$this->request->getIp()."','1','".$this->dateTime->getAuthTime()."')";
 					$this->db->queryNull($query);
 				}
-			}		}
+			}
+		}
 
-		public function login() {            foreach ($this->getAllUsers() as $i=>$user) {
+		public function login() {
+            foreach ($this->getAllUsers() as $i=>$user) {
         		if ($user['name'] == $this->request->getPostVar('user') and $user['password'] == $this->request->getPostVar('password')) {
         			$hash = $this->generateHash();
         			$this->insertLoginEntry($user, $hash);
                     $this->setCookieAndGoToPanel($hash);
                     exit;
         		}
-			}		}
+			}
+		}
 
 		public function setCookieVar($hash) {
 ?>
@@ -98,7 +115,8 @@
 <?php
 		}
 
-		public function setCookieAndGoToPanel($hash) {?>
+		public function setCookieAndGoToPanel($hash) {
+?>
 			<script>
 				set_cookie('hash', '<?=$hash?>', 1750);
 				locationHref('/radio');
@@ -113,15 +131,19 @@
 					document.location.href = url;
 				}
 			</script>
-<?php		}
+<?php
+		}
 
-		public function updateLoginEntry($hash) {			$query = "UPDATE `login` SET `time` = '".$this->dateTime->getAuthTime()."' WHERE `hash` = '$hash'";
-			$this->db->queryNull($query);		}
+		public function updateLoginEntry($hash) {
+			$query = "UPDATE `login` SET `time` = '".$this->dateTime->getAuthTime()."' WHERE `hash` = '$hash'";
+			$this->db->queryNull($query);
+		}
 
 		public function insertLoginEntry($user, $hash) {
 			$query = "INSERT INTO `login` ( `ip` , `dj` , `raz` ,`time` , `hash`, `admin` )
 				VALUES ('".$this->request->getIp()."','".$user['name']."','0','".$this->dateTime->getAuthTime()."','$hash','".$user['admin']."')";
-			$this->db->queryNull($query);		}
+			$this->db->queryNull($query);
+		}
 
 		public function getAllUsers() {
 			$userArr[0]['name'] = USER;
@@ -139,19 +161,23 @@
    				$x++;
 			}
 
-			return $userArr;		}
-		public function generateHash() {			$num = range(0, 9);
+			return $userArr;
+		}
+
+		public function generateHash() {
+			$num = range(0, 9);
    			$alf = range('a', 'z');
         	$_alf = range('A', 'Z');
         	$symbols = array_merge($num, $alf, $_alf);
         	shuffle($symbols);
         	$code_array = array_slice($symbols, 0, (int)$this->hashLength);
         	$code = implode("", $code_array);
-      		return $code;		}
+      		return $code;
+		}
 
-		public function deleteOldAuth() {			$query = "DELETE FROM `login` WHERE `time` < ".$this->dateTime->getNow();
-    		$this->db->queryNull($query);		}	}
-
-
-
+		public function deleteOldAuth() {
+			$query = "DELETE FROM `login` WHERE `time` < ".$this->dateTime->getNow();
+    		$this->db->queryNull($query);
+		}
+	}
 ?>

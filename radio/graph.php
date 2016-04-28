@@ -12,42 +12,57 @@
 	$s = mysql_num_rows($result);
 
 
-	while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {		if ($_GET['type'] == "client") {			$client = $stat->getClient($line['client']);
-			if (empty($client)) {				$client = "neizvestno";
+	while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
+		if ($_GET['type'] == "client") {
+			$client = $stat->getClient($line['client']);
+			if (empty($client)) {
+				$client = "neizvestno";
 			}
 
 			$client = trim(preg_replace("/[^a-zA-Z0-9\s]+/", "", $client));
 
-			if (!isset($gr_val[$client])) {				$gr_val[$client] = 1;			} else {    			$gr_val[$client]++;;
+			if (!isset($gr_val[$client])) {
+				$gr_val[$client] = 1;
+			} else {
+    			$gr_val[$client]++;;
     		}
-		} else {			$time = $line['time'];
+		} else {
+			$time = $line['time'];
 			$name = "< 1 min";
 			if ( $time < 60 ){
-				if (!isset($gr_val[$name])) {					$gr_val[$name] = 1;				} else {					$gr_val[$name]++;				}
+				if (!isset($gr_val[$name])) {
+					$gr_val[$name] = 1;
+				} else {
+					$gr_val[$name]++;
+				}
 			}
 			$name = "1-10 min";
-			if ( ($time >= 60) and ($time < 600) ){				if (!isset($gr_val[$name])) {
+			if ( ($time >= 60) and ($time < 600) ){
+				if (!isset($gr_val[$name])) {
 					$gr_val[$name] = 1;
 				} else {
 					$gr_val[$name]++;
 				}
 			}
 			$name = "10-60 min";
-			if ( ($time >= 600) and ($time < 3600) ){				if (!isset($gr_val[$name])) {
+			if ( ($time >= 600) and ($time < 3600) ){
+				if (!isset($gr_val[$name])) {
 					$gr_val[$name] = 1;
 				} else {
 					$gr_val[$name]++;
 				}
 			}
 			$name = "1-7 hour";
-			if ( ($time >= 3600) and ($time < 25200) ) {				if (!isset($gr_val[$name])) {
+			if ( ($time >= 3600) and ($time < 25200) ) {
+				if (!isset($gr_val[$name])) {
 					$gr_val[$name] = 1;
 				} else {
 					$gr_val[$name]++;
 				}
 			}
 			$name = "> 7 hour";
-			if ( $time >= 25200){				if (!isset($gr_val[$name])) {
+			if ( $time >= 25200){
+				if (!isset($gr_val[$name])) {
 					$gr_val[$name] = 1;
 				} else {
 					$gr_val[$name]++;
@@ -60,17 +75,18 @@
 
 
 
-	// постоение диаграмы
+	// Build diagram
 	GraphPie($gr_val);
 
 
-	function GraphPie($ar) {    	global $s;
-    	// размеры диаграмы
+	function GraphPie($ar) {
+    	global $s;
+    	// Diagram size
     	$diagramWidth = 450;
     	$diagramHeight = 250;
     	$legendOffset = 50;
 
-    	// отсортируем по убыванию, сохраняя ключи
+    	// Sort decend? save keys
     	if ($_GET['type'] == "client") {arsort($ar);}
 
     	// наш скрипт будет объединять в один сектор все элементы, которые по отдельности не превыщают 1%
@@ -156,7 +172,8 @@
 
     	// Вычисляем координаты подписи
     	  $tochka  = $endAngle-4;
-    	  if ($percents > 6) {    	  	$name = substr($name,0,13);
+    	  if ($percents > 6) {
+    	  	$name = substr($name,0,13);
     	    $pr = 360-$tochka; $tochka = $tochka+$pr*2;
     	    if ($_GET['type']=="client") {
     	    	//ImageString($image , 2, 9, $tochka, "      ".$name, $colorText);

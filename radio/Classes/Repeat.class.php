@@ -4,11 +4,16 @@
         public static function create() {
             return new self();
         }
-        		public function __construct() {			$this->db = MySql::create();
+        
+		public function __construct() {
+			$this->db = MySql::create();
 			$this->request = Request::create();
-			$this->dateTime = Date::create();		}
+			$this->dateTime = Date::create();
+		}
 
-		public function handler() {   			if ($this->request->hasGetVar('povtor_start')) {        		$this->getRepeatSongList();
+		public function handler() {
+   			if ($this->request->hasGetVar('povtor_start')) {
+        		$this->getRepeatSongList();
         	}
 
         	if ($this->request->hasGetVar('delete_song')) {
@@ -21,19 +26,24 @@
 
         	if ($this->request->hasGetVar('delete_song3')) {
         		$this->deleteNotExistingSong();
-        	}		}
+        	}
+		}
 
-		public function getRepeat() {			$return = array();			$query = "SELECT * FROM `poisk` ORDER BY `title`";
+		public function getRepeat() {
+			$return = array();
+			$query = "SELECT * FROM `poisk` ORDER BY `title`";
 			foreach ($this->db->getLines($query) as $line) {
     			$line['filename'] = str_replace($root_path, "", $line['filename']);
     			$playlist = $this->getPlaylistBySong($line['id']);
      			$line['playlistName'] = $playlist['name'];
      			$line['duration'] = $this->dateTime->toMinSec($line['duration']);
-     			$return[] = $line;			}
+     			$return[] = $line;
+			}
 			return $return;
 		}
 
-		public function getNotExisting() {			$query = "SELECT * FROM `songlist` ORDER BY `sort` ASC";
+		public function getNotExisting() {
+			$query = "SELECT * FROM `songlist` ORDER BY `sort` ASC";
    			$lines = $this->db->getLines($query);
  			$return = array();
    			foreach ($lines as $line) {
@@ -42,16 +52,19 @@
      				$playlist = $this->getPlaylistBySong($line['id']);
      				$line['playlistName'] = $playlist['name'];
      				$return[] = $line;
-     			}			}
+     			}
+			}
 			return $return;
 		}
 
-		public function deleteNotExistingSong() {            $del_id = $_GET['delete_song3'];
+		public function deleteNotExistingSong() {
+            $del_id = $_GET['delete_song3'];
    			$query2 = "DELETE FROM `songlist` WHERE `idsong` = '$del_id'";
     		$this->db->queryNull($query2);
 		}
 
-		public function deletePoiskSongAndFile() {			$query = "SELECT * FROM `poisk` WHERE `idsong` = ".$_GET['delete_song2'];
+		public function deletePoiskSongAndFile() {
+			$query = "SELECT * FROM `poisk` WHERE `idsong` = ".$_GET['delete_song2'];
     		$poisk = $this->db->getLine($query);
     		$del_filename = $poisk['filename'];
     		$del_title = $poisk['title'];
@@ -67,7 +80,8 @@
     		$query = "DELETE FROM `songlist` WHERE `filename` = '".addslashes($del_filename)."'";
     		$this->db->queryNull($query);
 
-    		unlink($del_filename);		}
+    		unlink($del_filename);
+		}
 
 		public function deletePosikSong() {
 			$query = "SELECT * FROM `poisk` WHERE `idsong` = ".$_GET['delete_song'];
@@ -83,9 +97,11 @@
     		}
 		}
 
-		public function getRepeatSongList() {			$this->deleteOldResult();
+		public function getRepeatSongList() {
+			$this->deleteOldResult();
 			$this->getPrepeat();
-			header('Location:?povtor=yes');		}
+			header('Location:?povtor=yes');
+		}
 
 		public function getPrepeat() {
 			$k = 0;
@@ -193,11 +209,14 @@
     		}
 		}
 
-		public function getPlaylistBySong($id) {			$query = "SELECT * FROM `playlist` WHERE ".$id." = `id`";
-			return $this->db->getLine($query);		}
+		public function getPlaylistBySong($id) {
+			$query = "SELECT * FROM `playlist` WHERE ".$id." = `id`";
+			return $this->db->getLine($query);
+		}
 
 		public function deleteOldResult() {
 			$query = "DELETE FROM `poisk`";
 			$this->db->queryNull($query);
-		}	}
+		}
+	}
 ?>

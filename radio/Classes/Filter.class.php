@@ -17,9 +17,12 @@
         
 		public function apply($text) {
 			$text = trim($text);
-			return $text;		}
+			return $text;
+		}
 
-		public function toRequestString($value) {        	return str_replace(" ", "%20", $value);		}
+		public function toRequestString($value) {
+        	return str_replace(" ", "%20", $value);
+		}
 
 		public function wordWrap($text, $wrap=30) {
 		    $arr = explode(" ", $text);
@@ -30,7 +33,9 @@
                     $arr[$index] = iconv_substr($word, 0, $offset, 'utf-8')."\n".iconv_substr($word, $offset, $strlen, 'utf-8');
                 }     
             }
-            			return implode(" ", $arr);		}
+            
+			return implode(" ", $arr);
+		}
         
         public function tagForId3v1($tag) {
             $tag = str_replace(" - ", "- ", $tag);
@@ -107,7 +112,8 @@
 	
 			$file_name = $path_name.$file_name.".mp3";
 
-			return $file_name;		}
+			return $file_name;
+		}
 
 		public function translit($text) {
         	$text = str_replace("а", "a", $text);
@@ -179,5 +185,6 @@
 			$text = str_replace("Я", "YA", $text);
 
 			return $text;
-		}	}
+		}
+	}
 ?>

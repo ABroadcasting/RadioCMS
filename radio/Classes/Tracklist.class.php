@@ -33,7 +33,7 @@
                 	$last[] = iconv_substr($title, 0, TRACK_CUT_LENGTH, 'UTF-8')."..";
             	} else {
             		if (empty($title)) {
-            			$title = "Нет данных";
+            			$title = "No data";
             		}
             		$last[] = $title;
             	}

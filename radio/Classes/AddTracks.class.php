@@ -5,28 +5,43 @@
             return new self($song);
         }
         
-		private function __construct(Song $song) {			$this->request = Request::create();
+		private function __construct(Song $song) {
+			$this->request = Request::create();
 			$this->db = MySql::create();
 			$this->ssh = Ssh::create();
 			$this->meneger = Meneger::create();
 			$this->song = $song;
-			$this->filter = Filter::create();		}
+			$this->filter = Filter::create();
+		}
 
-		public function setPlaylist($id) {			$this->id = $id;		}
+		public function setPlaylist($id) {
+			$this->id = $id;
+		}
 
-		public function addFolder($folder) {        	$folder = $this->getRealPath($folder);
+		public function addFolder($folder) {
+        	$folder = $this->getRealPath($folder);
         	$tracks_array = $this->getAllFilesFromDirectory($folder);
          	foreach ($tracks_array as $filename) {
-         		$this->addTrack($filename);         	}		}
+         		$this->addTrack($filename);
+         	}
+		}
 
-		public function addTrack($filename) {			$playlistId = $this->request->getGetVar('playlist_id');			$filenameTemp = $this->getRealPath($filename);
+		public function addTrack($filename) {
+			$playlistId = $this->request->getGetVar('playlist_id');
+			$filenameTemp = $this->getRealPath($filename);
 
-			if (!$this->meneger->isMp3($filenameTemp)) {				return false;			}
+			if (!$this->meneger->isMp3($filenameTemp)) {
+				return false;
+			}
 			$filename = $this->filter->cleanFileName($filenameTemp);
 
-			if ($this->isAlreadyExists($filename)) {				return false;			}
+			if ($this->isAlreadyExists($filename)) {
+				return false;
+			}
 
-            if ($filenameTemp != $filename) {            	rename($filenameTemp, $filename);            }
+            if ($filenameTemp != $filename) {
+            	rename($filenameTemp, $filename);
+            }
 			
 			if (!$TagData = $this->getTagDataFromOftherPlaylist($filename)) {
 				$this->song->analyze($filename);
@@ -75,12 +90,12 @@
 
 			if ( !empty($this->tagwriter->errors)) {
 				if (!empty($this->tagwriter->errors)) {
-					echo '<p>Ошибка чтения mp3-файла:<br>'.implode('<br><br>', $tagwriter->errors)."</p>";
+					echo '<p>Error reading mp3-file:<br>'.implode('<br><br>', $tagwriter->errors)."</p>";
 				}
 				exit;
 			}
 
-			// Проверяем на наличие песени в других плейлистах, что бы у одинаковых песен были одинаковые zakazano значения
+			// Checking for using track in other playlists, to have the same "zakazano" value for the same track
 			$query_zakazano = "SELECT * FROM `songlist` WHERE `filename`='".addslashes($filename)."'";
 			$zakazano = $this->db->getColumn($query_zakazano, 'zakazano');
 
@@ -103,7 +118,8 @@
 			$this->db->queryNull($query);
 
 			$query = "UPDATE `songlist` SET `artist` = '".addslashes($TagData['artist'][0])."', `title` = '".addslashes($TagData['title'][0])."' WHERE `filename`= '".addslashes($filename)."'";
-	    	$this->db->queryNull($query);		}
+	    	$this->db->queryNull($query);
+		}
 
 		private function getTagDataFromOftherPlaylist($filename) {
 			$query = "SELECT * FROM `songlist` WHERE `filename`='".addslashes($filename)."'";
@@ -165,17 +181,27 @@
 			$return['artist'][0] = $artist;
 			$return['title'][0] = $title;
 
-			return $return;		}
+			return $return;
+		}
 
-		public function isAlreadyExists($filename) {			$query = "SELECT * FROM `songlist` "
+		public function isAlreadyExists($filename) {
+			$query = "SELECT * FROM `songlist` "
 				." WHERE `id`=".$this->id." "
 				." AND `filename`='".addslashes($filename)."' ";
 			$line = $this->db->getLine($query);
-			if (!empty($line)) {				return true;			} else {				return false;			}		}
+			if (!empty($line)) {
+				return true;
+			} else {
+				return false;
+			}
+		}
 
-		public function getRealPath($filename) {			return realpath(stripslashes($filename));		}
+		public function getRealPath($filename) {
+			return realpath(stripslashes($filename));
+		}
 
-		public function setChmod() {			if ($this->request->hasGetVar('filename')) {
+		public function setChmod() {
+			if ($this->request->hasGetVar('filename')) {
 				$folder_chmod = $this->request->getGetVar('filename');
 				$pos_vhoh = strrpos($folder_chmod, "/");
 				$folder_chmod = substr($folder_chmod, 0, $pos_vhoh);
@@ -186,7 +212,8 @@
 			}
 			if (file_exists($folder_chmod) and !empty($folder_chmod)) {
 				$this->ssh->getResponse("chmod -R 777 '".$folder_chmod."'");
-			}		}
+			}
+		}
 
 		public function getAllFilesFromDirectory($root_dir) {
 			$folders_array = array();
@@ -215,5 +242,6 @@
 			}
 
 			return $files_array;
-		}	}
+		}
+	}
 ?>

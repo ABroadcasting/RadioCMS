@@ -28,16 +28,19 @@
         
 		public function getNextPlaylist() {
 			$budet_val = date("U")*2;
-			$budet_name = "";			foreach($this->array_playlist as  $name => $value) {
+			$budet_name = "";
+			foreach($this->array_playlist as  $name => $value) {
 				if ( ($value < $budet_val) and ($value > date("U")-180) ) {
-					if ($budet_val > $value and !strpos($name, SYSTEM_SYMVOL)) {						$budet_val = $value;
+					if ($budet_val > $value and !strpos($name, SYSTEM_SYMVOL)) {
+						$budet_val = $value;
 						$budet_name = $name;
 					}
 				}
 			}
 
 			$budet = explode("--psx", $budet_name);
-			return $budet[0];		}
+			return $budet[0];
+		}
 
 		public function getPlaylistList() {
 			$event_id = 2;
@@ -121,16 +124,19 @@
 							}
 						}
 					}
-				}			}
+				}
+			}
 
 			asort($array_playlist);
 			return $array_playlist;
 		}
 
-		public function getCurrentPlaylist() {			$query = "SELECT * FROM `playlist` WHERE `now`=1";
+		public function getCurrentPlaylist() {
+			$query = "SELECT * FROM `playlist` WHERE `now`=1";
 			$playlist = $this->db->getLine($query);
 
-			return $playlist['name'];		}
+			return $playlist['name'];
+		}
 		
 		public function getMusicLoadForm() {
 		    ob_start();
@@ -139,19 +145,19 @@
             ob_end_clean();
                         
             if (TEMP_UPLOAD == "") {
-                $errors[] = "В настройках RadioCMS не задана папка для загрузки.";
+                $errors[] = "No upload directory in the RadioCMS options.";
             } 
             
             if (TEMP_UPLOAD != "" and !file_exists($this->request->getMusicPath().TEMP_UPLOAD)) {
-                $errors[] = "Папка для загрузки не существует.";
+                $errors[] = "Upload directory does not exists.";
             } 
             
             if (file_exists($this->request->getMusicPath().TEMP_UPLOAD) and !is_writeable($this->request->getMusicPath().TEMP_UPLOAD)) {
-                $errors[] = "Недостаточно прав для загрузки.";
+                $errors[] = "Need more rights to upload.";
             } 
             
             if ($this->letToInt(ini_get('upload_max_filesize')) < 8000000) {
-                $errors[] = "Размер загружаемого файла слишко мал. Разрешите загружать минимум 8 мегабайт.";
+                $errors[] = "File size is too small. Allow to upload at least 8 Mb in php.ini.";
             } 
             
             if (!empty($errors)) {
@@ -181,7 +187,8 @@
         	return $content;
         }
 
-        public function generateVP($artoday, $array_vp) {        	$vp = 0;
+        public function generateVP($artoday, $array_vp) {
+        	$vp = 0;
 			$x = 1;
 			$t = 0;
 			$proc_sum = 0;
@@ -200,16 +207,20 @@
         			$proc = -1;
 				}
 
-    			if ($proc > 0) {    				$proc_sum = $proc_sum + $proc;
+    			if ($proc > 0) {
+    				$proc_sum = $proc_sum + $proc;
     			}
-    			if ($proc < 0) {    				$proc = 100 - $proc_sum;
+    			if ($proc < 0) {
+    				$proc = 100 - $proc_sum;
     			}
    				$pos = strpos($k,"--psx");
-    			if ($pos > 0) {    				$k = substr($k,0,$pos);
+    			if ($pos > 0) {
+    				$k = substr($k,0,$pos);
     			}
     			$k = str_replace("\r\n","",$k);
     			$prod_m = $t/60;
-    			if ($k == "") {    				$k = "Не задано";
+    			if ($k == "") {
+    				$k = "Не задано";
     			}
 
     			$array['url'] = $this->bgVP[$x];
@@ -220,26 +231,31 @@
     			$visual[] = $array;
 				$vp++;
 				$x++;
-				if (count($this->bgVP) < $x) {					$x = 1;
+				if (count($this->bgVP) < $x) {
+					$x = 1;
 				}
 			}
-			return $visual;        }
+			return $visual;
+        }
 
-        public function getArrayVP($artoday) {        	$vp = -1;
+        public function getArrayVP($artoday) {
+        	$vp = -1;
         	$array_vp = array();
 			foreach ($artoday as $k => $v) {
 				$array_vp[$vp] = $v;
 				$vp++;
 			}
 
-			return $array_vp;        }
+			return $array_vp;
+        }
 
         public function generateTodayArrayVP($array_playlist) {
        		$now = date("U");
 			$today = mktime(0, 0, 0);
 			$tomorrow = mktime(0, 0, 0, date("m")  , date("d") +1, date("Y"));
 			$artoday = array();
-			        	// Массив за сегодня
+			
+        	// Массив за сегодня
 			foreach ($array_playlist as $k => $v) {
 				if (($v < $tomorrow) and ($v > $today)) {
 					$artoday[$k] = $v;
@@ -251,26 +267,31 @@
 			$k2 = "";
 			foreach ($array_playlist as $k => $v) {
 				if ($v < $today) {
-					if ($v2 < $v) {						$v2 = $v; $k2 = $k;
+					if ($v2 < $v) {
+						$v2 = $v; $k2 = $k;
 					}
 				}
 			}
 
 			$artoday[$k2] = $today;
             asort($artoday);
-			return $artoday;        }
+			return $artoday;
+        }
 
         public function generateFullVP($add) {
-        	$array_playlist = $this->array_playlist;        	$count = count($add);
+        	$array_playlist = $this->array_playlist;
+        	$count = count($add);
 			for ($i=0; $i<$count; $i++) {
 				$name = $add[$i]['name']."--psx-2-".$i;
 				$val = $add[$i]['value'];
 				$array_playlist[$name] = $val;
 			}
 			
-			return $array_playlist;        }
+			return $array_playlist;
+        }
 
-        public function getPrevVP() {        	$i = 0;
+        public function getPrevVP() {
+        	$i = 0;
         	$pred = array();
 			foreach ($this->array_playlist as $k => $v) {
 				$nopr = $this->zapros($k);
@@ -285,9 +306,11 @@
 				$i++;
 			}
 			
-			return $pred;        }
+			return $pred;
+        }
 
-        public function getAddProgramInVP($pred) {        	$i = 0;
+        public function getAddProgramInVP($pred) {
+        	$i = 0;
 			$t = 0;
 			$add = array();
 			foreach ($this->array_playlist as $k => $v) {
@@ -307,16 +330,20 @@
 				$i++;
 			}
 
-			return $add;        }
+			return $add;
+        }
 
-        public function getDinamika() {        	$date = Date::create();
+        public function getDinamika() {
+        	$date = Date::create();
         	$dinamikaInfo = $this->getDinamikaInfo();
         	$dinamikaGraph = $this->getDinamikaGraphLine();
         	$dinamikaBottom = $this->getDinamikaBottomLine();
-        	ob_start();        	include($this->request->getRadioPath().'Tpl/dinamika.tpl.html');
+        	ob_start();
+        	include($this->request->getRadioPath().'Tpl/dinamika.tpl.html');
         	$content = ob_get_contents();
         	ob_end_clean();
-        	return $content;        }
+        	return $content;
+        }
 
 		public function getDinamikaBottomLine() {
 			$count = 0;
@@ -392,21 +419,26 @@
  			return $info;
 		}
 
-		public function zapros($name) {			$pos = strpos($name,"--psx");
-    		if ($pos > 0) {    			$name = substr($name, 0, $pos);
+		public function zapros($name) {
+			$pos = strpos($name,"--psx");
+    		if ($pos > 0) {
+    			$name = substr($name, 0, $pos);
     		}
 			$query = "SELECT * FROM `playlist` WHERE `playmode` = '3' and `name` = '".addslashes($name)."' LIMIT 1 ";
-			$line = $this->db->getLine($query);			$id_k = $line['id'];
+			$line = $this->db->getLine($query);
+			$id_k = $line['id'];
 
 			if (!empty($id_k)) {
 				$query = "SELECT SUM(`duration`) as sum FROM `songlist` WHERE `id`=".$id_k;
 				$line = $this->db->getLine($query);
 				$k_plus_time = $line['sum'];
 
-				if ($k_plus_time == "") {					$k_plus_time = 1;
+				if ($k_plus_time == "") {
+					$k_plus_time = 1;
 				}
 				return $k_plus_time;
-			}		}
+			}
+		}
 
 		public function strDateToNumber($day) {
 			$day = str_replace("Monday", "1", $day);
@@ -438,5 +470,6 @@
              }
              
              return $ret;
-        }	}
+        }
+	}
 ?>

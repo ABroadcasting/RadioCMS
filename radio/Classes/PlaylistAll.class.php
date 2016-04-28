@@ -5,43 +5,59 @@
             return new self();
         }
         
-		private function __construct() {			$this->request = Request::create();
+		private function __construct() {
+			$this->request = Request::create();
 			$this->filter = Filter::create();
 			$this->playlist = Playlist::create();
 			$this->db = MySql::create();
 			include($this->request->getRadioPath().'_system.php');
-			$this->allowTime = $allow_time;		}
+			$this->allowTime = $allow_time;
+		}
 
 		public function handler() {
 			$notice = array();
 			$this->clean();
 			$zakaz = $this->getZakaz();
-			if ($zakaz) {				$notice['zakaz'] = $this->zakaz($zakaz);			}
-			return $notice;		}
+			if ($zakaz) {
+				$notice['zakaz'] = $this->zakaz($zakaz);
+			}
+			return $notice;
+		}
 
-		public function getSongList() {			$search = $this->getSearch();
+		public function getSongList() {
+			$search = $this->getSearch();
 			$letter = $this->getLetter();
-			if (!empty($search)) {				return $this->getSongListWitchSearch();			}
+			if (!empty($search)) {
+				return $this->getSongListWitchSearch();
+			}
 			if (!empty($letter)) {
 				return $this->getSongListWitchLetter();
 			}
 
-			return $this->getSongListWitchNoFilter();		}
+			return $this->getSongListWitchNoFilter();
+		}
 
 		private function getSongListWitchNoFilter() {
 			$ne_pokazivat = $this->playlist->getNePokazivat();
-			$sortArray = $this->getSortArray();			$query = "SELECT * FROM `songlist` WHERE $ne_pokazivat ORDER BY `".$sortArray['value']."` ".$sortArray['obr'];
+			$sortArray = $this->getSortArray();
+			$query = "SELECT * FROM `songlist` WHERE $ne_pokazivat ORDER BY `".$sortArray['value']."` ".$sortArray['obr'];
 			$this->vsegoPesen = $this->db->getCountRow($query);
-			return $this->db->getLines($query." LIMIT ".$this->getStart().",".$this->getLimit());		}
+			return $this->db->getLines($query." LIMIT ".$this->getStart().",".$this->getLimit());
+		}
 
 		private function getSongListWitchLetter() {
-			$ne_pokazivat = $this->playlist->getNePokazivat();        	$letter = $this->getLetter();
+			$ne_pokazivat = $this->playlist->getNePokazivat();
+        	$letter = $this->getLetter();
         	$sortArray = $this->getSortArray();
-        	if ($letter == "0-9") {        		$query = "SELECT * FROM `songlist` WHERE ($ne_pokazivat) and `artist` LIKE '0%' or `artist` LIKE '1%' or `artist` LIKE '2%' or `artist` LIKE '3%' or `artist` LIKE '4%' or `artist` LIKE '5%' or `artist` LIKE '6%' or `artist` LIKE '7%' or `artist` LIKE '8%' or `artist` LIKE '9%' ORDER BY `".$sortArray['value']."` ".$sortArray['obr'];
+        	if ($letter == "0-9") {
+        		$query = "SELECT * FROM `songlist` WHERE ($ne_pokazivat) and `artist` LIKE '0%' or `artist` LIKE '1%' or `artist` LIKE '2%' or `artist` LIKE '3%' or `artist` LIKE '4%' or `artist` LIKE '5%' or `artist` LIKE '6%' or `artist` LIKE '7%' or `artist` LIKE '8%' or `artist` LIKE '9%' ORDER BY `".$sortArray['value']."` ".$sortArray['obr'];
         		$this->vsegoPesen = $this->db->getCountRow($query);
-        		return $this->db->getLines($query." LIMIT ".$this->getStart().",".$this->getLimit());        	} else {        		$query = "SELECT * FROM `songlist` WHERE ($ne_pokazivat) and `artist` LIKE '".$letter."%' ORDER BY `".$sortArray['value']."` ".$sortArray['obr'];
+        		return $this->db->getLines($query." LIMIT ".$this->getStart().",".$this->getLimit());
+        	} else {
+        		$query = "SELECT * FROM `songlist` WHERE ($ne_pokazivat) and `artist` LIKE '".$letter."%' ORDER BY `".$sortArray['value']."` ".$sortArray['obr'];
                 $this->vsegoPesen = $this->db->getCountRow($query);
-                return $this->db->getLines($query." LIMIT ".$this->getStart().",".$this->getLimit());        	}
+                return $this->db->getLines($query." LIMIT ".$this->getStart().",".$this->getLimit());
+        	}
 		}
 
 		private function getSongListWitchSearch() {
@@ -54,7 +70,9 @@
             } else {
                 $sort = "";
             }
-						$query = "SELECT * FROM `songlist` WHERE ($ne_pokazivat) and MATCH (`artist`, `title`) AGAINST ('$search') $sort";			$this->vsegoPesen = $this->db->getCountRow($query);
+			
+			$query = "SELECT * FROM `songlist` WHERE ($ne_pokazivat) and MATCH (`artist`, `title`) AGAINST ('$search') $sort";
+			$this->vsegoPesen = $this->db->getCountRow($query);
 			
 			return $this->db->getLines($query." LIMIT ".$this->getStart().",".$this->getLimit());
 		}
@@ -85,20 +103,25 @@
 		}
 
 		public function getVsegoPesen() {
-			return $this->vsegoPesen;		}
+			return $this->vsegoPesen;
+		}
 
 		public function zakaz($zakaz) {
-			$return = array();        	$query = "SELECT * FROM `playlist` WHERE `now` = 1 ";
+			$return = array();
+        	$query = "SELECT * FROM `playlist` WHERE `now` = 1 ";
 			$now_play = $this->db->getColumn($query, 'now');
 			$allow_zakaz = $this->db->getColumn($query, 'allow_zakaz');
 			$on_air = $this->getStatus();
 
 			if ( $allow_zakaz != 1 or $on_air == "2" or $on_air == "0" ) {
-				if ($allow_zakaz != 1) {					$return[] = "Сейчас сервис заказов недоступен, пожалуйста попробуйте ещё раз в рабочее время.";
+				if ($allow_zakaz != 1) {
+					$return[] = "Orders under maintain. Try again later.";
 				}
-				if ($on_air == "2") {					$return[] = "Во время прямого эфира заказывать песни нельзя.";
+				if ($on_air == "2") {
+					$return[] = "Can not be ordered during radioshow.";
 				}
-				if ($on_air == "0") {					$return[] = "К сожалению, радио сейчас не работает.";
+				if ($on_air == "0") {
+					$return[] = "Unfortunately does not work.";
 				}
 			} else {
 				$proverka_realip = $this->request->getServerVar('REMOTE_ADDR');
@@ -113,7 +136,8 @@
 				// Запрос на проверку одинаковых песен
 				$query = " SELECT * FROM `zakaz` WHERE `idsong` = $zakaz ";
 				$odinakovie_pesni = $this->db->getColumn($query, 'idsong');
-				if (($odinakovie_pesni != "") and ($odinakovie_pesni == $zakaz)) {					$return[] = 'Эту песню уже заказали.';
+				if (($odinakovie_pesni != "") and ($odinakovie_pesni == $zakaz)) {
+					$return[] = 'Эту песню уже заказали.';
 				}
 
 				// Считаем количество заказов
@@ -132,7 +156,8 @@
 			 	// Проверяем наличие в игравших
 			 	$query = " SELECT * FROM `tracklist` WHERE `title` = '".addslashes($proverka_full)."'";
 
-				if ($this->db->getColumn($query, 'title')) {					$return[] = "Эта песня играла недавно и поэтому её сейчас нельзя заказать.";
+				if ($this->db->getColumn($query, 'title')) {
+					$return[] = "Эта песня играла недавно и поэтому её сейчас нельзя заказать.";
 				}
 
 				if (empty($return)) {
@@ -184,28 +209,37 @@
 				}
 			}
 
-			return $return;		}
+			return $return;
+		}
 
-		public function getPosle() {			$posle =  date("H:i", $this->getAllowTime()+120);
+		public function getPosle() {
+			$posle =  date("H:i", $this->getAllowTime()+120);
 			if (date("U") > $this->getAllowTime()) {
 				$posle =  date("H:i", date("U")+120);
 			}
-			return $posle;		}
+			return $posle;
+		}
 
-		public function getAllowTime() {			return $this->allowTime;		}
+		public function getAllowTime() {
+			return $this->allowTime;
+		}
 
-		public function getStatus() {			$query = "SELECT * FROM `settings` WHERE `name` = 'online' LIMIT 1 ";
-			return $this->db->getColumn($query, 'value');		}
+		public function getStatus() {
+			$query = "SELECT * FROM `settings` WHERE `name` = 'online' LIMIT 1 ";
+			return $this->db->getColumn($query, 'value');
+		}
 
 		private function getZakaz() {
-			$zakaz = false;			for ($k=0; $k<$this->getLimit(); $k++) {
+			$zakaz = false;
+			for ($k=0; $k<$this->getLimit(); $k++) {
 				$zakaz_proverka = "zakaz_".$k."_x";
 				$zakaz_nomer = "zakaz_".$k;
 				if (!empty($_POST[$zakaz_proverka])) {
 					$zakaz = intval($_POST[$zakaz_nomer]);
 				}
 			}
-			return $zakaz;		}
+			return $zakaz;
+		}
 
 		private function clean() {
 			$query = "SELECT * FROM `user_ip`";
@@ -214,15 +248,24 @@
 					$query = " DELETE FROM `user_ip` WHERE `user_ip`.`id` = '".$line['id']."' LIMIT 1 ";
 					$this->db->queryNull($query);
 				}
-			}		}
+			}
+		}
 
-		public function setUrlStart($url) {        	$this->urlStart = $url;		}
+		public function setUrlStart($url) {
+        	$this->urlStart = $url;
+		}
 
 		public function getUrlStart() {
         	return "http://".$this->request->getServerVar('HTTP_HOST').$this->request->getServerVar('PHP_SELF');
 		}
 
-		public function getStart() {			if ($this->request->hasGetVar('start')) {				return (int) $this->request->getGetVar('start');			} else {				return 0;			}		}
+		public function getStart() {
+			if ($this->request->hasGetVar('start')) {
+				return (int) $this->request->getGetVar('start');
+			} else {
+				return 0;
+			}
+		}
 
 		public function getLimit() {
 			if ($this->request->hasGetVar('limit')) {
@@ -243,7 +286,8 @@
 		}
 
 		public function getSearch() {
-			if ($this->request->hasGetVar('search')) {				$search = $this->request->getGetVar('search');
+			if ($this->request->hasGetVar('search')) {
+				$search = $this->request->getGetVar('search');
 				$search = htmlspecialchars($search, ENT_QUOTES, "utf-8");
 
 				if (TRANSLIT == "on") {
@@ -270,5 +314,6 @@
 			} else {
 				return "";
 			}
-		}	}
+		}
+	}
 ?>

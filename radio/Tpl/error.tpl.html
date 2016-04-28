@@ -30,7 +30,7 @@
 	}
 	
 	if (!is_writeable(PLAYLIST) or !is_readable(PLAYLIST)) {
-		$errors[] = "playlist.txt недоступен для чтения или записи (не правильно настроен open_basedir?)";
+		$errors[] = "playlist.txt in not readable or writable (wrong open_basedir value?)";
 	}
 	
 	if (!is_writeable("_system.php") or !is_readable("_system.php")) {
