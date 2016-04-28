@@ -1,9 +1,9 @@
 	.polovina1 {float:left; width: 49%; margin-right:5px;}
 	.polovina2 {float:left; width: 49%;margin-left:5px}
 	.graph_td {border:1px solid white;}
-	.graph {text-align: bottom; font-size: 1px; width:3px;background-image: url('/radio/images/bg_stat.jpg'); background-position: bottom right; float:left; valign: bottom; padding:0; margin:0;}
-	.graph_g2_1 {background-image: url('/radio/images/bg_g2_1.jpg'); background-position: bottom left; text-align: bottom; height:25px; valign: bottom;font-size:1px;}
-	.graph_g2_2 { background-image: url('/radio/images/bg_g2_2.jpg'); background-position: bottom right; text-align: bottom; height:25px; valign: bottom;font-size:1px;}
+	.graph {text-align: bottom; font-size: 1px; width:3px;background-image: url('/radio/images/bg_stat.jpg'); background-position: bottom right; float:left; padding:0; margin:0;}
+	.graph_g2_1 {background-image: url('/radio/images/bg_g2_1.jpg'); background-position: bottom left; text-align: center; height:25px; font-size:1px;}
+	.graph_g2_2 { background-image: url('/radio/images/bg_g2_2.jpg'); background-position: bottom right; text-align: center; height:25px; font-size:1px;}
 	.minitext { color: white; font-family: verdana, sans-serif; font-size:10px; text-align: center;}
 	.podpis2 {font-size:9px;}
 
