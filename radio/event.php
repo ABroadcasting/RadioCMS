@@ -1,6 +1,7 @@
 <?php
 	require_once('Include.php');
-	require_once("_system.php");
+	date_default_timezone_set('UTC');
+	$allow_time = 1281784132;
 
 	$statistic = Statistic::create();
 	$statistic->updateAll();
