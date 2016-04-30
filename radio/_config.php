@@ -5,6 +5,8 @@
 	define('MUSIC_PATH', '');
 	define('RADIO_PATH', '');
 
+	define('TIMEZONE', 'UTC');
+	define('LOCALE','ru_RU');
 	define('EXTERNAL_CHARSET', 'cp1251');
 	define('ID3V1_CHARSET', 'cp1251');
 	define('TEMP_UPLOAD', '');
