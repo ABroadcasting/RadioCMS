@@ -11,12 +11,19 @@
             return self::$object;
         }
         
-		private function __construct() {			$this->request = Request::create();		}
+		private function __construct() {
+			$this->request = Request::create();
+		}
 
-		public function denied() {			include("Tpl/securityDenied.tpl.html");
-    		exit;		}
+		public function denied() {
+			include("Tpl/securityDenied.tpl.html");
+    		exit;
+		}
 
-		public function accessCheck($filename) {			if (!strstr('*'.$filename, '*'.$this->request->getMusicPath())) {
-        		die('ACCESS DENIED to '.$filename);
-    		}		}	}
+		public function accessCheck($filename) {
+			if (!strstr('*'.$filename, '*'.$this->request->getMusicPath())) {
+        		die(_('ACCESS DENIED to ').$filename);
+    		}
+		}
+	}
 ?>

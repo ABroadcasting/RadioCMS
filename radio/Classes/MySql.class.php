@@ -13,17 +13,19 @@
 		
 		private function __construct() {
 			$this->link = mysql_connect(DB_HOST, DB_LOGIN, DB_PASSWORD)
-		  		or die ("Could not connect to MySQL");
+		  		or die (_("Could not connect to MySQL"));
 		
 			mysql_select_db(DB_NAME)
-		  		or die ("Could not select database");
+		  		or die (_("Could not select database"));
 		
 			mysql_query("SET NAMES 'utf8'", $this->link);
             
             $this->request = Request::create();
 		}
 		
-		public function queryNull($query) {			mysql_query($query, $this->link) or die($this->debug());		}
+		public function queryNull($query) {
+			mysql_query($query, $this->link) or die($this->debug());
+		}
 
 		public function getLine($query) {
 			$result = mysql_query($query, $this->link) or die($this->debug());
@@ -46,10 +48,14 @@
 			return $lines;
 		}
 
-		public function getCountRow($query) {			$result = mysql_query($query, $this->link) or die($this->debug());        	return mysql_num_rows($result);		}
+		public function getCountRow($query) {
+			$result = mysql_query($query, $this->link) or die($this->debug());
+        	return mysql_num_rows($result);
+		}
 		
 		public function debug() {
 			include($this->request->getRadioPath().'Tpl/debug.tpl.html');
 			exit;
-		}	}
+		}
+	}
 ?>

@@ -2,11 +2,11 @@
 	$errors = array();
 
 	if(!$ssh->isConnected()) {
-		$errors[] = "Соеденение ssh не установлено";
+		$errors[] = _("SSH connection is not established");
 	}
 
 	if (!function_exists("ssh2_connect")) {
-		$errors[] = "Библиотека libssh2 не установлена. Работа с системой невозможна.";
+		$errors[] = _("libssh2 is not installed. Using this system unavaliable.");
 	}
 
 	$doc_file = $request->getRadioPath();
@@ -30,15 +30,15 @@
 	}
 	
 	if (!is_writeable(PLAYLIST) or !is_readable(PLAYLIST)) {
-		$errors[] = "playlist.txt in not readable or writable (wrong open_basedir value?)";
+		$errors[] = _("playlist.txt is not readable or writable (wrong open_basedir value?)");
 	}
 	
 	if (!is_writeable("_system.php") or !is_readable("_system.php")) {
-		$errors[] = "Файл _system.php недоступен для чтения или записи.";
+		$errors[] = ("_system.php in not readable or writable.");
 	}
 	
 	if (!is_writeable("_config.php") or !is_readable("_config.php")) {
-		$errors[] = "Файл _config.php недоступен для чтения или записи.";
+		$errors[] = "_config.php is not readable or writable.";
 	}
 ?>
 

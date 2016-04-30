@@ -120,7 +120,7 @@
 		public function checkNetPovtorov() {
 			$query = "SELECT id FROM `songlist`";
 			if ($this->db->getCountRow($query) <= NO_REPEAT) {
-				return 'Value is greater then playlist content';
+				return _('Value is greater then playlist content');
 			}
 		}
 

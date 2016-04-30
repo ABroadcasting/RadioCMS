@@ -136,8 +136,8 @@
 			$current['artist'] = "";
 			$current['title'] = "";
 			if (!empty($matches)) {
-				$current['artist'] = $matches[1]; // артист
-				$current['title'] = $matches[2]; // исполнитель
+				$current['artist'] = $matches[1]; 
+				$current['title'] = $matches[2];
 			}
             
  			return $current;

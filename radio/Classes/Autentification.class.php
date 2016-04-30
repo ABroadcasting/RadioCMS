@@ -76,7 +76,7 @@
 				$query = "SELECT * FROM `login` WHERE `ip` = '".$this->request->getIp()."'";
 				$line = $this->db->getLine($query);
 				if ($line['raz'] >= 5) {
-  					echo "<br><center style=\"font-family: Arial, Helvetica, sans-serif; font-size: 15px;\">Too many retries, try again in 15 minutes.</center>";
+  					echo _("<br><center style=\"font-family: Arial, Helvetica, sans-serif; font-size: 15px;\">Too many retries, try again in 15 minutes.</center>");
   					exit;
 				}
 

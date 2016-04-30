@@ -7,26 +7,24 @@
 
 	$song = Song::create();
 	$song->handler();
-?>
+echo '
 	<div class="body">
-		<div class="navi_white"><a href="playlist.php">Playlists</a></div>
-		<div class="navi"><a href="playlist_edit.php">Create playlist</a></div>
-		<div class="navi"><a href="playlist_zakaz.php">Orders</a></div>
-		<div class="navi"><a href="playlist_proverki.php">Checks</a></div>
+		<div class="navi_white"><a href="playlist.php">'. _('Playlists').'</a></div>
+		<div class="navi"><a href="playlist_edit.php">'. _('Create playlists').'</a></div>
+		<div class="navi"><a href="playlist_zakaz.php">'. _('Orders').'</a></div>
+		<div class="navi"><a href="playlist_proverki.php">'. _('Checks').'</a></div>
 		<br><br>
 		<form method="POST" action="">
-			<div class="title">Edit songs</div>
-			<div class="border">
+			<div class="title">'. _('Edit songs').'</div>
+			<div class="border">';
 
-<?php
 	$line = $song->getSong($request->getGetVar('edit_song'));
 	$player_filename = $song->getPlayerPath($line['filename']);
-?>
-
+echo '
 				<table border="0" cellspacing="0" cellpadding="0" width="97%" class="table1">
 					<tr>
 					    <td width="15%">
-					    	Плеер<br>
+					    	'._('Player').'<br>
 					    	<div class="podpis">Dewplayer Classic 1.9</div>
 					    </td>
 				        <td width="85%">
@@ -38,57 +36,57 @@
 				    </tr>
 					<tr>
 					    <td>
-					    	Название<br>
-					    	<div class="podpis">ID3-тег MP3-файла</div>
+					    	'._('Title').'<br>
+					    	<div class="podpis">'._('ID3 of MP3-file').'</div>
 					    </td>
 				        <td>
-				        	<input maxlength="90" size="60" type="text" name="title" value="<?=htmlspecialchars($line['title'])?>">
+				        	<input maxlength="90" size="60" type="text" name="title" value="'.htmlspecialchars($line['title']).'">
 				        </td>
 				    </tr>
 					<tr>
 					    <td>
-					    	Исполнитель<br>
-					    	<div class="podpis">ID3-тег MP3-файла</div>
+					    	'._('Artist').'<br>
+					    	<div class="podpis">'._('ID3 of MP3-file').'</div>
 					    </td>
 				        <td>
-				        	<input maxlength="90" size="60" type="text" name="artist" value="<?=htmlspecialchars($line['artist'])?>">
+				        	<input maxlength="90" size="60" type="text" name="artist" value="'.htmlspecialchars($line['artist']).'">
 				        </td>
 				    </tr>
 					<tr>
 					    <td>
-					    	Альбом<br>
-					    	<div class="podpis">ID3-тег MP3-файла</div>
+					    	'._('Album').'<br>
+					    	<div class="podpis">'._('ID3 of MP3-file').'</div>
 					    </td>
 				        <td>
-				        	<input maxlength="90" size="60" type="text" name="album" value="<?=htmlspecialchars($line['album'])?>">
+				        	<input maxlength="90" size="60" type="text" name="album" value="'.htmlspecialchars($line['album']).'">
 				        </td>
 				    </tr>
 				    <tr>
 					    <td>
-					    	Заказы<br>
-					    	<div class="podpis">Orders number</div>
+					    	'._('Orders').'<br>
+					    	<div class="podpis">'._('Orders number').'</div>
 					    </td>
 				        <td>
-				        	<input size="40" type="text" name="zakazano" value="<?=$line['zakazano']?>">
+				        	<input size="40" type="text" name="zakazano" value="'.$line['zakazano'].'">
 				        </td>
 				    </tr>
 				    <tr>
 					    <td>
-					    	Сортировка<br>
-					    	<div class="podpis">Порядок сортировки</div>
+					    	'._('Sort').'<br>
+					    	<div class="podpis">'._('Sort order').'</div>
 					    </td>
 				        <td>
-				        	<input size="40" type="text" name="sort" value="<?=$line['sort']?>">
+				        	<input size="40" type="text" name="sort" value="'.$line['sort'].'">
 				        </td>
 				    </tr>
 				    <tr>
 					    <td>
-					    	Переместить в<br>
-					    	<div class="podpis">Move to other folder/playlist</div>
+					    	'._('Move to').'<br>
+					    	<div class="podpis">'._('Move to other folder/playlist').'</div>
 					    </td>
 				        <td>
-				        	<select size="1" name="position">
-<?php
+				        	<select size="1" name="position">';
+
 		 foreach ($song->getPlaylistList() as $playlist) {
 ?>
 								<option <?=$playlist['id']==$line['id']? 'selected':''?> value="<?=$playlist['id']?>">
@@ -108,44 +106,44 @@
 								<option value="<?=$folder?>" <?=$song->getFolder($line['filename'])==$folder?'selected':''?>>
 									<?=$folder?>
 								</option>
+                            </select>
 <?php
 		}
-?>
-        					</select>
+echo '    					
 						</td>
 					</tr>
 		    		<tr>
 				   		<td>
-				   			Имя файла<br>
-				   			<div class="podpis">Измените</div>
+				   			'._('Filename').'<br>
+				   			<div class="podpis">'._('Change').'</div>
 				   		</td>
 			        	<td>
-			        		<input size="40" type="text" name="filename" value="<?=$song->getFilename($line['filename'])?>">
+			        		<input size="40" type="text" name="filename" value="'.$song->getFilename($line['filename']).'">
 						</td>
 				    </tr>
 				    <tr>
 					    <td>
-					    	Идентификатор<br>
-					    	<div class="podpis">Только чтение</div>
+					    	'._('ID').'<br>
+					    	<div class="podpis">'._('Read only').'</div>
 					    </td>
 				        <td>
-				        	<input readonly  size="40" type="text" name="idsong" value="<?=$line['idsong']?>">
+				        	<input readonly  size="40" type="text" name="idsong" value="'.$line['idsong'].'">
 				        </td>
 				    </tr>
 				</table>
 				<br><br>
-<?php
+';
 	if ($request->getGetVar('playlist_id') == "povtor") {
 ?>
-				<input class="button" type="button" value="Back" name="back" onClick="location.href='playlist_proverki.php?povtor=yes'" />
+				<input class="button" type="button" value="<?php echo _('Back'); ?>" name="back" onClick="location.href='playlist_proverki.php?povtor=yes'" />
 <?php
 	} else {
 ?>
-				<input class="button" type="button" value="Back" name="back" onClick="location.href='playlist_view.php?playlist_id=<?=$request->getGetVar('playlist_id')?>&sort=<?=$request->getGetVar('sort')?>&start=<?=$request->getGetVar('start')?>&search=<?=$request->getGetVar('search')?>'" />
+				<input class="button" type="button" value="<?php echo _('Back'); ?>" name="back" onClick="location.href='playlist_view.php?playlist_id=<?=$request->getGetVar('playlist_id')?>&sort=<?=$request->getGetVar('sort')?>&start=<?=$request->getGetVar('start')?>&search=<?=$request->getGetVar('search')?>'" />
 <?php
 	}
 ?>
-				<input class="button" value="Сохранить" name="submit" type="submit"> <input class="button" value="Save and back" name="submit_and_save" type="submit">
+				<input class="button" value="<?php echo _('Save'); ?>" name="submit" type="submit"> <input class="button" value="<?php echo _('Save and back'); ?>" name="submit_and_save" type="submit">
 			</div>
 		</form>
 	</div>

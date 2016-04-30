@@ -38,5 +38,5 @@
 	define('DIR_GENRE', '');
 	define('DIR_BITRATE', '128');
     
-    define('RADIOCMS_VERSION', '2.6');
+    define('RADIOCMS_VERSION', '3.0');
 ?>

@@ -38,7 +38,7 @@
 			$query = "SELECT * FROM `dj` ORDER BY `id`";
 			foreach ($this->db->getLines($query) as $line) {
 				if ($this->request->getPostVar('dj') == $line['dj']) {
-					$this->error = "This username already registred";
+					$this->error = _("This username already registred");
 				}
 			}
 

@@ -72,9 +72,6 @@
 		}
 	}
 
-
-
-
 	// Build diagram
 	GraphPie($gr_val);
 
@@ -100,8 +97,8 @@
             $sum = 1;
         }
 
-    	//узнаем сколько меньше 1%
-    	$sumless1 = 0; // и их сумму
+    	//chech if less 1%
+    	$sumless1 = 0; // and their sum
     	$countless1=$countgreater1=0;
     	foreach ($ar as $name => $val) {
     	    if ($val/$sum<0.01) {
@@ -112,14 +109,14 @@
             }
     	}
 
-    	 // создаем ихображение
+    	 // making image
     	$image = imageCreate($diagramWidth, $diagramHeight);
 
-    	// цвета для фона и текста
+    	// bg and text colours
     	$colorBackgr = imageColorAllocate($image, 255,255,255);
     	$colorText = imageColorAllocate($image, 76, 76, 76);
     	$colorWhite = imageColorAllocate($image, 255,255,255);
-    	// цвета для наших секторов
+    	// sectors colours
     	$colors[0] = imagecolorallocate($image, 171, 203, 203);
     	$colors[1] = imagecolorallocate($image, 214, 179, 140);
     	$colors[2] = imagecolorallocate($image, 221, 221, 153);
@@ -142,10 +139,10 @@
     	$colors[19] = imagecolorallocate($image, 255,133,22);
 
 
-    	// заполняем изображение цветом фона
+    	// fill the image from background colour
     	imageFilledRectangle($image, 0, 0, $diagramWidth - 1, $diagramHeight - 1, $colorBackgr);
 
-    	// начальный угол для сектора
+    	// start angle for sector
     	$startAngle = 0;
     	$perc =360/$sum; // соотвествие градусов 1 проценту
     	$i=0; // для вывода порядка элемента в легенде и выбора цвета
@@ -156,9 +153,9 @@
 
     	$font = "files/arial.ttf";
 
-    	// конечный угол сектора
+    	// final sector angle
     	  $endAngle=$startAngle+$val*$perc;
-    	  // сколько % у нашего элемента
+    	  // % of current element
     	  $percents=round(100*($val/$sum),2);
 
     	  // цветной квадратик в легенде
@@ -170,7 +167,7 @@
     	  imagefilledarc($image, $diagramWidth/2-110, $diagramHeight/2, 200, 200, $startAngle, $endAngle, $colors[$i++], IMG_ARC_PIE);
 
 
-    	// Вычисляем координаты подписи
+    	// Count subscription coordinates
     	  $tochka  = $endAngle-4;
     	  if ($percents > 6) {
     	  	$name = substr($name,0,13);
@@ -184,28 +181,28 @@
     	    }
     	  }
 
-    	  // следующий сектор в качестве начального угла будет использовать конечный угол текущего
+    	  // next sector will prolong last corner of current sector
     	  $startAngle=$endAngle;
     	}
 
 
-    	// если есть элементы менее 1%
+    	// if we have less then 1%
     	if ($countless1) {
     	 $endAngle=360;
     	  $percents=round(100*($sumless1/$sum),2);
-    	  // цветной квадратик в легенде
+    	  // square in legend
     	  imagefilledrectangle($image,250,$legendOffset+$i*15-9,260,$legendOffset+$i*15,$colors[$i]);
-    	 // текст в легенде
+    	 // text in legend
     	  ImageString($image , 2, 268, $legendOffset+$i*15-11, ($i+1).". "."Other"." (".$percents."%)", $colorText);
     	  //imagettftext ($image, 10, 0, 265, $legendOffset+$i*15, $colorText, $font, ($i+1).". "."Other"." (".$percents."%)");
-    	  // сектор "Other"
+    	  // "Other" sector
     	  imagefilledarc($image, $diagramWidth/2-110, $diagramHeight/2, 200, 200, $startAngle, $endAngle, $colors[$i++], IMG_ARC_PIE);
     	}
 
     	ImageString($image , 2, 268, $diagramHeight-20, "Vsego: ".$s, $colorText);
     	//imagettftext ($image, 10, 0, 250, $diagramHeight-10, $colorText, $font, "Vsego: ".$s);
 
-    	// выводим картинку
+    	// Printing image
     	header("Content-type:  image/png");
     	imagepng($image);
     	imageInterlace($image, 1);

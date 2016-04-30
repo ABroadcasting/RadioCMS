@@ -16,7 +16,7 @@
 		$statistic->updateDirectory();
 	}
 
-	echo "<br>Debug information <br>";
+	echo _("<br>Debug information <br>");
 
 	$net_povtorov_array = $tracklist->getNoRepeatArray();
     $update_filename = $tracklist->getNowFilename();
@@ -39,13 +39,13 @@
 	$play_list_text = '';
 	$play_list_text_log = "";
 
-	// Составим "график" предстоящих запусков
+	// Make running timetable
 
 	$all_event2 = $event->getEvens(2);
 	$all_event1 = $event->getEvens(1);
 	$all_event1_auto = $event->getEvens(1, 1);
 
-	// Обработаем EVENT1  //////////////////////////////////////////////////////////////////////////////////////////////
+	// Parse EVENT1  //////////////////////////////////////////////////////////////////////////////////////////////
 
 	$event1_count = 0;
 	$i_auto = 0;
@@ -74,7 +74,7 @@
 				$query = "SELECT * FROM `songlist` WHERE `id`=".$all_event1[$event1_count]['id']." ORDER BY `sort`";
 				$result = mysql_query($query) or die("Query failed4 : " . mysql_error());
 
-				// Случайно один
+				// Randomly one
 				if ($play_mode == "2") {
 					while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 						if ( file_exists($line['filename']) ) {
@@ -87,13 +87,13 @@
 					$play_list_array_temp = array();
 					$play_list_array[] = $sem;
 
-					// Время
+					// Time
 					$allow_time_tmp = $allow_time_tmp + $vremya_trecka*60;
 					$allow_time = $allow_time_tmp;
 					echo $allow_time." -allow_time_odin<br>";
 				}
 
-				// Вперемешку
+				// Randomly
 				if ($play_mode == "1") {
 					while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 						if ( file_exists($line['filename']) ) {
@@ -102,7 +102,7 @@
 					}
 
 					shuffle($play_list_array);
-					// Время
+					// Time
 					if ($event1_duration < $vremya_trecka*60) {
 						$event1_duration = $event1_duration+$vremya_trecka*60;
 					}
@@ -110,14 +110,14 @@
 					$allow_time = $allow_time_tmp;
 				}
 
-				// По порядку
+				// In order
 				if ($play_mode == "0") {
 					while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 						if ( file_exists($line['filename']) ) {
 							$play_list_array[] = $line['filename']."\n";
 						}
 					}
-					// Время
+					// Time
 					if ($event1_duration < $vremya_trecka*60) {
 						$event1_duration = $event1_duration+$vremya_trecka*60;
 					}
@@ -125,14 +125,14 @@
 					$allow_time = $allow_time_tmp;
 				}
 
-				// Программа
+				// Radioshow
 				if ($play_mode == "3") {
 					while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 						if ( file_exists($line['filename']) ) {
 							$play_list_array[] = $line['filename']."\n";
 						}
 					}
-					// Время
+					// Time
 					if ($event1_duration < $vremya_trecka*60) {
 						$event1_duration = $event1_duration+$vremya_trecka*60;
 					}
@@ -158,7 +158,7 @@
 	}
 
 
-	// Обработаем EVENT1_AUTO //////////////////////////////////////////////////////////////////////////////////////////////
+	// Parse EVENT1_AUTO //////////////////////////////////////////////////////////////////////////////////////////////
 
 	$event1_count = 0;
 	$i_auto = 0;
@@ -191,7 +191,7 @@
 					$query = "SELECT * FROM `songlist` WHERE `id`=".$all_event1_auto[$event1_count]['id']." ORDER BY `sort`";
 					$result = mysql_query($query) or die("Query failed8 : " . mysql_error());
 
-					// Случайно один авто
+					// Randomly one auto
 					if ($play_mode == "2") {
 						while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 		           			// Добавляем файлы в массив
@@ -205,20 +205,20 @@
 						$play_list_array_temp = array();
 						$play_list_array[] = $sem;
 
-						// Время
+						// Time
 						$allow_time_tmp = $allow_time_tmp + $vremya_trecka*60;
 						$allow_time = $allow_time_tmp;
 						echo $allow_time." -allow_time_odin<br>";
 					}
 
-					// Вперемешку авто
+					// Randomly auto
 					if ($play_mode == "1") {
 						while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 							$play_list_array[] = $line['filename']."\n";
 						};
 
 						shuffle($play_list_array);
-						// Время
+						// Time
 						if ($event1_duration < $vremya_trecka*60) {
 							$event1_duration = $event1_duration+$vremya_trecka*60;
 						}
@@ -226,12 +226,12 @@
 						$allow_time = $allow_time_tmp;
 					}
 
-					// По порядку авто
+					// In order auto
 					if ($play_mode == "0") {
 						while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 							$play_list_array[] = $line['filename']."\n";
 						}
-						// Время
+						// Time
 						if ($event1_duration < $vremya_trecka*60) {
 							$event1_duration = $event1_duration+$vremya_trecka*60;
 						}
@@ -239,12 +239,12 @@
 						$allow_time = $allow_time_tmp;
 					}
 
-					// Программа авто
+					// Radioshow auto
 					if ($play_mode == "3") {
 						while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 							$play_list_array[] = $line['filename']."\n";
 						}
-						// Время
+						// Time
 						if ($event1_duration < $vremya_trecka*60) {
 							$event1_duration = $event1_duration+$vremya_trecka*60;
 						}
@@ -252,7 +252,7 @@
 						$allow_time = $allow_time_tmp;
 					}
 
-					// цикл с указанимем конкретного id
+					// cycle with concrete id
 					$id_event1_auto[$i_auto] = $all_event1_auto[$event1_count]['id'];
 					$i_auto = $i_auto + 1;
 				}
@@ -267,7 +267,7 @@
 		};
 	}
 
-	// Обработаем EVENT1_AUTO КОНЕЦ  //////////////////////////////////////////////////////////////////////////////////////////////
+	// Parse EVENT1_AUTO End  //////////////////////////////////////////////////////////////////////////////////////////////
 
 	if (!empty($id_event1_auto[0])) {
 		$razov = count($id_event1_auto);
@@ -282,15 +282,15 @@
 	$play_list_array = array();
 	$play_list_array_temp = array();
 
-	// Обработаем ZAKAZ  //////////////////////////////////////////////////////////////////////////////////////////////
+	// Parse ZAKAZ  //////////////////////////////////////////////////////////////////////////////////////////////
 
 	$query = "SELECT * FROM `zakaz` ORDER BY `id` ASC";
 	$result = mysql_query($query) or die("Query failed10 : " . mysql_error());
 	$est_zakaz = mysql_fetch_array($result, MYSQL_ASSOC);
 	if  (!$est_zakaz) {
-		echo "Нет заказов<br>";
+		echo _("No orders<br>");
 	} else {
-		echo "Есть заказы<br>";
+		echo _("Have some orders<br>");
 	}
 
 	if (
@@ -303,12 +303,12 @@
 		$line = mysql_fetch_array($result, MYSQL_ASSOC);
 		$play_mode = $line['playmode'];
 
-	    // Только если сейчас играет не программа
+	    // Only if not radioshow playing
 	    if ($play_mode != 3) {
 			$query = "SELECT * FROM `zakaz` ORDER BY `id` ASC";
 			$result = mysql_query($query) or die("Query failed10 : " . mysql_error());
 
-			// Запись заказов в плейлист
+			// Write orders to playlist
 			while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 				for ( $ips=0; $ips<NO_REPEAT; $ips++)  {
 					if (
@@ -347,7 +347,7 @@
 	$play_list_array = array();
 	$play_list_array_temp = array();
 
-	// Обрабатываем EVENT2 //////////////////////////////////////////////////////////////////////////////////////////////
+	// Parse EVENT2 //////////////////////////////////////////////////////////////////////////////////////////////
 
 	$playlist_id_now = 0;
 
@@ -366,7 +366,7 @@
 		$query = "UPDATE `playlist` SET `now`=0 WHERE `id`=".$playlist_id_now;
 		$result = mysql_query($query) or die("Query failed14 : " . mysql_error());
 
-	    // Запоминаем id старый
+	    // Remember old id
 		$playlist_id_old = $playlist_id_now;
 		$playlist_id_now = $all_event2[0]['id'];
 
@@ -420,7 +420,7 @@
 			echo $allow_time." -allow_time_odin<br>";
 		}
 
-		// Случайно
+		// Randomly
 		if ($play_mode == "1") { echo "1<br>";
 			while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 				if (file_exists($line['filename'])) {
@@ -428,7 +428,7 @@
 				}
 			}
 
-    		//  Удаляем недавно игравшие  (используем этот алгоритм если файлов очень много)
+    		//  Deleting recently played  (use this if we have a lot of files)
       		$play_list_array_skolko = count($play_list_array);
 			for ( $ips=0; $ips<NO_REPEAT; $ips++ )  {
 				for ( $ipn=0; $ipn<$play_list_array_skolko; $ipn++ )  {
@@ -445,7 +445,7 @@
 			shuffle($play_list_array);
 		}
 
-		// По порядку
+		// In order
 		if ($play_mode == "0") { echo "0<br>";
    			while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 				if (file_exists($line['filename'])) {
@@ -454,41 +454,41 @@
 			}
 		}
 
-		// Программа
+		// Radioshow
 		if ($play_mode == "3") {
 			echo "3<br>";
 			while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 				if ( file_exists($line['filename']) ) {
 					$play_list_array[] = $line['filename']."\n";
-					echo "play_mode 3 srabotalo<br>";
+					echo _("play_mode 3 works<br>");
 				}
 			}
 
-			// Добавляем массив в файл
+			// adding massive to file
 			foreach ($play_list_array as $line) {
 				$play_list_text .= $line;
 			}
 
 			$play_list_array = array();
 
-			// Плюс файлы из старого id
+			// Adding files from old id
     		$query_old = "SELECT * FROM `playlist` WHERE `id`=".$playlist_id_old;
 			$result_old = mysql_query($query_old) or die("Query failed16 : " . mysql_error());
 
 			while ($line_old = mysql_fetch_array($result_old, MYSQL_ASSOC)) {
 				$play_mode_old = $line_old['playmode'];
 			}
-			// Плюс файлы из старого id
+			// Adding files from old id
     		$query_old = "SELECT * FROM `songlist` WHERE `id`=".$playlist_id_old;
 			$result_old = mysql_query($query_old) or die("Query failed16 : " . mysql_error());
 
-    		// По порядку и фикс остального
+    		// In order and fix others
 			if ($play_mode_old != "1") {
 				while ($line_old = mysql_fetch_array($result_old, MYSQL_ASSOC)) {
 					$play_list_array[] = $line_old['filename']."\n";
 				}
 
-    			//  Удаляем недавно игравшие  (используем этот алгоритм если файлов очень много)
+    			//  Deleting recently played  (use this if we have a lot of files)
        			$play_list_array_skolko = count($play_list_array);
 				for ( $ips=0; $ips<$net_povtorov; $ips++ )  {
 	            	for ( $ipn=0; $ipn<$play_list_array_skolko; $ipn++ )  {
@@ -503,13 +503,13 @@
 				}
 			}
 
-			// Случайно
+			// Randomly
 			if ($play_mode_old == "1") {
 				while ($line_old = mysql_fetch_array($result_old, MYSQL_ASSOC)) {
 					$play_list_array[] = $line_old['filename']."\n";
 				}
 
-				//  Удаляем недавно игравшие  (используем этот алгоритм если файлов очень много)
+				//  Deleting recently played  (use this if we have a lot of files)
 				$play_list_array_skolko = count($play_list_array);
 				for ( $ips=0; $ips<NO_REPEAT; $ips++ )  {
 	            	for ( $ipn=0; $ipn<$play_list_array_skolko; $ipn++ )  {
@@ -526,7 +526,7 @@
 				shuffle($play_list_array);
 			}
 
-			// Запрос времени
+			// Time request
 			$query = "SELECT SUM(`duration`) as sum FROM `songlist` WHERE `id`=".$playlist_id_now;
 			$result = mysql_query($query) or die("Query failed11 " . mysql_error());
 			$line = mysql_fetch_array($result, MYSQL_ASSOC);
@@ -542,11 +542,11 @@
 		}
 
 
-		// Обрезаем массив до заданной длины
+		// Cut array to the needed size
     	array_splice($play_list_array, LIMIT_EVENT);
     	$play_list_array = array_unique($play_list_array);
 
-		// Добавляем массив в файл
+		// Adding array to the file
 		foreach ($play_list_array as $line) {
 			$play_list_text .= $line;
 			$play_list_text_log .= "$tek_time (event2) ".$line;
@@ -560,10 +560,10 @@
 		fwrite($file, $play_list_text);
 		fclose($file);
 
-		// Записываем $allow_time_tmp в файл
+		// Writing $allow_time_tmp to file
 		if ($allow_time_tmp != $now_time) {
 			$system_text = '<?php $allow_time = '.$allow_time_tmp.'; ?>';
-			// Алов Тайм
+			// allow time
 			$file= fopen($request->getRadioPath()."_system.php", "w");
 			fwrite($file, $system_text);
 			fclose($file);

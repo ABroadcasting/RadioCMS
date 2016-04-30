@@ -6,46 +6,37 @@
 	$ssh = Ssh::create();
 	$setting = Setting::create();
 	$setting->handler();
-?>
 
-	<div class="body">
-		<div class="title">Добро пожаловать</div>
-		<div class="border">
-<?php
+echo '  <div class="body">
+		<div class="title">'._('Welcome').'</div>
+		<div class="border">';
 
-	if ($user['admin'] == 0) {?>
-			Вы зашли как <i>DJ</i>. Вам открыт доступ к модулям 'Стастистика' и частично к  'Ваши DJ' и 'Статус'.
-<?php
+	if ($user['admin'] == 0) {
+
+echo (_("You have been logged in as")._("<i>DJ</i>")._("You can access")." "._(" the statistics module and partially 'your DJs' and 'Status'."));
+
     } else {
-?>
-    		Вы зашли как <i>Администратор</i>. Вам открыт доступ ко всем модулям.
-<?php
+echo (_("You have been logged in as")._("<i>Administrator</i>")._("You can access")." "._("all modules."));
     }
-?>
-	Пожалуйста, используйте главное меню для работы с доступными сервисами.
-	<br><br>
-	Система: <b>RadioCMS</b><br>
-	Версия: <b><?=RADIOCMS_VERSION?></b>
-	<br>
-<?php
+echo _("Please, use main menu to work with accessable services.").
+	"<br><br>".
+	_("System:")." <b>RadioCMS</b><br>".
+	_("Version:")."<b>";?><?=RADIOCMS_VERSION ?>.<?php echo("</b><br>");
+
 	$count = $file->getCountTempFiles();
 	$pokazat = "";
-	if ($count >= 1 and TEMP_UPLOAD != "") {		$pokazat = " — <a href='/radio/meneger.php?fold=".$request->getMusicPath().TEMP_UPLOAD."'>Посмотреть</a>";
-	} else {		$count = 0;
+	if ($count >= 1 and TEMP_UPLOAD != "") {
+		$pokazat = " — <a href='/radio/meneger.php?fold=".$request->getMusicPath().TEMP_UPLOAD."'>"._("View")."</a>";
+	} else {
+		$count = 0;
 	}
-?>
-			Файлов во временной папке Upload: <b><?=$count?></b><?=$pokazat?>
-<?php
-?>
+
+echo _('Number of files in temporary Upload directory:');?> <b><?=$count?></b><?=$pokazat?>
 	<br>
 <?php
     if (!$ssh->checkEzstreamCompatibility()) {
-?>
-            <div><span class="red">Установлен ezstream не с сайта RadioCMS, существуют ограничения на длинну id3-тегов</span></div>
-<?php
-    }   
-?>
-<?php
+echo _('<div><span class="red">'._('Installed version ezstream have no LibTag support, having some restrictions of id3 characters number').'</span></div>');   }
+
 	if (
 		DIR_SHOW == "on" and
 		DIR_NAME != "" and
@@ -54,34 +45,28 @@
 		DIR_DESCRIPTION != "" and
 		DIR_GENRE != ""
 	) {
-?>
-			<div>Ваше радио <span class="green">отображается</span> в каталоге RadioCMS</div>
-<?php
-	} else {?>			<div>Ваше радио <span class="red">не отображается</span> в каталоге RadioCMS — <a href='setting_dir.php'>Исправить</a></div>
-<?php	}
-?>
-<?php
-	if ( file_exists("install.php")) {
-?>
-			<div><span class="red">install.php не удалён</span> — <a href="?del_install=1">Удалить</a></div>
-<?php
+	echo _('<div>'._('Your station').'<span class="green">'._('listed').'</span>'. _('in the RadioCMS list').'</div>');
+	} else {
+	echo ('<div>'._('Your station').'<span class="red">'._('not listed').'</span>'._('in the RadioCMS list').'- <a href="setting_dir.php">'._('Fix it').'</a></div>)');
 	}
-?>
-<?php
+
+	if ( file_exists("install.php")) {
+	echo _('<div><span class="red">'._('install.php has not be deleted').'</span> — <a href="?del_install=1">'._('Delete').'</a></div>');
+	}
 			include('Tpl/error.tpl.html');
-?>
+echo'
 			<br><br>
-			<img style="position: absolute; margin-top: -1px;" src="images/go.png" border="0"> <a style="position: absolute; margin-left: 17px;" href="http://radiocms.ru" target="_blank">Официальный сайт</a>
-			<br>
+			<img style="position: absolute; margin-top: -1px;" src="images/go.png" border="0">'._('<a style="position: absolute; margin-left: 17px;" href="http://radiocms.ru" target="_blank">Official site</a>').
+    '		<br>
 			<br>
 			<form method="POST" action="">
-				<textarea name="main_text" style="width: 500px; height: 100px;"><?=$setting->getDescription()?></textarea>
+				<textarea name="main_text" style="width: 500px; height: 100px;">'.$setting->getDescription().'</textarea>
 				<p>
-					<input class="button" type="submit" value="Сохранить">
+					<input class="button" type="submit" value="'._('Save').'">
 				</p>
 			</form>
 		</div>
-	</div>
-<?php
+	</div>';
+
     include('Tpl/footer.tpl.html');
 ?>  	

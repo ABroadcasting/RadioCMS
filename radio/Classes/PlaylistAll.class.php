@@ -10,7 +10,6 @@
 			$this->filter = Filter::create();
 			$this->playlist = Playlist::create();
 			$this->db = MySql::create();
-			include($this->request->getRadioPath().'_system.php');
 			$this->allowTime = $allow_time;
 		}
 

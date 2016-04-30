@@ -18,7 +18,7 @@
 		}
 
 		public function getPhpCron() {
-  			$file_adres = "полый/путь/до/php ".$this->request->getServerVar('DOCUMENT_ROOT')."/radio/"."event.php";
+  			$file_adres = _("full/path/to/php ").$this->request->getServerVar('DOCUMENT_ROOT')."/radio/"."event.php";
 			$file_adres = str_replace("//","/",$file_adres);
 			return $file_adres;
 		}
@@ -28,7 +28,7 @@
 			$password = $this->request->getPostVar('password');
 
 			if (empty($user) or empty($password)) {
-				return "<p>Поля не могу быть пустыми</p>";
+				return _("<p>Fields cannot be empty</p>");
 			}
 
 			$this->saveConfig('USER', $user);
@@ -42,19 +42,19 @@
 			$cf_ezstream = $this->request->getPostVar('cf_ezstream');
 			$cf_icecast = $this->request->getPostVar('cf_icecast');
 			if (empty($play_list_file) or empty($cf_ezstream) or empty($cf_icecast)) {
-				return "<p>Please fill all fields.</p>";
+				return _("<p>Please fill all fields.</p>");
 			}
             
             if (!file_exists($cf_icecast)){
-                return"<p>Icecast configuration file not found.</p>";
+                return _("<p>Icecast configuration file not found.</p>");
             }
             
             if (!file_exists($cf_ezstream)) {
-                return "<p>Ezstream configuration file not found.</p>";
+                return _("<p>Ezstream configuration file not found.</p>");
             }
             
 			if (!file_exists($play_list_file)) {
-				return "<p>Playlist file not found.</p>";
+				return _("<p>Playlist file not found.</p>");
 			}
 
             $pos_vhoh = strrpos($play_list_file, "/");
@@ -109,15 +109,15 @@
 				$this->createTable($this->request->getPostVar('db_name'));
 				Header("Location: install.php?hag=3");
 			} else {
-				return "<p>Connection can not be established.</p>";
+				return _("<p>Connection can not be established.</p>");
 			}
 		}
 
 		public function createTable($db_name) {
 			mysql_query("SET NAMES 'utf8'") 
-				or die("Install query failed : " . mysql_error());
+				or die(_("Install query failed : ") . mysql_error());
 			mysql_query("ALTER DATABASE `".$db_name."` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci")
-			 or die("Install query failed : " . mysql_error());
+			 or die(_("Install query failed : ") . mysql_error());
 
 			mysql_query("CREATE TABLE IF NOT EXISTS `last_zakaz` (
 			  `id` varchar(15) NOT NULL,
@@ -127,7 +127,7 @@
 			  `skolko` varchar(10) NOT NULL,
 			  `ip` varchar(25) NOT NULL
 			) ENGINE=MyISAM DEFAULT CHARSET=utf8;")
-			 or die("Install query failed : " . mysql_error());
+			 or die(_("Install query failed : ") . mysql_error());
 
 			mysql_query("CREATE TABLE IF NOT EXISTS `login` (
 			  `ip` varchar(25) NOT NULL,
@@ -137,7 +137,7 @@
 			  `hash` varchar(25) NOT NULL,
 			  `admin` int(1) NOT NULL
 			) ENGINE=MyISAM DEFAULT CHARSET=utf8;")
-			 or die("Install query failed : " . mysql_error());
+			 or die(_("Install query failed : ") . mysql_error());
 
 			mysql_query("CREATE TABLE IF NOT EXISTS `playlist` (
 			  `id` int(11) NOT NULL auto_increment,
@@ -154,7 +154,7 @@
 			  `auto` int(11) default '0',
 			  PRIMARY KEY  (`id`)
 			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;")
-			 or die("Install query failed : " . mysql_error());
+			 or die(_("Install query failed : ") . mysql_error());
 
 			mysql_query("CREATE TABLE IF NOT EXISTS `poisk` (
 				`title` varchar(50) NOT NULL,
@@ -164,7 +164,7 @@
 				`filename` text NOT NULL,
 				`duration` int(11) NOT NULL
 			) ENGINE=MyISAM DEFAULT CHARSET=utf8;")
-			 or die("Install query failed : " . mysql_error());
+			 or die(_("Install query failed : ") . mysql_error());
 
 			mysql_query("CREATE TABLE IF NOT EXISTS `songlist` (
 			  `idsong` int(11) NOT NULL auto_increment,
@@ -182,7 +182,7 @@
               PRIMARY KEY  (`idsong`),
               FULLTEXT KEY `artist` (`artist`,`title`)
 			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;")
-			 or die("Install query failed : " . mysql_error());
+			 or die(_("Install query failed : ") . mysql_error());
 
 			mysql_query("CREATE TABLE IF NOT EXISTS `statistic` (
 			  `type` varchar(50) NOT NULL,
@@ -204,7 +204,7 @@
 			  `time` varchar(25) NOT NULL,
 			  PRIMARY KEY  (`id`)
 			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;")
-			 or die("Install query failed : " . mysql_error());
+			 or die(_("Install query failed : ") . mysql_error());
 
 			mysql_query("CREATE TABLE IF NOT EXISTS `user_ip` (
 			  `id` int(20) NOT NULL auto_increment,
@@ -213,7 +213,7 @@
 			  `nomer` int(2) NOT NULL,
 			  PRIMARY KEY  (`id`)
 			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;")
-			 or die("Install query failed : " . mysql_error());
+			 or die(_("Install query failed : ") . mysql_error());
 
 			mysql_query("CREATE TABLE IF NOT EXISTS `zakaz` (
 			  `id` int(11) NOT NULL auto_increment,
@@ -226,14 +226,14 @@
 			  `admin` int(1) NOT NULL,
 			  PRIMARY KEY  (`id`)
 			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;")
-			 or die("Install query failed : " . mysql_error());
+			 or die(_("Install query failed : "). mysql_error());
 
 			mysql_query("CREATE TABLE IF NOT EXISTS `settings` (
 			  `name` varchar(25) NOT NULL,
 			  `value` text NOT NULL,
 			  PRIMARY KEY  (`name`)
 			) ENGINE=MyISAM DEFAULT CHARSET=utf8;")
-			 or die("Install query failed : " . mysql_error());
+			 or die(_("Install query failed : ") . mysql_error());
 
 			mysql_query("CREATE TABLE IF NOT EXISTS `dj` (
 			  `id` tinyint(50) NOT NULL auto_increment,
@@ -244,17 +244,17 @@
 			  PRIMARY KEY  (`id`),
 			  UNIQUE KEY `dj` (`dj`)
 			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=34 ;")
-			 or die("Install query failed : " . mysql_error());
+			 or die(_("Install query failed : ") . mysql_error());
 			 			 
-             $this->saveSetting('main_text', 'Здесь вы можете хранить общие записи..');
+             $this->saveSetting('main_text', _('Here you can keep some shared writings'));
              $this->saveSetting('online', '0');
 		}
 
 		public function getPerms($file) {
         	if (is_writable($file)) {
-        		return '<span class="green"><b>is writable</b></span>';
+        		return _('<span class="green"><b>is writable</b></span>');
         	} else {
-        		return '<span class="red"><b>is not writable</b></span>';
+        		return _('<span class="red"><b>is not writable</b></span>');
         	}
 		}
 
@@ -278,7 +278,7 @@
 
 		public function getSsh2() {
 			if (function_exists("ssh2_connect")) {
-				return '<span class="green"><b>installed</b></span>';
+				return _('<span class="green"><b>installed</b></span>');
 			} else {
 				return '<span class="red"><b>not installed</b></span>';
 			}
@@ -286,33 +286,33 @@
         
         public function getXML() {
             if (function_exists("simplexml_load_file")) {
-                return '<span class="green"><b>installed</b></span>';
+                return _('<span class="green"><b>installed</b></span>');
             } else {
-                return '<span class="red"><b>not installed</b></span>';
+                return ('<span class="red"><b>not installed</b></span>');
             }
         }
 
 		public function getCurl() {
 			if (function_exists("curl_init")) {
-				return '<span class="green"><b>installed</b></span>';
+				return _('<span class="green"><b>installed</b></span>');
 			} else {
-				return '<span class="red"><b>not installed</b></span>';
+				return _('<span class="red"><b>not installed</b></span>');
 			}
 		}
 
 		public function getIconv() {
 			if (function_exists("iconv")) {
-				return '<span class="green"><b>installed</b></span>';
+				return _('<span class="green"><b>installed</b></span>');
 			} else {
-				return '<span class="red"><b>not installed</b></span>';
+				return _('<span class="red"><b>not installed</b></span>');
 			}
 		}
 
 		public function getGd() {
 			if (function_exists("imageCreate")) {
-				return '<span class="green"><b>installed</b></span>';
+				return _('<span class="green"><b>installed</b></span>');
 			} else {
-				return '<span class="red"><b>not installed</b></span>';
+				return _('<span class="red"><b>not installed</b></span>');
 			}
 		}
 
@@ -336,9 +336,6 @@
             	)	 and
             	$this->isGreen(
             		$this->getPerms($this->request->getRadioPath()."_config.php")
-            	)	 and
-            	$this->isGreen(
-            		$this->getPerms($this->request->getRadioPath()."_system.php")
             	)	 and
             	$this->isGreen(
             		$this->getBaseDir()

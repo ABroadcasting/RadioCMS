@@ -1,7 +1,7 @@
 <?php
 	include('top.php');
     ob_end_flush();
-	/* Доступ к модулю */
+	/* Module access */
     if (!empty($user) and $user['admin'] != 1) {
     	$security->denied();
 	}
@@ -53,7 +53,7 @@
 				</table>
 				<table style="position:relative; top:-19px; left:0px;" border="0" width="400" cellspacing="0" cellpadding="0">
 					<tr>
-						<td><div class="minitext">Completed: <?php echo $start; ?>%</div></td>
+						<td><div class="minitext"><?php echo _('Completed:'). $start; ?>%</div></td>
 
 					</tr>
 				</table>
@@ -72,7 +72,7 @@
 				<table style="position:relative; top:-19px; left:0px;" border="0" width="400" cellspacing="0" cellpadding="0">
 					<tr>
 						<td>
-						<div class="minitext">Completed: 100%</div>
+						<div class="minitext"><?php echo _("Completed:");?> 100%</div>
 						</td>
 					</tr>
 				</table>
@@ -86,19 +86,19 @@
 
 		$fold = $meneger->getFileFolder($request->getGetVar('filename'));
 		$location = "meneger.php?start=".$meneger->getStart()."&search=".$meneger->getSearch()."&fold=".$fold."&playlist_id=".$req_pl_id;
-        echo "<b>File has been successfully added to the playlist</b>.";
+        echo _("<b>File has been successfully added to the playlist</b>.");
 	}
     
     if ($request->hasGetVar('add_directory')) {
-        echo "<b>Folder has been successfully added to the playlist</b>.";
+        echo _("<b>Folder has been successfully added to the playlist</b>.");
         $location = "meneger.php?start=".$meneger->getStart()."&search=".$meneger->getSearch()."&fold=".$meneger->getFold()."&playlist_id=".$req_pl_id;
     }    
 ?>
 			
 			<br><br>
-			<input class="button" type="button" value="Came back" name="back" onClick="location.href='<?=$location?>'">
+			<input class="button" type="button" value="<?php echo _('Came back'); ?>" name="back" onClick="location.href='<?=$location?>'">
 			&nbsp;&nbsp;
-			<input class="button" type="button" value="Finish the addition" name="back" onClick="location.href='playlist_view.php?playlist_id=<?=$req_pl_id?>'">
+			<input class="button" type="button" value="<?php echo _('Finish the addition');?>" name="back" onClick="location.href='playlist_view.php?playlist_id=<?=$req_pl_id?>'">
 		</div>
 	</div>
 

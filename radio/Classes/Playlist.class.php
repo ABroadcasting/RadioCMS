@@ -276,7 +276,7 @@
         	$e1_res = explode(";", $event2);
 				for ($k=0; $k<=2; $k++) {
 					$time = explode("-", $e1_res[$k]);
-				    $daysString = $this->date->toRussian($time[0]);
+				    $daysString = $this->date->toLang($time[0]);
 
 					$times = array();
 					if ($time[1] != "00:00") {
@@ -317,7 +317,7 @@
 				        continue;
 				    }
 					$time = explode("-", $e1_res[$k]);
-					$daysString = $this->date->toRussian($time[0]);
+					$daysString = $this->date->toLang($time[0]);
 
 					$vr_1 = explode(":", $time[1]);
 				    $vr_2 = explode(":", $time[2]);
@@ -326,7 +326,7 @@
 				    $vr2 = ($vr_2[0]*60)+$vr_2[1];
 
 				    if ($time[1] == "00:00" and $time[2] == "23:55") {
-				    	$timesString = "весь день";
+				    	$timesString = _("all day");
 				    } else {
 				    	$timesString = "с ".$time[1]." до ".$time[2];
 				    }
@@ -334,13 +334,13 @@
 				    $intervalString = $time[3];
 
 				    if ( !empty($daysString) and !empty($timesString) and $intervalString != "00:00" and $vr1 < $vr2 ) {
-				    	$returnString .= "- ".$daysString.", ".$timesString.", каждые ".$intervalString."<br>";
+				    	$returnString .= "- ".$daysString.", ".$timesString._(", every ").$intervalString."<br>";
 				    }
 				}
 				if (!empty($returnString)) {
                 	return $returnString;
                 } else {
-                	return "- Time is not set";
+                	return _("- Time is not set");
                 }
 		}
 
@@ -357,10 +357,10 @@
 
 		public function getPlaymode($mode) {
 			switch($mode) {
-				case 1: return "Randomly";
-				case 0: return "Track by track";
-				case 2: return "Randomly one";
-				case 3: return "Radioshow";
+				case 1: return _("Randomly");
+				case 0: return _("Track by track");
+				case 2: return _("Randomly one");
+				case 3: return _("Radioshow");
 			}
 		}
 
@@ -394,13 +394,13 @@
 
 			$vsego_time = "";
 			if ($ch_dur > 0) {
-				$vsego_time .= "$ch_dur hours ";
+				$vsego_time .= _("$ch_dur hours ");
 			}
 			if ($min_dur > 0) {
-				$vsego_time .= "$min_dur minutes";
+				$vsego_time .= _("$min_dur minutes");
 			}
 			if ($min_dur == 0 and $ch_dur ==0) {
-				$vsego_time .= "$sec_dur seconds";
+				$vsego_time .= _("$sec_dur seconds");
 			}
 			return $vsego_time;
 		}
@@ -419,13 +419,13 @@
 
 			$vsego_time = "";
 			if ($ch_dur > 0) {
-				$vsego_time .= "$ch_dur hours";
+				$vsego_time .= _("$ch_dur hours");
 			}
 			if ($min_dur > 0) {
-				$vsego_time .= "$min_dur minutes";
+				$vsego_time .= _("$min_dur minutes");
 			}
 			if ($min_dur == 0 and $ch_dur ==0) {
-				$vsego_time .= "$sec_dur seconds";
+				$vsego_time .= _("$sec_dur seconds");
 			}
 
 			return $vsego_time;

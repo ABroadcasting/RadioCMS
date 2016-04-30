@@ -31,7 +31,7 @@
 
 		public function getResponse($command) {
 		 	if (!$stream = ssh2_exec($this->connection, $command )){
-            	echo "fail: unable to execute command\n";
+            	echo _("fail: unable to execute command\n");
         	} else{
 				stream_set_blocking( $stream, true );
             	$data = "";

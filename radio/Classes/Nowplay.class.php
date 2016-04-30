@@ -145,19 +145,19 @@
             ob_end_clean();
                         
             if (TEMP_UPLOAD == "") {
-                $errors[] = "No upload directory in the RadioCMS options.";
+                $errors[] = _("No upload directory in the RadioCMS options.");
             } 
             
             if (TEMP_UPLOAD != "" and !file_exists($this->request->getMusicPath().TEMP_UPLOAD)) {
-                $errors[] = "Upload directory does not exists.";
+                $errors[] = _("Upload directory does not exists.");
             } 
             
             if (file_exists($this->request->getMusicPath().TEMP_UPLOAD) and !is_writeable($this->request->getMusicPath().TEMP_UPLOAD)) {
-                $errors[] = "Need more rights to upload.";
+                $errors[] = _("Need more rights to upload.");
             } 
             
             if ($this->letToInt(ini_get('upload_max_filesize')) < 8000000) {
-                $errors[] = "File size is too small. Allow to upload at least 8 Mb in php.ini.";
+                $errors[] = _("File size is too small. Allow to upload at least 8 Mb in php.ini.");
             } 
             
             if (!empty($errors)) {
@@ -315,12 +315,12 @@
 			$add = array();
 			foreach ($this->array_playlist as $k => $v) {
     			$k_p_t = $this->zapros($k);
-    			// если это программа
+    			// if it is a program
     			if ($k_p_t > 0) {
     				$ip = $i+1;
     				$im = $i-1;
     				$add_time = $pred[$i]['value'] + $k_p_t;
-    				//если это время меньше чем следующее тогда добавляем
+    				//if time is less then next
     				if ($add_time < $pred[$ip]['value']) {
     					$add[$t]['name'] = $pred[$im]['name'];
     					$add[$t]['value'] = $add_time;

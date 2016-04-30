@@ -2,9 +2,10 @@
 			$debug = debug_backtrace();
 			unset($debug[0]);
 			unset($debug[1]);
+
+			echo _("<h1>Ошибка</h1>");
 ?>
-			<h1>Ошибка</h1>
-<?php			
+<?php
 			foreach ($debug as $file) {
 ?>				
 				<div><?=isset($file['class']) ? $file['class']."->" : '' ?><?=$file['function']?>() -> <?=$file['line']?>:<?=$file['file']?></div>
