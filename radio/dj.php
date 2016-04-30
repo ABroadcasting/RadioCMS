@@ -124,7 +124,7 @@ echo '
 				</tr>
 				<tr>
 					<td align="left"><input class="button" name="djadd" type="submit" value="add"></td>
-					<td colspan="5"><div class="podpis"><?=$dj->getError() ? "<font color='red'>".$dj->getError()."</font>&nbsp;&nbsp;&nbsp;&nbsp;: "._("DJ have an access to the \"Stats\" module and partially to \"Your DJs\" (only read the list DJ) and \"Status\" (to switch radioshow and autodj without turn off), Administrator - access to all modules.")'?></div></td>
+					<td colspan="5"><div class="podpis"><?php echo ($dj->getError(). "<font color='red'>".$dj->getError()."</font>&nbsp;&nbsp;&nbsp;&nbsp;: "._("DJ have an access to the \"Stats\" module and partially to \"Your DJs\" (only read the list DJ) and \"Status\" (to switch radioshow and autodj without turn off), Administrator - access to all modules."));?></div></td>
 				</tr>
 			</table>
 		</form>
