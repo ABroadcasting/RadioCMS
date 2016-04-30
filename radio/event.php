@@ -569,7 +569,7 @@
 			fclose($file);
 
 			// Log
-			if(DEBUG_LOG='on') {
+			if(DEBUG_LOG=='on') {
 				$file_adres_log = $file_adres . "radio.log";
 				$file = fopen($file_adres_log, "w");
 				fwrite($file, $play_list_text_log);
