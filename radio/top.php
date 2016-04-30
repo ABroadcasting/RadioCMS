@@ -17,11 +17,14 @@
 
 	if (empty($user)) {
 		include('Tpl/login.tpl.html');
-		exit;	}
+		exit;
+	}
 
 	/* Вы зашли как */
-    if ($user['admin'] == 0) {    	$prava = "DJ";
-    } else {    	$prava = "администратор";
+    if ($user['admin'] == 0) {
+    	$prava = "DJ";
+    } else {
+    	$prava = _("Administrator");
     }
 
     include('Tpl/header.tpl.html');

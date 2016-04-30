@@ -9,15 +9,16 @@
 	$repeat->handler();
 ?>
 	<div class="body">
-		<div class="navi"><a href="playlist.php">Плейлисты</a></div>
-		<div class="navi"><a href="playlist_edit.php">Создать плейлист</a></div>
-		<div class="navi"><a href="playlist_zakaz.php">Заказы</a></div>
-		<div class="navi_white"><a href="playlist_proverki.php">Проверки</a></div>
+		<div class="navi"><a href="playlist.php"><?php echo _('Playlists');?></a></div>
+		<div class="navi"><a href="playlist_edit.php"><?php echo _('Create playlist');?></a></div>
+		<div class="navi"><a href="playlist_zakaz.php"><?php echo _('Orders');?></a></div>
+		<div class="navi_white"><a href="playlist_proverki.php"><?php echo _('Checks');?></a></div>
 		<br><br>
 		<div class="title">Эти файлы не существуют</div>
 		<div class="border">
 <?php
-	if ($request->hasGetVar('povtor')) {		$povtor_yes = 'yes';
+	if ($request->hasGetVar('povtor')) {
+		$povtor_yes = 'yes';
 	}
 ?>
 		<table border="0" cellspacing="0" cellpadding="0" width="97%" class="table1">
@@ -31,7 +32,8 @@
 			</tr>
 <?php
 	$i = 0;
-	foreach ($repeat->getNotExisting() as $line) {		$style = ($i != 1) ? "bgcolor=#F5F4F7" : '';
+	foreach ($repeat->getNotExisting() as $line) {
+		$style = ($i != 1) ? "bgcolor=#F5F4F7" : '';
 ?>
 			<tr>
 				<td <?=$style?>>
@@ -58,8 +60,10 @@
 				</td>
 			</tr>
 <?php
-		if ($i == 1) {			$i = 0;
-		} else {			$i = $i+1;
+		if ($i == 1) {
+			$i = 0;
+		} else {
+			$i = $i+1;
 		}
 	}
 ?>
@@ -80,7 +84,8 @@
 ?>
 
 <?php
-	if (!empty($povtor_yes)) {?>
+	if (!empty($povtor_yes)) {
+?>
 		<table border=0 cellspacing="0" cellpadding="0" width="97%" class="table1">
 			<tr>
 				<td width="3%">Ред.</td>
@@ -129,8 +134,10 @@
 			</td>
 		</tr>
 <?php
-			if ($i == 1) {				$i = 0;
-			} else {				$i = $i+1;
+			if ($i == 1) {
+				$i = 0;
+			} else {
+				$i = $i+1;
 			}
 		}
 ?>

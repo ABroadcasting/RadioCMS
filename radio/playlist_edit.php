@@ -17,20 +17,20 @@
 	$next_sort = $playlistEdit->getNextSort();
 ?>
 	<div class="body">
-		<div class="navi"><a href="playlist.php">Плейлисты</a></div>
-		<div class="navi_white"><a href="playlist_edit.php">Создать плейлист</a></div>
-		<div class="navi"><a href="playlist_zakaz.php">Заказы</a></div>
-		<div class="navi"><a href="playlist_proverki.php">Проверки</a></div>
+		<div class="navi"><a href="playlist.php"><?php echo _('Playlists');?></a></div>
+		<div class="navi_white"><a href="playlist_edit.php"><?php echo _('Create playlist');?></a></div>
+		<div class="navi"><a href="playlist_zakaz.php"><?php echo _('Orders');?></a></div>
+		<div class="navi"><a href="playlist_proverki.php"><?php echo _('Checks');?></a></div>
 		<br><br>
-		<div class="title">Создание и редактирование плейлистов</div>
+		<div class="title"><?php echo _('Create and edit playlists');?></div>
 		<form method="post" action="">
 			<div class="border playlist_edit">
 				<input type="hidden" name="playlist_id" value="<?php echo $playlist_id; ?>">
 				<table border="0" width="97%" cellspacing="0" cellpadding="0" class="table1 tableaddedit">
 				<tr>
 					<td width="300">
-						Название<br>
-						<div class="podpis">название плейлиста которое отображается на главной странице</div>
+						<?php echo _('Title');?><br>
+						<div class="podpis"><?php echo _('playlist title on the main page');?></div>
 					</td>
 					<td width="70%">
 						<input type="text" name="name" size="50" value="<?= $playlistEdit->getName() ? htmlspecialchars($playlistEdit->getName()) : 'Новый '.$next_sort ?>">
@@ -38,8 +38,8 @@
 				</tr>
 				<tr>
 					<td>
-						Порядок сортировки<br>
-						<div class="podpis">относительно других плейлистов</div>
+						<?php echo _('Sort order');?><br>
+						<div class="podpis"><?php echo _('with other playlists');?></div>
 					</td>
 					<td>
 						<input type="text" name="sort" size="11" value="<?= $playlistEdit->getSort() ? $playlistEdit->getSort() : $next_sort ?>">
@@ -47,44 +47,44 @@
 				</tr>
 				<tr>
 					<td>
-						Включено<br>
-						<div class="podpis">отключите плейлист без его удаления</div>
+						<?php echo _('Enabled');?><br>
+						<div class="podpis"><?php echo _('disable playlist without deletion');?></div>
 					</td>
 					<td>
 						<input id="enable1" type="radio" value="1" name="enable" <?= $playlistEdit->isEnabled() ? 'checked' : '' ?>>
-						<label for="enable1">Да</label>
+						<label for="enable1"><?php echo _('Yes');?></label>
 						<input id="enable2" type="radio" value="0" name="enable" <?= $playlistEdit->isEnabled() ? '' : 'checked' ?>>
-						<label for="enable2">Нет</label>
+						<label for="enable2"><?php echo _('No');?></label>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						Разрешить заказы<br>
-						<div class="podpis">разрешите прерывание этого плейлиста заказами пользователей</div>
+						Allow orders<br>
+						<div class="podpis"><?php echo _('allow to order songs during this playlist');?></div>
 					</td>
 					<td>
 						<input id="allow_zakaz1" type="radio" value="1" name="allow_zakaz" <?= $playlistEdit->isAllowOrder() ? 'checked' : '' ?>>
-						<label for="allow_zakaz1">Да</label>
+						<label for="allow_zakaz1"><?php echo _('Yes');?></label>
 						<input id="allow_zakaz2" type="radio" value="0" name="allow_zakaz" <?= $playlistEdit->isAllowOrder() ? '' : 'checked' ?>>
-						<label for="allow_zakaz2">Нет</label>
+						<label for="allow_zakaz2"><?php echo _('No');?></label>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						Показывать на главной<br>
-						<div class="podpis">этот параметр задаёт вывод треков из этого плейлиста на главную</div>
+						<?php echo _('Show on the main page');?><br>
+						<div class="podpis"><?php echo _('show  tracks from this playlist on the main page');?></div>
 					</td>
 					<td>
 						<input id="show1" type="radio" value="1" name="show" <?= $playlistEdit->isShow() ? 'checked' : '' ?>>
-						<label for="show1">Да</label>
+						<label for="show1"><?php echo _('Yes');?></label>
 						<input id="show2" type="radio" value="0" name="show" <?= $playlistEdit->isShow() ? '' : 'checked' ?>>
-						<label for="show2">Нет</label>
+						<label for="show2"><?php echo _('No');?></label>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						Порядок воспроизведения<br>
-						<div class="podpis">выбирете "случайно" что бы перемешать все песни</div>
+						<?php echo _('Play order');?><br>
+						<div class="podpis"><?php echo _('Choose radomly to mix the order');?></div>
 					</td>
 					<td>
 						<input id="playmode0" type="radio" value="0" name="playmode" <?= $playlistEdit->getPlaymode()==0 ? 'checked' : '' ?>>

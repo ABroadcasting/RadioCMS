@@ -1,29 +1,30 @@
 <?php
 	include('top.php');
-	/* Доступ к модулю */
+	/* Module access */
     if (!empty($user) and $user['admin'] != 1) {
     	$security->denied();
 	}
 	$setting = Setting::create();
 	$setting->handler();
 
-	// обходим кеш строной
-	if ($request->hasPostVar('request')) {		Header("Location: setting.php");
+	// no caching
+	if ($request->hasPostVar('request')) {
+		Header("Location: setting.php");
 	}
 ?>
 	<div class="body">
-		<div class="navi_white"><a href="setting.php">Настройки радио</a></div>
-		<div class="navi"><a href="setting_system.php">Настройки системы</a></div>
-		<div class="navi"><a href="setting_dir.php">Каталог</a></div>
+		<div class="navi_white"><a href="setting.php"><?php echo _('Radio settings');?></a></div>
+		<div class="navi"><a href="setting_system.php"><?php echo _('System settings');?></a></div>
+		<div class="navi"><a href="setting_dir.php"><?php echo _('Catalog');?></a></div>
 		<br><br>
-		<div class="title">Настройки радио</div>
+		<div class="title"><?php echo _('Radio settings');?></div>
 		<form method="POST" action="setting.php">
 			<div class="border">
 				<table border="0" width="97%" cellpadding="0" class="tablepadding">
 					<tr>
 						<td width="331" valign="top">
-							Системные символы:<br>
-							<div class="podpis">песни содержащие эти символы не будут показаны в списке последних песен</div>
+							<?php echo _('Sуstem symbols');?><br>
+							<div class="podpis"><?php echo _('songs, contains such symbols will not be listed in the resent played');?></div>
 						</td>
 						<td valign="top">
 							<input type="text" name="system_symvol" value="<?=SYSTEM_SYMVOL?>" style="width: 200px;"><br>
@@ -35,7 +36,7 @@
 					<tr>
 						<td width="331" valign="top">
 							Ваши потоки:<br>
-							<div class="podpis">укажите через запятую, например: <br>play, play32, live</div>
+							<div class="podpis"><?php echo _('Set with comma i.e: <br> play, play32, live');?></div>
 						</td>
 						<td valign="top">
 							<input type="text" name="system_stream" value="<?=$setting->getSystemStream()?>" style="width: 200px;"><br>
@@ -47,7 +48,7 @@
 					<tr>
 						<td width="331" valign="top">
 							Нет повторам:<br>
-							<div class="podpis">гарантирует исключение повторов в эфире в течение установленого числа песен
+							<div class="podpis"><?php echo _('no repeat tracks in');?>
 							<span class="red"><?=$setting->checkNetPovtorov()?></span>
 							</div>
 						</td>
@@ -72,7 +73,7 @@
 					<tr>
 						<td width="331" valign="top">
 							Ограничение песен:<br>
-							<div class="podpis">ограничение количества песен добовляемых в<br>playlist.txt</div>
+							<div class="podpis"><?php echo _('Restriction of tracks number in playlist');?></div>
 						</td>
 						<td valign="top">
 							<select size="1" name="limit_event" style="width:100px;">
@@ -88,7 +89,7 @@
 					<tr>
 						<td width="331" valign="top">
 							Лимит заказов:<br>
-							<div class="podpis">ограничение количества заказов находящихся в обработке за один раз</div>
+							<div class="podpis"><?php echo _('Restriction of tracks number in orders');?></div>
 						</td>
 						<td valign="top">
 							<select size="1" name="limit_zakazov" style="width:100px;">
@@ -106,18 +107,18 @@
 					<tr>
 						<td width="331" valign="top">
 							Транслит:<br>
-							<div class="podpis">Все русские id3-теги будут переведены в транслит</div>
+							<div class="podpis"><?php echo _('To transtaterate all cyrilic tags');?></div>
 						</td>
 						<td valign="top">
 							<select size="1" name="translit" style="width:100px;">
-								<option <?=(TRANSLIT=='on') ? 'selected':''?> value="on">Да</option>
-								<option <?=(TRANSLIT=='off') ? 'selected':''?> value="off">Нет</option>
+								<option <?=(TRANSLIT=='on') ? 'selected':''?> value="on"><?php echo _('Yes');?></option>
+								<option <?=(TRANSLIT=='off') ? 'selected':''?> value="off"><?php echo _('No');?></option>
 							</select>
 						</td>
 					</tr>
 				</table>
 				<br>
-				<input class="button" type="submit" value="Сохранить" name="request">
+				<input class="button" type="submit" value="<?php echo _('Save');?>" name="request">
 			</div>
 		</form>
 		<br>

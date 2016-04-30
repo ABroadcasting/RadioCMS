@@ -1,6 +1,6 @@
 <?php
 	include('top.php');
-	/* Доступ к модулю */
+	/* Module access */
     if (!empty($user) and $user['admin'] != 1) {
     	$security->denied();
 	}

@@ -1,29 +1,29 @@
 <?php
 	include '_config.php';
-	//Получаем POST
+	//Get POST
 	$namefile = $_FILES['music_file']['name'];
 	$mail = $_POST['music_mail'];
 
 	$filename = $namefile."_".$mail;
-	//Формируем новое имя файла
+	//Form new filename
 	$filename = str_replace(".mp3", "", $filename);
 	$filename = str_replace(".MP3", "", $filename);
 	$filename = $filename.".mp3";
 
-	//Удаляем лишние символы
+	//Delete extra symbols
 	$filename = htmlspecialchars($filename, ENT_QUOTES, "utf-8");
 
 	$filename = $_SERVER["DOCUMENT_ROOT"]."/music/".TEMP_UPLOAD."/".$filename;
 
-	//Сохраняем файл
+	//Saving file
 	if (move_uploaded_file($_FILES['music_file']['tmp_name'], $filename)) {
-		print "<h1>Файл загружен</h1><h4>Сейчас вы будите перемещены обратно</h4>";
+		print _("<h1>File has been uploaded</h1><h4>You will be redirected back</h4>");
 	} else {
-    	print "<h4>Загрузить файл не удалось</h4>";
+    	print _("<h4>Unable to upload the file</h4>");
 	}
 
 
-	//Редиректим обратно
+	//Redirect back
 	$URL = "http://".$_SERVER['HTTP_HOST'];
     if (isset($_GET['back'])) {
         $URL = $_GET['back'];

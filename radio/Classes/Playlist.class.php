@@ -157,13 +157,13 @@
 
 			$query = "DELETE FROM `songlist` WHERE `filename` = '".addslashes($filename)."'";
 			$this->db->queryNull($query);
-			return "Song has been deleted from all playlists";
+			return _("Song has been deleted from all playlists");
 		}
 
 		public function deleteSong($songid) {
 			$query = "DELETE FROM `songlist` WHERE `idsong` = ".intval($songid);
 			$this->db->queryNull($query);
-			return "Song has been deleted from playlist";
+			return _("Song has been deleted from playlist");
 		}
 
 		public function deleteAllSongs($playlistId) {
@@ -171,7 +171,7 @@
 	    	$this->db->queryNull($query);
 	    	$query = "UPDATE `playlist` SET `now`=0 WHERE `id`=".intval($playlistId);
 	    	$this->db->queryNull($query);
-	    	return "All tracks has been deleted";
+	    	return _("All tracks has been deleted");
 		}
 
         public function playSong($id) {
@@ -187,7 +187,7 @@
 			$line = $this->db->getLine($query);
 
 			if (!empty($line) and $line['idsong'] == $id) {
-				return "Already added to the playlist.";
+				return _("Already added to the playlist.");
 			}
 
 			// заносим заказ в last_zakaz
@@ -202,7 +202,7 @@
 				)";
 			$this->db->queryNull($query);
 
-			// заносим заказ в zakaz
+			// add order to zakaz
 			$query = "INSERT INTO `zakaz` (`idsong` ,`filename` , `artist` , `title` , `album` , `duration` , `admin` )
 				VALUES (
 					'".$songlist['idsong']."',
@@ -215,7 +215,7 @@
 				)";
 			$this->db->queryNull($query);
 
-   			return "Song has been added to the playlist.";
+   			return _("Song has been added to the playlist.");
         }
 
 		public function getSearchString() {
@@ -305,7 +305,7 @@
 				if (!empty($returnString)) {
                 	return $returnString;
                 } else {
-                	return "- Time is not set";
+                	return _("- Time is not set");
                 }
 		}
 

@@ -21,10 +21,10 @@
 	$limit = $playlist->getLimit();
 ?>
 	<div class="body">
-		<div class="navi_white"><a href="playlist.php">Плейлисты</a></div>
-		<div class="navi"><a href="playlist_edit.php">Создать плейлист</a></div>
-		<div class="navi"><a href="playlist_zakaz.php">Заказы</a></div>
-		<div class="navi"><a href="playlist_proverki.php">Проверки</a></div>
+		<div class="navi_white"><a href="playlist.php"><?php echo _('Playlists');?></a></div>
+		<div class="navi"><a href="playlist_edit.php"><?php echo _('Create playlist');?></a></div>
+		<div class="navi"><a href="playlist_zakaz.php"><?php echo _('Orders');?></a></div>
+		<div class="navi"><a href="playlist_proverki.php"><?php echo _('Checks');?></a></div>
 		<br><br>
 		<form method="POST" action="">
 			<div class="title">

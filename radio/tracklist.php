@@ -5,7 +5,7 @@
 	$statistic->updateMain();
 	$tracklist = Tracklist::create();
     
-    /* отображать live вместо play (если есть подключение к live) */
+    /* show live not play (if connected to live) */
     $tracklist->infoFromPoint('live');
 	$tracklist->update();
 
@@ -26,6 +26,6 @@
 	$trackplay5 = isset($lastSongs[4]) ? $lastSongs[4] : "";
 	$trackplay4 = isset($lastSongs[3]) ? $lastSongs[3] : "";
 	$trackplay3 = isset($lastSongs[2]) ? $lastSongs[2] : "";
-	$trackplay2 = isset($lastSongs[1]) ? $lastSongs[1] : ""; // то что выше - играло раньше
-	$trackplay1 = isset($lastSongs[0]) ? $lastSongs[0] : ""; // сейчас играет
+	$trackplay2 = isset($lastSongs[1]) ? $lastSongs[1] : ""; // previous playing are higher
+	$trackplay1 = isset($lastSongs[0]) ? $lastSongs[0] : ""; // no playing
 ?>

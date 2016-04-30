@@ -6,14 +6,14 @@
 
 	/* Доступ к модулю */
 	if ($request->hasPostVar('off_x') and $user['admin']!=1) {
-		$error = "<i>Вы не можете выключить радио.</i><br>";
+		$error = _("<i>You cannot turn off the radio.</i><br>");
 	}
 ?>
 	<div class="body">
-		<div class="title">Статус серверов</div>
+		<div class="title"><?php echo _('Server\'s status');?></div>
 		<div class="border">
 			<?=!empty($error) ? $error: ''?>
-			<div class="status">Для работы необходимы запущенные сервера.<br><br>Текущий статус:
+			<div class="status"><?php echo _('You need running servers to work.<br><br>Current status:');?>
 <?php
 	if(!$status->isIcecastRunned() and !$status->isEzstreamRunned()) {
 ?>
@@ -22,18 +22,22 @@
 	}
 ?>
 <?php
-	if ($status->isIcecastRunned() and !$status->isEzstreamRunned()) {?>				<img src="images/status_on_air.jpg" border="0" width="100" height="30">
+	if ($status->isIcecastRunned() and !$status->isEzstreamRunned()) {
+?>
+				<img src="images/status_on_air.jpg" border="0" width="100" height="30">
 <?php
 	}
 ?>
 <?php
-	if ($status->isIcecastRunned() and $status->isEzstreamRunned()) {?>				<img src="images/status_on.jpg" border="0" width="100" height="30">
+	if ($status->isIcecastRunned() and $status->isEzstreamRunned()) {
+?>
+				<img src="images/status_on.jpg" border="0" width="100" height="30">
 <?php
 	}
 ?>
 			&nbsp;&nbsp;&nbsp;
 		</div>
-		<div>Используйте кнопки ниже что бы запустить или остановить сервера.</div>
+		<div><?php echo _('Use buttons below to run or stop servers');?></div>
 		<br>
 		<form method="POST" action="">
 			<input type=image src="images/off1.jpg" width="180" height="70" name="off">
@@ -52,19 +56,19 @@
 	if ($status->isIcecastRunned()) {
 
 ?>
-		<div class="title">Точки монтирования</div>
+		<div class="title"><?php echo _('Mount points');?></div>
 		<div class="border">
 			<style>
 				.bgt1 td { background-color:#F5F4F7;}
 			</style>
 			<table width="97%" cellspacing="0" cellpadding="2" border="0">
-				<tr>
-					<td>Точка монтирования</td>
-					<td>Играет</td>
-					<td>Слушают</td>
-					<td>Слушать</td>
-				</tr>
-<?php
+<?php echo'			<tr>
+					<td>'._('Mount point').'</td>
+					<td>'._('Now playing').'</td>
+					<td>'._('Listeners').'</td>
+					<td>'._('Listen').'</td>
+				</tr>';
+
 		$bg = 0;
 		foreach ($status->getStreams() as $stream) {
 			if ($bg==0) {
@@ -84,8 +88,10 @@
 					</td>
 				</tr>
 <?php
-			if ($bg==0) {				$bg=1;
-			} else {				$bg=0;
+			if ($bg==0) {
+				$bg=1;
+			} else {
+				$bg=0;
 			}
  		}
 ?>

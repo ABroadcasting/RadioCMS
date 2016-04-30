@@ -24,7 +24,7 @@
 
 	<div class="body">
 		<br>
-		<div class="title">Действие с файлом</div>
+		<div class="title"><?php echo _('File action');?></div>
 		<div class="border">
 			<form action="meneger_do.php?folder=<?=$folder?>&start=<?=$start?>&search=<?=$search?>" method="post">
 				<table border="0" cellspacing="0" cellpadding="0" width="97%" class="table1">
@@ -32,17 +32,19 @@
 	if ($meneger->isUdal()) {
 ?>
 					<tr>
-						<td width="95%">Удалить файлы?<br></td>
+						<td width="95%"><?php echo _('Delete files?');?><br></td>
 					</tr>
 					<tr>
 						<td>
 <?php
 		foreach ($fl as $k=>$i) {
-			if (is_dir($folder."/".$i)) {	  			$ds = " (папка)";
-	  		} else {	  			$ds = "";
+			if (is_dir($folder."/".$i)) {
+	  			$ds = " (папка)";
+	  		} else {
+	  			$ds = "";
 	  		}
 ?>
-							<input type="hidden" name="fl[]" value="<?=$i?>"><b><?=urldecode($i)?></b> <?=$ds?> из папки <?=$folder?><br>
+							<input type="hidden" name="fl[]" value="<?=$i?>"><b><?=urldecode($i)?></b> <?=$ds?><?php echo _('From folder');?><?=$folder?><br>
 <?php
 		}
 ?>
@@ -50,7 +52,7 @@
 					</tr>
 					<tr>
 						<td>
-							<input class="button" type="submit" value="Отмена" name="ot"> <input class="button" type="submit" value="Удалить" name="udal_x"><br>
+							<input class="button" type="submit" value="<?php echo _('Cancel');?>" name="ot"> <input class="button" type="submit" value="Delete" name="udal_x"><br>
 						</td>
 <?php
 	}
@@ -60,13 +62,16 @@
 		$begin = substr($begin, 0, -1);
 ?>
 					<tr>
-						<td width=95%><b>Куда копировать файлы?</b></td>
+						<td width=95%><b><?php echo _('Where do you want to copy files?');?></b></td>
 					</tr>
 					<tr>
 						<td width=95%>
 <?php
-		foreach ($fl as $i) {			if (is_dir($folder."/".urldecode($i))) {				$ds = " (папка)";
-			} else {				$ds = "";
+		foreach ($fl as $i) {
+			if (is_dir($folder."/".urldecode($i))) {
+				$ds = " (папка)";
+			} else {
+				$ds = "";
 			}
 ?>
 							<input type="hidden" name="fl[]" value="<?=$i?>">&nbsp;<?=urldecode($i)?> <?=$ds?><br>
@@ -76,13 +81,16 @@
 						</td>
 					</tr>
 					<tr>
-						<td width="95%"><b>Выберите папку для копирования:</b></td>
+						<td width="95%"><b><?php echo _('Choose folder to copy');?></b></td>
 					</tr>
 					<tr>
 						<td width="95%">
 <?php
-		foreach ($meneger->getTree($begin) as $fllnm2=>$fllnm) {?>							<input id="<?=$fllnm2?>" name="rd" type="radio" value="<?=$fllnm?>">&nbsp;
-							<label for="<?=$fllnm2?>"><?=$fllnm2?></label><br><?php
+		foreach ($meneger->getTree($begin) as $fllnm2=>$fllnm) {
+?>
+							<input id="<?=$fllnm2?>" name="rd" type="radio" value="<?=$fllnm?>">&nbsp;
+							<label for="<?=$fllnm2?>"><?=$fllnm2?></label><br>
+<?php
 		}
 ?>
 <?php
@@ -98,8 +106,8 @@
 					</tr>
 					<tr>
 						<td width="95%">
-							<input class="button" type="submit" value="Отмена" name="ot">
-							<input class="button" type="submit" value="Копировать" name="copy_x">
+							<input class="button" type="submit" value="<?php echo _('Cancel');?>" name="ot">
+							<input class="button" type="submit" value="<?php echo _('Copy');?>" name="copy_x">
 						</td>
 					</tr>
 <?php
@@ -110,15 +118,18 @@
 		$begin = substr($begin, 0, -1);
 ?>
 					<tr>
-						<td width=95%><b>Куда переместить файлы?</b></td>
+						<td width=95%><b><?php echo _('Where do you want to move files?');?></b></td>
 					</tr>
 					<tr>
 						<td width=95%>
 <?php
 		foreach ($fl as $i)	{
-			if (is_dir($folder."/".$i)) {				$ds = " (папка)";
-			} else {				$ds = "";
-			}?>
+			if (is_dir($folder."/".$i)) {
+				$ds = " (папка)";
+			} else {
+				$ds = "";
+			}
+?>
 			<input type="hidden" name="fl[]" value="<?=$i?>">&nbsp;<?=urldecode($i)?> <?=$ds?><br>
 <?php
 		}
@@ -126,7 +137,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td width=95%><b>Выберите папку для перемещения:</b></td>
+						<td width=95%><b><?php echo _('Choose folder to move');?></b></td>
 					</tr>
 					<tr>
 						<td width=95%>
@@ -151,8 +162,8 @@
 					</tr>
 					<tr>
 						<td width="95%">
-							<input class="button" type="submit" value="Отмена" name="ot">
-							<input class="button" type="submit" value="Переместить" name="move_x">
+							<input class="button" type="submit" value="<?php echo _('Cancel');?>" name="ot">
+							<input class="button" type="submit" value="<?php echo _('Move');?>" name="move_x">
 						</td>
 					</tr>
 <?php
@@ -163,7 +174,7 @@
 ?>
 					<tr>
 						<td width="200">
-							Старое имя:<br><div class="podpis">Текущее имя файла</div>
+							Старое имя:<br><div class="podpis"><?php echo _('Current filename');?></div>
 						</td>
 						<td width="80%" valign=top>
 							<input readonly type="hidden" size="30" name="afl[]" value="<?=$i?>" style='color:#888888'>
@@ -172,7 +183,7 @@
 					</tr>
 					<tr>
 						<td>
-							Новое имя:<br><div class=podpis>Имя для сохранения</div>
+							Новое имя:<br><div class=podpis><?php echo _('Filename to save');?></div>
 						</td>
 						<td valign="top">
 							<input type="text" size="30" name="rfl[]" value="<?=urldecode($i)?>">
@@ -183,8 +194,8 @@
 ?>
 					<tr>
 						<td>
-							<input class="button" type="submit" value="Отмена" name="ot">
-							<input class="button" type="submit" value="Сохранить" name="ren_x">
+							<input class="button" type="submit" value="<?php echo _('Cancel');?>" name="ot">
+							<input class="button" type="submit" value="Save" name="ren_x">
 						</td>
 						<td>
 							<!-- nothing -->
@@ -197,10 +208,10 @@
 ?>
 					<tr>
 						<td width="200">
-							Введите имя папки:<br>
+							<?php echo _('Type the folder name:');?><br>
 							<div class="podpis">Имя для сохранения</div><br><br>
-							<input class="button" type="submit" value="Отмена" name="ot">
-							<input class="button" type="submit" value="Создать" name="md_x">
+							<input class="button" type="submit" value="<?php echo _('Cancel');?>" name="ot">
+							<input class="button" type="submit" value="<?php echo _('Create');?>" name="md_x">
 						</td>
 						<td width="80%" valign="top">
 							<input type="text" size="30" name="newname">
