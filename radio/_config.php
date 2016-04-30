@@ -1,17 +1,21 @@
 <?php
 	define('USER', '');
 	define('PASSWORD', '');
-	//define('MUSIC_PATH', '');
-	//define('RADIO_PATH', '');
-	//define('EXTERNAL_CHARSET', 'cp1251');
+
+	define('MUSIC_PATH', '');
+	define('RADIO_PATH', '');
+
+	define('EXTERNAL_CHARSET', 'cp1251');
 	define('ID3V1_CHARSET', 'cp1251');
 	define('TEMP_UPLOAD', '');
 	define('IP', '');
 	define('URL', '');
 	define('PORT', '8000');
+
 	define('SSH_USER', '');
 	define('SSH_PASS', '');
 	define('SSH_PORT', '22');
+
 	define('CF_EZSTREAM', '');
 	define('CF_ICECAST', '');
 	define('PLAYLIST', '');
@@ -39,4 +43,5 @@
 	define('DIR_BITRATE', '128');
     
     define('RADIOCMS_VERSION', '3.0');
+	define('DEBUG_LOG', 'on')
 ?>

@@ -568,13 +568,13 @@
 			fwrite($file, $system_text);
 			fclose($file);
 
-			// Лог
-			/*
-			$file_adres_log = $file_adres."log_event.txt";
-			$file= fopen($file_adres_log, "w");
-			fwrite($file, $play_list_text_log);
-			fclose($file);
-			*/
+			// Log
+			if(DEBUG_LOG='on') {
+				$file_adres_log = $file_adres . "radio.log";
+				$file = fopen($file_adres_log, "w");
+				fwrite($file, $play_list_text_log);
+				fclose($file);
+			}
 		}
 
 		$event->updateEzstream();
