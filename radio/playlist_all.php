@@ -12,7 +12,7 @@
 	$search = $playlistAll->getSearch();
 	$letter = $playlistAll->getLetter();
 
-    //Пропишите путь до плейлиста
+    //Get he playlist's path
 	$url_start = $playlistAll->getUrlStart();
 
 	if (!empty($notice['zakaz'])) {
@@ -42,14 +42,14 @@
 	<table border="0"  cellspacing="0" cellpadding="0" width="100%"  class="table1">
 		<tr>
 			<td width="250">
-				Название
+				<?php echo _('Title');?>
 				<span>
 					<a href="<?=$url_start?>?start=<?=$start?>&limit=<?=$limit?>&sort=title&letter=<?=$letter?>&search=<?=$search?>"><img src="/radio/images/up.png" border="0"></a>
 					<a href="<?=$url_start?>?start=<?=$start?>&limit=<?=$limit?>&sort=!title&letter=<?=$letter?>&search=<?=$search?>"><img src="/radio/images/down.png" border="0"></a>
 				</span>
 			</td>
 			<td width="210">
-				Исполнитель
+				<?php echo _('Artist');?>
 				<span>
 					<a href="<?=$url_start?>?start=<?=$start?>&limit=<?=$limit?>&sort=artist&letter=<?=$letter?>&search=<?=$search?>"><img src="/radio/images/up.png" border="0"></a>
 					<a href="<?=$url_start?>?start=<?=$start?>&limit=<?=$limit?>&sort=!artist&letter=<?=$letter?>&search=<?=$search?>"><img src="/radio/images/down.png" border="0"></a>

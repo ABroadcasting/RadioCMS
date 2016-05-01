@@ -122,7 +122,7 @@
 	$vsego_pesen = $playlistAll->getVsegoPesen();
 
 	if (($limit <= $start) and ($vsego_pesen > $seychas)) {
-			echo " или ";
+			echo _(" or ");
 	}
 
 	$pokaz = $start+$limit;
@@ -136,7 +136,7 @@
 ?>
 	</p>
 	<form method="GET" action="">
-		Выводить по
+		<?php echo _('Show lines');?>
 		<select size="1" name="limit">
 			<option<?php if ($limit==5) echo " selected"; ?>>5</option>
 			<option<?php if ($limit==10) echo " selected"; ?>>10</option>

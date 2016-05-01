@@ -15,13 +15,13 @@
 		<div class="navi"><a href="playlist_proverki.php"><?php echo _('Checks');?></a></div>
 		<br><br>
 		<div class="polovina1">
-			<div class="title">Последние заказы</div>
+			<div class="title"><?php echo _('Latest orders');?></div>
 			<div class="border">
 				<table border="0" cellspacing="0" cellpadding="0" width="97%" class="table1">
 					<tr>
-						<td width="26%">Время</td>
-						<td width="54%">Трек</td>
-						<td width="20%">Плейлист</td>
+						<td width="26%"><?php echo _('Time');?></td>
+						<td width="54%"><?php echo _('Track');?></td>
+						<td width="20%"><?php echo _('Playlist');?></td>
 					</tr>
 <?php
    $i = 0;
@@ -53,13 +53,13 @@
 			<br><br>
 		</div>
 		<div class="polovina2">
-			<div class="title">Топ заказов</div>
+			<div class="title"><?php echo _('Orders top');?></div>
 			<div class="border">
 				<table border="0" cellspacing="0" cellpadding="0" width="97%" class="table1">
 					<tr>
-						<td width="6%">Заказов</td>
-						<td width="74%">Трек</td>
-						<td width="20%">Плейлист</td>
+						<td width="6%"><?php echo _('Orders');?></td>
+						<td width="74%"><?php echo _('Track');?></td>
+						<td width="20%"><?php echo _('Playlist');?></td>
 					</tr>
 <?php
    $i = 0;
@@ -89,7 +89,7 @@
 		</div>
 		<br>
 		<div class="bborder">
-			<a style="color: #333333;" href="?clear_zakaz=yes">Обнулить счётчик заказов</a></div>
+			<a style="color: #333333;" href="?clear_zakaz=yes"><?php echo _('Reset orders counter');?></a></div>
 			<br><br>
 		</div>
 	</div>

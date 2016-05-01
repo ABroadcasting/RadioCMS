@@ -86,8 +86,7 @@
     	// Sort decend? save keys
     	if ($_GET['type'] == "client") {arsort($ar);}
 
-    	// наш скрипт будет объединять в один сектор все элементы, которые по отдельности не превыщают 1%
-    	// Суммируем (можете использовать также функцию array_sum() )
+    	// Will sum all sectors less then 1%
     	$sum = 0;
     	foreach ($ar as $name => $val) {
     	    $sum += $val;

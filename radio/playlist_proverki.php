@@ -14,23 +14,23 @@
 		<div class="navi"><a href="playlist_zakaz.php"><?php echo _('Orders');?></a></div>
 		<div class="navi_white"><a href="playlist_proverki.php"><?php echo _('Checks');?></a></div>
 		<br><br>
-		<div class="title">Эти файлы не существуют</div>
+		<div class="title"><?php echo _('Files not found');?></div>
 		<div class="border">
 <?php
 	if ($request->hasGetVar('povtor')) {
 		$povtor_yes = 'yes';
 	}
-?>
+echo '
 		<table border="0" cellspacing="0" cellpadding="0" width="97%" class="table1">
 			<tr>
-				<td width="3%">Ред.</td>
-				<td width="20%">Название</td>
-   				<td width="17%">Исполнитель</td>
-        		<td width="10%">Плейлист</td>
-        		<td width="47%">Имя файла</td>
+				<td width="3%">'._('Edit').'</td>
+				<td width="20%">'._('Title').'</td>
+   				<td width="17%">'._('Artist').'</td>
+        		<td width="10%">'._('Playlist').'</td>
+        		<td width="47%">'._('Filename').'</td>
 				<td width="3%"></td>
 			</tr>
-<?php
+';
 	$i = 0;
 	foreach ($repeat->getNotExisting() as $line) {
 		$style = ($i != 1) ? "bgcolor=#F5F4F7" : '';
@@ -38,7 +38,7 @@
 			<tr>
 				<td <?=$style?>>
 					<a href="edit_song.php?playlist_id=povtor&edit_song=<?=$line['idsong']?>">
-						<img src="images/edit_song.gif" border="0" title="Редактировать песню">
+						<img src="images/edit_song.gif" border="0" title="<?php echo _('Edit song');?>">
 					</a>
 				</td>
 				<td <?=$style?>>
@@ -55,7 +55,7 @@
         		</td>
 				<td <?=$style?>>
 					<a href="playlist_proverki.php?delete_song3=<?=$line['idsong']?>">
-						<img src="images/delete2.gif" border="0" title="Удалить песню из плейлиста">
+						<img src="images/delete2.gif" border="0" title="<?php echo _('Delete song from playlist');?>">
 					</a>
 				</td>
 			</tr>
@@ -70,33 +70,24 @@
 		</table>
 	</div>
 	<br>
-	<div class="title">Повторяющиеся id3</div>
+	<div class="title"><?php echo _('Repeating id3');?></div>
 	<div class="border">
 <?php
 	if (empty($povtor_yes)) {
-?>
-		<div>
-			Поворяющие "Название" и "Исполнитель" приводит к частичной не работоспособности системы.<br>
-			Используйте эту функцию после добавления новых песен.
-		</div>
-<?php
+echo('<div>Repeating "Title" and "Artist" will came to partialy system malfunction.<br>Use this function after adding new songs.</div>');
 	}
-?>
-
-<?php
 	if (!empty($povtor_yes)) {
-?>
+echo '
 		<table border=0 cellspacing="0" cellpadding="0" width="97%" class="table1">
 			<tr>
-				<td width="3%">Ред.</td>
-				<td width="20%">Название</td>
-       			<td width="20%">Исполнитель</td>
-        		<td width="10%">Плейлист</td>
-				<td width="10%">Время</td>
-				<td width="32%">Имя файла</td>
+				<td width="3%">'._('Edit').'</td>
+				<td width="20%">'._('Title').'</td>
+				<td width="20%">'._('Artist').'</td>
+				<td width="10%">'._('Playlist').'</td>
+				<td width="10%">'._('Time').'</td>
+				<td width="32%">'._('Filename').'</td>
 				<td width="3%"></td>
-			</tr>
-<?php
+			</tr>';
 		$i = 0;
 		foreach ($repeat->getRepeat() as $line) {
 			$color = ($i!=1) ? 'bgcolor=#F5F4F7' : '';
@@ -104,7 +95,7 @@
 		<tr>
 			<td <?=$color?>>
 				<a href="edit_song.php?playlist_id=povtor&edit_song=<?=$line['idsong']?>">
-					<img src="images/edit_song.gif" border="0" title="Редактировать песню">
+					<img src="images/edit_song.gif" border="0" title="<?php echo _('Edit song');?>">
 				</a>
 			</td>
 			<td <?=$color?>>
@@ -124,12 +115,12 @@
         	</td>
         	<td <?=$color?>>
         		<a href="playlist_proverki.php?povtor=yes&delete_song=<?=$line['idsong']?>">
-        			<img src="images/delete.gif" border="0" title="Удалить песню из этого списка">
+        			<img src="images/delete.gif" border="0" title="<?php echo _('Delete song from this playlist');?>">
         		</a>
         	</td>
 			<td <?=$color?>>
 				<a href="playlist_proverki.php?povtor=yes&delete_song2=<?=$line['idsong']?>">
-					<img src="images/delete2.gif" border="0" title="Удалить песню из всех плейлистов и жётского диска">
+					<img src="images/delete2.gif" border="0" title="<?php echo _('Delete song from this playlist and the harddisk');?>">
 				</a>
 			</td>
 		</tr>
@@ -143,12 +134,12 @@
 ?>
 	</table>
 	<br><br>
-	<div class="bborder"><a href="?povtor_start=yes">Ещё разок</a></div>
+	<div class="bborder"><a href="?povtor_start=yes"><?php echo _('Again');?></a></div>
 <?php
 	} else {
 ?>
 	<br>
- 	<div class="bborder"><a href="?povtor_start=yes">Найти повторы</a></div>
+ 	<div class="bborder"><a href="?povtor_start=yes"><?php echo _('Find dublicates');?></a></div>
 <?php
 	}
 ?>

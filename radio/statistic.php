@@ -9,18 +9,18 @@
     $tracklist->update();
 ?>
 	<div class="body">
-		<div class="navi_white"><a href="statistic.php">Общая</a></div>
-		<div class="navi"><a href="statistic_client.php">По слушателям</a></div>
+		<div class="navi_white"><a href="statistic.php"><?php echo _('General');?></a></div>
+		<div class="navi"><a href="statistic_client.php"><?php echo _('By listeners');?></a></div>
 		<br><br>
 		<div class="title">Статистика радио</div>
 		<div class="border">
-			Сейчас слушают: <?=$statistic->getListeners()?> (потоков: <?=$statistic->getStreamCount()?>), динамика за последние 24 часа:<br><br>
+			<?php echo _('Listeners now');?>: <?=$statistic->getListeners()?> (<?php echo _('streams');?>: <?=$statistic->getStreamCount()?>), <?php echo _('in last 24 hours');?>:<br><br>
             <?=$nowplay->getDinamika();?>
    			<br><br><br>
 <?php
 	$disk = $file->getDiskInfo();
 ?>
-			Размер дискового пространства:<br><br>
+			<?php echo _('Hard disk usage');?>:<br><br>
 			<table border="0" width="400" cellspacing="0" cellpadding="0">
 				<tr>
 					<td class="graph_g2_1" width="<?=$disk['zan']['proc']?>%" align="center"></td>
@@ -34,7 +34,7 @@
 				<tr>
 					<td>
 						<div class="minitext" style="position:relative; top:-19px; left:0px;">
-							Занято: <?=$disk['zan']['mb']?> \ Свободно: <?=$disk['free']['mb']?>
+							<?php echo _('Used space:');?> <?=$disk['zan']['mb']?> \ <?php echo _('Free space:');?> <?=$disk['free']['mb']?>
 						</div>
 					</td>
 				</tr>
@@ -42,12 +42,12 @@
 		</div>
 		<br>
 		<div>
-		<div class="title">Последние песени</div>
+		<div class="title"><?php echo _('Latest tracks');?></div>
 		<div class="border">
 			<table width="97%" cellspacing="0" cellpadding="0" border="0">
 			<tr>
-				<td width="15%">Время</td>
-				<td width="85%">Песня</td>
+				<td width="15%"><?php echo _('Time');?></td>
+				<td width="85%"><?php echo _('Track');?></td>
 			</tr>
 <?php
 	$i = 0;
@@ -61,12 +61,14 @@
         			<?php echo $time ?>
         		</td>
 				<td <?=($i!=1) ? 'bgcolor=#F5F4F7' : ''?>>
-					<?=($line['title']== " - ") ? "Нет данных" : $line['title']?>
+					<?=($line['title']== " - ") ? _("No data") : $line['title']?>
 				</td>
 			</tr>
 <?php
-		if ($i == 1) {			$i = 0;
-		} else {			$i = $i+1;
+		if ($i == 1) {
+			$i = 0;
+		} else {
+			$i = $i+1;
 		}
 	}
 ?>
