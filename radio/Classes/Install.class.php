@@ -81,7 +81,7 @@
 		}
 
 		public function ifHag3() {
-			$con = @ssh2_connect($this->request->getPostVar('ip'), 22);
+			$con = @ssh2_connect($this->request->getPostVar('ip'), $this->request->getPostVar('ssh_port'));
 			if(!@ssh2_auth_password($con, $this->request->getPostVar('ssh_user'), $this->request->getPostVar('ssh_pass'))) {
 				return "<p>Wrong login or password.</p>";
     		}
@@ -90,6 +90,7 @@
     		$this->saveConfig('PORT', $this->request->getPostVar('port'));
     		$this->saveConfig('SSH_USER', $this->request->getPostVar('ssh_user'));
     		$this->saveConfig('SSH_PASS', $this->request->getPostVar('ssh_pass'));
+			$this->saveConfig('SSH_PORT', $this->request->getPostVar('ssh_port'));
     		Header("Location: install.php?hag=4");
 		}
 

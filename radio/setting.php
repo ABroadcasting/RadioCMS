@@ -35,7 +35,7 @@
 					</tr>
 					<tr>
 						<td width="331" valign="top">
-							Ваши потоки:<br>
+							<?php echo _('Your streams:');?><br>
 							<div class="podpis"><?php echo _('Set with comma i.e: <br> play, play32, live');?></div>
 						</td>
 						<td valign="top">
@@ -47,7 +47,7 @@
 					</tr>
 					<tr>
 						<td width="331" valign="top">
-							Нет повторам:<br>
+							<?php echo _('Norepeat:');?>:<br>
 							<div class="podpis"><?php echo _('no repeat tracks in');?>
 							<span class="red"><?=$setting->checkNetPovtorov()?></span>
 							</div>
@@ -72,7 +72,7 @@
 					</tr>
 					<tr>
 						<td width="331" valign="top">
-							Ограничение песен:<br>
+							<?php echo _('Tracks restriction:');?><br>
 							<div class="podpis"><?php echo _('Restriction of tracks number in playlist');?></div>
 						</td>
 						<td valign="top">
@@ -88,7 +88,7 @@
 					</tr>
 					<tr>
 						<td width="331" valign="top">
-							Лимит заказов:<br>
+							<?php echo _('Order limits:');?><br>
 							<div class="podpis"><?php echo _('Restriction of tracks number in orders');?></div>
 						</td>
 						<td valign="top">
@@ -106,8 +106,8 @@
 					</tr>
 					<tr>
 						<td width="331" valign="top">
-							Транслит:<br>
-							<div class="podpis"><?php echo _('To transtaterate all cyrilic tags');?></div>
+							<?php echo _('Transliteration:');?><br>
+							<div class="podpis"><?php echo _('To transliterate all cyrilic tags');?></div>
 						</td>
 						<td valign="top">
 							<select size="1" name="translit" style="width:100px;">
