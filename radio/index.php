@@ -35,7 +35,7 @@ echo _('Number of files in temporary Upload directory:');?> <b><?=$count?></b><?
 	<br>
 <?php
     if (!$ssh->checkEzstreamCompatibility()) {
-echo _('<div><span class="red">'._('Installed version ezstream have no LibTag support, having some restrictions of id3 characters number').'</span></div>');   }
+echo ('<div><span class="red">'._('Installed version ezstream have no LibTag support, having some restrictions of id3 characters number').'</span></div>');   }
 
 	if (
 		DIR_SHOW == "on" and
@@ -45,13 +45,13 @@ echo _('<div><span class="red">'._('Installed version ezstream have no LibTag su
 		DIR_DESCRIPTION != "" and
 		DIR_GENRE != ""
 	) {
-	echo _('<div>'._('Your station').'<span class="green">'._('listed').'</span>'. _('in the RadioCMS list').'</div>');
+	echo ('<div>'._('Your station').'<span class="green">'._('listed').'</span>'. _('in the RadioCMS catalog').'</div>');
 	} else {
-	echo ('<div>'._('Your station').'<span class="red">'._('not listed').'</span>'._('in the RadioCMS list').'- <a href="setting_dir.php">'._('Fix it').'</a></div>)');
+	echo ('<div>'._('Your station').'<span class="red">'._('not listed').'</span>'._('in the RadioCMS catalog').'- <a href="setting_dir.php">'._('Fix it').'</a></div>)');
 	}
 
 	if ( file_exists("install.php")) {
-	echo _('<div><span class="red">'._('install.php has not be deleted').'</span> — <a href="?del_install=1">'._('Delete').'</a></div>');
+	echo ('<div><span class="red">'._('install.php has not be deleted').'</span> — <a href="?del_install=1">'._('Delete').'</a></div>');
 	}
 			include('Tpl/error.tpl.html');
 echo'
