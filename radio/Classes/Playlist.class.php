@@ -334,7 +334,7 @@
 				    $intervalString = $time[3];
 
 				    if ( !empty($daysString) and !empty($timesString) and $intervalString != "00:00" and $vr1 < $vr2 ) {
-				    	$returnString .= "- ".$daysString.", ".$timesString._(", every ").$intervalString."<br>";
+				    	$returnString .= "- ".$daysString.", ".$timesString.", "._("every")." ".$intervalString."<br>";
 				    }
 				}
 				if (!empty($returnString)) {

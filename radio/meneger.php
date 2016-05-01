@@ -340,7 +340,7 @@ echo '<div class="podpis"><font color="#993333">'._('Not used!').'</font></div>'
 					<div class="searcht">
 						<form action='meneger_zapros.php?folder=<?=$dirct_f?>&start=<?=$start?>&playlist_id=<?=$playlist_id_get?>' method='post'>
                             <?php echo _('Search in this folder');?> <input type="text" name="search" size="20" value="<?=$search?>">
-							<input type="submit" value="<?php echo _('Find');?>" name="search_button">
+							<input type="submit" value="<?php echo _('Search');?>" name="search_button">
 						</form>
 					</div>
 				</td>

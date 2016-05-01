@@ -90,7 +90,7 @@
 
 			if ( !empty($this->tagwriter->errors)) {
 				if (!empty($this->tagwriter->errors)) {
-					echo _(_('<p>Error reading mp3-file:<br>').implode('<br><br>', $tagwriter->errors)."</p>");
+					echo (_('<p>Error reading mp3-file:<br>').implode('<br><br>', $tagwriter->errors)."</p>");
 				}
 				exit;
 			}
