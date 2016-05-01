@@ -23,7 +23,7 @@
 				<table border="0" width="97%" cellpadding="0" class="tablepadding">
 					<tr>
 						<td width="331" valign="top">
-							<?php echo _('Sуstem symbols');?><br>
+							<?php echo _('System symbols');?><br>
 							<div class="podpis"><?php echo _('songs, contains such symbols will not be listed in the resent played');?></div>
 						</td>
 						<td valign="top">

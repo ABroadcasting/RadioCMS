@@ -31,9 +31,9 @@ echo '
 
 	if (!empty($playlist_id_get)) {
 
-echo _('Добавление файлов в'). $meneger->getPlaylistName($playlist_id_get). $dirct2;
+echo _('Add files to'). $meneger->getPlaylistName($playlist_id_get). $dirct2;
 	} else {
-		echo _('Файловый менеджер'). $dirct2;
+		echo _('File manager'). $dirct2;
 	}
 ?>
 		</div>
@@ -281,7 +281,7 @@ echo '<div class="podpis"><font color="#993333">'._('Not used!').'</font></div>'
 	if ( ($list['vsego'] > $list['limit']) and ($a2ostalos >= $list['limit']) ) {
     	$a2next = $list['start']+$list['limit'];
 ?>
-					<a href="?start=<?=$a2next?>&search=<?=$search?>&fold=<?=$fold?>&playlist_id=<?=$playlist_id_get?>"><?php echo _('Туче');?></a>
+					<a href="?start=<?=$a2next?>&search=<?=$search?>&fold=<?=$fold?>&playlist_id=<?=$playlist_id_get?>"><?php echo _('Next');?></a>
 <?php
 	}
 
