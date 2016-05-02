@@ -110,7 +110,7 @@
 				$this->createTable($this->request->getPostVar('db_name'));
 				Header("Location: install.php?hag=3");
 			} else {
-				return _("<p>Connection can not be established.</p>");
+				return _("<p>Connection could not be established.</p>");
 			}
 		}
 
