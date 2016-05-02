@@ -7,7 +7,7 @@
 	$request = Request::create();
 	$ins = Install::create();
 
-	$hag_install = "Установка: Шаг 1 (Проверка библиотек и файлов)";
+	$hag_install = "Installation: Step 1 (Checking files and libraries)";
 	$hag = 1;
 	if (!empty($_GET['hag'])) {
 		if ($_GET['hag'] == 2) { $hag = 2; $hag_install = "Установка: Шаг 2 (Настройка базы данных)"; }
@@ -308,65 +308,65 @@
 ?>
 			<table border="0" cellspacing="0" cellpadding="0" width="97%" class="table1">
 				<tr>
-					<td width="20%" valign="top">Описание</td>
-					<td width="15%" valign="top">Текущее</td>
-					<td width="65%" valign="top">Необходимо</td>
+					<td width="20%" valign="top"><?php echo _('Description');?></td>
+					<td width="15%" valign="top"><?php echo _('Current');?></td>
+					<td width="65%" valign="top"><?php echo _('Need to be');?></td>
 				</tr>
 				<tr>
-					<td bgcolor="#F5F4F7" valign="top">Права на папку <b>music</b></td>
+					<td bgcolor="#F5F4F7" valign="top"><?php echo _('Permissions for <b>music</b> folder');?></td>
 					<td bgcolor="#F5F4F7" valign="top"><?=$ins->getPerms($request->getMusicPath())?></td>
-					<td bgcolor="#F5F4F7" valign="top"><span class="green">доступен для записи</span></td>
+					<td bgcolor="#F5F4F7" valign="top"><span class="green"><?php echo _('is writable');?></span></td>
 				</tr>
 				<tr>
 					<td valign="top">Права на файл <b>_config.php</b></td>
 					<td valign="top"><?=$ins->getPerms($request->getRadioPath()."_config.php")?></td>
-					<td valign="top"><span class="green">доступен для записи</span></td>
+					<td valign="top"><span class="green"><?php echo _('is writable');?></span></td>
 				</tr>
 				<tr>
 					<td valign="top">Права на файл <b>_system.php</b></td>
 					<td valign="top"><b><?=$ins->getPerms($request->getRadioPath()."_system.php")?></b></td>
-					<td valign="top"><span class="green">доступен для записи</span></td>
+					<td valign="top"><span class="green"><?php echo _('is writable');?></span></td>
 				</tr>
 				<tr>
-					<td bgcolor="#F5F4F7" valign="top">Параметр <b>open_basedir</b></td>
+					<td bgcolor="#F5F4F7" valign="top"><?php echo _('<b>open_basedir</b> param');?></td>
 					<td bgcolor="#F5F4F7" valign="top"><?=$ins->getBaseDir()?></td>
-					<td bgcolor="#F5F4F7" valign="top"><span class="green">/ или no_value</span></td>
+					<td bgcolor="#F5F4F7" valign="top"><span class="green"><?php echo _('/ or no_value');?></span></td>
 				</tr>
 				<tr>
-					<td valign="top">Библиотека <b>libssh2</b></td>
+					<td valign="top"><?php echo _('<b>libssh2</b> library');?></td>
 					<td valign="top"><?=$ins->getSsh2()?></td>
-					<td valign="top"><span class="green">установлена</span></td>
+					<td valign="top"><span class="green"><?php echo _('installed');?></span></td>
 				</tr>
 				<tr>
-					<td bgcolor="#F5F4F7" valign="top">Библиотека <b>curl</b></td>
+					<td bgcolor="#F5F4F7" valign="top"><?php echo _('<b>curl</b> library');?></td>
 					<td bgcolor="#F5F4F7" valign="top"><?=$ins->getCurl()?></td>
-					<td bgcolor="#F5F4F7" valign="top"><span class="green">установлена</span></td>
+					<td bgcolor="#F5F4F7" valign="top"><span class="green"><?php echo _('installed');?></span></td>
 				</tr>
 				<tr>
-                    <td valign="top">Библиотека <b>SimpleXML</b></td>
+                    <td valign="top"><?php echo _('<b>SimpleXML</b> library');?></td>
                     <td valign="top"><?=$ins->getXML()?></td>
-                    <td valign="top"><span class="green">установлена</span></td>
+                    <td valign="top"><span class="green"><?php echo _('installed');?></span></td>
                 </tr>
 				<tr>
-					<td valign="top">Библиотека <b>iconv</b></td>
+					<td valign="top"><?php echo _('<b>iconv</b> library');?></td>
 					<td valign="top"><?=$ins->getIconv()?></b></td>
-					<td valign="top"><span class="green">установлена</span></td>
+					<td valign="top"><span class="green"><?php echo _('installed');?></span></td>
 				</tr>
 				<tr>
 					<td bgcolor="#F5F4F7" valign="top">Библиотека <b>gd2</b></td>
 					<td bgcolor="#F5F4F7" valign="top"><?=$ins->getGd()?></td>
-					<td bgcolor="#F5F4F7" valign="top"><span class="green">установлена</span></td>
+					<td bgcolor="#F5F4F7" valign="top"><span class="green"><?php echo _('installed');?></span></td>
 				</tr>
 			</table>
 	<br>
 <?php
 	if ($ins->ifHag1()) {
 ?>
-			<input class="button" type="button" value="Продолжить" name="B1" onClick="location.href='?hag=2'">
+			<input class="button" type="button" value="<?php echo _('Continue');?>" name="B1" onClick="location.href='?hag=2'">
 <?php
 	} else {
 ?>
-			Устраните проблемы что бы продолжить установку.
+		<?php echo _('Fix all problems to continue');?>
 <?php
 	}
 
