@@ -255,14 +255,14 @@
 			$tomorrow = mktime(0, 0, 0, date("m")  , date("d") +1, date("Y"));
 			$artoday = array();
 			
-        	// Массив за сегодня
+        	// Today's array
 			foreach ($array_playlist as $k => $v) {
 				if (($v < $tomorrow) and ($v > $today)) {
 					$artoday[$k] = $v;
 				}
 			}
 
-			//Добавляем последний вчера
+			//Adding latest yesterday
 			$v2 = 0;
 			$k2 = "";
 			foreach ($array_playlist as $k => $v) {

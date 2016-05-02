@@ -16,7 +16,7 @@
 				document.getElementById('rasp').style.display = 'none';
 			}
 		} else {
-			alert('Программа может быть запущена только по расписанию');
+			alert('Radioshow may be set in time only');
 			document.getElementById('i_rasp').checked = 'false';
 		}
 	}

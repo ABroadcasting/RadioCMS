@@ -94,7 +94,7 @@
 <?php
 				if ($line['show'] == '1') {
 ?>
-					<img src="images/magnifier.gif" width="29" height="29" border="0" title="<?php echo _('Show on main page');?>">
+					<img src="images/magnifier.gif" width="29" height="29" border="0" title="<?php echo _('Display on the main page');?>">
 <?php
 				} else {
 ?>
@@ -123,7 +123,7 @@
 							<input class="button" value="<?php echo _('Save');?>" name="submit" type="submit">
 						</td>
 						<td align="right" valign="top">
-							Песен на главной: <?php echo $vsego_pesen; ?> (<?php echo $vsego_time; ?>)
+							<?php echo _('Tracks on main page:'.'');?><?php echo $vsego_pesen; ?> (<?php echo $vsego_time; ?>)
 						</td>
 					</tr>
 				</table>

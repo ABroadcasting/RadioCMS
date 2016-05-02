@@ -102,7 +102,7 @@ echo '
 	<div class="title">Add new DJ</div>
 	<div class="border">
 <?php
-	/* Доступ к модулю */
+	/* Module access */
     if (!empty($user) and $user['admin'] != 1) {
     	$security->denied();
 	}

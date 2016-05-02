@@ -1,6 +1,6 @@
 <?php
 	include('top.php');
-	/* Доступ к модулю */
+	/* Module access */
     if (!empty($user) and $user['admin'] != 1) {
     	$security->denied();
 	}
@@ -33,7 +33,7 @@
 						<div class="podpis"><?php echo _('playlist title on the main page');?></div>
 					</td>
 					<td width="70%">
-						<input type="text" name="name" size="50" value="<?= $playlistEdit->getName() ? htmlspecialchars($playlistEdit->getName()) : 'Новый '.$next_sort ?>">
+						<input type="text" name="name" size="50" value="<?= $playlistEdit->getName() ? htmlspecialchars($playlistEdit->getName()) : _('New').' '.$next_sort ?>">
 					</td>
 				</tr>
 				<tr>
@@ -290,7 +290,7 @@
 									<td>
 										<input id="i_chasi" onclick="rasp_chasi();" type="radio" name="event" value="1" <?= $playlistEdit->isEvent1() ? 'checked' : '' ?>>
 										<font size="2">
-											<label for='i_chasi'>Воспроизводить через промежуток времени</label>
+											<label for='i_chasi'><?php echo _('Play after some time');?></label>
 										</font>
 <?php
 	if($playlistEdit->isEvent1()) {
@@ -480,9 +480,9 @@
 					</tr>
 				</table>
 				<br>
-				<input class="button" type="button" value="Назад" name="back" onClick="location.href='playlist.php'" />
-				<input class="button" type="submit" value="Сохранить" name="submit">
-				<input class="button" type="submit" value="Сохранить и перейти к добавлению треков" name="submit_and_add">
+				<input class="button" type="button" value=<?php echo _('Back');?> name="back" onClick="location.href='playlist.php'" />
+				<input class="button" type="submit" value="<?php echo _('Save');?>" name="submit">
+				<input class="button" type="submit" value=<?php echo _('Save and add tracks');?> name="submit_and_add">
 			</div>
 		</form>
 	</div>

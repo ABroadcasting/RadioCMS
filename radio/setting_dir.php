@@ -1,6 +1,6 @@
 <?php
 	include('top.php');
-	/* Доступ к модулю */
+	/* Module access */
     if (!empty($user) and $user['admin'] != 1) {
     	$security->denied();
 	}
@@ -9,7 +9,7 @@
 	$setting = Setting::create();
 	$setting->handler();
 
-	// обходим кеш строной
+	// no caching here
 	if ($request->hasPostVar('request')) {
 	    if ($request->getPostVar('dir_show') == "on") {
 		  $statistic->updateDirectory();
@@ -22,7 +22,7 @@
 		<div class="navi"><a href="setting_system.php"><?php echo _('System settings');?></a></div>
 		<div class="navi_white"><a href="setting_dir.php"><?php echo _('Catalog');?></a></div>
 		<br><br>
-		<div class="title">Каталог RadioCMS</div>
+		<div class="title"><?php echo _('RadioCMS Catalog');?></div>
 			<form method="POST" action="setting_dir.php">
 				<div class="border">
 					<table border="0" width="97%" cellpadding="0" class="paddingtable">

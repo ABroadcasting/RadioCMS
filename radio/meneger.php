@@ -41,8 +41,8 @@ echo _('Add files to'). $meneger->getPlaylistName($playlist_id_get). $dirct2;
 		<form name='fman' action='meneger_zapros.php?folder=<?=$dirct_f?>&start=<?=$start?>&search=<?=$search?>' method='POST'>
 		<table border=0 cellspacing="0" cellpadding="0" width="97%" class="table1">
 			<tr>
-				<td width=25>Выб.</td>
-				<td>Имя файла</td>
+				<td width=25><?php echo ('Choose');?></td>
+				<td><?php echo ('Filename');?></td>
 				<td width=80% align="right">
 <?php
 	if ($dirct!=$begin) {
@@ -175,7 +175,7 @@ echo _('Add files to'). $meneger->getPlaylistName($playlist_id_get). $dirct2;
 ?>
 					<img src="images/m_folder.gif" border="0" width="13" height="11">
 					<a href="meneger.php?fold=<?=$full?>"><b><?=$k?></b></a>
-					<br><div class="podpis">Папка номер <?=$ips+1?></div>
+					<br><div class="podpis"><?php echo ('Folder number'.' ');?><?=$ips+1?></div>
 <?php
 			}
 ?>

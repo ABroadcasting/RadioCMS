@@ -1,13 +1,13 @@
 <?php
 	include('top.php');
-	/* Доступ к модулю */
+	/* Module access */
     if (!empty($user) and $user['admin'] != 1) {
     	$security->denied();
 	}
 	$setting = Setting::create();
 	$setting->handler();
 
-	// обходим кеш строной
+	// no caching here
 	if ($request->hasPostVar('request')) {
 		Header("Location: setting_system.php");
 	}

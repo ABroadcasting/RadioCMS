@@ -16,7 +16,7 @@
 	$meneger = Meneger::create();
 ?>
 	<div class="body">
-		<div class="title">Adding songs to «<?=$playlist->getTitle($req_pl_id)?>»
+		<div class="title"><?php echo _('Adding songs to'.' '); ?>«<?=$playlist->getTitle($req_pl_id)?>»
 		</div>
 		<div class="border">
 			<br><br><br>

@@ -6,7 +6,7 @@
 	$user = $auth->getUser();
 	$security = Security::create();
 
-	/* Доступ к модулю */
+	/* Module access */
     if (!empty($user) and $user['admin'] != 1) {
     	$security->denied();
 	}

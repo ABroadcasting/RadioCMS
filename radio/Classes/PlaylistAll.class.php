@@ -114,13 +114,13 @@
 
 			if ( $allow_zakaz != 1 or $on_air == "2" or $on_air == "0" ) {
 				if ($allow_zakaz != 1) {
-					$return[] = "Orders under maintain. Try again later.";
+					$return[] = _("Orders under maintain. Try again later.");
 				}
 				if ($on_air == "2") {
-					$return[] = "Can not be ordered during radioshow.";
+					$return[] = _("Can not be ordered during radioshow.");
 				}
 				if ($on_air == "0") {
-					$return[] = "Unfortunately does not work.";
+					$return[] = _("Unfortunately it does not work.");
 				}
 			} else {
 				$proverka_realip = $this->request->getServerVar('REMOTE_ADDR');
@@ -129,38 +129,38 @@
 
 				$query = " SELECT * FROM `user_ip` WHERE `ip` = '$proverka_realip' and `nomer` >= 1 ";
 				if ($this->db->getColumn($query, 'ip') == $proverka_realip) {
-					$return[] = "Нельзя заказать более одной песни в течение 15 минут, пожалуйста подождите.";
+					$return[] = _("You may order only one track in 15 minues, please wait.");
 				}
 
 				// Запрос на проверку одинаковых песен
 				$query = " SELECT * FROM `zakaz` WHERE `idsong` = $zakaz ";
 				$odinakovie_pesni = $this->db->getColumn($query, 'idsong');
 				if (($odinakovie_pesni != "") and ($odinakovie_pesni == $zakaz)) {
-					$return[] = 'Эту песню уже заказали.';
+					$return[] = _('This track already has been ordered');
 				}
 
 				// Считаем количество заказов
 				$query = " SELECT * FROM `zakaz`";
 			    if ($this->db->getCountRow($query) >= LIMIT_ZAKAZOV) {
 			        if ($this->getAllowTime() > date("U")) {
-			    		$return[] = "Приём заявок завершён, пожалуйста попробуйте после ".$this->getPosle()." по Москве.";
+			    		$return[] = _("Too late for orders, please try after ").$this->getPosle()._("of local time.");
 			    	}
 
 			    }
 
-			    // Вытаскивает Артист - Титл
+			    // Getting artist - title
 			    $query = " SELECT * FROM `songlist` WHERE `idsong` = $zakaz ";
 				$proverka_full = $this->db->getColumn($query, 'artist')." - ".$this->db->getColumn($query, 'title');
 
-			 	// Проверяем наличие в игравших
+			 	// Check if recently played
 			 	$query = " SELECT * FROM `tracklist` WHERE `title` = '".addslashes($proverka_full)."'";
 
 				if ($this->db->getColumn($query, 'title')) {
-					$return[] = "Эта песня играла недавно и поэтому её сейчас нельзя заказать.";
+					$return[] = ("This track is recently played. Not for orders.");
 				}
 
 				if (empty($return)) {
-					// Добавляем заказ в массивы из songlist
+					// Adding orders to tre array songlist
 					$query = " SELECT * FROM `songlist` WHERE `idsong` = $zakaz ";
 					$line = $this->db->getLine($query);
 
@@ -168,7 +168,7 @@
 				    $query = "SELECT * FROM `zakaz`";
 					$status_zakazov_imeetsa = $this->db->getCountRow($query)+1;
 
-					// заносим заказ в zakaz
+					// adding order to zakaz
 					$query = "INSERT INTO `last_zakaz` (`track` , `time` , `skolko`  , `ip` , `idsong`, `id` )
 						VALUES (
 							'".addslashes($zakaz_track)."',
@@ -195,7 +195,7 @@
 							'".$line['duration']."'
 						)";
 					$this->db->queryNull($query);
-					$return[] =  "Заказ принят и будет исполнен в течение 20 минут после ".$this->getPosle()." по Москве.";
+					$return[] =  _("Order confirmed an will be set 20 minutes after ").$this->getPosle()._("of local time.");
 
 					$query = " UPDATE `songlist` SET `zakazano` = `zakazano`+1 WHERE `filename` = '".addslashes($line['filename'])."' ";
 					$this->db->queryNull($query);

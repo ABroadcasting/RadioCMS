@@ -1,7 +1,7 @@
 <?php
 	include('top.php');
 
-	/* Доступ к модулю */
+	/* Module access */
     if (!empty($user) and $user['admin'] != 1) {
     	$security->denied();
 	}
@@ -28,7 +28,7 @@
 		<br><br>
 		<form method="POST" action="">
 			<div class="title">
-				Просмотр плейлиста «<?=$playlist->getTitle($playlistId)?>»
+				<?php echo _('View playlist');?> «<?=$playlist->getTitle($playlistId)?>»
 			</div>
 			<div class="border">
 <?php

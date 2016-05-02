@@ -20,7 +20,7 @@
 		exit;
 	}
 
-	/* Вы зашли как */
+	/* You've been logged in as */
     if ($user['admin'] == 0) {
     	$prava = "DJ";
     } else {

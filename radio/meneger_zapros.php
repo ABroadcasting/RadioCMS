@@ -2,7 +2,7 @@
 	ob_start();
 	include('top.php');
 
-	/* Доступ к модулю */
+	/* Module access */
     if (!empty($user) and $user['admin'] != 1) {
     	$security->denied();
 	}
@@ -52,7 +52,7 @@
 					</tr>
 					<tr>
 						<td>
-							<input class="button" type="submit" value="<?php echo _('Cancel');?>" name="ot"> <input class="button" type="submit" value="Delete" name="udal_x"><br>
+							<input class="button" type="submit" value="<?php echo _('Cancel');?>" name="ot"> <input class="button" type="submit" value="<?php echo _('Delete');?>" name="udal_x"><br>
 						</td>
 <?php
 	}
@@ -209,7 +209,7 @@
 					<tr>
 						<td width="200">
 							<?php echo _('Type the folder name:');?><br>
-							<div class="podpis">Имя для сохранения</div><br><br>
+							<div class="podpis"><?php echo _('Name to save');?></div><br><br>
 							<input class="button" type="submit" value="<?php echo _('Cancel');?>" name="ot">
 							<input class="button" type="submit" value="<?php echo _('Create');?>" name="md_x">
 						</td>

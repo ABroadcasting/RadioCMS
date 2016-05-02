@@ -190,7 +190,7 @@
 				return _("Already added to the playlist.");
 			}
 
-			// заносим заказ в last_zakaz
+			// adding order to last_zakaz
 			$query = "INSERT INTO `last_zakaz` (`track` , `time` , `skolko`  , `ip` , `idsong`, `id` )
 				VALUES (
 					'".addslashes($songName)."',

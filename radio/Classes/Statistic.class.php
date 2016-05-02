@@ -35,19 +35,19 @@
 									'icon' => "msie.gif",
 									'clients' => 'msie'
 								),
-			"Радио-станция Icecast" => array(
+			"Icecast" => array(
 									'icon' => "icecast.png",
 									'clients' => 'icecast'
 								),
-			"Радио-станция Shoutcast"	=> array(
+			"Shoutcast"	=> array(
 									'icon' => "shoutcast.png",
 									'clients' => 'shoutcast'
 								),
-			"Устройства Apple"	=> array(
+			"Apple Devices"	=> array(
 									'icon' => "apple.png",
 									'clients' => 'ipad, iphone, ipod'
 								),
-			"VLC-плеер" 		=> array(
+			"VLC" 		=> array(
 									'icon' => "vlc.jpg",
 									'clients' => 'vlc'
 								),
@@ -55,11 +55,11 @@
 									'icon' => "foobar2000.png",
 									'clients' => 'foobar2000'
 								),
-			"Браузер Opera" 		=> array(
+			"Opera Browser" 		=> array(
 									'icon' => "opera.png",
 									'clients' => 'opera'
 								),
-		    "Браузер Chrome"       => array(
+		    "Chrome Browser"       => array(
                                     'icon' => "chrome.png",
                                     'clients' => 'chrome'
                                 ),
@@ -67,19 +67,19 @@
 									'icon' => "wmplayer.gif",
 									'clients' => 'wmplayer, windows-media'
 								),
-			"JetAudio-плеер" 			=> array(
+			"JetAudio" 			=> array(
 									'icon' => "jetaudio.png",
 									'clients' => 'jetaudio'
 								),
-			"Библиотека BASS" 	=> array(
+			"BASS" 	=> array(
 									'icon' => "bass.gif",
 									'clients' => 'bass'
 								),
-			"Библиотека liquidsoap" 		=> array(
+			"liquidsoap" 		=> array(
 									'icon' => "liquidsoap.gif",
 									'clients' => 'liquidsoap'
 								),
-			"Screamer-плеер" 	=> array(
+			"Screamer" 	=> array(
 									'icon' => "screamer.png",
 									'clients' => 'screamer'
 								),
@@ -87,11 +87,11 @@
 									'icon' => "irusradio.gif",
 									'clients' => 'irusradio'
 								),
-			"Устройства Android" => array(
+			"Android" => array(
 									'icon' => "android.png",
 									'clients' => 'android'
 								),
-			"Устройства Sony"	=> array(
+			"Sony"	=> array(
 									'icon' => "sonyericsson.png",
 									'clients' => 'sony'
 								),
@@ -111,11 +111,11 @@
 									'icon' => "realmedia.png",
 									'clients' => 'realmedia'
 								),
-			"XMMS-плеер"	=> array(
+			"XMMS"	=> array(
 									'icon' => "xmms.png",
 									'clients' => 'xmms'
 								),
-			"GStreamer-фреймоврк"	=> array(
+			"GStreamer"	=> array(
 									'icon' => "gstreamer.png",
 									'clients' => 'gstreamer'
 								),
@@ -123,15 +123,15 @@
 									'icon' => "audacious.png",
 									'clients' => 'audacious'
 								),
-			"Проигрыватель AIMP"	=> array(
+			"AIMP"	=> array(
 									'icon' => "aimp.png",
 									'clients' => 'aimp'
 								),		
-			"Библиотека Libav" => array(
+			"Libav" => array(
                                     'icon' => "libav.png",
                                     'clients' => 'lavf52'
                                 ), 
-            "Браузер Firefox"=> array(
+            "Firefox"=> array(
                                     'icon' => "gecko.png",
                                     'clients' => 'firefox, mozilla'
                                 ),                      	                   							
@@ -254,7 +254,7 @@
 
 			$count_mount = count($url)+1;
 			$ik = 1;
-			$rand = 1; //
+			$rand = 1;
 			if ($rand == 1) {
 				$date = date("U")+86400;
 				$date_today = $date;

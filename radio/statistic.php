@@ -12,7 +12,7 @@
 		<div class="navi_white"><a href="statistic.php"><?php echo _('General');?></a></div>
 		<div class="navi"><a href="statistic_client.php"><?php echo _('By listeners');?></a></div>
 		<br><br>
-		<div class="title">Статистика радио</div>
+		<div class="title"><?php echo _('Station statistics');?></div>
 		<div class="border">
 			<?php echo _('Listeners now');?>: <?=$statistic->getListeners()?> (<?php echo _('streams');?>: <?=$statistic->getStreamCount()?>), <?php echo _('in last 24 hours');?>:<br><br>
             <?=$nowplay->getDinamika();?>
