@@ -45,7 +45,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td background="images/navi_16.jpg"><img border="0" src="images/navi_05.jpg" width="100" height="84"><img border="0" src="images/separator.jpg" width="1" height="84"><img border="0" src="images/navi_07.jpg" width="100" height="84"><img border="0" src="images/separator.jpg" width="1" height="84"><img border="0" src="images/navi_09.jpg" width="100" height="84"><img border="0" src="images/separator.jpg" width="1" height="84"><img border="0" src="images/navi_11.jpg" width="100" height="84"><img border="0" src="images/separator.jpg" width="1" height="84"><img border="0" src="images/navi_17.jpg" width="100" height="84"><img border="0" src="images/separator.jpg" width="1" height="84"><img border="0" src="images/navi_13.jpg" width="100" height="84"><img border="0" src="images/separator.jpg" width="1" height="84"></tr>
+						<td></tr>
 				</table>
 				</td>
 				<td width="2" align="left"><img border="0" src="images/separator.jpg" width="1" height="122"></td>
@@ -292,8 +292,8 @@ echo _('Greetings! You have successfully installed RadioCMS.
 <?php echo'	</div>
 			<br>'._('In security reasons we recommend to delete install.php file.').'
 			<br><br>
-			<input class="button" type="button" value="'._('Go to panel').'" name="B1" onClick="location.href='index.php'">';
-		
+			<input class="button" type="button" value="'._('Go to panel').'" name="B1" onClick="location.href=\'index.php\'">';
+
 	}
 ?>
 
