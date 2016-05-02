@@ -97,11 +97,11 @@
 							</td>
 							<td valign="top">
 								<select size="1" name="dir_bitrate" style="width:100px;">
-									<option <?=(DIR_BITRATE=='64')? 'selected':''?> value="64"><?php echo _('64 '.'kbit\s');?></option>
-									<option <?=(DIR_BITRATE=='96')? 'selected':''?> value="96"><?php echo _('96 '.'kbit\s');?></option>
-									<option <?=(DIR_BITRATE=='128')? 'selected':''?> value="128"><?php echo _('128 '.'kbit\s');?></option>
-									<option <?=(DIR_BITRATE=='192')? 'selected':''?> value="192"><?php echo _('192 '.'kbit\s');?></option>
-									<option <?=(DIR_BITRATE=='256')? 'selected':''?> value="256"><?php echo _('256 '.'kbit\s');?></option>
+									<option <?=(DIR_BITRATE=='64')? 'selected':''?> value="64"><?php echo ('64 '._('kbit\s'));?></option>
+									<option <?=(DIR_BITRATE=='96')? 'selected':''?> value="96"><?php echo ('96 '._('kbit\s'));?></option>
+									<option <?=(DIR_BITRATE=='128')? 'selected':''?> value="128"><?php echo ('128 '._('kbit\s'));?></option>
+									<option <?=(DIR_BITRATE=='192')? 'selected':''?> value="192"><?php echo ('192 '._('kbit\s'));?></option>
+									<option <?=(DIR_BITRATE=='256')? 'selected':''?> value="256"><?php echo _('256 '._('kbit\s'));?></option>
 									<option <?=(DIR_BITRATE=='VBR')? 'selected':''?> value="VBR"><?php echo _('VBR');?></option>
 								</select>
 								<br><div class="podpis"><?php echo _('VBR - Varaible bitrate');?></div>
