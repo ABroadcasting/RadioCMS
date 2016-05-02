@@ -83,7 +83,7 @@
 		public function ifHag3() {
 			$con = @ssh2_connect($this->request->getPostVar('ip'), $this->request->getPostVar('ssh_port'));
 			if(!@ssh2_auth_password($con, $this->request->getPostVar('ssh_user'), $this->request->getPostVar('ssh_pass'))) {
-				return "<p>Wrong login or password.</p>";
+				return _("<p>Wrong login or password.</p>");
     		}
     		$this->saveConfig('IP', $this->request->getPostVar('ip'));
     		$this->saveConfig('URL', $this->request->getPostVar('url'));
