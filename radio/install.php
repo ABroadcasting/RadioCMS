@@ -7,10 +7,10 @@
 	$request = Request::create();
 	$ins = Install::create();
 
-	$hag_install = "Installation: Step 1 (Checking files and libraries)";
+	$hag_install = _("Installation: Step 1 (Checking files and libraries)");
 	$hag = 1;
 	if (!empty($_GET['hag'])) {
-		if ($_GET['hag'] == 2) { $hag = 2; $hag_install = "Установка: Шаг 2 (Настройка базы данных)"; }
+		if ($_GET['hag'] == 2) { $hag = 2; $hag_install = _("Installation: Step 2 (Database settings)"); }
 		if ($_GET['hag'] == 3) { $hag = 3; $hag_install = "Установка: Шаг 3 (Ввод основных данных)"; }
 		if ($_GET['hag'] == 4) { $hag = 4; $hag_install = "Установка: Шаг 4 (Настройка путей)"; }
 		if ($_GET['hag'] == 5) { $hag = 5; $hag_install = "Установка: Шаг 5 (Установка пароля RadioCMS)"; }
@@ -224,7 +224,7 @@
 ?>
 			<table border="0" width="97%" cellpadding="0" class="paddingtable">
 				<tr>
-					<td width="150" valign="top"><span lang="en-us">Сервер:</span><br>
+					<td width="150" valign="top"><span lang="en-us"><?php echo _('Server:');?></span><br>
 					<div class="podpis">обычно localhost</div></td>
 					<td valign="top">
 						<input type="text" name="db_host" size="35" value="<?=$request->hasPostVar('db_host') ? $request->getPostVar('db_host') : DB_HOST?>">
@@ -235,8 +235,8 @@
 					<td valign="top">&nbsp;</td>
 				</tr>
 				<tr>
-					<td valign="top"><span lang="en-us">Логин:</span><br>
-					<div class="podpis">укажите логин</div></td>
+					<td valign="top"><span lang="en-us"><?php echo _('Login:');?></span><br>
+					<div class="podpis"><?php echo _('set login');?></div></td>
 					<td valign="top">
 						<input type="text" name="db_login" size="35" value="<?=$request->hasPostVar('db_login') ? $request->getPostVar('db_login') : DB_LOGIN?>">
 					</td>
@@ -246,10 +246,10 @@
 					<td valign="top">&nbsp;</td>
 				</tr>
 				<tr>
-					<td valign="top"><span lang="en-us">Пароль:</span><br>
-					<div class="podpis">укажите пароль</div></td>
+					<td valign="top"><span lang="en-us"><?php echo _('Password:');?></span><br>
+					<div class="podpis"><?php echo _('Set password');?></div></td>
 					<td valign="top">
-						<input type="text" name="db_password" size="35" value="<?=$request->hasPostVar('db_password') ? $request->getPostVar('db_password') : DB_PASSWORD?>">
+						<input type="password" name="db_password" size="35" value="<?=$request->hasPostVar('db_password') ? $request->getPostVar('db_password') : DB_PASSWORD?>">
 					</td>
 				</tr>
 				<tr>
@@ -257,8 +257,8 @@
 					<td valign="top">&nbsp;</td>
 				</tr>
 				<tr>
-					<td valign="top">База:<br>
-					<div class="podpis">база данных</div></td>
+					<td valign="top"><?php echo _('Database:');?><br>
+					<div class="podpis"><?php echo _('set the database name');?></div></td>
 					<td valign="top">
 						<input type="text" name="db_name" size="35" value="<?=$request->hasPostVar('db_name') ? $request->getPostVar('db_name') : DB_NAME?>">
 					</td>
@@ -270,8 +270,8 @@
 		}
 ?>
 			<p>
-				<input class="button" type="button" value="Назад" name="B1" onClick="location.href='?hag=1'">
-	 			<input class="button" type="submit" value="Продолжить" name="hag2">
+				<input class="button" type="button" value="<?php echo _('Back');?>" name="B1" onClick="location.href='?hag=1'">
+	 			<input class="button" type="submit" value="<?php echo _('Next');?>" name="hag2">
 	 		</p>
 <?php
 	}
