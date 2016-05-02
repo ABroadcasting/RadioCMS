@@ -318,12 +318,12 @@
 					<td bgcolor="#F5F4F7" valign="top"><span class="green"><?php echo _('is writable');?></span></td>
 				</tr>
 				<tr>
-					<td valign="top">Права на файл <b>_config.php</b></td>
+					<td valign="top"><?php echo _('Permissions for <b>_config.php</b> file');?></td>
 					<td valign="top"><?=$ins->getPerms($request->getRadioPath()."_config.php")?></td>
 					<td valign="top"><span class="green"><?php echo _('is writable');?></span></td>
 				</tr>
 				<tr>
-					<td valign="top">Права на файл <b>_system.php</b></td>
+					<td valign="top"><?php echo _('Permissions for <b>_system.php</b> file');?></td>
 					<td valign="top"><b><?=$ins->getPerms($request->getRadioPath()."_system.php")?></b></td>
 					<td valign="top"><span class="green"><?php echo _('is writable');?></span></td>
 				</tr>
@@ -353,7 +353,7 @@
 					<td valign="top"><span class="green"><?php echo _('installed');?></span></td>
 				</tr>
 				<tr>
-					<td bgcolor="#F5F4F7" valign="top">Библиотека <b>gd2</b></td>
+					<td bgcolor="#F5F4F7" valign="top"><?php echo _('<b>gd2</b> library');?></td>
 					<td bgcolor="#F5F4F7" valign="top"><?=$ins->getGd()?></td>
 					<td bgcolor="#F5F4F7" valign="top"><span class="green"><?php echo _('installed');?></span></td>
 				</tr>
