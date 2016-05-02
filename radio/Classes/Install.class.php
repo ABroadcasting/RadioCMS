@@ -100,7 +100,7 @@
 				$this->request->getPostVar('db_login'),
 				$this->request->getPostVar('db_password')
 			);
-			$link_db = @mysql_select_db($this->request->getPostVar('db_name'));
+			$link_db = @mysqli_select_db($this->request->getPostVar('db_name'));
 
 			if ($link and $link_db) {
 				$this->saveConfig('DB_HOST', $this->request->getPostVar('db_host'));
@@ -388,12 +388,12 @@
         }
         
         public function getLine($query) {
-            $result = mysql_query($query) or die($this->debug());
-            return mysql_fetch_array($result, MYSQL_ASSOC);
+            $result = mysqli_query($query) or die($this->debug());
+            return mysqli_fetch_array($result, MYSQLI_ASSOC);
         }
         
         public function queryNull($query) {
-            mysql_query($query) or die($this->debug());
+            mysqli_query($query) or die($this->debug());
         }
 	}
 ?>
