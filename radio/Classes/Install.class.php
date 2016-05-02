@@ -116,9 +116,9 @@
 
 		public function createTable($db_name) {
 			mysqli_query("SET NAMES 'utf8'") 
-				or die(_("Install query failed : ") . mysql_error());
+				or die(_("Install query failed : ") . mysqli_error());
 			mysqli_query("ALTER DATABASE `".$db_name."` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci")
-			 or die(_("Install query failed : ") . mysql_error());
+			 or die(_("Install query failed : ") . mysqli_error());
 
 			mysqli_query("CREATE TABLE IF NOT EXISTS `last_zakaz` (
 			  `id` varchar(15) NOT NULL,
@@ -128,7 +128,7 @@
 			  `skolko` varchar(10) NOT NULL,
 			  `ip` varchar(25) NOT NULL
 			) ENGINE=MyISAM DEFAULT CHARSET=utf8;")
-			 or die(_("Install query failed : ") . mysql_error());
+			 or die(_("Install query failed : ") . mysqli_error());
 
 			mysqli_query("CREATE TABLE IF NOT EXISTS `login` (
 			  `ip` varchar(25) NOT NULL,
@@ -138,7 +138,7 @@
 			  `hash` varchar(25) NOT NULL,
 			  `admin` int(1) NOT NULL
 			) ENGINE=MyISAM DEFAULT CHARSET=utf8;")
-			 or die(_("Install query failed : ") . mysql_error());
+			 or die(_("Install query failed : ") . mysqli_error());
 
 			mysqli_query("CREATE TABLE IF NOT EXISTS `playlist` (
 			  `id` int(11) NOT NULL auto_increment,
@@ -155,7 +155,7 @@
 			  `auto` int(11) default '0',
 			  PRIMARY KEY  (`id`)
 			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;")
-			 or die(_("Install query failed : ") . mysql_error());
+			 or die(_("Install query failed : ") . mysqli_error());
 
 			mysqli_query("CREATE TABLE IF NOT EXISTS `poisk` (
 				`title` varchar(50) NOT NULL,
@@ -165,7 +165,7 @@
 				`filename` text NOT NULL,
 				`duration` int(11) NOT NULL
 			) ENGINE=MyISAM DEFAULT CHARSET=utf8;")
-			 or die(_("Install query failed : ") . mysql_error());
+			 or die(_("Install query failed : ") . mysqli_error());
 
 			mysqli_query("CREATE TABLE IF NOT EXISTS `songlist` (
 			  `idsong` int(11) NOT NULL auto_increment,
@@ -183,7 +183,7 @@
               PRIMARY KEY  (`idsong`),
               FULLTEXT KEY `artist` (`artist`,`title`)
 			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;")
-			 or die(_("Install query failed : ") . mysql_error());
+			 or die(_("Install query failed : ") . mysqli_error());
 
 			mysqli_query("CREATE TABLE IF NOT EXISTS `statistic` (
 			  `type` varchar(50) NOT NULL,
@@ -205,7 +205,7 @@
 			  `time` varchar(25) NOT NULL,
 			  PRIMARY KEY  (`id`)
 			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;")
-			 or die(_("Install query failed : ") . mysql_error());
+			 or die(_("Install query failed : ") . mysqli_error());
 
 			mysqli_query("CREATE TABLE IF NOT EXISTS `user_ip` (
 			  `id` int(20) NOT NULL auto_increment,
@@ -214,7 +214,7 @@
 			  `nomer` int(2) NOT NULL,
 			  PRIMARY KEY  (`id`)
 			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;")
-			 or die(_("Install query failed : ") . mysql_error());
+			 or die(_("Install query failed : ") . mysqli_error());
 
 			mysqli_query("CREATE TABLE IF NOT EXISTS `zakaz` (
 			  `id` int(11) NOT NULL auto_increment,
@@ -227,14 +227,14 @@
 			  `admin` int(1) NOT NULL,
 			  PRIMARY KEY  (`id`)
 			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;")
-			 or die(_("Install query failed : "). mysql_error());
+			 or die(_("Install query failed : "). mysqli_error());
 
 			mysqli_query("CREATE TABLE IF NOT EXISTS `settings` (
 			  `name` varchar(25) NOT NULL,
 			  `value` text NOT NULL,
 			  PRIMARY KEY  (`name`)
 			) ENGINE=MyISAM DEFAULT CHARSET=utf8;")
-			 or die(_("Install query failed : ") . mysql_error());
+			 or die(_("Install query failed : ") . mysqli_error());
 
 			mysqli_query("CREATE TABLE IF NOT EXISTS `dj` (
 			  `id` tinyint(50) NOT NULL auto_increment,
@@ -245,7 +245,7 @@
 			  PRIMARY KEY  (`id`),
 			  UNIQUE KEY `dj` (`dj`)
 			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=34 ;")
-			 or die(_("Install query failed : ") . mysql_error());
+			 or die(_("Install query failed : ") . mysqli_error());
 			 			 
              $this->saveSetting('main_text', _('Here you can keep some shared writings'));
              $this->saveSetting('online', '0');
