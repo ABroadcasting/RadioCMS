@@ -62,21 +62,21 @@
 			if ($all_event1[$event1_count]['id'] && $now_time > $allow_time2) {
 			    echo "zapusk event1<br>";
 				$query = "SELECT SUM(`duration`) as sum FROM `songlist` WHERE `id`=".$all_event1[$event1_count]['id'];
-				$result = mysql_query($query) or die("Query failed2 : " . mysql_error());
-				$line = mysql_fetch_array($result, MYSQL_ASSOC);
+				$result = mysqli_query($query) or die("Query failed2 : " . mysqli_error());
+				$line = mysqli_fetch_array($result, MYSQLI_ASSOC);
 				$event1_duration = $line['sum'];
 
 				$query = "SELECT * FROM `playlist` WHERE `id`=".$all_event1[$event1_count]['id'];
-				$result = mysql_query($query) or die("Query failed3 : " . mysql_error());
-				$line = mysql_fetch_array($result, MYSQL_ASSOC);
+				$result = mysqli_query($query) or die("Query failed3 : " . mysqli_error());
+				$line = mysqli_fetch_array($result, MYSQLI_ASSOC);
 				$play_mode = $line['playmode'];
 
 				$query = "SELECT * FROM `songlist` WHERE `id`=".$all_event1[$event1_count]['id']." ORDER BY `sort`";
-				$result = mysql_query($query) or die("Query failed4 : " . mysql_error());
+				$result = mysqli_query($query) or die("Query failed4 : " . mysqli_error());
 
 				// Randomly one
 				if ($play_mode == "2") {
-					while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
+					while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 						if ( file_exists($line['filename']) ) {
 							$play_list_array_temp[] = $line['filename']."\n";
 						}
@@ -95,7 +95,7 @@
 
 				// Randomly
 				if ($play_mode == "1") {
-					while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
+					while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 						if ( file_exists($line['filename']) ) {
 							$play_list_array[] = $line['filename']."\n";
 						}
@@ -112,7 +112,7 @@
 
 				// In order
 				if ($play_mode == "0") {
-					while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
+					while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 						if ( file_exists($line['filename']) ) {
 							$play_list_array[] = $line['filename']."\n";
 						}
@@ -127,7 +127,7 @@
 
 				// Radioshow
 				if ($play_mode == "3") {
-					while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
+					while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 						if ( file_exists($line['filename']) ) {
 							$play_list_array[] = $line['filename']."\n";
 						}
@@ -175,25 +175,25 @@
 			if ($all_event1_auto[$event1_count]['time'] < $now_time && $all_event1_auto[$event1_count]['id']) {
 		        echo "zapusk event1_auto<br>";
 				$query = "SELECT SUM(`duration`) as sum FROM `songlist` WHERE `id`=".$all_event1_auto[$event1_count]['id'];
-				$result = mysql_query($query) or die("Query failed6 : " . mysql_error());
-				$line = mysql_fetch_array($result, MYSQL_ASSOC);
+				$result = mysqli_query($query) or die("Query failed6 : " . mysqli_error());
+				$line = mysqli_fetch_array($result, MYSQLI_ASSOC);
 				$event1_duration = $line['sum'];
 				echo $event1_duration." -allduration_1_auto<br>";
 
 				if (($allow_time_tmp + $vremya_trecka*60) < $all_event2[0]['time']) {
 
 					$query = "SELECT * FROM `playlist` WHERE `id`=".$all_event1_auto[$event1_count]['id'];
-					$result = mysql_query($query) or die("Query failed78 : " . mysql_error());
-					$line = mysql_fetch_array($result, MYSQL_ASSOC);
+					$result = mysqli_query($query) or die("Query failed78 : " . mysqli_error());
+					$line = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
 					$play_mode = $line['playmode'];
 
 					$query = "SELECT * FROM `songlist` WHERE `id`=".$all_event1_auto[$event1_count]['id']." ORDER BY `sort`";
-					$result = mysql_query($query) or die("Query failed8 : " . mysql_error());
+					$result = mysqli_query($query) or die("Query failed8 : " . mysqli_error());
 
 					// Randomly one auto
 					if ($play_mode == "2") {
-						while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
+						while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 		           			// Добавляем файлы в массив
 							if ( file_exists($line['filename']) ) {
 								$play_list_array_temp[] = $line['filename']."\n";
@@ -213,7 +213,7 @@
 
 					// Randomly auto
 					if ($play_mode == "1") {
-						while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
+						while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 							$play_list_array[] = $line['filename']."\n";
 						};
 
@@ -228,7 +228,7 @@
 
 					// In order auto
 					if ($play_mode == "0") {
-						while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
+						while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 							$play_list_array[] = $line['filename']."\n";
 						}
 						// Time
@@ -241,7 +241,7 @@
 
 					// Radioshow auto
 					if ($play_mode == "3") {
-						while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
+						while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 							$play_list_array[] = $line['filename']."\n";
 						}
 						// Time
@@ -299,17 +299,17 @@
 		$now_time > $allow_time2
 	) {
 		$query = "SELECT * FROM `playlist` WHERE `now`=1";
-		$result = mysql_query($query) or die("Query failed77 : " . mysql_error());
-		$line = mysql_fetch_array($result, MYSQL_ASSOC);
+		$result = mysqli_query($query) or die("Query failed77 : " . mysqli_error());
+		$line = mysqli_fetch_array($result, MYSQLI_ASSOC);
 		$play_mode = $line['playmode'];
 
 	    // Only if not radioshow playing
 	    if ($play_mode != 3) {
 			$query = "SELECT * FROM `zakaz` ORDER BY `id` ASC";
-			$result = mysql_query($query) or die("Query failed10 : " . mysql_error());
+			$result = mysqli_query($query) or die("Query failed10 : " . mysql_error());
 
 			// Write orders to playlist
-			while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
+			while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 				for ( $ips=0; $ips<NO_REPEAT; $ips++)  {
 					if (
 						!empty($net_povtorov_array[$ips]) and
@@ -324,8 +324,8 @@
 			$play_list_array = array_unique($play_list_array);
 
 			$query = "SELECT SUM(`duration`) as sum FROM `zakaz` ";
-			$result = mysql_query($query) or die("Query failed11 " . mysql_error());
-			$line = mysql_fetch_array($result, MYSQL_ASSOC);
+			$result = mysqli_query($query) or die("Query failed11 " . mysqli_error());
+			$line = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
 			$zakaz_duration = $line['sum'];
 			$allow_time_tmp = $allow_time_tmp + $zakaz_duration + $vremya_trecka*60;;
@@ -337,7 +337,7 @@
 			};
 
 			$query = "DELETE FROM `zakaz` ";
-			$result = mysql_query($query) or die("Query failed12 : " . mysql_error());
+			$result = mysqli_query($query) or die("Query failed12 : " . mysqli_error());
 		}
 	}
 
@@ -352,8 +352,8 @@
 	$playlist_id_now = 0;
 
 	$query = "SELECT * FROM `playlist` WHERE `now`=1";
-	$result = mysql_query($query) or die("Query failed13 : " . mysql_error());
-	$line = mysql_fetch_array($result, MYSQL_ASSOC);
+	$result = mysqli_query($query) or die("Query failed13 : " . mysqli_error());
+	$line = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
 	if ($line) {
 		$playlist_id_now = $line['id'];
@@ -364,28 +364,28 @@
 
 	if (isset($all_event2[0]) && $now_time > $all_event2[0]['time']) {
 		$query = "UPDATE `playlist` SET `now`=0 WHERE `id`=".$playlist_id_now;
-		$result = mysql_query($query) or die("Query failed14 : " . mysql_error());
+		$result = mysqli_query($query) or die("Query failed14 : " . mysqli_error());
 
 	    // Remember old id
 		$playlist_id_old = $playlist_id_now;
 		$playlist_id_now = $all_event2[0]['id'];
 
 		$query = "UPDATE `playlist` SET `now`=1 WHERE `id`=".$playlist_id_now;
-		$result = mysql_query($query) or die("Query failed : " . mysql_error());
+		$result = mysqli_query($query) or die("Query failed : " . mysqli_error());
 
 		$new_playlist = 1;
 	}
 
 	$query = "SELECT * FROM `playlist` WHERE `id`=".$playlist_id_now;
-	$result = mysql_query($query) or die("Query failed15 : " . mysql_error());
-	$line = mysql_fetch_array($result, MYSQL_ASSOC);
+	$result = mysqli_query($query) or die("Query failed15 : " . mysqli_error());
+	$line = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
 	$play_mode = $line['playmode'];
 
 	if ($play_list_text || $new_playlist) {
         if ($new_playlist and $play_mode == "0") {
             $query = "UPDATE `songlist` SET `played` = 0 WHERE `id`=".$playlist_id_now;
-            $result = mysql_query($query) or die("Query failed16 : " . mysql_error());   
+            $result = mysqli_query($query) or die("Query failed16 : " . mysqli_error());   
         }
         
         if ($play_mode == "0") {
@@ -395,9 +395,9 @@
         }
         
 		$query = "SELECT * FROM `songlist` WHERE `id`=".$playlist_id_now." $and_where ORDER BY `sort`";
-		$result = mysql_query($query) or die("Query failed16 : " . mysql_error());
+		$result = mysqli_query($query) or die("Query failed16 : " . mysqli_error());
 		if ($play_mode == "2") {
-			while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
+			while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 				for ( $ips=0; $ips<NO_REPEAT; $ips++)  {
 					if (
 						!empty($net_povtorov_array[$ips]) and
@@ -422,7 +422,7 @@
 
 		// Randomly
 		if ($play_mode == "1") { echo "1<br>";
-			while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
+			while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 				if (file_exists($line['filename'])) {
 					$play_list_array[] = $line['filename']."\n";
 				}
@@ -447,7 +447,7 @@
 
 		// In order
 		if ($play_mode == "0") { echo "0<br>";
-   			while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
+   			while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 				if (file_exists($line['filename'])) {
 					$play_list_array[] = $line['filename']."\n";
 				}
@@ -457,7 +457,7 @@
 		// Radioshow
 		if ($play_mode == "3") {
 			echo "3<br>";
-			while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
+			while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 				if ( file_exists($line['filename']) ) {
 					$play_list_array[] = $line['filename']."\n";
 					echo _("play_mode 3 works<br>");
@@ -473,18 +473,18 @@
 
 			// Adding files from old id
     		$query_old = "SELECT * FROM `playlist` WHERE `id`=".$playlist_id_old;
-			$result_old = mysql_query($query_old) or die("Query failed16 : " . mysql_error());
+			$result_old = mysqli_query($query_old) or die("Query failed16 : " . mysqli_error());
 
-			while ($line_old = mysql_fetch_array($result_old, MYSQL_ASSOC)) {
+			while ($line_old = mysqli_fetch_array($result_old, MYSQLI_ASSOC)) {
 				$play_mode_old = $line_old['playmode'];
 			}
 			// Adding files from old id
     		$query_old = "SELECT * FROM `songlist` WHERE `id`=".$playlist_id_old;
-			$result_old = mysql_query($query_old) or die("Query failed16 : " . mysql_error());
+			$result_old = mysqli_query($query_old) or die("Query failed16 : " . mysqli_error());
 
     		// In order and fix others
 			if ($play_mode_old != "1") {
-				while ($line_old = mysql_fetch_array($result_old, MYSQL_ASSOC)) {
+				while ($line_old = mysqli_fetch_array($result_old, MYSQLI_ASSOC)) {
 					$play_list_array[] = $line_old['filename']."\n";
 				}
 
@@ -505,7 +505,7 @@
 
 			// Randomly
 			if ($play_mode_old == "1") {
-				while ($line_old = mysql_fetch_array($result_old, MYSQL_ASSOC)) {
+				while ($line_old = mysqli_fetch_array($result_old, MYSQLI_ASSOC)) {
 					$play_list_array[] = $line_old['filename']."\n";
 				}
 
@@ -528,17 +528,17 @@
 
 			// Time request
 			$query = "SELECT SUM(`duration`) as sum FROM `songlist` WHERE `id`=".$playlist_id_now;
-			$result = mysql_query($query) or die("Query failed11 " . mysql_error());
-			$line = mysql_fetch_array($result, MYSQL_ASSOC);
+			$result = mysqli_query($query) or die("Query failed11 " . mysqli_error());
+			$line = mysqli_fetch_array($result, MYSQLI_ASSOC);
      		// Запись времени
 			$zakaz_duration = $line['sum'];
 			$allow_time_tmp = $allow_time_tmp + $zakaz_duration + $vremya_trecka*60;;
 			$allow_time = $allow_time_tmp;
 
 			$query = "UPDATE `playlist` SET `now`=0 WHERE `id`=".$playlist_id_now;
-			$result = mysql_query($query) or die("Query failed : " . mysql_error());
+			$result = mysqli_query($query) or die("Query failed : " . mysqli_error());
 			$query = "UPDATE `playlist` SET `now`=1 WHERE `id`=".$playlist_id_old;
-			$result = mysql_query($query) or die("Query failed : " . mysql_error());
+			$result = mysqli_query($query) or die("Query failed : " . mysqli_error());
 		}
 
 

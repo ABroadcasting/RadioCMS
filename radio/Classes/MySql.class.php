@@ -12,36 +12,36 @@
 		}
 		
 		private function __construct() {
-			$this->link = mysql_connect(DB_HOST, DB_LOGIN, DB_PASSWORD)
+			$this->link = mysqli_connect(DB_HOST, DB_LOGIN, DB_PASSWORD)
 		  		or die (_("Could not connect to MySQL"));
 		
-			mysql_select_db(DB_NAME)
+			mysqli_select_db(DB_NAME)
 		  		or die (_("Could not select database"));
 		
-			mysql_query("SET NAMES 'utf8'", $this->link);
+			mysqli_query("SET NAMES 'utf8'", $this->link);
             
             $this->request = Request::create();
 		}
 		
 		public function queryNull($query) {
-			mysql_query($query, $this->link) or die($this->debug());
+			mysqli_query($query, $this->link) or die($this->debug());
 		}
 
 		public function getLine($query) {
-			$result = mysql_query($query, $this->link) or die($this->debug());
-			return mysql_fetch_array($result, MYSQL_ASSOC);
+			$result = mysqli_query($query, $this->link) or die($this->debug());
+			return mysqli_fetch_array($result, MYSQL_ASSOC);
 		}
 
 		public function getColumn($query, $column) {
-			$result = mysql_query($query, $this->link) or die($this->debug());
-			$line =  mysql_fetch_array($result, MYSQL_ASSOC);
+			$result = mysqli_query($query, $this->link) or die($this->debug());
+			$line =  mysqli_fetch_array($result, MYSQL_ASSOC);
 			return $line[$column];
 		}
 
 		public function getLines($query) {
-			$result = mysql_query($query, $this->link) or die($this->debug());
+			$result = mysqli_query($query, $this->link) or die($this->debug());
 			$lines = array();
-			while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
+			while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
     			$lines[] = $line;
 			}
 
@@ -49,7 +49,7 @@
 		}
 
 		public function getCountRow($query) {
-			$result = mysql_query($query, $this->link) or die($this->debug());
+			$result = mysqli_query($query, $this->link) or die($this->debug());
         	return mysql_num_rows($result);
 		}
 		

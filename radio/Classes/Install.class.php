@@ -95,7 +95,7 @@
 		}
 
 		public function ifHag2() {
-			$link = @mysql_connect(
+			$link = @mysqli_connect(
 				$this->request->getPostVar('db_host'),
 				$this->request->getPostVar('db_login'),
 				$this->request->getPostVar('db_password')
@@ -115,12 +115,12 @@
 		}
 
 		public function createTable($db_name) {
-			mysql_query("SET NAMES 'utf8'") 
+			mysqli_query("SET NAMES 'utf8'") 
 				or die(_("Install query failed : ") . mysql_error());
-			mysql_query("ALTER DATABASE `".$db_name."` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci")
+			mysqli_query("ALTER DATABASE `".$db_name."` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci")
 			 or die(_("Install query failed : ") . mysql_error());
 
-			mysql_query("CREATE TABLE IF NOT EXISTS `last_zakaz` (
+			mysqli_query("CREATE TABLE IF NOT EXISTS `last_zakaz` (
 			  `id` varchar(15) NOT NULL,
 			  `idsong` varchar(15) NOT NULL,
 			  `track` varchar(100) NOT NULL,
@@ -130,7 +130,7 @@
 			) ENGINE=MyISAM DEFAULT CHARSET=utf8;")
 			 or die(_("Install query failed : ") . mysql_error());
 
-			mysql_query("CREATE TABLE IF NOT EXISTS `login` (
+			mysqli_query("CREATE TABLE IF NOT EXISTS `login` (
 			  `ip` varchar(25) NOT NULL,
 			  `dj` varchar(50) NOT NULL,
 			  `raz` tinyint(10) NOT NULL,
@@ -140,7 +140,7 @@
 			) ENGINE=MyISAM DEFAULT CHARSET=utf8;")
 			 or die(_("Install query failed : ") . mysql_error());
 
-			mysql_query("CREATE TABLE IF NOT EXISTS `playlist` (
+			mysqli_query("CREATE TABLE IF NOT EXISTS `playlist` (
 			  `id` int(11) NOT NULL auto_increment,
 			  `name` text,
 			  `playmode` tinyint(4) default NULL,
@@ -157,7 +157,7 @@
 			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;")
 			 or die(_("Install query failed : ") . mysql_error());
 
-			mysql_query("CREATE TABLE IF NOT EXISTS `poisk` (
+			mysqli_query("CREATE TABLE IF NOT EXISTS `poisk` (
 				`title` varchar(50) NOT NULL,
 				`artist` varchar(50) NOT NULL,
 				`id` int(10) NOT NULL,
@@ -167,7 +167,7 @@
 			) ENGINE=MyISAM DEFAULT CHARSET=utf8;")
 			 or die(_("Install query failed : ") . mysql_error());
 
-			mysql_query("CREATE TABLE IF NOT EXISTS `songlist` (
+			mysqli_query("CREATE TABLE IF NOT EXISTS `songlist` (
 			  `idsong` int(11) NOT NULL auto_increment,
 			  `zakazano` int(10) NOT NULL,
 			  `id` int(11) default NULL,
@@ -185,7 +185,7 @@
 			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;")
 			 or die(_("Install query failed : ") . mysql_error());
 
-			mysql_query("CREATE TABLE IF NOT EXISTS `statistic` (
+			mysqli_query("CREATE TABLE IF NOT EXISTS `statistic` (
 			  `type` varchar(50) NOT NULL,
 			  `country` varchar(20) NOT NULL,
 			  `country_name` varchar(25) NOT NULL,
@@ -197,7 +197,7 @@
 			  KEY `stream` (`listeners`)
 			) ENGINE=MyISAM DEFAULT CHARSET=utf8;");
 
-			mysql_query("CREATE TABLE IF NOT EXISTS `tracklist` (
+			mysqli_query("CREATE TABLE IF NOT EXISTS `tracklist` (
 			  `title` text,
 			  `id` int(20) NOT NULL auto_increment,
 			  `idsong` int(11) NOT NULL,
@@ -207,7 +207,7 @@
 			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;")
 			 or die(_("Install query failed : ") . mysql_error());
 
-			mysql_query("CREATE TABLE IF NOT EXISTS `user_ip` (
+			mysqli_query("CREATE TABLE IF NOT EXISTS `user_ip` (
 			  `id` int(20) NOT NULL auto_increment,
 			  `ip` varchar(100) NOT NULL,
 			  `time` varchar(100) NOT NULL,
@@ -216,7 +216,7 @@
 			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;")
 			 or die(_("Install query failed : ") . mysql_error());
 
-			mysql_query("CREATE TABLE IF NOT EXISTS `zakaz` (
+			mysqli_query("CREATE TABLE IF NOT EXISTS `zakaz` (
 			  `id` int(11) NOT NULL auto_increment,
 			  `idsong` int(10) NOT NULL,
 			  `filename` text,
@@ -229,14 +229,14 @@
 			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;")
 			 or die(_("Install query failed : "). mysql_error());
 
-			mysql_query("CREATE TABLE IF NOT EXISTS `settings` (
+			mysqli_query("CREATE TABLE IF NOT EXISTS `settings` (
 			  `name` varchar(25) NOT NULL,
 			  `value` text NOT NULL,
 			  PRIMARY KEY  (`name`)
 			) ENGINE=MyISAM DEFAULT CHARSET=utf8;")
 			 or die(_("Install query failed : ") . mysql_error());
 
-			mysql_query("CREATE TABLE IF NOT EXISTS `dj` (
+			mysqli_query("CREATE TABLE IF NOT EXISTS `dj` (
 			  `id` tinyint(50) NOT NULL auto_increment,
 			  `description` varchar(100) NOT NULL,
 			  `dj` varchar(50) NOT NULL,

@@ -7,7 +7,7 @@
 	$gr_val = array();
 
 	$query = "SELECT * FROM `statistic` WHERE `type` = 'graph' ORDER BY `time` DESC";
-	$result = mysql_query($query) or die("Query failed : " . mysql_error());
+	$result = mysqli_query($query) or die("Query failed : " . mysqli_error());
 
 	$s = mysql_num_rows($result);
 
