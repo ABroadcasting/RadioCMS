@@ -333,7 +333,7 @@
 		public function ifHag1() {
             if (
             	$this->isGreen(
-            		$this->getPerms($this->request->getMusicPath())
+            		$this->getPerms(MUSIC_PATH)
             	)	 and
             	$this->isGreen(
             		$this->getPerms($this->request->getRadioPath()."_config.php")

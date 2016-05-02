@@ -314,7 +314,7 @@
 				</tr>
 				<tr>
 					<td bgcolor="#F5F4F7" valign="top"><?php echo _('Permissions for <b>music</b> folder');?></td>
-					<td bgcolor="#F5F4F7" valign="top"><?=$ins->getPerms($request->getMusicPath())?></td>
+					<td bgcolor="#F5F4F7" valign="top"><?=$ins->getPerms(MUSIC_PATH)?></td>
 					<td bgcolor="#F5F4F7" valign="top"><span class="green"><?php echo _('is writable');?></span></td>
 				</tr>
 				<tr>
