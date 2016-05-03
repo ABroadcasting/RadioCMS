@@ -1,21 +1,24 @@
+#RadioCMS API
 
-tracklist.php
+####tracklist.php
 
-    Количество слушателей: $status_listeners
-    Текущая песня и игравшие песни : $trackplay1 - текущая, $trackplay2-$trackplay9 - игравшие
+    Nymber of listeners: $status_listeners
+    Now playing and recent songs: $trackplay1 -now, $trackplay2-$trackplay9 - recent
 
-nowplay.php
-Форма загрузки песен: $musicLoadForm
+####nowplay.php
+
+Music upload form: $musicLoadForm
  
-Создайте в папке music папку с произвольным названием, для безопасности крайне желательно использовать произвольное имя и никому его не сообщайте. 
-Откройте "Настройки" > "Настройки системы" и впишите в соответствующее поле название созданной папки.
-Полезный совет
-Ссылка на прослушивание вашего радио имеет вид: http://site.ru:8000/live. Что бы упростить её, создайте в корне файл live.m3u и впишите внутрь вашу ссылку. Теперь ссылка на прослушивание вашего радио будет иметь вид http://site.ru/live.m3u. Это хорошо по нескольким причинам: она простая, при необходимости поток можно поменять на другой или добавить новый, при этом у пользователей всё будет по прежнему работать.
-nowplay.php
+Important!: Create random folder in the music folder (in security reasons) and set it in the system settings.
 
-    Текущий плейлист и следующий плейлист: $seychasigraet и $budetigrat.
-    Динамика слушателей: $dinamika.
-    Визуальный плейлист: $visual_playlist.
+Current and next playlist: $seychasigraet and $budetigrat.
+Listeners dynamic: $dinamika.
+Visual playlist: $visual_playlist.
 
-Подключаем плейлист
-Подключите файл playlist_all.php в нужном месте.
+####playlist_all.php
+Implement playlist
+Include playlist_all.php wherever you want
+
+####playlist php
+You may generate playlist for downloading
+Usage: playlist.php?name=playlist&pltype=m3u&stream=myradio.tld:8000/myradio
