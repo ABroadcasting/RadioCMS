@@ -1,12 +1,4 @@
 <?php
-# Playlist generator allows you to generate playlist's formats for the streaming.
-#
-# @category		i-SHCP
-# @copyright	2013 by i-SHCP
-# @author		Vilaliy Zhukov <dragonzx@yandex.ru>
-# @license		http://www.gnu.org/licenses/gpl-2.0.html GPL v2
-# @version		1.1.0
-#
 # Usage: playlist.php?name=playlist&pltype=m3u&stream=myradio.tld:8000/myradio
 ini_set('display_errors', '0');
 

@@ -1,5 +1,5 @@
 <?php
-	include_once('Include.php');
+	include_once('../Include.php');
 
 	$playlist = Playlist::create();
     $request = Request::create();

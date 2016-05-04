@@ -1,5 +1,5 @@
 <?php
-	require_once('Include.php');
+	require_once('../Include.php');
 
 	$nowplay = Nowplay::create();
 
