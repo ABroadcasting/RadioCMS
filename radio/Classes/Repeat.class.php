@@ -177,7 +177,7 @@
     			}
     			$k++;
 
-				//Первая проверка
+				//First check
     			if ( ($title0 == $title1) and ($artist0 == $artist1) and ($id_0 == $id_1) )  {
     				$query3 = "INSERT INTO `poisk` ( `title` , `artist` , `id`, `filename`, `idsong`, `duration` )
     					VALUES ( '".addslashes($title_0)."', '".addslashes($artist_0)."', '$id_0', '".addslashes($fl_0)."', '$ids_0', '$dur_0' )";
@@ -187,7 +187,7 @@
 					$this->db->queryNull($query4);
     			}
 
-    			//Вторая проверка
+    			//Second check
     			if ( ($title0 == $title2) and ($artist0 == $artist2) and ($id_0 == $id_2) )  {
     				$query3 = "INSERT INTO `poisk` ( `title` , `artist` , `id`, `filename`, `idsong`, `duration` )
     					VALUES ( '".addslashes($title_0)."', '".addslashes($artist_0)."', '$id_0', '".addslashes($fl_0)."', '$ids_0', '$dur_0' )";
@@ -197,7 +197,7 @@
 					$this->db->queryNull($query4);
     			}
 
-    			//Третяя проверка
+    			//Third check
 	    		if ( ($title0 == $title3) and ($artist0 == $artist3) and ($id_0 == $id_3) )  {
     				$query3 = "INSERT INTO `poisk` ( `title` , `artist` , `id`, `filename`, `idsong`, `duration` )
     					VALUES ( '".addslashes($title_0)."', '".addslashes($artist_0)."', '$id_0', '".addslashes($fl_0)."', '$ids_0', '$dur_0' )";

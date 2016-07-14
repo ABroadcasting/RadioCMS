@@ -51,7 +51,7 @@
 						<td class="graph_g2_1" width="<?php echo $end ?>%" align="center"></td>
 					</tr>
 				</table>
-				<table style="position:relative; top:-19px; left:0px;" border="0" width="400" cellspacing="0" cellpadding="0">
+				<table style="position:relative; top:-19px; left:0;" border="0" width="400" cellspacing="0" cellpadding="0">
 					<tr>
 						<td><div class="minitext"><?php echo _('Completed:'). $start; ?>%</div></td>
 
@@ -69,7 +69,7 @@
 						<td class="graph_g2_2" width="10%" align="center"></td>
 					</tr>
 				</table>
-				<table style="position:relative; top:-19px; left:0px;" border="0" width="400" cellspacing="0" cellpadding="0">
+				<table style="position:relative; top:-19px; left:0;" border="0" width="400" cellspacing="0" cellpadding="0">
 					<tr>
 						<td>
 						<div class="minitext"><?php echo _("Completed:");?> 100%</div>

@@ -97,7 +97,7 @@ echo '
 ?>
 							</select>
 							&nbsp;&nbsp;&nbsp;
-        					<select size="1" name="folder">
+        					<select title="folder" size="1" name="folder">
 <?php
 
 		foreach ($song->getFolderList() as $folder) {

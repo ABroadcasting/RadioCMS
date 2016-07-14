@@ -14,6 +14,6 @@
 	$meneger = Meneger::create();
 	$meneger->handler();
 
-	Header ("Location: meneger.php?fold=".$meneger->getFolder()."&start=".$meneger->getStart()."&search=".$meneger->getSearch());
+	header ("Location: meneger.php?fold=".$meneger->getFolder()."&start=".$meneger->getStart()."&search=".$meneger->getSearch());
 ?>
 

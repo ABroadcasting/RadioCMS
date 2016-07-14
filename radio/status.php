@@ -58,9 +58,6 @@
 ?>
 		<div class="title"><?php echo _('Mount points');?></div>
 		<div class="border">
-			<style>
-				.bgt1 td { background-color:#F5F4F7;}
-			</style>
 			<table width="97%" cellspacing="0" cellpadding="2" border="0">
 <?php echo'			<tr>
 					<td>'._('Mount point').'</td>

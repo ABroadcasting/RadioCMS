@@ -142,13 +142,13 @@
 
 			} else {
 				$query = "UPDATE `playlist` SET `auto`=1 WHERE `id`=".$all_event1[$event1_count]['id'];
-				$result = mysql_query($query) or die("Query failed5 : " . mysql_error());
+				$result = mysqli_query($query) or die("Query failed5 : " . mysqli_error());
 			}
 
 			$event1_count++;
 		}
 
-		//Уникальный
+		//Unique
 		$play_list_array = array_unique($play_list_array);
 		$i_auto = $i_auto + 1;
 		foreach ($play_list_array as $line) {
@@ -194,7 +194,7 @@
 					// Randomly one auto
 					if ($play_mode == "2") {
 						while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-		           			// Добавляем файлы в массив
+		           			// Adding files to array
 							if ( file_exists($line['filename']) ) {
 								$play_list_array_temp[] = $line['filename']."\n";
 							}
@@ -259,7 +259,7 @@
 			}
 			$event1_count++;
 		}
-		//Уникальный
+		//Unique
 		$play_list_array = array_unique($play_list_array);
 		foreach ($play_list_array as $line) {
 			$play_list_text .= $line;
@@ -274,7 +274,7 @@
 		for ($i_auto = 0; $i_auto <= $razov; $i_auto++) {
 			if (!empty($id_event1_auto[$i_auto])) {
 				$query = "UPDATE `playlist` SET `auto`=0 WHERE `id`=$id_event1_auto[$i_auto]";
-				$result = mysql_query($query) or die("Query failed9 : " . mysql_error());
+				$result = mysqli_query($query) or die("Query failed9 : " . mysqli_error());
 			}
 		}
 	}
@@ -285,8 +285,8 @@
 	// Parse ZAKAZ  //////////////////////////////////////////////////////////////////////////////////////////////
 
 	$query = "SELECT * FROM `zakaz` ORDER BY `id` ASC";
-	$result = mysql_query($query) or die("Query failed10 : " . mysql_error());
-	$est_zakaz = mysql_fetch_array($result, MYSQL_ASSOC);
+	$result = mysqli_query($query) or die("Query failed10 : " . mysqli_error());
+	$est_zakaz = mysqli_fetch_array($result, MYSQLI_ASSOC);
 	if  (!$est_zakaz) {
 		echo _("No orders<br>");
 	} else {
@@ -306,7 +306,7 @@
 	    // Only if not radioshow playing
 	    if ($play_mode != 3) {
 			$query = "SELECT * FROM `zakaz` ORDER BY `id` ASC";
-			$result = mysqli_query($query) or die("Query failed10 : " . mysql_error());
+			$result = mysqli_query($query) or die("Query failed10 : " . mysqli_error());
 
 			// Write orders to playlist
 			while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -530,7 +530,7 @@
 			$query = "SELECT SUM(`duration`) as sum FROM `songlist` WHERE `id`=".$playlist_id_now;
 			$result = mysqli_query($query) or die("Query failed11 " . mysqli_error());
 			$line = mysqli_fetch_array($result, MYSQLI_ASSOC);
-     		// Запись времени
+     		// Time writing
 			$zakaz_duration = $line['sum'];
 			$allow_time_tmp = $allow_time_tmp + $zakaz_duration + $vremya_trecka*60;;
 			$allow_time = $allow_time_tmp;

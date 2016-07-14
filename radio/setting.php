@@ -9,7 +9,7 @@
 
 	// no caching
 	if ($request->hasPostVar('request')) {
-		Header("Location: setting.php");
+		header("Location: setting.php");
 	}
 ?>
 	<div class="body">
@@ -27,7 +27,7 @@
 							<div class="podpis"><?php echo _('songs, contains such symbols will not be listed in the resent played');?></div>
 						</td>
 						<td valign="top">
-							<input type="text" name="system_symvol" value="<?=SYSTEM_SYMVOL?>" style="width: 200px;"><br>
+							<input title="system_symbol" type="text" name="system_symbol" value="<?=SYSTEM_SYMVOL?>" style="width: 200px;"><br>
 						</td>
 					</tr>
 					<tr>
@@ -39,7 +39,7 @@
 							<div class="podpis"><?php echo _('Set with comma i.e: <br> play, play32, live');?></div>
 						</td>
 						<td valign="top">
-							<input type="text" name="system_stream" value="<?=$setting->getSystemStream()?>" style="width: 200px;"><br>
+							<input title="system_stream" type="text" name="system_stream" value="<?=$setting->getSystemStream()?>" style="width: 200px;"><br>
 						</td>
 					</tr>
 					<tr>
@@ -53,7 +53,7 @@
 							</div>
 						</td>
 						<td valign="top">
-							<select size="1" name="net_povtorov" style="width:100px;">
+							<select title="no repeat" size="1" name="net_povtorov" style="width:100px;">
 								<option <?=(NO_REPEAT=='1')? 'selected' : ''?>>1</option>
 								<option <?=(NO_REPEAT=='10')? 'selected' : ''?>>10</option>
 								<option <?=(NO_REPEAT=='30')? 'selected' : ''?>>30</option>
@@ -76,7 +76,7 @@
 							<div class="podpis"><?php echo _('Restriction of tracks number in playlist');?></div>
 						</td>
 						<td valign="top">
-							<select size="1" name="limit_event" style="width:100px;">
+							<select title="limit_event" size="1" name="limit_event" style="width:100px;">
 								<option <?=(LIMIT_EVENT=='200') ? 'selected' : ''?>>200</option>
 								<option <?=(LIMIT_EVENT=='500') ? 'selected' : ''?>>500</option>
 								<option <?=(LIMIT_EVENT=='1000') ? 'selected' : ''?>>1000</option>
@@ -92,7 +92,7 @@
 							<div class="podpis"><?php echo _('Restriction of tracks number in orders');?></div>
 						</td>
 						<td valign="top">
-							<select size="1" name="limit_zakazov" style="width:100px;">
+							<select title="limit_zakazov" size="1" name="limit_zakazov" style="width:100px;">
 								<option <?=(LIMIT_ZAKAZOV=='2') ? 'selected':''?>>2</option>
 								<option <?=(LIMIT_ZAKAZOV=='3') ? 'selected':''?>>3</option>
 								<option <?=(LIMIT_ZAKAZOV=='4') ? 'selected':''?>>4</option>
@@ -110,7 +110,7 @@
 							<div class="podpis"><?php echo _('To transliterate all cyrilic tags');?></div>
 						</td>
 						<td valign="top">
-							<select size="1" name="translit" style="width:100px;">
+							<select title="translit" size="1" name="translit" style="width:100px;">
 								<option <?=(TRANSLIT=='on') ? 'selected':''?> value="on"><?php echo _('Yes');?></option>
 								<option <?=(TRANSLIT=='off') ? 'selected':''?> value="off"><?php echo _('No');?></option>
 							</select>

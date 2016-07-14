@@ -9,7 +9,7 @@
 
 	// no caching here
 	if ($request->hasPostVar('request')) {
-		Header("Location: setting_system.php");
+		header("Location: setting_system.php");
 	}
 ?>
 	<div class="body">
@@ -26,7 +26,7 @@
 							<?php echo _('IP address:');?>
 						</td>
 						<td valign="top">
-							<input type="text" name="ip" size="35" value="<?=IP?>"><br>
+							<input title="ip" type="text" name="ip" size="35" value="<?=IP?>"><br>
 							<div class="podpis"><?php echo _('for SSH connection');?></div>
 						</td>
 					</tr>
@@ -39,7 +39,7 @@
 							<?php echo _('WEB address');?>
 						</td>
 						<td valign="top">
-							<input type="text" name="url" size="35" value="<?=URL?>"><br>
+							<input title="url" type="text" name="url" size="35" value="<?=URL?>"><br>
 							<div class="podpis"><?php echo _('full site adress witout / at the end');?></div>
 						</td>
 					</tr>
@@ -52,7 +52,7 @@
 							<?php echo _('Port');?>
 						</td>
 						<td valign="top">
-							<input type="text" name="port" size="35" value="<?=PORT?>"><br>
+							<input title="port" type="text" name="port" size="35" value="<?=PORT?>"><br>
 							<div class="podpis"><?php echo _('stream port');?></div>
 						</td>
 					</tr>
@@ -68,7 +68,7 @@
 							<?php echo _('Login:');?>
 						</td>
 						<td valign="top">
-							<input type="text" name="setting_user" size="35" value="<?=USER?>"><br>
+							<input title="setting_user" type="text" name="setting_user" size="35" value="<?=USER?>"><br>
 							<div class="podpis"><?php echo _('to enter admin panel');?></div>
 						</td>
 					</tr>
@@ -81,7 +81,7 @@
 							<?php echo _('Password:');?>
 						</td>
 						<td valign="top">
-							<input type="password" name="setting_password" size="35" value="<?=PASSWORD?>"><br>
+							<input title="setting_password" type="password" name="setting_password" size="35" value="<?=PASSWORD?>"><br>
 							<div class="podpis"><?php echo _('type the password');?></div>
 						</td>
 					</tr>
@@ -95,7 +95,7 @@
 					<tr>
 						<td width="104" valign="top"><?php echo _('IceCast configuration:');?></td>
 						<td valign="top">
-							<input type="text" name="cf_icecast" size="55" value="<?=CF_ICECAST?>"><br>
+							<input title="cf_icecast" type="text" name="cf_icecast" size="55" value="<?=CF_ICECAST?>"><br>
 							<div class="podpis"><?php echo _('full path of the configuration file');?></div>
 						</td>
 					</tr>
@@ -108,7 +108,7 @@
 							<?php echo _('ezstream configuration:');?>
 						</td>
 						<td valign="top">
-							<input type="text" name="cf_ezstream" size="55" value="<?=CF_EZSTREAM?>"><br>
+							<input title="cf_ezstream" type="text" name="cf_ezstream" size="55" value="<?=CF_EZSTREAM?>"><br>
 							<div class="podpis"><?php echo _('full path of the configuration file');?></div>
 						</td>
 					</tr>
@@ -121,7 +121,7 @@
 							<?php echo _('playlist file');?>
 						</td>
 						<td valign="top">
-							<input type="text" name="playlist" size="55" value="<?=PLAYLIST?>"><br>
+							<input title="playlist" type="text" name="playlist" size="55" value="<?=PLAYLIST?>"><br>
 							<div class="podpis"><?php echo _('full path of the configuration file');?></div>
 						</td>
 					</tr>
@@ -132,7 +132,7 @@
 					<tr>
 						<td width="104" valign="top"><?php echo _('Upload directory');?></td>
 						<td valign="top">
-							<input type="text" name="temp_upload" size="55" value="<?=TEMP_UPLOAD?>"><br>
+							<input title="temp_upload" type="text" name="temp_upload" size="55" value="<?=TEMP_UPLOAD?>"><br>
 							<div class="podpis"><?php echo _('in music directory without full path');?></div>
 						</td>
 					</tr>

@@ -47,3 +47,4 @@
     define('RADIOCMS_VERSION', '3.0');
 	define('DEBUG_LOG', 'on')
 ?>
+<h1>What the hell are you doing here?</h1>

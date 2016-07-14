@@ -132,7 +132,7 @@ echo _('Add files to'). $meneger->getPlaylistName($playlist_id_get). $dirct2;
 	    			if (!empty($playlist_id_get)) {
 ?>
 						<a href="add_tracks.php?start=<?=$start?>&search=<?=$search?>&filename=<?=urlencode($full)?>&playlist_id=<?=$playlist_id_get?>">
-	    					<img src="images/plus.gif" width="16" height="16" border="0" title="<?php echo_('Add song to the playlist');?>">
+	    					<img src="images/plus.gif" width="16" height="16" border="0" title="<?php echo _('Add song to the playlist');?>">
 	    				</a>
 <?php
 	    			} else {
@@ -193,7 +193,7 @@ echo _('Add files to'). $meneger->getPlaylistName($playlist_id_get). $dirct2;
 						<div class="podpis">
 							<div style="height: 20px; margin-top: 3px;">
 	      						<span id="play_<?=$ipr?>">
-	      							<a href="javascript: playmedia(<?=$ipr?>,'<?=$afl?>');"><img width="16" height="16" border="0" src="/radio/images/play.gif"></a>&nbsp;
+	      							<a href="javascript: playmedia(<?=$ipr?><?=$afl?>);"><img width="16" height="16" border="0" src="/radio/images/play.gif"></a>&nbsp;
 	      							<span onclick="playmedia(<?=$ipr?>,'<?=$afl?>');" style="cursor: pointer;position: absolute;margin-top: 2px;">
 	      								<?php echo _('listen'); ?>
 	      							</span>&nbsp;
@@ -208,7 +208,7 @@ echo _('Add files to'). $meneger->getPlaylistName($playlist_id_get). $dirct2;
 echo '<div class="podpis"><font color="#993333">'._('Not used!').'</font></div>';
 
 					} else {
-          	  	echo'<div class="podpis"><font color="#669999">'._('Used in'). '<i>'.$playlist_name.'</i></font></div>';
+          	  	echo'<div class="podpis" style="color: #669999;">'._('Used in'). '<i>'.$playlist_name.'</i></div>';
 					}
 				}
 				echo '</td>';
@@ -339,7 +339,7 @@ echo '<div class="podpis"><font color="#993333">'._('Not used!').'</font></div>'
 				<td width="80%" valign="top" align="right">
 					<div class="searcht">
 						<form action='meneger_zapros.php?folder=<?=$dirct_f?>&start=<?=$start?>&playlist_id=<?=$playlist_id_get?>' method='post'>
-                            <?php echo _('Search in this folder');?> <input type="text" name="search" size="20" value="<?=$search?>">
+                            <?php echo _('Search in this folder');?> <input title="search" type="text" name="search" size="20" value="<?=$search?>">
 							<input type="submit" value="<?php echo _('Search');?>" name="search_button">
 						</form>
 					</div>

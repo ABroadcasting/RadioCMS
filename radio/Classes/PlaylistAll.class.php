@@ -156,7 +156,7 @@
 			 	$query = " SELECT * FROM `tracklist` WHERE `title` = '".addslashes($proverka_full)."'";
 
 				if ($this->db->getColumn($query, 'title')) {
-					$return[] = ("This track is recently played. Not for orders.");
+					$return[] = _("This track is recently played. Not for orders.");
 				}
 
 				if (empty($return)) {

@@ -12,7 +12,7 @@
 	$s = mysql_num_rows($result);
 
 
-	while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
+	while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 		if ($_GET['type'] == "client") {
 			$client = $stat->getClient($line['client']);
 			if (empty($client)) {
@@ -143,11 +143,11 @@
 
     	// start angle for sector
     	$startAngle = 0;
-    	$perc =360/$sum; // соотвествие градусов 1 проценту
-    	$i=0; // для вывода порядка элемента в легенде и выбора цвета
+    	$perc =360/$sum; // Associate degree with one persent
+    	$i=0; // to echo element order in legend
     	foreach ($ar as $name => $val) {
-    	// если текущий элемент больше 1%
-    	  if ($val/$sum<0.01) // выходим из цикла
+    	// if current element more then 1%
+    	  if ($val/$sum<0.01) // cycle exit
     	    break;
 
     	$font = "files/arial.ttf";
@@ -157,12 +157,12 @@
     	  // % of current element
     	  $percents=round(100*($val/$sum),2);
 
-    	  // цветной квадратик в легенде
+    	  // color square in legend
     	  imagefilledrectangle($image,250,$legendOffset+$i*15-9,260,$legendOffset+$i*15,$colors[$i]);
-    	  // текст легенды
+    	  // legend text
     	  ImageString($image , 2, 268, $legendOffset+$i*15-11, ($i+1).". ".$name." (".$percents."%)", $colorText);
     	  //imagettftext ($image, 10, 0, 265, $legendOffset+$i*15, $colorText, $font, ($i+1).". ".$name." (".$percents."%)");
-    	  // сектор
+    	  // sector
     	  imagefilledarc($image, $diagramWidth/2-110, $diagramHeight/2, 200, 200, $startAngle, $endAngle, $colors[$i++], IMG_ARC_PIE);
 
 
@@ -183,7 +183,6 @@
     	  // next sector will prolong last corner of current sector
     	  $startAngle=$endAngle;
     	}
-
 
     	// if we have less then 1%
     	if ($countless1) {
@@ -208,6 +207,4 @@
     	imageColorTransparent($image, $colorBackgr);
     	return;
 	}
-
-
 ?>

@@ -33,7 +33,7 @@
 						<div class="podpis"><?php echo _('playlist title on the main page');?></div>
 					</td>
 					<td width="70%">
-						<input type="text" name="name" size="50" value="<?= $playlistEdit->getName() ? htmlspecialchars($playlistEdit->getName()) : _('New').' '.$next_sort ?>">
+						<input title="name" type="text" name="name" size="50" value="<?= $playlistEdit->getName() ? htmlspecialchars($playlistEdit->getName()) : _('New').' '.$next_sort ?>">
 					</td>
 				</tr>
 				<tr>
@@ -42,7 +42,7 @@
 						<div class="podpis"><?php echo _('with other playlists');?></div>
 					</td>
 					<td>
-						<input type="text" name="sort" size="11" value="<?= $playlistEdit->getSort() ? $playlistEdit->getSort() : $next_sort ?>">
+						<input title="sort" type="text" name="sort" size="11" value="<?= $playlistEdit->getSort() ? $playlistEdit->getSort() : $next_sort ?>">
 					</td>
 				</tr>
 				<tr>
@@ -149,7 +149,7 @@
 				<label for="e2_<?=$i?>_7">Вс</label>
 			</p>
 
-			<select size="1" name="event2[<?=$i?>][start1][h]">
+			<select title="hours" size="1" name="event2[<?=$i?>][start1][h]">
 				<option <?= $event['start1']['h'] == '00' ? 'selected' : '' ?>>00</option>
 				<option <?= $event['start1']['h'] == '01' ? 'selected' : '' ?>>01</option>
 				<option <?= $event['start1']['h'] == '02' ? 'selected' : '' ?>>02</option>
@@ -176,7 +176,7 @@
 				<option <?= $event['start1']['h'] == '23' ? 'selected' : '' ?>>23</option>
 			</select>
 			:
-			<select size="1" name="event2[<?=$i?>][start1][m]">
+			<select title="minutes" size="1" name="event2[<?=$i?>][start1][m]">
 				<option <?= $event['start1']['m'] == '00' ? 'selected' : '' ?>>00</option>
 				<option <?= $event['start1']['m'] == '05' ? 'selected' : '' ?>>05</option>
 				<option <?= $event['start1']['m'] == '10' ? 'selected' : '' ?>>10</option>
@@ -191,7 +191,7 @@
 				<option <?= $event['start1']['m'] == '55' ? 'selected' : '' ?>>55</option>
 			</select>
 			&nbsp;&nbsp;&nbsp;&nbsp;
-			<select size="1" name="event2[<?=$i?>][start2][h]">
+			<select title="hours end" size="1" name="event2[<?=$i?>][start2][h]">
 				<option <?= $event['start2']['h'] == '00' ? 'selected' : '' ?>>00</option>
 				<option <?= $event['start2']['h'] == '01' ? 'selected' : '' ?>>01</option>
 				<option <?= $event['start2']['h'] == '02' ? 'selected' : '' ?>>02</option>
@@ -218,7 +218,7 @@
 				<option <?= $event['start2']['h'] == '23' ? 'selected' : '' ?>>23</option>
 			</select>
 			:
-			<select size="1" name="event2[<?=$i?>][start2][m]">
+			<select title="minutes end" size="1" name="event2[<?=$i?>][start2][m]">
 				<option <?= $event['start2']['m'] == '00' ? 'selected' : '' ?>>00</option>
 				<option <?= $event['start2']['m'] == '05' ? 'selected' : '' ?>>05</option>
 				<option <?= $event['start2']['m'] == '10' ? 'selected' : '' ?>>10</option>
@@ -233,7 +233,7 @@
 				<option <?= $event['start2']['m'] == '55' ? 'selected' : '' ?>>55</option>
 			</select>
 			&nbsp;&nbsp;&nbsp;&nbsp;
-			<select size="1" name="event2[<?=$i?>][start3][h]">
+			<select title="hours2" size="1" name="event2[<?=$i?>][start3][h]">
 				<option <?= $event['start3']['h'] == '00' ? 'selected' : '' ?>>00</option>
 				<option <?= $event['start3']['h'] == '01' ? 'selected' : '' ?>>01</option>
 				<option <?= $event['start3']['h'] == '02' ? 'selected' : '' ?>>02</option>
@@ -260,7 +260,7 @@
 				<option <?= $event['start3']['h'] == '23' ? 'selected' : '' ?>>23</option>
 			</select>
 			:
-			<select size="1" name="event2[<?=$i?>][start3][m]">
+			<select title="minutes2" size="1" name="event2[<?=$i?>][start3][m]">
 				<option <?= $event['start3']['m'] == '00' ? 'selected' : '' ?>>00</option>
 				<option <?= $event['start3']['m'] == '05' ? 'selected' : '' ?>>05</option>
 				<option <?= $event['start3']['m'] == '10' ? 'selected' : '' ?>>10</option>
@@ -289,9 +289,9 @@
 								<tr>
 									<td>
 										<input id="i_chasi" onclick="rasp_chasi();" type="radio" name="event" value="1" <?= $playlistEdit->isEvent1() ? 'checked' : '' ?>>
-										<font size="2">
+										<div style="font-size:2px">
 											<label for='i_chasi'><?php echo _('Play after some time');?></label>
-										</font>
+										</div>
 <?php
 	if($playlistEdit->isEvent1()) {
 ?>
@@ -335,7 +335,7 @@
 			</p>
 
 			с
-			<select size="1" name="event1[<?=$i?>][start][h]">
+			<select title="hours" size="1" name="event1[<?=$i?>][start][h]">
 				<option <?= $event['start']['h'] == '00' ? 'selected' : '' ?>>00</option>
 				<option <?= $event['start']['h'] == '01' ? 'selected' : '' ?>>01</option>
 				<option <?= $event['start']['h'] == '02' ? 'selected' : '' ?>>02</option>
@@ -362,7 +362,7 @@
 				<option <?= $event['start']['h'] == '23' ? 'selected' : '' ?>>23</option>
 			</select>
 			:
-			<select size="1" name="event1[<?=$i?>][start][m]">
+			<select title="minutes" size="1" name="event1[<?=$i?>][start][m]">
 				<option <?= $event['start']['m'] == '00' ? 'selected' : '' ?>>00</option>
 				<option <?= $event['start']['m'] == '05' ? 'selected' : '' ?>>05</option>
 				<option <?= $event['start']['m'] == '10' ? 'selected' : '' ?>>10</option>
@@ -377,7 +377,7 @@
 				<option <?= $event['start']['m'] == '55' ? 'selected' : '' ?>>55</option>
 			</select>
 			&nbsp;&nbsp;до&nbsp;&nbsp;
-			<select size="1" name="event1[<?=$i?>][end][h]">
+			<select title="hours" size="1" name="event1[<?=$i?>][end][h]">
 				<option <?= $event['end']['h'] == '00' ? 'selected' : '' ?>>00</option>
 				<option <?= $event['end']['h'] == '01' ? 'selected' : '' ?>>01</option>
 				<option <?= $event['end']['h'] == '02' ? 'selected' : '' ?>>02</option>
@@ -404,7 +404,7 @@
 				<option <?= $event['end']['h'] == '23' ? 'selected' : '' ?>>23</option>
 			</select>
 			:
-			<select size="1" name="event1[<?=$i?>][end][m]">
+			<select title="minutes" size="1" name="event1[<?=$i?>][end][m]">
 				<option <?= $event['end']['m'] == '00' ? 'selected' : '' ?>>00</option>
 				<option <?= $event['end']['m'] == '05' ? 'selected' : '' ?>>05</option>
 				<option <?= $event['end']['m'] == '10' ? 'selected' : '' ?>>10</option>
@@ -419,7 +419,7 @@
 				<option <?= $event['end']['m'] == '55' ? 'selected' : '' ?>>55</option>
 			</select>
 	        &nbsp;&nbsp;каждые&nbsp;&nbsp;
-	        <select size="1" name="event1[<?=$i?>][interval][h]">
+	        <select title="hours" size="1" name="event1[<?=$i?>][interval][h]">
 				<option <?= $event['interval']['h'] == '00' ? 'selected' : '' ?>>00</option>
 				<option <?= $event['interval']['h'] == '01' ? 'selected' : '' ?>>01</option>
 				<option <?= $event['interval']['h'] == '02' ? 'selected' : '' ?>>02</option>
@@ -446,7 +446,7 @@
 				<option <?= $event['interval']['h'] == '23' ? 'selected' : '' ?>>23</option>
 			</select>
 			:
-			<select size="1" name="event1[<?=$i?>][interval][m]">
+			<select title="minutes" size="1" name="event1[<?=$i?>][interval][m]">
 				<option <?= $event['interval']['m'] == '00' ? 'selected' : '' ?>>00</option>
 				<option <?= $event['interval']['m'] == '05' ? 'selected' : '' ?>>05</option>
 				<option <?= $event['interval']['m'] == '10' ? 'selected' : '' ?>>10</option>

@@ -33,7 +33,7 @@
 			<table border="0" width="400" cellspacing="0" cellpadding="0">
 				<tr>
 					<td>
-						<div class="minitext" style="position:relative; top:-19px; left:0px;">
+						<div class="minitext" style="position:relative; top:-19px; left:0;">
 							<?php echo _('Used space:');?> <?=$disk['zan']['mb']?> \ <?php echo _('Free space:');?> <?=$disk['free']['mb']?>
 						</div>
 					</td>

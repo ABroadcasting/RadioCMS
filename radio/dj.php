@@ -117,10 +117,10 @@ echo '
 					<td></td>
 				</tr>
 				<tr>
-					<td align="left"><input width="80%" name="dj" type="text" value=""></td>
-					<td align="left"><input width="80%" name="djpass" type="password" value=""></td>
-					<td align="left"><select width="80%" size="1" name="admin"><option value="0"><?php echo _('DJ');?></option><option value="1"><?php echo _('Administrator');?></option></select></td>
-					<td align="left"><input width="80%" name="djdescription" type="text" value=""></td><td></td>
+					<td align="left"><input title="dj" width="80%" name="dj" type="text" value=""></td>
+					<td align="left"><input title="password" width="80%" name="djpass" type="password" value=""></td>
+					<td align="left"><select title="is admin" size="1" name="admin"><option value="0"><?php echo _('DJ');?></option><option value="1"><?php echo _('Administrator');?></option></select></td>
+					<td align="left"><input title="description" width="80%" name="djdescription" type="text" value=""></td><td></td>
 				</tr>
 				<tr>
 					<td align="left"><input class="button" name="djadd" type="submit" value="add"></td>

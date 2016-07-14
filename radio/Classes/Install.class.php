@@ -34,7 +34,7 @@
 			$this->saveConfig('USER', $user);
             $this->saveConfig('PASSWORD', $password);
 
-            Header("Location: install.php?hag=6");
+            header("Location: install.php?hag=6");
 		}
 
 		public function ifHag4() {
@@ -77,7 +77,7 @@
 			$this->saveConfig('ICE_LOGIN', $xml->authentication->{'admin-user'});
 			$this->saveConfig('ICE_PASS', $xml->authentication->{'admin-password'});
 
-			Header("Location: install.php?hag=5");
+			header("Location: install.php?hag=5");
 		}
 
 		public function ifHag3() {
@@ -91,7 +91,7 @@
     		$this->saveConfig('SSH_USER', $this->request->getPostVar('ssh_user'));
     		$this->saveConfig('SSH_PASS', $this->request->getPostVar('ssh_pass'));
 			$this->saveConfig('SSH_PORT', $this->request->getPostVar('ssh_port'));
-    		Header("Location: install.php?hag=4");
+    		header("Location: install.php?hag=4");
 		}
 
 		public function ifHag2() {
@@ -108,7 +108,7 @@
 				$this->saveConfig('DB_PASSWORD', $this->request->getPostVar('db_password'));
 				$this->saveConfig('DB_NAME', $this->request->getPostVar('db_name'));
 				$this->createTable($this->request->getPostVar('db_name'));
-				Header("Location: install.php?hag=3");
+				header("Location: install.php?hag=3");
 			} else {
 				return _("<p>Connection could not be established.</p>");
 			}

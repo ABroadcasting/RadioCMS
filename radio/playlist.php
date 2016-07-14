@@ -104,7 +104,7 @@
 ?>
 						</td>
 						<td width="7%" <?=$color?>>
-							<input size="2" type="text" name="playlist_sort[<?=$line['id']?>]" value="<?=$line['sort']?>">
+							<input title="sort" size="2" type="text" name="playlist_sort[<?=$line['id']?>]" value="<?=$line['sort']?>">
 						</td>
 					</tr>
  <?php

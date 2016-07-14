@@ -27,7 +27,7 @@
 	<style> form {margin:0;} </style>
 	<title>Установка RadioCMS</title>
 
-	<body topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0" marginwidth="0" marginheight="0">
+	<body style="margin: 0 0 0 0">
 		<table border="0" width="100%" cellspacing="0" cellpadding="0">
 			<tr>
 				<td width="2" align="right"><img border="0" src="images/separator.jpg" width="1" height="122"></td>
@@ -39,7 +39,7 @@
 							<tr>
 								<td width="324">
 								<img border="0" src="images/navi_02.jpg" width="588" height="38"></td>
-								<td background="images/navi_03.jpg" valign="top"><div class="navi_text"><?=IP?></a> | <?=date("H:i")?> | <a href="http://radiocms.ru/"><?php echo _('Exit');?></a><br><?php echo _('Installation');?> <?="RadioCMS ".$vers?></div></td>
+								<td style="background: images/navi_03.jpg" valign="top"><div class="navi_text"><?=IP?></a> | <?=date("H:i")?> | <a href="http://radiocms.ru/"><?php echo _('Exit');?></a><br><?php echo _('Installation');?> <?="RadioCMS ".$vers?></div></td>
 							</tr>
 						</table>
 						</td>
@@ -65,7 +65,7 @@
 					<td width="15%" valign="top"><?php echo _('IP adress:');?><br>
 					<div class="podpis"><?php echo _('for SSH connection');?></div></td>
 					<td width="75%" valign="top">
-						<input type="text" name="ip" size="35" value="<?=$request->hasPostVar('ip') ? $request->getPostVar('ip') : IP ?>">
+						<input title="ip" type="text" name="ip" size="35" value="<?=$request->hasPostVar('ip') ? $request->getPostVar('ip') : IP ?>">
 					</td>
 				</tr>
 				<tr>
@@ -76,7 +76,7 @@
 					<td valign="top"><?php echo _('WEB Adress');?><br>
 					<div class="podpis"><?php echo _('full site adress witout / at the end');?></div></td>
 					<td valign="top">
-						<input type="text" name="url" size="35" value="<?=$request->hasPostVar('url') ? $request->getPostVar('url') : URL ?>">
+						<input title="url" type="text" name="url" size="35" value="<?=$request->hasPostVar('url') ? $request->getPostVar('url') : URL ?>">
 					</td>
 				</tr>
 					<tr>
@@ -87,7 +87,7 @@
 					<td valign="top"><?php echo _('Port');?><br>
 					<div class="podpis"><?php echo _('stream port');?></div></td>
 					<td valign="top">
-						<input type="text" name="port" size="35" value="<?=$request->hasPostVar('port') ? $request->getPostVar('port') : PORT ?>">
+						<input title="port" type="text" name="port" size="35" value="<?=$request->hasPostVar('port') ? $request->getPostVar('port') : PORT ?>">
 					</td>
 				</tr>
 				<tr>
@@ -97,7 +97,7 @@
 				<tr>
 					<td valign="top"><?php echo _('SSH Login (recommended root):');?></br></td>
 					<td valign="top">
-						<input type="text" name="ssh_user" size="35" value="<?=$request->hasPostVar('ssh_user') ? $request->getPostVar('ssh_user') : SSH_USER ?>">
+						<input title="ssh user" type="text" name="ssh_user" size="35" value="<?=$request->hasPostVar('ssh_user') ? $request->getPostVar('ssh_user') : SSH_USER ?>">
 					</td>
 				</tr>
 				<tr>
@@ -107,13 +107,13 @@
 				<tr>
 					<td valign="top"><?php echo _('SSH Password:');?></br></td>
 					<td valign="top">
-						<input type="password" name="ssh_pass" size="35" value="<?=$request->hasPostVar('ssh_pass') ? $request->getPostVar('ssh_pass') : SSH_PASS ?>">
+						<input title="ssh password" type="password" name="ssh_pass" size="35" value="<?=$request->hasPostVar('ssh_pass') ? $request->getPostVar('ssh_pass') : SSH_PASS ?>">
 					</td>
 				</tr>
 				<tr>
 					<td valign="top"><?php echo _('SSH Port:');?></br></td>
 					<td valign="top">
-						<input type="text" name="ssh_port" size="35" value="<?=$request->hasPostVar('ssh_port') ? $request->getPostVar('ssh_port') : SSH_PORT ?>">
+						<input title="ssh port" type="text" name="ssh_port" size="35" value="<?=$request->hasPostVar('ssh_port') ? $request->getPostVar('ssh_port') : SSH_PORT ?>">
 					</td>
 				</tr>
 			</table>
@@ -139,7 +139,7 @@
 				<tr>
 					<td width="15%" valign="top"><?php echo _('IceCast configuration:');?></td>
 					<td width="75%" valign="top">
-						<input type="text" name="cf_icecast" size="55" value="<?=$request->hasPostVar('cf_icecast') ? $request->getPostVar('cf_icecast') : CF_ICECAST ?>"><br>
+						<input title="icecast configuration" type="text" name="cf_icecast" size="55" value="<?=$request->hasPostVar('cf_icecast') ? $request->getPostVar('cf_icecast') : CF_ICECAST ?>"><br>
 						<div class="podpis"><?php echo _('full path of the configuration file');?></div>
 					</td>
 				</tr>
@@ -150,7 +150,7 @@
 				<tr>
 					<td valign="top"><?php echo _('ezstream configuration:');?></td>
 					<td valign="top">
-						<input type="text" name="cf_ezstream" size="55" value="<?=$request->hasPostVar('cf_ezstream') ? $request->getPostVar('cf_ezstream') : CF_EZSTREAM ?>"><br>
+						<input title="ezstream configuration" type="text" name="cf_ezstream" size="55" value="<?=$request->hasPostVar('cf_ezstream') ? $request->getPostVar('cf_ezstream') : CF_EZSTREAM ?>"><br>
 						<div class="podpis"><?php echo _('full path of the configuration file');?></div>
 					</td>
 				</tr>
@@ -161,7 +161,7 @@
 				<tr>
 					<td valign="top"><?php echo _('playlist file');?></td>
 					<td valign="top">
-						<input type="text" name="playlist" size="55" value="<?=$request->hasPostVar('playlist') ? $request->getPostVar('playlist') : PLAYLIST ?>"><br>
+						<input title="playlist" type="text" name="playlist" size="55" value="<?=$request->hasPostVar('playlist') ? $request->getPostVar('playlist') : PLAYLIST ?>"><br>
 						<div class="podpis"><?php echo _('full path of the configuration file');?></div>
 					</td>
 				</tr>
@@ -188,7 +188,7 @@
 				<tr>
 					<td width="15%" valign="top"><?php echo _('Login:');?></td>
 					<td width="75%" valign="top">
-						<input type="text" name="user" size="55" value="<?=USER?>"><br>
+						<input title="user" type="text" name="user" size="55" value="<?=USER?>"><br>
 						<div class="podpis"><?php echo _('to enter admin panel');?></div>
 					</td>
 				</tr>
@@ -199,7 +199,7 @@
 				<tr>
 					<td valign="top"><?php echo _('Password:');?></td>
 					<td valign="top">
-						<input type="text" name="password" size="55" value="<?=PASSWORD?>"><br>
+						<input title="password" type="text" name="password" size="55" value="<?=PASSWORD?>"><br>
 						<div class="podpis"><?php echo _('type the password');?></div>
 					</td>
 				</tr>
@@ -227,7 +227,7 @@
 					<td width="150" valign="top"><span lang="en-us"><?php echo _('Server:');?></span><br>
 					<div class="podpis"><?php echo _('usually localhost');?></div></td>
 					<td valign="top">
-						<input type="text" name="db_host" size="35" value="<?=$request->hasPostVar('db_host') ? $request->getPostVar('db_host') : DB_HOST?>">
+						<input title="database host" type="text" name="db_host" size="35" value="<?=$request->hasPostVar('db_host') ? $request->getPostVar('db_host') : DB_HOST?>">
 					</td>
 				</tr>
 				<tr>
@@ -238,7 +238,7 @@
 					<td valign="top"><span lang="en-us"><?php echo _('Login:');?></span><br>
 					<div class="podpis"><?php echo _('set login');?></div></td>
 					<td valign="top">
-						<input type="text" name="db_login" size="35" value="<?=$request->hasPostVar('db_login') ? $request->getPostVar('db_login') : DB_LOGIN?>">
+						<input title="database user" type="text" name="db_login" size="35" value="<?=$request->hasPostVar('db_login') ? $request->getPostVar('db_login') : DB_LOGIN?>">
 					</td>
 					</tr>
 					<tr>
@@ -249,7 +249,7 @@
 					<td valign="top"><span lang="en-us"><?php echo _('Password:');?></span><br>
 					<div class="podpis"><?php echo _('Set password');?></div></td>
 					<td valign="top">
-						<input type="password" name="db_password" size="35" value="<?=$request->hasPostVar('db_password') ? $request->getPostVar('db_password') : DB_PASSWORD?>">
+						<input title="database password" type="password" name="db_password" size="35" value="<?=$request->hasPostVar('db_password') ? $request->getPostVar('db_password') : DB_PASSWORD?>">
 					</td>
 				</tr>
 				<tr>
@@ -260,7 +260,7 @@
 					<td valign="top"><?php echo _('Database:');?><br>
 					<div class="podpis"><?php echo _('set the database name');?></div></td>
 					<td valign="top">
-						<input type="text" name="db_name" size="35" value="<?=$request->hasPostVar('db_name') ? $request->getPostVar('db_name') : DB_NAME?>">
+						<input title="database name" type="text" name="db_name" size="35" value="<?=$request->hasPostVar('db_name') ? $request->getPostVar('db_name') : DB_NAME?>">
 					</td>
 				</tr>
 			</table>
@@ -361,11 +361,8 @@ echo _('Greetings! You have successfully installed RadioCMS.
 			<input class="button" type="button" value="<?php echo _('Next');?>" name="B1" onClick="location.href='?hag=2'">
 <?php
 	} else {
-?>
-		<?php echo _('Fix all problems to continue');?>
-<?php
+echo _('Fix all problems to continue');
 	}
-
 }
 ?>
 			</div>
