@@ -1,0 +1,16 @@
+<ezstream>
+<url>http://localhost:8000/play</url>
+<sourcepassword>$sourcepassword$</sourcepassword>
+<format>MP3</format>
+<filename>$playlistfullpath$</filename>
+<shuffle>0</shuffle>
+<playlist_program>0</playlist_program>
+<svrinfoname>Name</svrinfoname>
+<svrinfourl>http://radiocms.ru/</svrinfourl>
+<svrinfogenre>Other</svrinfogenre>
+<svrinfodescription>Description</svrinfodescription>
+<svrinfobitrate>128</svrinfobitrate>
+<svrinfochannels>2</svrinfochannels>
+<svrinfosamplerate>44100</svrinfosamplerate>
+<svrinfopublic>1</svrinfopublic>
+</ezstream> 
