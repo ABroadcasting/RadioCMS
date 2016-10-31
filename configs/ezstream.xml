@@ -1,3 +1,4 @@
+<!DOCTYPE ezstream PUBLIC "-//Joomla! 3.0//DTD template 1.0//EN" "http://help.aunited.ru/dtd/broadcast/ezstream.dtd">
 <ezstream>
 <url>http://localhost:8000/play</url>
 <sourcepassword>$sourcepassword$</sourcepassword>

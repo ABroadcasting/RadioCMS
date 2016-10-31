@@ -1,3 +1,4 @@
+<!DOCTYPE icecast PUBLIC "-//Joomla! 3.0//DTD template 1.0//EN" "http://help.aunited.ru/dtd/broadcast/icecast.dtd">
 <icecast>
 <location>earth</location>
 <admin>icemaster1@localhost</admin>
