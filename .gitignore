@@ -48,3 +48,6 @@ Temporary Items
 
 #Jetbrains Options Directory
 .idea
+
+#Local configs
+_config.php
