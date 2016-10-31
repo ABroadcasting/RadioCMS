@@ -1,5 +1,5 @@
 <?php
-	class Meneger {
+	class Manager {
 	    
         public static $object;
         

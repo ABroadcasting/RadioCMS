@@ -7,17 +7,17 @@
 	$request = Request::create();
 	$ins = Install::create();
 
-	$hag_install = _("Installation: Step 1 (Checking files and libraries)");
-	$hag = 1;
-	if (!empty($_GET['hag'])) {
-		if ($_GET['hag'] == 2) { $hag = 2; $hag_install = _("Installation: Step 2 (Database settings)"); }
-		if ($_GET['hag'] == 3) { $hag = 3; $hag_install = _("Installation: Step 3 (General settings)"); }
-		if ($_GET['hag'] == 4) { $hag = 4; $hag_install = _("Installation: Step 4 (Setting path)"); }
-		if ($_GET['hag'] == 5) { $hag = 5; $hag_install = _("Installation: Step 5 (Setting RadioCMS passwords)"); }
-		if ($_GET['hag'] == 6) { $hag = 6; $hag_install = _("Installation: Step 6 (Finish installing)"); }
+	$step_install = _("Installation: Step 1 (Checking files and libraries)");
+	$step = 1;
+	if (!empty($_GET['step'])) {
+		if ($_GET['step'] == 2) { $step = 2; $step_install = _("Installation: Step 2 (Database settings)"); }
+		if ($_GET['step'] == 3) { $step = 3; $step_install = _("Installation: Step 3 (General settings)"); }
+		if ($_GET['step'] == 4) { $step = 4; $step_install = _("Installation: Step 4 (Setting path)"); }
+		if ($_GET['step'] == 5) { $step = 5; $step_install = _("Installation: Step 5 (Setting RadioCMS passwords)"); }
+		if ($_GET['step'] == 6) { $step = 6; $step_install = _("Installation: Step 6 (Finish installing)"); }
 	}
 
-	$action = "install.php?hag=$hag";
+	$action = "install.php?step=$step";
 ?>
 <html>
 	<head>
@@ -53,12 +53,12 @@
 		</table>
 
 		<div class="body">
-		<div class="title"><?=$hag_install?></div>
+		<div class="title"><?=$step_install?></div>
 		<div class="border">
 		<form method="POST" action="<?php echo $action; ?>">
 <!-- ///////// 3 /////////////////////////////////////////////////////////////////// 3 ////////// -->
 <?php
-	if ($hag == 3) {
+	if ($step == 3) {
 ?>
 			<table border="0" width="97%" cellpadding="0" class="paddingtable">
 				<tr>
@@ -118,13 +118,13 @@
 				</tr>
 			</table>
 <?php
-		if ($request->hasPostVar("hag3")) {
-			echo $ins->ifHag3();
+		if ($request->hasPostVar("step3")) {
+			echo $ins->ifstep3();
 		}
 ?>
 			<p>
-				<input class="button" type="button" value="<?php echo _('Back');?>" name=B1 onClick="location.href='install.php?hag=2'">
-	 			<input class="button" type="submit" value="<?php echo _('Next');?>" name="hag3">
+				<input class="button" type="button" value="<?php echo _('Back');?>" name=B1 onClick="location.href='install.php?step=2'">
+	 			<input class="button" type="submit" value="<?php echo _('Next');?>" name="step3">
 	 		</p>
 <?php
 	}
@@ -133,7 +133,7 @@
 <!-- ///////// 4 /////////////////////////////////////////////////////////////////// 4 ////////// -->
 
 <?php
-	if ($hag == 4) {
+	if ($step == 4) {
 ?>
 			<table border="0" width="97%" cellpadding="0" class="paddingtable">
 				<tr>
@@ -167,13 +167,13 @@
 				</tr>
 			</table>
 <?php
-		if ($request->hasPostVar("hag4")) {
-			echo $ins->ifHag4();
+		if ($request->hasPostVar("step4")) {
+			echo $ins->ifstep4();
 		}
 ?>
 			<p>
-				<input class="button" type="button" value="<?php echo _('Back');?>" name="B1" onClick="location.href='?hag=3'">
-				<input class="button" type="submit" name="hag4" value="<?php echo _('Next');?>">
+				<input class="button" type="button" value="<?php echo _('Back');?>" name="B1" onClick="location.href='?step=3'">
+				<input class="button" type="submit" name="step4" value="<?php echo _('Next');?>">
 			</p>
 <?php
 	}
@@ -182,7 +182,7 @@
 <!-- ///////// 5 /////////////////////////////////////////////////////////////////// 5 ////////// -->
 
 <?php
-	if ($hag == 5) {
+	if ($step == 5) {
 ?>
 			<table border="0" width="97%" cellpadding="0" class="paddingtable">
 				<tr>
@@ -205,13 +205,13 @@
 				</tr>
 			</table>
 <?php
-		if ($request->hasPostVar("hag5")) {
-			echo $ins->ifHag5();
+		if ($request->hasPostVar("step5")) {
+			echo $ins->ifstep5();
 		}
 ?>
 			<p>
-				<input class="button" type="button" value="<?php echo _('Back');?>" name="B1" onClick="location.href='?hag=4'">
-				<input class="button" type="submit" name="hag5" value="<?php echo _('Next');?>">
+				<input class="button" type="button" value="<?php echo _('Back');?>" name="B1" onClick="location.href='?step=4'">
+				<input class="button" type="submit" name="step5" value="<?php echo _('Next');?>">
 			</p>
 <?php
 	}
@@ -220,7 +220,7 @@
 <!-- ///////// 2 /////////////////////////////////////////////////////////////////// 2 ////////// -->
 
 <?php
-	if ($hag == 2) {
+	if ($step == 2) {
 ?>
 			<table border="0" width="97%" cellpadding="0" class="paddingtable">
 				<tr>
@@ -265,13 +265,13 @@
 				</tr>
 			</table>
 <?php
-		if ($request->hasPostVar("hag2")) {
-			echo $ins->ifHag2();
+		if ($request->hasPostVar("step2")) {
+			echo $ins->ifstep2();
 		}
 ?>
 			<p>
-				<input class="button" type="button" value="<?php echo _('Back');?>" name="B1" onClick="location.href='?hag=1'">
-	 			<input class="button" type="submit" value="<?php echo _('Next');?>" name="hag2">
+				<input class="button" type="button" value="<?php echo _('Back');?>" name="B1" onClick="location.href='?step=1'">
+	 			<input class="button" type="submit" value="<?php echo _('Next');?>" name="step2">
 	 		</p>
 <?php
 	}
@@ -279,7 +279,7 @@
 
 
 <?php
-	if ($hag == 6) {
+	if ($step == 6) {
 		$ins->addStatistic();
 echo _('Greetings! You have successfully installed RadioCMS.
 			To finish installing add this command to cron (every 3 minutes):').'<br><br>
@@ -300,7 +300,7 @@ echo _('Greetings! You have successfully installed RadioCMS.
 <!-- ///////// 1 /////////////////////////////////////////////////////////////////// 1 ////////// -->
 
 <?php
-	if ($hag == 1) {
+	if ($step == 1) {
 ?>
 			<table border="0" cellspacing="0" cellpadding="0" width="97%" class="table1">
 				<tr>
@@ -356,9 +356,9 @@ echo _('Greetings! You have successfully installed RadioCMS.
 			</table>
 	<br>
 <?php
-	if ($ins->ifHag1()) {
+	if ($ins->ifstep1()) {
 ?>
-			<input class="button" type="button" value="<?php echo _('Next');?>" name="B1" onClick="location.href='?hag=2'">
+			<input class="button" type="button" value="<?php echo _('Next');?>" name="B1" onClick="location.href='?step=2'">
 <?php
 	} else {
 echo _('Fix all problems to continue');

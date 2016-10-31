@@ -9,7 +9,7 @@
 			$this->request = Request::create();
 			$this->db = MySql::create();
 			$this->ssh = Ssh::create();
-			$this->meneger = Meneger::create();
+			$this->meneger = Manager::create();
 			$this->song = $song;
 			$this->filter = Filter::create();
 		}

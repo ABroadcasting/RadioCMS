@@ -23,7 +23,7 @@
 			return $file_adres;
 		}
 
-		public function ifHag5() {
+		public function ifstep5() {
 			$user = $this->request->getPostVar('user');
 			$password = $this->request->getPostVar('password');
 
@@ -34,10 +34,10 @@
 			$this->saveConfig('USER', $user);
             $this->saveConfig('PASSWORD', $password);
 
-            header("Location: install.php?hag=6");
+            header("Location: install.php?step=6");
 		}
 
-		public function ifHag4() {
+		public function ifstep4() {
 			$play_list_file = $this->request->getPostVar('playlist');
 			$cf_ezstream = $this->request->getPostVar('cf_ezstream');
 			$cf_icecast = $this->request->getPostVar('cf_icecast');
@@ -77,10 +77,10 @@
 			$this->saveConfig('ICE_LOGIN', $xml->authentication->{'admin-user'});
 			$this->saveConfig('ICE_PASS', $xml->authentication->{'admin-password'});
 
-			header("Location: install.php?hag=5");
+			header("Location: install.php?step=5");
 		}
 
-		public function ifHag3() {
+		public function ifstep3() {
 			$con = @ssh2_connect($this->request->getPostVar('ip'), $this->request->getPostVar('ssh_port'));
 			if(!@ssh2_auth_password($con, $this->request->getPostVar('ssh_user'), $this->request->getPostVar('ssh_pass'))) {
 				return _("<p>Wrong login or password.</p>");
@@ -91,10 +91,10 @@
     		$this->saveConfig('SSH_USER', $this->request->getPostVar('ssh_user'));
     		$this->saveConfig('SSH_PASS', $this->request->getPostVar('ssh_pass'));
 			$this->saveConfig('SSH_PORT', $this->request->getPostVar('ssh_port'));
-    		header("Location: install.php?hag=4");
+    		header("Location: install.php?step=4");
 		}
 
-		public function ifHag2() {
+		public function ifstep2() {
 			$link = @mysqli_connect(
 				$this->request->getPostVar('db_host'),
 				$this->request->getPostVar('db_login'),
@@ -108,7 +108,7 @@
 				$this->saveConfig('DB_PASSWORD', $this->request->getPostVar('db_password'));
 				$this->saveConfig('DB_NAME', $this->request->getPostVar('db_name'));
 				$this->createTable($this->request->getPostVar('db_name'));
-				header("Location: install.php?hag=3");
+				header("Location: install.php?step=3");
 			} else {
 				return _("<p>Connection could not be established.</p>");
 			}
@@ -330,7 +330,7 @@
 			$this->request->get($add_site);
 		}
 
-		public function ifHag1() {
+		public function ifstep1() {
             if (
             	$this->isGreen(
             		$this->getPerms(MUSIC_PATH)

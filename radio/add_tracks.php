@@ -13,7 +13,7 @@
 	$add = AddTracks::create($song);
 	$add->setChmod();
 	$add->setPlaylist($req_pl_id);
-	$meneger = Meneger::create();
+	$meneger = Manager::create();
 ?>
 	<div class="body">
 		<div class="title"><?php echo _('Adding songs to'.' '); ?>«<?=$playlist->getTitle($req_pl_id)?>»

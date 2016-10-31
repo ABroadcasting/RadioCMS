@@ -7,7 +7,7 @@
     	$security->denied();
 	}
 
-	$meneger = Meneger::create();
+	$meneger = Manager::create();
 	$meneger->zaprosHandler();
 
     if ($meneger->request->hasPostVar('fl')) {

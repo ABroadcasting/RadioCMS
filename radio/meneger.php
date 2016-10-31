@@ -6,7 +6,7 @@
 	}
 
 	$song = Song::create();
-	$meneger = Meneger::create();
+	$meneger = Manager::create();
 	$start = $meneger->getStart();
 	$playlist_id_get = $meneger->getPlaylistId();
 	$fold = $meneger->getFold();

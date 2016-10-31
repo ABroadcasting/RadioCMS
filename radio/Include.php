@@ -21,7 +21,7 @@
 	include_once 'Classes/Song.class.php';
 	include_once 'Classes/PlaylistAll.class.php';
 	include_once 'Classes/PlaylistEdit.class.php';
-	include_once 'Classes/Meneger.class.php';
+	include_once 'Classes/Manager.class.php';
 	include_once 'Classes/AddTracks.class.php';
 	include_once 'Classes/Event.class.php';
 	include_once 'Classes/Install.class.php';
