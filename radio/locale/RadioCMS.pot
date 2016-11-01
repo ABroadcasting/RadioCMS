@@ -1,0 +1,992 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR RadioCMS Team - All rights reserved
+# This file is distributed under the same license as the RadioCMS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: RadioCMS <version>\n"
+"Report-Msgid-Bugs-To: i18n@soclan.ru\n"
+"POT-Creation-Date: 2016-11-01 21:16+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid " or "
+msgstr ""
+
+msgid " the statistics module and partially 'your DJs' and 'Status'."
+msgstr ""
+
+msgid "- Time is not set"
+msgstr ""
+
+msgid "/ or no_value"
+msgstr ""
+
+msgid "256 "
+msgstr ""
+
+msgid ""
+"<a style=\"position: absolute; margin-left: 17px;\" href=\"http://radiocms.ru"
+"\" target=\"_blank\">Official site</a>"
+msgstr ""
+
+msgid "<b>File has been successfully added to the playlist</b>."
+msgstr ""
+
+msgid "<b>Folder has been successfully added to the playlist</b>."
+msgstr ""
+
+msgid "<b>SimpleXML</b> library"
+msgstr ""
+
+msgid "<b>curl</b> library"
+msgstr ""
+
+msgid "<b>gd2</b> library"
+msgstr ""
+
+msgid "<b>iconv</b> library"
+msgstr ""
+
+msgid "<b>libssh2</b> library"
+msgstr ""
+
+msgid "<b>open_basedir</b> param"
+msgstr ""
+
+msgid ""
+"<br><div  style=\"align: center; font-family: Arial, Helvetica, sans-serif; "
+"font-size: 15px;\">Too many retries, try again in 15 minutes.</div>"
+msgstr ""
+
+msgid "<br>Debug information <br>"
+msgstr ""
+
+msgid "<h1>File has been uploaded</h1><h4>You will be redirected back</h4>"
+msgstr ""
+
+msgid "<h4>Unable to upload the file</h4>"
+msgstr ""
+
+msgid "<i>Administrator</i>"
+msgstr ""
+
+msgid "<i>DJ</i>"
+msgstr ""
+
+msgid "<i>You cannot turn off the radio.</i><br>"
+msgstr ""
+
+msgid "<p>Connection could not be established.</p>"
+msgstr ""
+
+msgid "<p>Error reading mp3-file:<br>"
+msgstr ""
+
+msgid "<p>Ezstream configuration file not found.</p>"
+msgstr ""
+
+msgid "<p>Fields cannot be empty</p>"
+msgstr ""
+
+msgid "<p>Icecast configuration file not found.</p>"
+msgstr ""
+
+msgid "<p>Playlist file not found.</p>"
+msgstr ""
+
+msgid "<p>Please fill all fields.</p>"
+msgstr ""
+
+msgid "<p>Wrong login or password.</p>"
+msgstr ""
+
+msgid "<span class=\"green\"><b>installed</b></span>"
+msgstr ""
+
+msgid "<span class=\"green\"><b>is writable</b></span>"
+msgstr ""
+
+msgid "<span class=\"red\"><b>is not writable</b></span>"
+msgstr ""
+
+msgid "<span class=\"red\"><b>not installed</b></span>"
+msgstr ""
+
+msgid "ACCESS DENIED to "
+msgstr ""
+
+msgid "Add files to"
+msgstr ""
+
+msgid "Add song to the playlist"
+msgstr ""
+
+msgid "Add tracks"
+msgstr ""
+
+msgid "Add tracks to playlist"
+msgstr ""
+
+msgid "Adding songs to "
+msgstr ""
+
+msgid "Administrator"
+msgstr ""
+
+msgid "Again"
+msgstr ""
+
+msgid "Album"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "All songs"
+msgstr ""
+
+msgid "All tracks has been deleted"
+msgstr ""
+
+msgid "Already added to the playlist."
+msgstr ""
+
+msgid "Artist"
+msgstr ""
+
+msgid "Back"
+msgstr ""
+
+msgid "Be careful in filling!"
+msgstr ""
+
+msgid "Bitrate:"
+msgstr ""
+
+msgid "By listeners"
+msgstr ""
+
+msgid "Came back"
+msgstr ""
+
+msgid "Can not be ordered during radioshow."
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Catalog"
+msgstr ""
+
+msgid "Change"
+msgstr ""
+
+msgid "Checks"
+msgstr ""
+
+msgid "Choose folder to copy"
+msgstr ""
+
+msgid "Choose folder to move"
+msgstr ""
+
+msgid "Choose radomly to mix the order"
+msgstr ""
+
+msgid "Client"
+msgstr ""
+
+msgid "Completed:"
+msgstr ""
+
+msgid "Copy"
+msgstr ""
+
+msgid "Could not connect to MySQL"
+msgstr ""
+
+msgid "Could not select database"
+msgstr ""
+
+msgid "Create"
+msgstr ""
+
+msgid "Create and edit playlists"
+msgstr ""
+
+msgid "Create folder"
+msgstr ""
+
+msgid "Create playlist"
+msgstr ""
+
+msgid "Create playlists"
+msgstr ""
+
+msgid "Current"
+msgstr ""
+
+msgid "Current filename"
+msgstr ""
+
+msgid "DJ"
+msgstr ""
+
+msgid ""
+"DJ have an access to the \"Stats\" module and partially to \"Your DJs"
+"\" (only read the list DJ) and \"Status\" (to switch radioshow and autodj "
+"without turn off), Administrator - access to all modules."
+msgstr ""
+
+msgid "Database:"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Delete all"
+msgstr ""
+
+msgid "Delete files?"
+msgstr ""
+
+msgid "Delete playlist"
+msgstr ""
+
+msgid "Delete song"
+msgstr ""
+
+msgid "Delete song from all playlists"
+msgstr ""
+
+msgid "Delete song from playlist"
+msgstr ""
+
+msgid "Delete song from this playlist"
+msgstr ""
+
+msgid "Delete song from this playlist and the harddisk"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Description:"
+msgstr ""
+
+msgid "Display in catalog"
+msgstr ""
+
+msgid "Display on the main page"
+msgstr ""
+
+msgid "Displayed:"
+msgstr ""
+
+msgid "Do not show on main page"
+msgstr ""
+
+msgid "Drop search"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "Edit playlists"
+msgstr ""
+
+msgid "Edit song"
+msgstr ""
+
+msgid "Edit songs"
+msgstr ""
+
+msgid "Enabled"
+msgstr ""
+
+msgid "Everyday"
+msgstr ""
+
+msgid "Exit"
+msgstr ""
+
+msgid "File action"
+msgstr ""
+
+msgid "File manager"
+msgstr ""
+
+msgid "File number"
+msgstr ""
+
+msgid "File size is too small. Allow to upload at least 8 Mb in php.ini."
+msgstr ""
+
+msgid "Filename"
+msgstr ""
+
+msgid "Filename to save"
+msgstr ""
+
+msgid "Files not found"
+msgstr ""
+
+msgid "Files total"
+msgstr ""
+
+msgid "Find dublicates"
+msgstr ""
+
+msgid "Finish addition"
+msgstr ""
+
+msgid "Finish the addition"
+msgstr ""
+
+msgid "Fix all problems to continue"
+msgstr ""
+
+msgid "Fix it"
+msgstr ""
+
+msgid "Free space:"
+msgstr ""
+
+msgid "Friday"
+msgstr ""
+
+msgid "From folder"
+msgstr ""
+
+msgid "General"
+msgstr ""
+
+msgid "Genre:"
+msgstr ""
+
+msgid "Go to panel"
+msgstr ""
+
+msgid "Graphs"
+msgstr ""
+
+msgid ""
+"Greetings! You have successfully installed RadioCMS.\n"
+"\t\t\tTo finish installing add this command to cron (every 3 minutes):"
+msgstr ""
+
+msgid "Hard disk usage"
+msgstr ""
+
+msgid "Have some orders<br>"
+msgstr ""
+
+msgid "Here you can keep some shared writings"
+msgstr ""
+
+msgid "ID"
+msgstr ""
+
+msgid "ID3 of MP3-file"
+msgstr ""
+
+msgid "IP address"
+msgstr ""
+
+msgid "IP address:"
+msgstr ""
+
+msgid "IP adress:"
+msgstr ""
+
+msgid "IceCast configuration:"
+msgstr ""
+
+msgid "In security reasons we recommend to delete install.php file."
+msgstr ""
+
+msgid "Install query failed : "
+msgstr ""
+
+msgid "Installation"
+msgstr ""
+
+msgid "Installation: Step 1 (Checking files and libraries)"
+msgstr ""
+
+msgid "Installation: Step 2 (Database settings)"
+msgstr ""
+
+msgid "Installation: Step 3 (General settings)"
+msgstr ""
+
+msgid "Installation: Step 4 (Setting path)"
+msgstr ""
+
+msgid "Installation: Step 5 (Setting RadioCMS passwords)"
+msgstr ""
+
+msgid "Installation: Step 6 (Finish installing)"
+msgstr ""
+
+msgid ""
+"Installed version ezstream have no LibTag support, having some restrictions "
+"of id3 characters number"
+msgstr ""
+
+msgid "It is not the mp3-file"
+msgstr ""
+
+msgid "Latest orders"
+msgstr ""
+
+msgid "Latest tracks"
+msgstr ""
+
+msgid "List of playlists"
+msgstr ""
+
+msgid "Listen"
+msgstr ""
+
+msgid "Listeners"
+msgstr ""
+
+msgid "Listeners now"
+msgstr ""
+
+msgid "Listeners online"
+msgstr ""
+
+msgid "Login:"
+msgstr ""
+
+msgid "Monday"
+msgstr ""
+
+msgid "Mount point"
+msgstr ""
+
+msgid "Mount points"
+msgstr ""
+
+msgid "Move"
+msgstr ""
+
+msgid "Move to"
+msgstr ""
+
+msgid "Move to other folder/playlist"
+msgstr ""
+
+msgid "Name to save"
+msgstr ""
+
+msgid "Need more rights to upload."
+msgstr ""
+
+msgid "Need to be"
+msgstr ""
+
+msgid "New"
+msgstr ""
+
+msgid "Next"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
+msgid "No data"
+msgstr ""
+
+msgid "No orders<br>"
+msgstr ""
+
+msgid "No running playlist. Start playlist in set closest run time"
+msgstr ""
+
+msgid "No upload directory in the RadioCMS options."
+msgstr ""
+
+msgid "Norepeat:"
+msgstr ""
+
+msgid "Not used!"
+msgstr ""
+
+msgid "Now playing"
+msgstr ""
+
+msgid "Number of files in temporary Upload directory:"
+msgstr ""
+
+msgid "Order"
+msgstr ""
+
+msgid "Order confirmed an will be set 20 minutes after "
+msgstr ""
+
+msgid "Order limits:"
+msgstr ""
+
+msgid "Orders"
+msgstr ""
+
+msgid "Orders allowed"
+msgstr ""
+
+msgid "Orders number"
+msgstr ""
+
+msgid "Orders restricted"
+msgstr ""
+
+msgid "Orders top"
+msgstr ""
+
+msgid "Orders under maintain. Try again later."
+msgstr ""
+
+msgid "Password:"
+msgstr ""
+
+msgid "Permissions for <b>_config.php</b> file"
+msgstr ""
+
+msgid "Permissions for <b>_system.php</b> file"
+msgstr ""
+
+msgid "Permissions for <b>music</b> folder"
+msgstr ""
+
+msgid "Play"
+msgstr ""
+
+msgid "Play after some time"
+msgstr ""
+
+msgid "Play order"
+msgstr ""
+
+msgid "Player"
+msgstr ""
+
+msgid "Playlist"
+msgstr ""
+
+msgid "Playlist in rotation"
+msgstr ""
+
+msgid "Playlist is disabled"
+msgstr ""
+
+msgid "Playlists"
+msgstr ""
+
+msgid "Please, use main menu to work with accessable services."
+msgstr ""
+
+msgid "Port"
+msgstr ""
+
+msgid "Radio settings"
+msgstr ""
+
+msgid "RadioCMS Catalog"
+msgstr ""
+
+msgid "Radioshow"
+msgstr ""
+
+msgid "Randomly"
+msgstr ""
+
+msgid "Randomly one"
+msgstr ""
+
+msgid "Read only"
+msgstr ""
+
+msgid "Rename"
+msgstr ""
+
+msgid "Repeating id3"
+msgstr ""
+
+msgid "Reset orders counter"
+msgstr ""
+
+msgid "Restriction of tracks number in orders"
+msgstr ""
+
+msgid "Restriction of tracks number in playlist"
+msgstr ""
+
+msgid "Rights"
+msgstr ""
+
+msgid "SSH Login (recommended root):"
+msgstr ""
+
+msgid "SSH Password:"
+msgstr ""
+
+msgid "SSH Port:"
+msgstr ""
+
+msgid "Saturday"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Save and add tracks"
+msgstr ""
+
+msgid "Save and back"
+msgstr ""
+
+msgid "Search"
+msgstr ""
+
+msgid "Search in this folder"
+msgstr ""
+
+msgid "Server's status"
+msgstr ""
+
+msgid "Server:"
+msgstr ""
+
+msgid "Set password"
+msgstr ""
+
+msgid "Set with comma i.e: <br> play, play32, live"
+msgstr ""
+
+msgid "Show elements"
+msgstr ""
+
+msgid "Show lines"
+msgstr ""
+
+msgid "Show on the main page"
+msgstr ""
+
+msgid "Showed:"
+msgstr ""
+
+msgid "Song has been added to the playlist."
+msgstr ""
+
+msgid "Song has been deleted from all playlists"
+msgstr ""
+
+msgid "Song has been deleted from playlist"
+msgstr ""
+
+msgid "Sort"
+msgstr ""
+
+msgid "Sort order"
+msgstr ""
+
+msgid "Station name:"
+msgstr ""
+
+msgid "Station statistics"
+msgstr ""
+
+msgid "Stream address"
+msgstr ""
+
+msgid "Sunday"
+msgstr ""
+
+msgid "System settings"
+msgstr ""
+
+msgid "System symbols"
+msgstr ""
+
+msgid "System:"
+msgstr ""
+
+msgid "This track already has been ordered"
+msgstr ""
+
+msgid "This track is recently played. Not for orders."
+msgstr ""
+
+msgid "This username already registered"
+msgstr ""
+
+msgid "Thursday"
+msgstr ""
+
+msgid "Time"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "To the broadcast"
+msgstr ""
+
+msgid "To transliterate all cyrilic tags"
+msgstr ""
+
+msgid "Too late for orders, please try after "
+msgstr ""
+
+msgid "Total listeners"
+msgstr ""
+
+msgid "Total tracks"
+msgstr ""
+
+msgid "Track"
+msgstr ""
+
+msgid "Track by track"
+msgstr ""
+
+msgid "Tracks on main page:"
+msgstr ""
+
+msgid "Tracks restriction:"
+msgstr ""
+
+msgid "Transliteration:"
+msgstr ""
+
+msgid "Tuesday"
+msgstr ""
+
+msgid "Type the folder name:"
+msgstr ""
+
+msgid "Unfortunately it does not work."
+msgstr ""
+
+msgid "Upload directory"
+msgstr ""
+
+msgid "Upload directory does not exists."
+msgstr ""
+
+msgid "Use buttons below to run or stop servers"
+msgstr ""
+
+msgid "Used in"
+msgstr ""
+
+msgid "Used space:"
+msgstr ""
+
+msgid "User"
+msgstr ""
+
+msgid "VBR"
+msgstr ""
+
+msgid "VBR - Variable bitrate"
+msgstr ""
+
+msgid "Value is greater then playlist content"
+msgstr ""
+
+msgid "Version:"
+msgstr ""
+
+msgid "View"
+msgstr ""
+
+msgid "View playlist"
+msgstr ""
+
+msgid "Visual playlist"
+msgstr ""
+
+msgid "WEB Adress"
+msgstr ""
+
+msgid "WEB address"
+msgstr ""
+
+msgid "Website:"
+msgstr ""
+
+msgid "Wednesday"
+msgstr ""
+
+msgid "Welcome"
+msgstr ""
+
+msgid "Where do you want to copy files?"
+msgstr ""
+
+msgid "Where do you want to move files?"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "You can access"
+msgstr ""
+
+msgid "You can't delete superadmin"
+msgstr ""
+
+msgid "You have been logged in as"
+msgstr ""
+
+msgid "You may order only one track in 15 minues, please wait."
+msgstr ""
+
+msgid "You need running servers to work.<br><br>Current status:"
+msgstr ""
+
+msgid "You need to move this song to any folder for adding it to playlist"
+msgstr ""
+
+msgid "Your station"
+msgstr ""
+
+msgid "Your streams:"
+msgstr ""
+
+msgid "all day"
+msgstr ""
+
+msgid "all modules."
+msgstr ""
+
+msgid "allow to order songs during this playlist"
+msgstr ""
+
+msgid "broadcasting now"
+msgstr ""
+
+msgid "disable playlist without deletion"
+msgstr ""
+
+msgid "every"
+msgstr ""
+
+msgid "ezstream configuration:"
+msgstr ""
+
+msgid "fail: unable to execute command\n"
+msgstr ""
+
+msgid "for SSH connection"
+msgstr ""
+
+msgid "full path of the configuration file"
+msgstr ""
+
+msgid "full site adress witout / at the end"
+msgstr ""
+
+msgid "full/path/to/php "
+msgstr ""
+
+msgid "in last 24 hours"
+msgstr ""
+
+msgid "in music directory without full path"
+msgstr ""
+
+msgid "in the RadioCMS catalog"
+msgstr ""
+
+msgid "install.php has not be deleted"
+msgstr ""
+
+msgid "installed"
+msgstr ""
+
+msgid "is writable"
+msgstr ""
+
+msgid "kbit\\s"
+msgstr ""
+
+msgid "listed"
+msgstr ""
+
+msgid "listen"
+msgstr ""
+
+msgid "no repeat tracks in"
+msgstr ""
+
+msgid "not listed"
+msgstr ""
+
+msgid "of local time."
+msgstr ""
+
+msgid "one word"
+msgstr ""
+
+msgid "play_mode 3 works<br>"
+msgstr ""
+
+msgid "playlist file"
+msgstr ""
+
+msgid "playlist title on the main page"
+msgstr ""
+
+msgid "set login"
+msgstr ""
+
+msgid "set the database name"
+msgstr ""
+
+msgid "show  tracks from this playlist on the main page"
+msgstr ""
+
+msgid "songs"
+msgstr ""
+
+msgid "songs, contains such symbols will not be listed in the resent played"
+msgstr ""
+
+msgid "stream port"
+msgstr ""
+
+msgid "streams"
+msgstr ""
+
+msgid "to enter admin panel"
+msgstr ""
+
+msgid "two words"
+msgstr ""
+
+msgid "type the password"
+msgstr ""
+
+msgid "using http://"
+msgstr ""
+
+msgid "usually localhost"
+msgstr ""
+
+msgid "will be listed ONLY if all fields are folled"
+msgstr ""
+
+msgid "with other playlists"
+msgstr ""
