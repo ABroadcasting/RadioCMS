@@ -18,11 +18,11 @@ GUI_DIR=$(readlink -f ../../)
 find ${GUI_DIR} -type f -name '*.php' -print > php.lst
 /usr/bin/xgettext --copyright-holder='RadioCMS Team - All rights reserved' --package-name='RadioCMS' \
 --package-version="<version>" --msgid-bugs-address='i18n@soclan.ru' --language=PHP --keyword='tr' --keyword='ntr:1,2' \
---from-code=utf-8 --files-from=php.lst --no-location --sort-output --output=${i18N_DIR}/iMSCP.pot
+--from-code=utf-8 --files-from=php.lst --no-location --sort-output --output=${i18N_DIR}/RadioCMS.pot
 rm -f php.lst
 
 # JS files
 find ${GUI_DIR} -type f -name '*.js' -print > js.lst
 /usr/bin/xgettext --language=Javascript --omit-header --keyword='label' --files-from=js.lst --no-location --sort-output \
 --join-existing --output=${i18N_DIR}/RadioCMS.pot
-rm -f xml.lst
+rm -f js.lst
