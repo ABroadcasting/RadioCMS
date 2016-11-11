@@ -34,7 +34,7 @@
 ?>
 	<form method="GET" action="">
 		<p>
-			Поиск <input type="text" name="search" size="20" value="<?=$playlistAll->getSearchString()?>">
+			<?php echo _('Search');?> <input type="text" name="search" size="20" value="<?=$playlistAll->getSearchString()?>">
 			<input type="hidden" name="limit" size="20" value="<?=$limit;?>">
 			<input type="submit" value="<?php echo _('Search');?>">
 		</p>

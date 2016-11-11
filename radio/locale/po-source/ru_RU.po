@@ -1,0 +1,993 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR RadioCMS Team - All rights reserved
+# This file is distributed under the same license as the RadioCMS package.
+# 
+# Translators:
+# Vitaliy Zhukov <DragonZX@yandex.ru>, 2016
+msgid ""
+msgstr ""
+"Project-Id-Version: RadioCMS\n"
+"Report-Msgid-Bugs-To: i18n@soclan.ru\n"
+"POT-Creation-Date: 2016-11-01 21:16+0300\n"
+"PO-Revision-Date: 2016-11-01 21:10+0000\n"
+"Last-Translator: Vitaliy Zhukov <DragonZX@yandex.ru>\n"
+"Language-Team: Russian (Russia) (http://www.transifex.com/opentranslate/radiocms/language/ru_RU/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru_RU\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+msgid " or "
+msgstr "или"
+
+msgid " the statistics module and partially 'your DJs' and 'Status'."
+msgstr " модуль статистики и частично 'диджеев' и 'статуса'."
+
+msgid "- Time is not set"
+msgstr "- Время не задано"
+
+msgid "/ or no_value"
+msgstr "/ или no_value"
+
+msgid "256 "
+msgstr "256 "
+
+msgid ""
+"<a style=\"position: absolute; margin-left: 17px;\" "
+"href=\"http://radiocms.ru\" target=\"_blank\">Official site</a>"
+msgstr "<a style=\"position: absolute; margin-left: 17px;\" href=\"http://radiocms.ru\" target=\"_blank\">Официальный сайт</a>"
+
+msgid "<b>File has been successfully added to the playlist</b>."
+msgstr "<b>Файл был успешно добавлен в плейлист</b>."
+
+msgid "<b>Folder has been successfully added to the playlist</b>."
+msgstr "<b>Каталог был успешно добавлен в плейлист</b>."
+
+msgid "<b>SimpleXML</b> library"
+msgstr "Библиотека <b>SimpleXML</b>"
+
+msgid "<b>curl</b> library"
+msgstr "Библиотека <b>curl</b>"
+
+msgid "<b>gd2</b> library"
+msgstr "Библиотека <b>gd2</b>"
+
+msgid "<b>iconv</b> library"
+msgstr "Библиотека <b>iconv</b>"
+
+msgid "<b>libssh2</b> library"
+msgstr "Библиотека <b>libssh2</b>"
+
+msgid "<b>open_basedir</b> param"
+msgstr "Параметр <b>open_basedir</b>"
+
+msgid ""
+"<br><div  style=\"align: center; font-family: Arial, Helvetica, sans-serif; "
+"font-size: 15px;\">Too many retries, try again in 15 minutes.</div>"
+msgstr "<br><div  style=\"align: center; font-family: Arial, Helvetica, sans-serif; font-size: 15px;\">Слишком много попыток, попробуйте снова через 15 минут.</div>"
+
+msgid "<br>Debug information <br>"
+msgstr "<br>Отладочная информация <br>"
+
+msgid "<h1>File has been uploaded</h1><h4>You will be redirected back</h4>"
+msgstr "<h1>Файл был загружен</h1><h4>Вы будете перемещены назад</h4>"
+
+msgid "<h4>Unable to upload the file</h4>"
+msgstr "<h4>Невозможно загрузить файл</h4>"
+
+msgid "<i>Administrator</i>"
+msgstr "<i>Администратор</i>"
+
+msgid "<i>DJ</i>"
+msgstr "<i>DJ</i>"
+
+msgid "<i>You cannot turn off the radio.</i><br>"
+msgstr "<i>Вы не можете выключить радио.</i><br>"
+
+msgid "<p>Connection could not be established.</p>"
+msgstr "<p>Соединение не может быть установлено.</p>"
+
+msgid "<p>Error reading mp3-file:<br>"
+msgstr "<p>Ошибка чтения mp3-файла:<br>"
+
+msgid "<p>Ezstream configuration file not found.</p>"
+msgstr "<p>Файл конфигурации Ezstream не найден.</p>"
+
+msgid "<p>Fields cannot be empty</p>"
+msgstr "<p>Поля не могут пустовать</p>"
+
+msgid "<p>Icecast configuration file not found.</p>"
+msgstr "<p>Файл конфигурации Icecast не найден.</p>"
+
+msgid "<p>Playlist file not found.</p>"
+msgstr "<p>Файл плейлиста не найден.</p>"
+
+msgid "<p>Please fill all fields.</p>"
+msgstr "<p>Пожалуйста, заполните все поля.</p>"
+
+msgid "<p>Wrong login or password.</p>"
+msgstr "<p>Неверный логин или пароль.</p>"
+
+msgid "<span class=\"green\"><b>installed</b></span>"
+msgstr "<span class=\"green\"><b>установлено</b></span>"
+
+msgid "<span class=\"green\"><b>is writable</b></span>"
+msgstr "<span class=\"green\"><b>доступно на запись</b></span>"
+
+msgid "<span class=\"red\"><b>is not writable</b></span>"
+msgstr "<span class=\"red\"><b>недоступно на запись</b></span>"
+
+msgid "<span class=\"red\"><b>not installed</b></span>"
+msgstr "<span class=\"red\"><b>не установлено</b></span>"
+
+msgid "ACCESS DENIED to "
+msgstr "ДОСТУП ЗАПРЕЩЕН к"
+
+msgid "Add files to"
+msgstr "Добавить файлы в"
+
+msgid "Add song to the playlist"
+msgstr "Добавить песню в плейлист"
+
+msgid "Add tracks"
+msgstr "Добавить треки"
+
+msgid "Add tracks to playlist"
+msgstr "Добавить треки в плейлист"
+
+msgid "Adding songs to "
+msgstr "Добавление песен в"
+
+msgid "Administrator"
+msgstr "Администратор"
+
+msgid "Again"
+msgstr "Снова"
+
+msgid "Album"
+msgstr "Альбом"
+
+msgid "All"
+msgstr "Все"
+
+msgid "All songs"
+msgstr "Все песни"
+
+msgid "All tracks has been deleted"
+msgstr "Все треки были удалены"
+
+msgid "Already added to the playlist."
+msgstr "Уже добавлено в плейлист."
+
+msgid "Artist"
+msgstr "Артист"
+
+msgid "Back"
+msgstr "Назад"
+
+msgid "Be careful in filling!"
+msgstr "Заполняйте аккуратно!"
+
+msgid "Bitrate:"
+msgstr "Битрейт:"
+
+msgid "By listeners"
+msgstr "По слушателям"
+
+msgid "Came back"
+msgstr "Вернуться"
+
+msgid "Can not be ordered during radioshow."
+msgstr "Не может быть заказан во время программы."
+
+msgid "Cancel"
+msgstr "Отмена"
+
+msgid "Catalog"
+msgstr "Каталог"
+
+msgid "Change"
+msgstr "Изменить"
+
+msgid "Checks"
+msgstr "Проверки"
+
+msgid "Choose folder to copy"
+msgstr "Выберите каталог для копирования"
+
+msgid "Choose folder to move"
+msgstr "Выберите каталог для перемещения"
+
+msgid "Choose radomly to mix the order"
+msgstr "Выберите \"случайно\", чтобы перемешать"
+
+msgid "Client"
+msgstr "Клиент"
+
+msgid "Completed:"
+msgstr "Завершено:"
+
+msgid "Copy"
+msgstr "Копировать"
+
+msgid "Could not connect to MySQL"
+msgstr "Невозможно соединиться с MySQL"
+
+msgid "Could not select database"
+msgstr "Невозможно выбрать базу данных"
+
+msgid "Create"
+msgstr "Создать"
+
+msgid "Create and edit playlists"
+msgstr "Создать и изменить плейлисты"
+
+msgid "Create folder"
+msgstr "Создать каталог"
+
+msgid "Create playlist"
+msgstr "Создать плейлист"
+
+msgid "Create playlists"
+msgstr "Создать плейлисты"
+
+msgid "Current"
+msgstr "Текущий"
+
+msgid "Current filename"
+msgstr "Текущее имя файла"
+
+msgid "DJ"
+msgstr "DJ"
+
+msgid ""
+"DJ have an access to the \"Stats\" module and partially to \"Your DJs\" "
+"(only read the list DJ) and \"Status\" (to switch radioshow and autodj "
+"without turn off), Administrator - access to all modules."
+msgstr "DJ имеют доступ к модулю \"Статистика\" и честично к модулям \"Ваши диджеи\" (только чтение списка DJ) и \"Статус\" (для перехода между радиошоу и автодиджеем без возможности выключения), Администратор - доступ ко всем модулям."
+
+msgid "Database:"
+msgstr "База данных:"
+
+msgid "Delete"
+msgstr "Удалить"
+
+msgid "Delete all"
+msgstr "Удалить всё"
+
+msgid "Delete files?"
+msgstr "Удалить файлы?"
+
+msgid "Delete playlist"
+msgstr "Удалить плйлист"
+
+msgid "Delete song"
+msgstr "Удалить песню"
+
+msgid "Delete song from all playlists"
+msgstr "Удалить песню из всех плейлистов"
+
+msgid "Delete song from playlist"
+msgstr "Удалить песню плейлиста"
+
+msgid "Delete song from this playlist"
+msgstr "Удалить песню из этого плейлиста"
+
+msgid "Delete song from this playlist and the harddisk"
+msgstr "Удалить песню из плейлиста и с жесткого диска"
+
+msgid "Description"
+msgstr "Описание"
+
+msgid "Description:"
+msgstr "Описание:"
+
+msgid "Display in catalog"
+msgstr "Отображать в каталоге"
+
+msgid "Display on the main page"
+msgstr "Отображать на главной странице"
+
+msgid "Displayed:"
+msgstr "Показано:"
+
+msgid "Do not show on main page"
+msgstr "Не показывать на главной странице"
+
+msgid "Drop search"
+msgstr "Сбросить поиск"
+
+msgid "Edit"
+msgstr "Изменить"
+
+msgid "Edit playlists"
+msgstr "Изменить плейлист"
+
+msgid "Edit song"
+msgstr "Изменить песню"
+
+msgid "Edit songs"
+msgstr "Изменить песню"
+
+msgid "Enabled"
+msgstr "Включено"
+
+msgid "Everyday"
+msgstr "Каждый день"
+
+msgid "Exit"
+msgstr "Выход"
+
+msgid "File action"
+msgstr "Действие над файлом"
+
+msgid "File manager"
+msgstr "Менеджер файлов"
+
+msgid "File number"
+msgstr "Номер файла"
+
+msgid "File size is too small. Allow to upload at least 8 Mb in php.ini."
+msgstr "Размер файла слишком мал. Разрешите в php.ini для загрузки хотя бы 8Мб "
+
+msgid "Filename"
+msgstr "Имя файла"
+
+msgid "Filename to save"
+msgstr "Имя файла для сохранения"
+
+msgid "Files not found"
+msgstr "Файлы не найдены"
+
+msgid "Files total"
+msgstr "Всего файлов"
+
+msgid "Find dublicates"
+msgstr "Найти дубликаты"
+
+msgid "Finish addition"
+msgstr "Завершить добавление"
+
+msgid "Finish the addition"
+msgstr "Завершить добавление"
+
+msgid "Fix all problems to continue"
+msgstr "Исправьте все проблемы, чтобы продолжить"
+
+msgid "Fix it"
+msgstr "Исправить"
+
+msgid "Free space:"
+msgstr "Свободное пространство:"
+
+msgid "Friday"
+msgstr "Пятница"
+
+msgid "From folder"
+msgstr "Из каталога"
+
+msgid "General"
+msgstr "Общие"
+
+msgid "Genre:"
+msgstr "Жанр:"
+
+msgid "Go to panel"
+msgstr "Перейти к панели"
+
+msgid "Graphs"
+msgstr "Графики"
+
+msgid ""
+"Greetings! You have successfully installed RadioCMS.\n"
+"\t\t\tTo finish installing add this command to cron (every 3 minutes):"
+msgstr "Поздравляем! Вы успешно установили RadioCMS.\n\t\t\tДля завершения установки добавьте эту команду в крон (каждые 3 минуты):"
+
+msgid "Hard disk usage"
+msgstr "Использование жесткого диска"
+
+msgid "Have some orders<br>"
+msgstr "Есть заказы<br>"
+
+msgid "Here you can keep some shared writings"
+msgstr "Здесь Вы можете хранить общие записи"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "ID3 of MP3-file"
+msgstr "ID3 MP3-файла"
+
+msgid "IP address"
+msgstr "IP адрес"
+
+msgid "IP address:"
+msgstr "IP адрес:"
+
+msgid "IP adress:"
+msgstr "IP адрес:"
+
+msgid "IceCast configuration:"
+msgstr "Конфигурация IceCast:"
+
+msgid "In security reasons we recommend to delete install.php file."
+msgstr "In security reasons we recommend to delete install.php file."
+
+msgid "Install query failed : "
+msgstr "Запрос установки не удался : "
+
+msgid "Installation"
+msgstr "Установка"
+
+msgid "Installation: Step 1 (Checking files and libraries)"
+msgstr "Установка: Шаг 1 (Проверка файлов и библиотек)"
+
+msgid "Installation: Step 2 (Database settings)"
+msgstr "Установка: Шаг 2 (Настройка базы данных)"
+
+msgid "Installation: Step 3 (General settings)"
+msgstr "Установка: Шаг 3 (Основные настройки)"
+
+msgid "Installation: Step 4 (Setting path)"
+msgstr "Установка: Шаг 4 (Настройка путей)"
+
+msgid "Installation: Step 5 (Setting RadioCMS passwords)"
+msgstr "Установка: Шаг 5 (Установка паролей RadioCMS)"
+
+msgid "Installation: Step 6 (Finish installing)"
+msgstr "Установка: Шаг 6 (Завершение установки)"
+
+msgid ""
+"Installed version ezstream have no LibTag support, having some restrictions "
+"of id3 characters number"
+msgstr "Установленная версия ezstream не имеет поддержки LibTag, поэтому имеет некоторые ограничения на количество символов в id3-тегах"
+
+msgid "It is not the mp3-file"
+msgstr "Не является mp3-файлом"
+
+msgid "Latest orders"
+msgstr "Последние заказы"
+
+msgid "Latest tracks"
+msgstr "Последние треки"
+
+msgid "List of playlists"
+msgstr "Список плейлистов"
+
+msgid "Listen"
+msgstr "Слушать"
+
+msgid "Listeners"
+msgstr "Слушатели"
+
+msgid "Listeners now"
+msgstr "Сейчас слушателей"
+
+msgid "Listeners online"
+msgstr "Слушателей онлайн"
+
+msgid "Login:"
+msgstr "Логин:"
+
+msgid "Monday"
+msgstr "Понедельник"
+
+msgid "Mount point"
+msgstr "Точка монтирования"
+
+msgid "Mount points"
+msgstr "Точки монтирования"
+
+msgid "Move"
+msgstr "Переместить"
+
+msgid "Move to"
+msgstr "Переместить в"
+
+msgid "Move to other folder/playlist"
+msgstr "Переместить в другой каталог/плейлист"
+
+msgid "Name to save"
+msgstr "Имя для сохранения"
+
+msgid "Need more rights to upload."
+msgstr "Нужно больше прав для загрузки."
+
+msgid "Need to be"
+msgstr "Должен быть"
+
+msgid "New"
+msgstr "Новый"
+
+msgid "Next"
+msgstr "Далее"
+
+msgid "No"
+msgstr "Нет"
+
+msgid "No data"
+msgstr "Нет данных"
+
+msgid "No orders<br>"
+msgstr "Нет заказов<br>"
+
+msgid "No running playlist. Start playlist in set closest run time"
+msgstr "Нет запущенных плейлистов. Запустите плейлист, задав ему ближайшее время для запуска"
+
+msgid "No upload directory in the RadioCMS options."
+msgstr "Нет директории для загрузки в настройках RadioCMS."
+
+msgid "Norepeat:"
+msgstr "Нет повторам:"
+
+msgid "Not used!"
+msgstr "Не используется!"
+
+msgid "Now playing"
+msgstr "Сейчас играет"
+
+msgid "Number of files in temporary Upload directory:"
+msgstr "Количество файлов в каталоге временной загрузки:"
+
+msgid "Order"
+msgstr "Заказ"
+
+msgid "Order confirmed an will be set 20 minutes after "
+msgstr "Заказ подтвержден. Будет проигран через 20 минут после"
+
+msgid "Order limits:"
+msgstr "Лимит заказов:"
+
+msgid "Orders"
+msgstr "Заказы"
+
+msgid "Orders allowed"
+msgstr "Заказы разрешены"
+
+msgid "Orders number"
+msgstr "Число заказов"
+
+msgid "Orders restricted"
+msgstr "Заказы запрещены"
+
+msgid "Orders top"
+msgstr "Топ заказов"
+
+msgid "Orders under maintain. Try again later."
+msgstr "Заказы на ремонте. Попробуйте позже"
+
+msgid "Password:"
+msgstr "Пароль:"
+
+msgid "Permissions for <b>_config.php</b> file"
+msgstr "Разрешения для файла <b>_config.php</b>"
+
+msgid "Permissions for <b>_system.php</b> file"
+msgstr "Разрешения для файла <b>_system.php</b>"
+
+msgid "Permissions for <b>music</b> folder"
+msgstr "Разрешения для папки <b>music</b>"
+
+msgid "Play"
+msgstr "Проиграть"
+
+msgid "Play after some time"
+msgstr "Проиграть через некоторое время"
+
+msgid "Play order"
+msgstr "Играть заказ"
+
+msgid "Player"
+msgstr "Плеер"
+
+msgid "Playlist"
+msgstr "Плейлист"
+
+msgid "Playlist in rotation"
+msgstr "Плейлист в ротации"
+
+msgid "Playlist is disabled"
+msgstr "Плейлист отключен"
+
+msgid "Playlists"
+msgstr "Плейлисты"
+
+msgid "Please, use main menu to work with accessable services."
+msgstr "Пожалуйста, используйте главное меню для работы с доступными сервисами."
+
+msgid "Port"
+msgstr "Порт"
+
+msgid "Radio settings"
+msgstr "Настройки радио"
+
+msgid "RadioCMS Catalog"
+msgstr "Каталог RadioCMS"
+
+msgid "Radioshow"
+msgstr "Программа"
+
+msgid "Randomly"
+msgstr "Случайно"
+
+msgid "Randomly one"
+msgstr "Случайно один"
+
+msgid "Read only"
+msgstr "Только чтение"
+
+msgid "Rename"
+msgstr "Переименовать"
+
+msgid "Repeating id3"
+msgstr "Повтор id3"
+
+msgid "Reset orders counter"
+msgstr "Сбросить счетчик заказов"
+
+msgid "Restriction of tracks number in orders"
+msgstr "Ограничение количества треков в заказах"
+
+msgid "Restriction of tracks number in playlist"
+msgstr "Ограничение количества треков в плейлисте"
+
+msgid "Rights"
+msgstr "Права"
+
+msgid "SSH Login (recommended root):"
+msgstr "SSH логин (рекомендуется root):"
+
+msgid "SSH Password:"
+msgstr "SSH пароль:"
+
+msgid "SSH Port:"
+msgstr "SSH порт:"
+
+msgid "Saturday"
+msgstr "Суббота"
+
+msgid "Save"
+msgstr "Сохранить"
+
+msgid "Save and add tracks"
+msgstr "Сохранить и добавить треки"
+
+msgid "Save and back"
+msgstr "Сохранить и выйти"
+
+msgid "Search"
+msgstr "Найти"
+
+msgid "Search in this folder"
+msgstr "Искать в текущем каталоге"
+
+msgid "Server's status"
+msgstr "Статус сервера"
+
+msgid "Server:"
+msgstr "Сервер:"
+
+msgid "Set password"
+msgstr "выберите пароль"
+
+msgid "Set with comma i.e: <br> play, play32, live"
+msgstr "Через запятую, например: <br> play, play32, live"
+
+msgid "Show elements"
+msgstr "Показать элементы"
+
+msgid "Show lines"
+msgstr "Показать линии"
+
+msgid "Show on the main page"
+msgstr "Показать на главной странице"
+
+msgid "Showed:"
+msgstr "Показано:"
+
+msgid "Song has been added to the playlist."
+msgstr "Песня была добавлена в плейлист."
+
+msgid "Song has been deleted from all playlists"
+msgstr "Песня была удалена из всех плейлистов"
+
+msgid "Song has been deleted from playlist"
+msgstr "Песня была удалена из плейлиста"
+
+msgid "Sort"
+msgstr "Сортировать"
+
+msgid "Sort order"
+msgstr "Порядок сортировки"
+
+msgid "Station name:"
+msgstr "Название станции:"
+
+msgid "Station statistics"
+msgstr "Статистика станции"
+
+msgid "Stream address"
+msgstr "Адрес потока"
+
+msgid "Sunday"
+msgstr "Воскресение"
+
+msgid "System settings"
+msgstr "Настройки системы"
+
+msgid "System symbols"
+msgstr "Системные символы"
+
+msgid "System:"
+msgstr "Система:"
+
+msgid "This track already has been ordered"
+msgstr "Этот трек уже был заказан"
+
+msgid "This track is recently played. Not for orders."
+msgstr "Этот трек сейчас играет. Недоступно для заказа."
+
+msgid "This username already registered"
+msgstr "Этот пользователь уже зарегистрирован"
+
+msgid "Thursday"
+msgstr "Четверг"
+
+msgid "Time"
+msgstr "Время"
+
+msgid "Title"
+msgstr "Название"
+
+msgid "To the broadcast"
+msgstr "В эфир"
+
+msgid "To transliterate all cyrilic tags"
+msgstr "Транслитировать все кириллические теги"
+
+msgid "Too late for orders, please try after "
+msgstr "Слишком поздно для заказа, пожалуйста попробуйте после "
+
+msgid "Total listeners"
+msgstr "Всего слушателей"
+
+msgid "Total tracks"
+msgstr "Всего треков"
+
+msgid "Track"
+msgstr "Трек"
+
+msgid "Track by track"
+msgstr "По порядку"
+
+msgid "Tracks on main page:"
+msgstr "Треки на главной странице:"
+
+msgid "Tracks restriction:"
+msgstr "Запрет треков:"
+
+msgid "Transliteration:"
+msgstr "Транслит"
+
+msgid "Tuesday"
+msgstr "Вторник"
+
+msgid "Type the folder name:"
+msgstr "Впишите имя папки:"
+
+msgid "Unfortunately it does not work."
+msgstr "К сожалению, не работает."
+
+msgid "Upload directory"
+msgstr "Директория загрузки"
+
+msgid "Upload directory does not exists."
+msgstr "Папка загрузки не существует"
+
+msgid "Use buttons below to run or stop servers"
+msgstr "Используйте кнопки ниже, чтобы запустить или остановить сервера"
+
+msgid "Used in"
+msgstr "Используется в"
+
+msgid "Used space:"
+msgstr "Использованное пространство:"
+
+msgid "User"
+msgstr "Пользователь"
+
+msgid "VBR"
+msgstr "VBR"
+
+msgid "VBR - Variable bitrate"
+msgstr "VBR - Переменный битрейт"
+
+msgid "Value is greater then playlist content"
+msgstr "Значение больше чем содержится в плейлисте"
+
+msgid "Version:"
+msgstr "Версия:"
+
+msgid "View"
+msgstr "Смотреть"
+
+msgid "View playlist"
+msgstr "Показать плейлист"
+
+msgid "Visual playlist"
+msgstr "Визуальный плейлист"
+
+msgid "WEB Adress"
+msgstr "WEB адрес"
+
+msgid "WEB address"
+msgstr "WEB адрес"
+
+msgid "Website:"
+msgstr "Вебсайт:"
+
+msgid "Wednesday"
+msgstr "Среда"
+
+msgid "Welcome"
+msgstr "Добро пожаловать"
+
+msgid "Where do you want to copy files?"
+msgstr "Куда Вы хотите скопировать файлы?"
+
+msgid "Where do you want to move files?"
+msgstr "Куда Вы хотите переместить файлы?"
+
+msgid "Yes"
+msgstr "Да"
+
+msgid "You can access"
+msgstr "У вас есть доступ"
+
+msgid "You can't delete superadmin"
+msgstr "Вы не можете удалить супер администратора"
+
+msgid "You have been logged in as"
+msgstr "Вы вошли как"
+
+msgid "You may order only one track in 15 minues, please wait."
+msgstr "Вы можете заказать только один трек за 15 минут, пожалуйста подождите."
+
+msgid "You need running servers to work.<br><br>Current status:"
+msgstr "Для работы необходимы запущенные сервера.<br><br>Текущий статус:"
+
+msgid "You need to move this song to any folder for adding it to playlist"
+msgstr "Вам нужно переместить песню в папку для добавления в плейлист"
+
+msgid "Your station"
+msgstr "Ваша станция"
+
+msgid "Your streams:"
+msgstr "Ваши потоки:"
+
+msgid "all day"
+msgstr "весь день"
+
+msgid "all modules."
+msgstr "все модули."
+
+msgid "allow to order songs during this playlist"
+msgstr "разрешить заказ песен во время действия плейлиста"
+
+msgid "broadcasting now"
+msgstr "Сейчас и эфире"
+
+msgid "disable playlist without deletion"
+msgstr "отключить плейлист без удаления"
+
+msgid "every"
+msgstr "каждый"
+
+msgid "ezstream configuration:"
+msgstr "Конфигурация ezstream:"
+
+msgid "fail: unable to execute command\n"
+msgstr "fail: невозможно выполнить команду\n"
+
+msgid "for SSH connection"
+msgstr "для SSH соединений"
+
+msgid "full path of the configuration file"
+msgstr "полный путь к файлу конфигурации"
+
+msgid "full site adress witout / at the end"
+msgstr "полный адрес сайта без / на конце"
+
+msgid "full/path/to/php "
+msgstr "полный/путь/до/php "
+
+msgid "in last 24 hours"
+msgstr "за последние 24 часа"
+
+msgid "in music directory without full path"
+msgstr "в директории музыки без полного пути"
+
+msgid "in the RadioCMS catalog"
+msgstr "в каталоге RadioCMS"
+
+msgid "install.php has not be deleted"
+msgstr "install.php не был удалён"
+
+msgid "installed"
+msgstr "установлено"
+
+msgid "is writable"
+msgstr "доступно для записи"
+
+msgid "kbit\\s"
+msgstr "kbit\\s"
+
+msgid "listed"
+msgstr "отображается"
+
+msgid "listen"
+msgstr "слушать"
+
+msgid "no repeat tracks in"
+msgstr "не повторять треки в течение"
+
+msgid "not listed"
+msgstr "не отображается"
+
+msgid "of local time."
+msgstr "по местному времени."
+
+msgid "one word"
+msgstr "одно слово"
+
+msgid "play_mode 3 works<br>"
+msgstr "play_mode 3 работает<br>"
+
+msgid "playlist file"
+msgstr "файл плейлиста"
+
+msgid "playlist title on the main page"
+msgstr "название плейлиста на главной странице"
+
+msgid "set login"
+msgstr "выберите логин"
+
+msgid "set the database name"
+msgstr "задайте имя базы данных"
+
+msgid "show  tracks from this playlist on the main page"
+msgstr "отображать треки из этого плейлиста на главной странице"
+
+msgid "songs"
+msgstr "песен"
+
+msgid "songs, contains such symbols will not be listed in the resent played"
+msgstr "песни, содержащие эти символы не будут указаны в недавно проигранных"
+
+msgid "stream port"
+msgstr "порт потока"
+
+msgid "streams"
+msgstr "потоки"
+
+msgid "to enter admin panel"
+msgstr "для входа в панель"
+
+msgid "two words"
+msgstr "пару слов"
+
+msgid "type the password"
+msgstr "введите пароль"
+
+msgid "using http://"
+msgstr "используя http://"
+
+msgid "usually localhost"
+msgstr "обычно localhost"
+
+msgid "will be listed ONLY if all fields are folled"
+msgstr "будет отображаться ТОЛЬКО если заполнены все поля"
+
+msgid "with other playlists"
+msgstr "с другими плейлистами"
