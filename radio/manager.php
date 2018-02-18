@@ -6,11 +6,11 @@
 	}
 
 	$song = Song::create();
-	$meneger = Manager::create();
-	$start = $meneger->getStart();
-	$playlist_id_get = $meneger->getPlaylistId();
-	$fold = $meneger->getFold();
-	$search = $meneger->getSearch();
+	$manager = Manager::create();
+	$start = $manager->getStart();
+	$playlist_id_get = $manager->getPlaylistId();
+	$fold = $manager->getFold();
+	$search = $manager->getSearch();
 
 	$in = 0;
 	$i = 0;
@@ -18,10 +18,10 @@
 	$ipk = 0;
 	$ips = 0;
 
-	$dirct = $meneger->getDirct();
-	$dirct2 = $meneger->getDirct2();
-    $back = $meneger->getBack();
-    $begin = $meneger->getBegin();
+	$dirct = $manager->getDirct();
+	$dirct2 = $manager->getDirct2();
+    $back = $manager->getBack();
+    $begin = $manager->getBegin();
 
 	$dirct_f = str_replace(" ", "%20", $dirct);
 echo '
@@ -31,14 +31,14 @@ echo '
 
 	if (!empty($playlist_id_get)) {
 
-echo _('Add files to'). $meneger->getPlaylistName($playlist_id_get). $dirct2;
+echo _('Add files to'). $manager->getPlaylistName($playlist_id_get). $dirct2;
 	} else {
 		echo _('File manager'). $dirct2;
 	}
 ?>
 		</div>
 	<div class="border">
-		<form name='fman' action='meneger_zapros.php?folder=<?=$dirct_f?>&start=<?=$start?>&search=<?=$search?>' method='POST'>
+		<form name='fman' action='manager_zapros.php?folder=<?=$dirct_f?>&start=<?=$start?>&search=<?=$search?>' method='POST'>
 		<table border=0 cellspacing="0" cellpadding="0" width="97%" class="table1">
 			<tr>
 				<td width=25><?php echo ('Choose');?></td>
@@ -46,7 +46,7 @@ echo _('Add files to'). $meneger->getPlaylistName($playlist_id_get). $dirct2;
 				<td width=80% align="right">
 <?php
 	if ($dirct!=$begin) {
-					echo '<b><a href="meneger.php?fold=<?=$back?>&playlist_id=<?=$playlist_id_get?>">'._('Came back').'</a></b>';
+					echo '<b><a href="manager.php?fold=<?=$back?>&playlist_id=<?=$playlist_id_get?>">'._('Came back').'</a></b>';
 	}
 ?>
 				</td>
@@ -54,7 +54,7 @@ echo _('Add files to'). $meneger->getPlaylistName($playlist_id_get). $dirct2;
 		</table>
 		<table border="0" cellspacing="0" cellpadding="0" width="97%" class="table1">
 <?php
-	$list = $meneger->getList();
+	$list = $manager->getList();
 	foreach ($list['list'] as $k) {
 
     	if ($i == 0) {
@@ -70,7 +70,7 @@ echo _('Add files to'). $meneger->getPlaylistName($playlist_id_get). $dirct2;
     	}
 
 		$full = $dirct."/".$k;
-		$k_size = $meneger->getFilesize($full);
+		$k_size = $manager->getFilesize($full);
 
     	if (is_dir($full) === true) {
 ?>
@@ -106,7 +106,7 @@ echo _('Add files to'). $meneger->getPlaylistName($playlist_id_get). $dirct2;
 
 	    	$kp = urlencode($k);
 	        if ($dirct2 == "/music") {
-	            if ($meneger->isMp3($k)) {
+	            if ($manager->isMp3($k)) {
 	    			if (!empty($playlist_id_get)) {
 ?>
 	    				<img src="images/delete2.gif" width="16" height="16" border="0" title="<?php echo _('You need to move this song to any folder for adding it to playlist');?>">
@@ -128,7 +128,7 @@ echo _('Add files to'). $meneger->getPlaylistName($playlist_id_get). $dirct2;
 
 
 	        } else {
-	        	if ($meneger->isMp3($k)) {
+	        	if ($manager->isMp3($k)) {
 	    			if (!empty($playlist_id_get)) {
 ?>
 						<a href="add_tracks.php?start=<?=$start?>&search=<?=$search?>&filename=<?=urlencode($full)?>&playlist_id=<?=$playlist_id_get?>">
@@ -156,7 +156,7 @@ echo _('Add files to'). $meneger->getPlaylistName($playlist_id_get). $dirct2;
 <?php
 		}
 
-  		$playlist_name = $meneger->getUseIn($full);
+  		$playlist_name = $manager->getUseIn($full);
 
     	$old_k = $k;
    		$k = wordwrap($k, 30, "\n", 1);
@@ -168,13 +168,13 @@ echo _('Add files to'). $meneger->getPlaylistName($playlist_id_get). $dirct2;
 			if (!empty($playlist_id_get)) {
 ?>
 					<img src="images/m_folder.gif" border="0" width="13" height="11">
-					<a href="meneger.php?fold=<?=$full?>&playlist_id=<?=$playlist_id_get?>"><b><?=$k?></b></a>
+					<a href="manager.php?fold=<?=$full?>&playlist_id=<?=$playlist_id_get?>"><b><?=$k?></b></a>
 					<br><div class="podpis">Папка номер <?=$ips?></div>
 <?php
 			} else {
 ?>
 					<img src="images/m_folder.gif" border="0" width="13" height="11">
-					<a href="meneger.php?fold=<?=$full?>"><b><?=$k?></b></a>
+					<a href="manager.php?fold=<?=$full?>"><b><?=$k?></b></a>
 					<br><div class="podpis"><?php echo ('Folder number'.' ');?><?=$ips+1?></div>
 <?php
 			}
@@ -186,9 +186,9 @@ echo _('Add files to'). $meneger->getPlaylistName($playlist_id_get). $dirct2;
 				<td id="t_<?=$ipr?>" width="31%" valign="top">
 					<label for="<?=$ipr?>"><div><img src="images/m_file.png" border="0" width="9" height="12"> <?=$k?></div><div class=podpis><?php echo _('File number');?> <?=$ips+1?> (<?=$k_size?>)</div></label>
 <?php
-				if ($meneger->isTempUpload($full)) {
+				if ($manager->isTempUpload($full)) {
 					$afl = $song->getPlayerPath($full);
-                    if ($meneger->isMp3($old_k)) {
+                    if ($manager->isMp3($old_k)) {
 ?>
 						<div class="podpis">
 							<div style="height: 20px; margin-top: 3px;">
@@ -338,7 +338,7 @@ echo '<div class="podpis"><font color="#993333">'._('Not used!').'</font></div>'
 				<td width="20%">&nbsp;</td>
 				<td width="80%" valign="top" align="right">
 					<div class="searcht">
-						<form action='meneger_zapros.php?folder=<?=$dirct_f?>&start=<?=$start?>&playlist_id=<?=$playlist_id_get?>' method='post'>
+						<form action='manager_zapros.php?folder=<?=$dirct_f?>&start=<?=$start?>&playlist_id=<?=$playlist_id_get?>' method='post'>
                             <?php echo _('Search in this folder');?> <input title="search" type="text" name="search" size="20" value="<?=$search?>">
 							<input type="submit" value="<?php echo _('Search');?>" name="search_button">
 						</form>

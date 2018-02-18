@@ -80,7 +80,7 @@
 					<td><?=$stream['listeners']?></td>
 					<td>
 						<a href='<?=$stream['link']?>'>
-							<img src='images/winamp.gif' border='0' width='16' height='16'>
+							<img src='players/winamp.gif' border='0' width='16' height='16'>
 						</a>
 					</td>
 				</tr>

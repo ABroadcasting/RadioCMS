@@ -11,7 +11,7 @@
 	<div class="body">
 		<div class="navi"><a href="playlist.php"><?php echo _('Playlists');?></a></div>
 		<div class="navi"><a href="playlist_edit.php"><?php echo _('Create playlist');?></a></div>
-		<div class="navi"><a href="playlist_zakaz.php"><?php echo _('Orders');?></a></div>
+		<div class="navi"><a href="playlist_order.php"><?php echo _('Orders');?></a></div>
 		<div class="navi_white"><a href="playlist_proverki.php"><?php echo _('Checks');?></a></div>
 		<br><br>
 		<div class="title"><?php echo _('Files not found');?></div>

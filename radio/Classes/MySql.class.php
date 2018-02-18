@@ -29,19 +29,19 @@
 
 		public function getLine($query) {
 			$result = mysqli_query($query, $this->link) or die($this->debug());
-			return mysqli_fetch_array($result, MYSQL_ASSOC);
+			return mysqli_fetch_array($result, MYSQLI_ASSOC);
 		}
 
 		public function getColumn($query, $column) {
 			$result = mysqli_query($query, $this->link) or die($this->debug());
-			$line =  mysqli_fetch_array($result, MYSQL_ASSOC);
+			$line =  mysqli_fetch_array($result, MYSQLI_ASSOC);
 			return $line[$column];
 		}
 
 		public function getLines($query) {
 			$result = mysqli_query($query, $this->link) or die($this->debug());
 			$lines = array();
-			while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+			while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
     			$lines[] = $line;
 			}
 
@@ -50,7 +50,7 @@
 
 		public function getCountRow($query) {
 			$result = mysqli_query($query, $this->link) or die($this->debug());
-        	return mysql_num_rows($result);
+        	return mysqli_num_rows($result);
 		}
 		
 		public function debug() {

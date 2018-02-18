@@ -13,7 +13,7 @@
 	$add = AddTracks::create($song);
 	$add->setChmod();
 	$add->setPlaylist($req_pl_id);
-	$meneger = Manager::create();
+	$manager = Manager::create();
 ?>
 	<div class="body">
 		<div class="title"><?php echo _('Adding songs to'.' '); ?>«<?=$playlist->getTitle($req_pl_id)?>»
@@ -84,14 +84,14 @@
 		$security->accessCheck($request->getGetVar('filename'));
 		$add->addTrack($request->getGetVar('filename'));
 
-		$fold = $meneger->getFileFolder($request->getGetVar('filename'));
-		$location = "meneger.php?start=".$meneger->getStart()."&search=".$meneger->getSearch()."&fold=".$fold."&playlist_id=".$req_pl_id;
+		$fold = $manager->getFileFolder($request->getGetVar('filename'));
+		$location = "manager.php?start=".$manager->getStart()."&search=".$manager->getSearch()."&fold=".$fold."&playlist_id=".$req_pl_id;
         echo _("<b>File has been successfully added to the playlist</b>.");
 	}
     
     if ($request->hasGetVar('add_directory')) {
         echo _("<b>Folder has been successfully added to the playlist</b>.");
-        $location = "meneger.php?start=".$meneger->getStart()."&search=".$meneger->getSearch()."&fold=".$meneger->getFold()."&playlist_id=".$req_pl_id;
+        $location = "manager.php?start=".$manager->getStart()."&search=".$manager->getSearch()."&fold=".$manager->getFold()."&playlist_id=".$req_pl_id;
     }    
 ?>
 			

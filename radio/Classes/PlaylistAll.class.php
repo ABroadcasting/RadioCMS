@@ -16,9 +16,9 @@
 		public function handler() {
 			$notice = array();
 			$this->clean();
-			$zakaz = $this->getZakaz();
-			if ($zakaz) {
-				$notice['zakaz'] = $this->zakaz($zakaz);
+			$order = $this->getorder();
+			if ($order) {
+				$notice['order'] = $this->order($order);
 			}
 			return $notice;
 		}
@@ -92,8 +92,8 @@
 				}
 			} else {
 				$sort['obr'] = "DESC";
-				$sort['value'] = "zakazano";
-				$sort['string'] = "!zakazano";
+				$sort['value'] = "orderano";
+				$sort['string'] = "!orderano";
 			}
 			
 			$sort['value'] = addslashes($sort['value']);
@@ -105,15 +105,15 @@
 			return $this->vsegoPesen;
 		}
 
-		public function zakaz($zakaz) {
+		public function order($order) {
 			$return = array();
         	$query = "SELECT * FROM `playlist` WHERE `now` = 1 ";
 			$now_play = $this->db->getColumn($query, 'now');
-			$allow_zakaz = $this->db->getColumn($query, 'allow_zakaz');
+			$allow_order = $this->db->getColumn($query, 'allow_order');
 			$on_air = $this->getStatus();
 
-			if ( $allow_zakaz != 1 or $on_air == "2" or $on_air == "0" ) {
-				if ($allow_zakaz != 1) {
+			if ( $allow_order != 1 or $on_air == "2" or $on_air == "0" ) {
+				if ($allow_order != 1) {
 					$return[] = _("Orders under maintain. Try again later.");
 				}
 				if ($on_air == "2") {
@@ -133,15 +133,15 @@
 				}
 
 				// Запрос на проверку одинаковых песен
-				$query = " SELECT * FROM `zakaz` WHERE `idsong` = $zakaz ";
+				$query = " SELECT * FROM `order` WHERE `idsong` = $order ";
 				$odinakovie_pesni = $this->db->getColumn($query, 'idsong');
-				if (($odinakovie_pesni != "") and ($odinakovie_pesni == $zakaz)) {
+				if (($odinakovie_pesni != "") and ($odinakovie_pesni == $order)) {
 					$return[] = _('This track already has been ordered');
 				}
 
 				// Считаем количество заказов
-				$query = " SELECT * FROM `zakaz`";
-			    if ($this->db->getCountRow($query) >= LIMIT_ZAKAZOV) {
+				$query = " SELECT * FROM `order`";
+			    if ($this->db->getCountRow($query) >= LIMIT_orderOV) {
 			        if ($this->getAllowTime() > date("U")) {
 			    		$return[] = _("Too late for orders, please try after ").$this->getPosle()._("of local time.");
 			    	}
@@ -149,7 +149,7 @@
 			    }
 
 			    // Getting artist - title
-			    $query = " SELECT * FROM `songlist` WHERE `idsong` = $zakaz ";
+			    $query = " SELECT * FROM `songlist` WHERE `idsong` = $order ";
 				$proverka_full = $this->db->getColumn($query, 'artist')." - ".$this->db->getColumn($query, 'title');
 
 			 	// Check if recently played
@@ -161,31 +161,31 @@
 
 				if (empty($return)) {
 					// Adding orders to tre array songlist
-					$query = " SELECT * FROM `songlist` WHERE `idsong` = $zakaz ";
+					$query = " SELECT * FROM `songlist` WHERE `idsong` = $order ";
 					$line = $this->db->getLine($query);
 
-				    $zakaz_track = $line['artist']." - ".$line['title'];
-				    $query = "SELECT * FROM `zakaz`";
-					$status_zakazov_imeetsa = $this->db->getCountRow($query)+1;
+				    $order_track = $line['artist']." - ".$line['title'];
+				    $query = "SELECT * FROM `order`";
+					$status_orderov_imeetsa = $this->db->getCountRow($query)+1;
 
-					// adding order to zakaz
-					$query = "INSERT INTO `last_zakaz` (`track` , `time` , `skolko`  , `ip` , `idsong`, `id` )
+					// adding order to order
+					$query = "INSERT INTO `last_order` (`track` , `time` , `skolko`  , `ip` , `idsong`, `id` )
 						VALUES (
-							'".addslashes($zakaz_track)."',
+							'".addslashes($order_track)."',
 							'$proverka_gettime_now',
-							'$status_zakazov_imeetsa',
+							'$status_orderov_imeetsa',
 							'$proverka_realip',
 							'".$line['idsong']."',
 							'".$line['id']."'
 						)";
 					$this->db->queryNull($query);	
 				
-					$query = "SELECT * FROM `last_zakaz`";
+					$query = "SELECT * FROM `last_order`";
 					$status_zapisei = $this->db->getCountRow($query);
-					$query = "DELETE FROM `last_zakaz` WHERE $status_zapisei>100 ORDER BY `time` LIMIT 2;";
+					$query = "DELETE FROM `last_order` WHERE $status_zapisei>100 ORDER BY `time` LIMIT 2;";
 					$this->db->queryNull($query);
 
-					$query = "INSERT INTO `zakaz` (`idsong` ,`filename` , `artist` , `title` , `album` , `duration` )
+					$query = "INSERT INTO `order` (`idsong` ,`filename` , `artist` , `title` , `album` , `duration` )
 						VALUES (
 							'".$line['idsong']."',
 							'".addslashes($line['filename'])."',
@@ -197,7 +197,7 @@
 					$this->db->queryNull($query);
 					$return[] =  _("Order confirmed an will be set 20 minutes after ").$this->getPosle()._("of local time.");
 
-					$query = " UPDATE `songlist` SET `zakazano` = `zakazano`+1 WHERE `filename` = '".addslashes($line['filename'])."' ";
+					$query = " UPDATE `songlist` SET `orderano` = `orderano`+1 WHERE `filename` = '".addslashes($line['filename'])."' ";
 					$this->db->queryNull($query);
 
 					$query = " SELECT * FROM `user_ip` WHERE `ip` = '$proverka_realip' ";
@@ -228,16 +228,16 @@
 			return $this->db->getColumn($query, 'value');
 		}
 
-		private function getZakaz() {
-			$zakaz = false;
+		private function getorder() {
+			$order = false;
 			for ($k=0; $k<$this->getLimit(); $k++) {
-				$zakaz_proverka = "zakaz_".$k."_x";
-				$zakaz_nomer = "zakaz_".$k;
-				if (!empty($_POST[$zakaz_proverka])) {
-					$zakaz = intval($_POST[$zakaz_nomer]);
+				$order_proverka = "order_".$k."_x";
+				$order_nomer = "order_".$k;
+				if (!empty($_POST[$order_proverka])) {
+					$order = intval($_POST[$order_nomer]);
 				}
 			}
-			return $zakaz;
+			return $order;
 		}
 
 		private function clean() {
@@ -280,7 +280,7 @@
 			    $sortString = str_replace('%21', '!', $sortString);
 				return $sortString;
 			} else {
-				return "!zakazano";
+				return "!orderano";
 			}
 		}
 

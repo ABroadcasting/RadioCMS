@@ -15,8 +15,8 @@
     //Get he playlist's path
 	$url_start = $playlistAll->getUrlStart();
 
-	if (!empty($notice['zakaz'])) {
-		foreach ($notice['zakaz'] as $message) {
+	if (!empty($notice['order'])) {
+		foreach ($notice['order'] as $message) {
 ?>
 			<p><?=$message?></p>
 <?php
@@ -64,7 +64,7 @@
 		</tr>
 		<form method="POST" action="">
 <?php
-	$zakaz_i = 0;
+	$order_i = 0;
 	$i = 0;
 	foreach ($playlistAll->getSongList() as $line) {
 ?>
@@ -83,10 +83,10 @@
 ?>
 			</td>
 			<td align="center">
-				<input type=image src="/radio/images/headphones.png" width="32" height="32" name="zakaz_<?=$zakaz_i?>">
-				<input type="hidden" name="zakaz_<?=$zakaz_i ?>" value="<?=$line['idsong']?>">
+				<input type=image src="/radio/images/headphones.png" width="32" height="32" name="order_<?=$order_i?>">
+				<input type="hidden" name="order_<?=$order_i ?>" value="<?=$line['idsong']?>">
 <?php
-			$zakaz_i = $zakaz_i+1;
+			$order_i = $order_i+1;
 ?>
 			</td>
 			<td align="center">

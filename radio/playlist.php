@@ -12,7 +12,7 @@
 	<div class="body">
 		<div class="navi_white"><a href="playlist.php"><?php echo _('Playlists');?></a></div>
 		<div class="navi"><a href="playlist_edit.php"><?php echo _('Create playlist');?></a></div>
-		<div class="navi"><a href="playlist_zakaz.php"><?php echo _('Orders');?></a></div>
+		<div class="navi"><a href="playlist_order.php"><?php echo _('Orders');?></a></div>
 		<div class="navi"><a href="playlist_proverki.php"><?php echo _('Checks');?></a></div>
 		<br><br>	
 		<div class="title"><?php echo _('Visual playlist');?></div>
@@ -49,7 +49,7 @@
 				        	<?=$playlist->getPlaymode($line['playmode'])?>
 							<br>
 							<a href="playlist_edit.php?playlist_id=<?php echo $line["id"]?>"><img src="images/edit.gif" width="16" height="16" border="0" title="<?php echo _('Edit playlists');?>"></a>&nbsp;&nbsp;
-				        	<a href="meneger.php?playlist_id=<?php echo $line['id']?>"><img src="images/plus.gif" width="16" height="16" border="0" title="<?php echo _('Add tracks to playlist');?>"></a>&nbsp;&nbsp;
+				        	<a href="manager.php?playlist_id=<?php echo $line['id']?>"><img src="images/plus.gif" width="16" height="16" border="0" title="<?php echo _('Add tracks to playlist');?>"></a>&nbsp;&nbsp;
 				        	<a href="playlist.php?delete_playlist=<?php echo $line['id']?>"><img src="images/delete2.gif" width="16" height="16" border="0" title="<?php echo _('Delete playlist');?>"></a>
 				        </td>
 				        <td width="51%" <?=$color?>>
@@ -79,13 +79,13 @@
 						</td>
 				        <td width="6%" <?=$color?>>
 <?php
-				if ($line['allow_zakaz'] == '1') {
+				if ($line['allow_order'] == '1') {
 ?>
-							<img src="images/zakaz.gif" width="29" height="29" border="0" title="<?php echo _('Orders allowed');?>">
+							<img src="images/order.gif" width="29" height="29" border="0" title="<?php echo _('Orders allowed');?>">
 <?php
 				} else {
 ?>
-							<img src="images/zakaz2.gif" width="29" height="29" border="0" title="<?php echo _('Orders restricted');?>">
+							<img src="images/order2.gif" width="29" height="29" border="0" title="<?php echo _('Orders restricted');?>">
 <?php
 				}
 ?>

@@ -23,7 +23,7 @@
 	<div class="body">
 		<div class="navi_white"><a href="playlist.php"><?php echo _('Playlists');?></a></div>
 		<div class="navi"><a href="playlist_edit.php"><?php echo _('Create playlist');?></a></div>
-		<div class="navi"><a href="playlist_zakaz.php"><?php echo _('Orders');?></a></div>
+		<div class="navi"><a href="playlist_order.php"><?php echo _('Orders');?></a></div>
 		<div class="navi"><a href="playlist_proverki.php"><?php echo _('Checks');?></a></div>
 		<br><br>
 		<form method="POST" action="">
@@ -61,7 +61,7 @@
 				        	</a>
 				        </td>
 				        <td width="5%">
-				        	<a href="playlist_view.php?playlist_id=<?=$playlistId?>&sort=<?=$playlistId?>&sort=<?=($sort['string']=='zakazano')?'!zakazano':'zakazano'?>&search=<?=$search?>&start=<?=$start?>">
+				        	<a href="playlist_view.php?playlist_id=<?=$playlistId?>&sort=<?=$playlistId?>&sort=<?=($sort['string']=='orderano')?'!orderano':'orderano'?>&search=<?=$search?>&start=<?=$start?>">
 								<?php echo _('Orders');?>
 				        	</a>
 				        </td>
@@ -111,7 +111,7 @@
 				        	<?=$line['album']?>
 				        </td>
 				        <td <?=$color?>>
-				        	<?=$line['zakazano']?>
+				        	<?=$line['orderano']?>
 				        </td>
 				        <td <?=$color?>>
 				        	<?=$playlist->getDuration($line['duration'])?>
@@ -211,7 +211,7 @@
 <?php
 	}
 ?>
-				<input class="button" value="<?php echo _('Add tracks');?>" name="14" type="button"  onClick="location.href='meneger.php?playlist_id=<?=$playlistId?>'" />
+				<input class="button" value="<?php echo _('Add tracks');?>" name="14" type="button"  onClick="location.href='manager.php?playlist_id=<?=$playlistId?>'" />
 			</form>
 			<br><br>
 			<form method="POST" action="playlist_view.php?playlist_id=<?=$playlistId;?>">

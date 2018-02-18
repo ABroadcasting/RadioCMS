@@ -92,12 +92,12 @@
 							<div class="podpis"><?php echo _('Restriction of tracks number in orders');?></div>
 						</td>
 						<td valign="top">
-							<select title="limit_zakazov" size="1" name="limit_zakazov" style="width:100px;">
-								<option <?=(LIMIT_ZAKAZOV=='2') ? 'selected':''?>>2</option>
-								<option <?=(LIMIT_ZAKAZOV=='3') ? 'selected':''?>>3</option>
-								<option <?=(LIMIT_ZAKAZOV=='4') ? 'selected':''?>>4</option>
-								<option <?=(LIMIT_ZAKAZOV=='5') ? 'selected':''?>>5</option>
-								<option <?=(LIMIT_ZAKAZOV=='6') ? 'selected':''?>>6</option>
+							<select title="limit_orderov" size="1" name="limit_orderov" style="width:100px;">
+								<option <?=(LIMIT_orderOV=='2') ? 'selected':''?>>2</option>
+								<option <?=(LIMIT_orderOV=='3') ? 'selected':''?>>3</option>
+								<option <?=(LIMIT_orderOV=='4') ? 'selected':''?>>4</option>
+								<option <?=(LIMIT_orderOV=='5') ? 'selected':''?>>5</option>
+								<option <?=(LIMIT_orderOV=='6') ? 'selected':''?>>6</option>
 							</select>
 						</td>
 					</tr>

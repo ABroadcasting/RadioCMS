@@ -25,10 +25,10 @@
         $update_filename = $tracklist->getRandFilename(50);
     }   
 
-	if ($event->isAllowZakaz()) {
-		$allow_zakaz = 1;
+	if ($event->isAlloworder()) {
+		$allow_order = 1;
 	} else {
-		$allow_zakaz = 0;
+		$allow_order = 0;
 	}
 
 	$now_time = time();
@@ -282,19 +282,19 @@
 	$play_list_array = array();
 	$play_list_array_temp = array();
 
-	// Parse ZAKAZ  //////////////////////////////////////////////////////////////////////////////////////////////
+	// Parse order  //////////////////////////////////////////////////////////////////////////////////////////////
 
-	$query = "SELECT * FROM `zakaz` ORDER BY `id` ASC";
+	$query = "SELECT * FROM `order` ORDER BY `id` ASC";
 	$result = mysqli_query($query) or die("Query failed10 : " . mysqli_error());
-	$est_zakaz = mysqli_fetch_array($result, MYSQLI_ASSOC);
-	if  (!$est_zakaz) {
+	$est_order = mysqli_fetch_array($result, MYSQLI_ASSOC);
+	if  (!$est_order) {
 		echo _("No orders<br>");
 	} else {
 		echo _("Have some orders<br>");
 	}
 
 	if (
-		$est_zakaz && $allow_zakaz &&
+		$est_order && $allow_order &&
 		(!$all_event2 || ($now_time + $vremya_trecka*60) < $all_event2[0]['time']) &&
 		$now_time > $allow_time2
 	) {
@@ -305,7 +305,7 @@
 
 	    // Only if not radioshow playing
 	    if ($play_mode != 3) {
-			$query = "SELECT * FROM `zakaz` ORDER BY `id` ASC";
+			$query = "SELECT * FROM `order` ORDER BY `id` ASC";
 			$result = mysqli_query($query) or die("Query failed10 : " . mysqli_error());
 
 			// Write orders to playlist
@@ -323,20 +323,20 @@
 
 			$play_list_array = array_unique($play_list_array);
 
-			$query = "SELECT SUM(`duration`) as sum FROM `zakaz` ";
+			$query = "SELECT SUM(`duration`) as sum FROM `order` ";
 			$result = mysqli_query($query) or die("Query failed11 " . mysqli_error());
 			$line = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
-			$zakaz_duration = $line['sum'];
-			$allow_time_tmp = $allow_time_tmp + $zakaz_duration + $vremya_trecka*60;;
+			$order_duration = $line['sum'];
+			$allow_time_tmp = $allow_time_tmp + $order_duration + $vremya_trecka*60;;
 			$allow_time = $allow_time_tmp;
 
 			foreach ($play_list_array as $line) {
 				$play_list_text .= $line;
-				$play_list_text_log .= "$tek_time (zakaz) ($zakaz_duration) ".$line;
+				$play_list_text_log .= "$tek_time (order) ($order_duration) ".$line;
 			};
 
-			$query = "DELETE FROM `zakaz` ";
+			$query = "DELETE FROM `order` ";
 			$result = mysqli_query($query) or die("Query failed12 : " . mysqli_error());
 		}
 	}
@@ -531,8 +531,8 @@
 			$result = mysqli_query($query) or die("Query failed11 " . mysqli_error());
 			$line = mysqli_fetch_array($result, MYSQLI_ASSOC);
      		// Time writing
-			$zakaz_duration = $line['sum'];
-			$allow_time_tmp = $allow_time_tmp + $zakaz_duration + $vremya_trecka*60;;
+			$order_duration = $line['sum'];
+			$allow_time_tmp = $allow_time_tmp + $order_duration + $vremya_trecka*60;;
 			$allow_time = $allow_time_tmp;
 
 			$query = "UPDATE `playlist` SET `now`=0 WHERE `id`=".$playlist_id_now;

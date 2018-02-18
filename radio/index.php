@@ -26,7 +26,7 @@ echo _("Please, use main menu to work with accessable services.").
 	$count = $file->getCountTempFiles();
 	$pokazat = "";
 	if ($count >= 1 and TEMP_UPLOAD != "") {
-		$pokazat = " — <a href='/radio/meneger.php?fold=".$request->getMusicPath().TEMP_UPLOAD."'>"._("View")."</a>";
+		$pokazat = " — <a href='/radio/manager.php?fold=".$request->getMusicPath().TEMP_UPLOAD."'>"._("View")."</a>";
 	} else {
 		$count = 0;
 	}

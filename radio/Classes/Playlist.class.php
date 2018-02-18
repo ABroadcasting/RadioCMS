@@ -178,20 +178,20 @@
 			$query = " SELECT * FROM `songlist` WHERE `idsong` = ".intval($id);
 			$songlist = $this->db->getLine($query);
 
-			$query = "SELECT * FROM `zakaz`";
+			$query = "SELECT * FROM `order`";
 			$ordersCount = $this->db->getCountRow($query);
 			$songName = $songlist['artist']." - ".$songlist['title']." (using panel)";
 			$ip = $this->request->getServerVar('REMOTE_ADDR');
 
-			$query = " SELECT * FROM `zakaz` WHERE `idsong` = ".intval($id);
+			$query = " SELECT * FROM `order` WHERE `idsong` = ".intval($id);
 			$line = $this->db->getLine($query);
 
 			if (!empty($line) and $line['idsong'] == $id) {
 				return _("Already added to the playlist.");
 			}
 
-			// adding order to last_zakaz
-			$query = "INSERT INTO `last_zakaz` (`track` , `time` , `skolko`  , `ip` , `idsong`, `id` )
+			// adding order to last_order
+			$query = "INSERT INTO `last_order` (`track` , `time` , `skolko`  , `ip` , `idsong`, `id` )
 				VALUES (
 					'".addslashes($songName)."',
 					'".date('U')."',
@@ -202,8 +202,8 @@
 				)";
 			$this->db->queryNull($query);
 
-			// add order to zakaz
-			$query = "INSERT INTO `zakaz` (`idsong` ,`filename` , `artist` , `title` , `album` , `duration` , `admin` )
+			// add order to order
+			$query = "INSERT INTO `order` (`idsong` ,`filename` , `artist` , `title` , `album` , `duration` , `admin` )
 				VALUES (
 					'".$songlist['idsong']."',
 					'".addslashes($songlist['filename'])."',

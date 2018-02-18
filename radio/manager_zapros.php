@@ -7,18 +7,18 @@
     	$security->denied();
 	}
 
-	$meneger = Manager::create();
-	$meneger->zaprosHandler();
+	$manager = Manager::create();
+	$manager->zaprosHandler();
 
-    if ($meneger->request->hasPostVar('fl')) {
-	   $fl = $meneger->request->getPostVar('fl');
+    if ($manager->request->hasPostVar('fl')) {
+	   $fl = $manager->request->getPostVar('fl');
     } else {
         $fl = array();
     }    
-	$fold = $meneger->getFold();
-	$folder = $meneger->getFolder();
-	$start = $meneger->getStart();
-	$search = $meneger->getSearch();
+	$fold = $manager->getFold();
+	$folder = $manager->getFolder();
+	$start = $manager->getStart();
+	$search = $manager->getSearch();
 	$root_path = $request->getMusicPath();
 ?>
 
@@ -26,10 +26,10 @@
 		<br>
 		<div class="title"><?php echo _('File action');?></div>
 		<div class="border">
-			<form action="meneger_do.php?folder=<?=$folder?>&start=<?=$start?>&search=<?=$search?>" method="post">
+			<form action="manager_do.php?folder=<?=$folder?>&start=<?=$start?>&search=<?=$search?>" method="post">
 				<table border="0" cellspacing="0" cellpadding="0" width="97%" class="table1">
 <?php
-	if ($meneger->isUdal()) {
+	if ($manager->isUdal()) {
 ?>
 					<tr>
 						<td width="95%"><?php echo _('Delete files?');?><br></td>
@@ -57,7 +57,7 @@
 <?php
 	}
 
-	if ($meneger->isCopy()) {
+	if ($manager->isCopy()) {
 		$begin = $root_path;
 		$begin = substr($begin, 0, -1);
 ?>
@@ -86,7 +86,7 @@
 					<tr>
 						<td width="95%">
 <?php
-		foreach ($meneger->getTree($begin) as $fllnm2=>$fllnm) {
+		foreach ($manager->getTree($begin) as $fllnm2=>$fllnm) {
 ?>
 							<input id="<?=$fllnm2?>" name="rd" type="radio" value="<?=$fllnm?>">&nbsp;
 							<label for="<?=$fllnm2?>"><?=$fllnm2?></label><br>
@@ -113,7 +113,7 @@
 <?php
 	}
 
-	if ($meneger->isMove()) {
+	if ($manager->isMove()) {
 		$begin = $root_path;
 		$begin = substr($begin, 0, -1);
 ?>
@@ -142,7 +142,7 @@
 					<tr>
 						<td width=95%>
 <?php
-		foreach ($meneger->getTree($begin) as $fllnm2=>$fllnm) {
+		foreach ($manager->getTree($begin) as $fllnm2=>$fllnm) {
 ?>
 							<input id="<?=$fllnm2?>" name="rd" type="radio" value="<?=$fllnm?>">&nbsp;
 							<label for="<?=$fllnm2?>"><?=$fllnm2?></label><br>
@@ -169,7 +169,7 @@
 <?php
 	}
 
-	if ($meneger->isRename()) {
+	if ($manager->isRename()) {
 		foreach ($fl as $i) {
 ?>
 					<tr>
@@ -204,7 +204,7 @@
 <?php
 	}
 
-	if ($meneger->isMakeDir()) {
+	if ($manager->isMakeDir()) {
 ?>
 					<tr>
 						<td width="200">

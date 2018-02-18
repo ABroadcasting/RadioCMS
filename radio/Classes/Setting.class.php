@@ -37,8 +37,8 @@
             if ($this->request->hasPostVar('limit_event')) {
 				$this->saveConfig('LIMIT_EVENT', $this->request->getPostVar('limit_event'));
 			}
-			if ($this->request->hasPostVar('limit_zakazov')) {
-				$this->saveConfig('LIMIT_ZAKAZOV', $this->request->getPostVar('limit_zakazov'));
+			if ($this->request->hasPostVar('limit_orderov')) {
+				$this->saveConfig('LIMIT_orderOV', $this->request->getPostVar('limit_orderov'));
 			}
 			if ($this->request->hasPostVar('translit')) {
 				$this->saveConfig('TRANSLIT', $this->request->getPostVar('translit'));

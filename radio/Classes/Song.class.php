@@ -11,13 +11,15 @@
             return self::$object;
         }
         
-		private function __construct() {			$this->db = MySql::create();
+		private function __construct() {
+			$this->db = MySql::create();
 			$this->request = Request::create();
 			$this->filter = Filter::create();
 			include($this->request->getRadioPath().'getid3/getid3.php');
 			$this->getid3 = new getID3();
 			include($this->request->getRadioPath().'getid3/write.php');
-			$this->tagwriter = new getid3_writetags();		}
+			$this->tagwriter = new getid3_writetags();
+		}
         	
 		public function setSettingsIdv1() {
 			$this->getid3->option_tag_apetag = false;
@@ -42,15 +44,18 @@
 		}
 
 		public function handler() {
-			$notice = array();			if ($this->request->hasPostVar('submit')) {
-                $notice['error'] = $this->saveSong();			}
+			$notice = array();
+			if ($this->request->hasPostVar('submit')) {
+                $notice['error'] = $this->saveSong();
+			}
 			if ($this->request->hasPostVar('submit_and_save')) {
 				$notice['error'] = $this->saveSong();
 				if (empty($notice['error'])) {
 					$this->goToPlaylist();
 				}
 			}
-			return $notice;		}
+			return $notice;
+		}
 
         public function saveSong() {
             $filename = $this->filterFilename($this->request->getPostVar('filename'));
@@ -114,10 +119,12 @@
 				return $v1;
 			}		
 			
-			if ($tagName == 'artist' or $tagName == 'title') {				return "???";
+			if ($tagName == 'artist' or $tagName == 'title') {
+				return "???";
 			} else {
 				return "";
-			}		}
+			}
+		}
 		
 		public function getDuration() {
 		    $duration = explode(":", $this->getid3->info['playtime_string']);
@@ -132,7 +139,8 @@
 
             if (count($duration) == 3) {
                 return $duration[0]*60*60+$duration[1]*60+$duration[2];
-            } 		}
+            } 
+		}
 		
 		private function getTags() {
 			if (!empty($this->getid3->info['id3v2']['comments'])) {
@@ -140,47 +148,61 @@
 			}
 			if (!empty($this->getid3->info['id3v1']['comments'])) {
 				return $this->getid3->info['id3v1']['comments'];	
-			}							}
+			}					
+		}
 
-		public function analyze($filename) {			$this->getid3->Analyze($filename);		}
+		public function analyze($filename) {
+			$this->getid3->Analyze($filename);
+		}
 
 		private function goToPlaylist() {
-		    if ($this->request->getGetVar('playlist_id') == "povtor") {                header("location: playlist_view.php?playlist_id=povtor");
-		    } else {				header("location: playlist_view.php?playlist_id=".$this->request->getGetVar('playlist_id').
+		    if ($this->request->getGetVar('playlist_id') == "povtor") {
+                header("location: playlist_view.php?playlist_id=povtor");
+		    } else {
+				header("location: playlist_view.php?playlist_id=".$this->request->getGetVar('playlist_id').
 					"&sort=".$this->request->getGetVar('sort').
 					"&start=".$this->request->getGetVar('start').
 					"&search=".$this->request->getGetVar('search')
 				);
-			}		}
+			}
+		}
 
 		private function getError() {
-			$error = array();			if (!empty($tagwriter->errors)) {
+			$error = array();
+			if (!empty($tagwriter->errors)) {
 				$error[] =  'There were some errors:<br>'.implode('<br><br>', $this->tagwriter->errors);
 			}
 			if (!empty($tagwriter->warnings)) {
 				$error[] =  'There were some warnings:<br>'.implode('<br><br>', $this->tagwriter->warnings);
 			}
 
-			return $error;		}
+			return $error;
+		}
 
 		private function updateSong() {
 			$tag_data = $this->tagwriter->tag_data;
-        	$query = "UPDATE `songlist` SET
+
+        	$query = "UPDATE `songlist` SET
         		`title` = '".addslashes($tag_data['TITLE'][0])."',
         		`artist` = '".addslashes($tag_data['ARTIST'][0])."',
         		`album` = '".addslashes($tag_data['ALBUM'][0])."',
 				`sort` = '".addslashes($this->request->getPostVar('sort'))."',
-				`zakazano` = '".addslashes($this->request->getPostVar('zakazano'))."'
+				`orderano` = '".addslashes($this->request->getPostVar('orderano'))."'
 				WHERE `filename`= '".addslashes($this->tagwriter->filename)."'";
     		$this->db->queryNull($query);
 
 			$query = "UPDATE `songlist` SET `id` = '".$this->request->getPostVar('position')."' WHERE `idsong`= ".$this->request->getGetVar('edit_song');
-		    $this->db->queryNull($query);		}
+		    $this->db->queryNull($query);
+		}
 
-		public function setTagData($TagData) {			$this->tagwriter->tag_data = $TagData;		}
+		public function setTagData($TagData) {
+			$this->tagwriter->tag_data = $TagData;
+		}
 
 		public function writeData($filename) {
-			$this->tagwriter->filename = $filename;			$this->tagwriter->WriteTags();		}
+			$this->tagwriter->filename = $filename;
+			$this->tagwriter->WriteTags();
+		}
 
 		private function getTagData() {
 			$title = trim($this->request->getPostVar('title'));
@@ -209,48 +231,61 @@
 				'title' => array($title),
 				'artist' => array($artist),
 				'album' => array($album)
-			);		}
+			);
+		}
 
-		private function filterFilename($new_filename) {			$new_filename = str_ireplace("'", "", $new_filename);
+		private function filterFilename($new_filename) {
+			$new_filename = str_ireplace("'", "", $new_filename);
     		$new_filename = str_ireplace("\"", "", $new_filename);
     		$new_filename = str_ireplace("&", "and", $new_filename);
 			$new_filename = str_ireplace("   ", " ", $new_filename);
 			$new_filename = str_ireplace("  ", " ", $new_filename);
 
-			if (TRANSLIT == "on") {				$new_filename = $this->filter->translit($new_filename);
+			if (TRANSLIT == "on") {
+				$new_filename = $this->filter->translit($new_filename);
 			}
 
 			$new_filename = htmlspecialchars($new_filename, ENT_QUOTES, "utf-8");
 
-			return $new_filename;		}
+			return $new_filename;
+		}
 
-		private function renameFilename($new_filename) {			$line = $this->getSong($this->request->getGetVar('edit_song'));
+		private function renameFilename($new_filename) {
+			$line = $this->getSong($this->request->getGetVar('edit_song'));
 			$new_filename = $this->request->getMusicPath().$this->request->getPostVar('folder')."/".$new_filename;
 			rename($line['filename'], $new_filename);
 
 			$query = "UPDATE `songlist` SET `filename` = '".addslashes($new_filename)."' WHERE `filename`= '".addslashes($line['filename'])."'";
     		$this->db->queryNull($query);
 
-    		return $new_filename;		}
+    		return $new_filename;
+		}
 
-		public function getPlaylistList() {			$query = "SELECT * FROM `playlist`";
-    		return $this->db->getLines($query);		}
+		public function getPlaylistList() {
+			$query = "SELECT * FROM `playlist`";
+    		return $this->db->getLines($query);
+		}
 
-		public function getSong($songId) {			$query = "SELECT * FROM `songlist` WHERE `idsong` = ".$songId;
-            return $this->db->getLine($query);		}
+		public function getSong($songId) {
+			$query = "SELECT * FROM `songlist` WHERE `idsong` = ".$songId;
+            return $this->db->getLine($query);
+		}
 
-		public function getPlayerPath($filename) {			$player_filename = str_replace($this->request->getMusicPath(), "", $filename);
+		public function getPlayerPath($filename) {
+			$player_filename = str_replace($this->request->getMusicPath(), "", $filename);
 			$player_filename = "/music/".$player_filename;
 			$player_filename = urlencode($player_filename);
 			
-			return $player_filename;		}
+			return $player_filename;
+		}
 
 		public function getFilename($filename) {
 			$pos_vhoh = strrpos($filename, "/")+1;
 			$dlina = strlen($filename);
  			$put = substr($filename, 0, $pos_vhoh);
  			$imya_fayla = substr($filename, $pos_vhoh, $dlina);
- 			return $imya_fayla;		}
+ 			return $imya_fayla;
+		}
 
 		public function getFolder($filename) {
             $prv_a3 = str_replace($this->request->getMusicPath(), "", $filename);
@@ -258,7 +293,8 @@
             return $arr[count($arr)-2];
         }
 
-		public function getFolderList() {			$hdl = opendir($this->request->getMusicPath());
+		public function getFolderList() {
+			$hdl = opendir($this->request->getMusicPath());
         	while ($file = readdir($hdl)) {
 				if (($file!="..")&&($file!=".")) {
 					if ( is_dir($this->request->getMusicPath()."/".$file) === true ) {
@@ -267,15 +303,19 @@
   	    		}
  			}
  			sort($a3);
- 			return $a3;		}
+ 			return $a3;
+		}
 
 		public function getNextSort($playlistId) {
-			if (empty($this->sort)) {				$query = "SELECT * FROM `songlist` WHERE `id`=".$playlistId." ORDER BY `sort` DESC LIMIT 0 , 1";
+			if (empty($this->sort)) {
+				$query = "SELECT * FROM `songlist` WHERE `id`=".$playlistId." ORDER BY `sort` DESC LIMIT 0 , 1";
 	    		$line = $this->db->getLine($query);
 				$this->sort = $line['sort']+1;
 				return $this->sort;
 			} else {
 				$this->sort++;	
 	    		return $this->sort;
-			}			}	}
+			}	
+		}
+	}
 ?>

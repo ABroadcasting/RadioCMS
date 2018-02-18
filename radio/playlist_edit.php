@@ -19,7 +19,7 @@
 	<div class="body">
 		<div class="navi"><a href="playlist.php"><?php echo _('Playlists');?></a></div>
 		<div class="navi_white"><a href="playlist_edit.php"><?php echo _('Create playlist');?></a></div>
-		<div class="navi"><a href="playlist_zakaz.php"><?php echo _('Orders');?></a></div>
+		<div class="navi"><a href="playlist_order.php"><?php echo _('Orders');?></a></div>
 		<div class="navi"><a href="playlist_proverki.php"><?php echo _('Checks');?></a></div>
 		<br><br>
 		<div class="title"><?php echo _('Create and edit playlists');?></div>
@@ -63,10 +63,10 @@
 						<div class="podpis"><?php echo _('allow to order songs during this playlist');?></div>
 					</td>
 					<td>
-						<input id="allow_zakaz1" type="radio" value="1" name="allow_zakaz" <?= $playlistEdit->isAllowOrder() ? 'checked' : '' ?>>
-						<label for="allow_zakaz1"><?php echo _('Yes');?></label>
-						<input id="allow_zakaz2" type="radio" value="0" name="allow_zakaz" <?= $playlistEdit->isAllowOrder() ? '' : 'checked' ?>>
-						<label for="allow_zakaz2"><?php echo _('No');?></label>
+						<input id="allow_order1" type="radio" value="1" name="allow_order" <?= $playlistEdit->isAllowOrder() ? 'checked' : '' ?>>
+						<label for="allow_order1"><?php echo _('Yes');?></label>
+						<input id="allow_order2" type="radio" value="0" name="allow_order" <?= $playlistEdit->isAllowOrder() ? '' : 'checked' ?>>
+						<label for="allow_order2"><?php echo _('No');?></label>
 					</td>
 				</tr>
 				<tr>

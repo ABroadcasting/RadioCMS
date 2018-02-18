@@ -120,7 +120,7 @@
 			mysqli_query("ALTER DATABASE `".$db_name."` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci")
 			 or die(_("Install query failed : ") . mysqli_error());
 
-			mysqli_query("CREATE TABLE IF NOT EXISTS `last_zakaz` (
+			mysqli_query("CREATE TABLE IF NOT EXISTS `last_order` (
 			  `id` varchar(15) NOT NULL,
 			  `idsong` varchar(15) NOT NULL,
 			  `track` varchar(100) NOT NULL,
@@ -151,7 +151,7 @@
 			  `show` tinyint(4) default NULL,
 			  `sort` int(11) default NULL,
 			  `last_time` bigint(20) default NULL,
-			  `allow_zakaz` int(11) default '1',
+			  `allow_order` int(11) default '1',
 			  `auto` int(11) default '0',
 			  PRIMARY KEY  (`id`)
 			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;")
@@ -169,7 +169,7 @@
 
 			mysqli_query("CREATE TABLE IF NOT EXISTS `songlist` (
 			  `idsong` int(11) NOT NULL auto_increment,
-			  `zakazano` int(10) NOT NULL,
+			  `orderano` int(10) NOT NULL,
 			  `id` int(11) default NULL,
 			  `filename` text,
 			  `artist` text,
@@ -216,7 +216,7 @@
 			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;")
 			 or die(_("Install query failed : ") . mysqli_error());
 
-			mysqli_query("CREATE TABLE IF NOT EXISTS `zakaz` (
+			mysqli_query("CREATE TABLE IF NOT EXISTS `order` (
 			  `id` int(11) NOT NULL auto_increment,
 			  `idsong` int(10) NOT NULL,
 			  `filename` text,

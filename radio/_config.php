@@ -28,7 +28,7 @@
 	define('TRACK_CUT_LENGTH', '180');
 	define('PERIOD', '3');
 	define('LIMIT_EVENT', '500');
-	define('LIMIT_ZAKAZOV', '4');
+	define('LIMIT_orderOV', '4');
 	define('TRANSLIT', 'off');
 
 	define('DB_HOST', 'localhost');

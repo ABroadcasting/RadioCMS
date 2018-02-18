@@ -11,20 +11,27 @@
             return self::$object;
         }
 	            
-		private function __construct() {			$this->db = MySql::create();
-			$this->request = Request::create();		}
+		private function __construct() {
+			$this->db = MySql::create();
+			$this->request = Request::create();
+		}
 
 		public function handler() {
-			$this->clearZakaz();		}
+			$this->clearorder();
+		}
 
-		public function clearZakaz() {			$user = Autentification::create()->getUser();
-			if (!empty($user) and $user['admin'] == 1 and $this->request->hasGetVar('clear_zakaz')) {
-				$query = "UPDATE `songlist` SET `zakazano` = 0";
+		public function clearorder() {
+			$user = Autentification::create()->getUser();
+			if (!empty($user) and $user['admin'] == 1 and $this->request->hasGetVar('clear_order')) {
+				$query = "UPDATE `songlist` SET `orderano` = 0";
     			$this->db->queryNull($query);
-			}		}
+			}
+		}
 
-		public function getLastOrders($limit) {			$query = "SELECT * FROM `last_zakaz` ORDER BY `time` DESC LIMIT $limit";
-			return $this->db->getLines($query);		}
+		public function getLastOrders($limit) {
+			$query = "SELECT * FROM `last_order` ORDER BY `time` DESC LIMIT $limit";
+			return $this->db->getLines($query);
+		}
 
 		public function getTopOrders($limit) {
 			$query = "SELECT * FROM `playlist` ORDER BY `sort` ASC";
@@ -55,11 +62,14 @@
 				$ne_pokazivat = "";
 			}
 
-			$query = "SELECT * FROM `songlist` $ne_pokazivat ORDER BY `zakazano` DESC LIMIT $limit";
+			$query = "SELECT * FROM `songlist` $ne_pokazivat ORDER BY `orderano` DESC LIMIT $limit";
 
 			return $this->db->getLines($query);
 		}
 
-		public function getPlaylistBySong($id) {			$query = "SELECT * FROM `playlist` WHERE `id` = '$id'";
-			return $this->db->getLine($query);		}	}
+		public function getPlaylistBySong($id) {
+			$query = "SELECT * FROM `playlist` WHERE `id` = '$id'";
+			return $this->db->getLine($query);
+		}
+	}
 ?>

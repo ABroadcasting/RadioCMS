@@ -11,9 +11,9 @@
     	$security->denied();
 	}
 
-	$meneger = Manager::create();
-	$meneger->handler();
+	$manager = Manager::create();
+	$manager->handler();
 
-	header ("Location: meneger.php?fold=".$meneger->getFolder()."&start=".$meneger->getStart()."&search=".$meneger->getSearch());
+	header ("Location: manager.php?fold=".$manager->getFolder()."&start=".$manager->getStart()."&search=".$manager->getSearch());
 ?>
 

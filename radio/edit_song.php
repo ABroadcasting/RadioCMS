@@ -11,7 +11,7 @@ echo '
 	<div class="body">
 		<div class="navi_white"><a href="playlist.php">'. _('Playlists').'</a></div>
 		<div class="navi"><a href="playlist_edit.php">'. _('Create playlists').'</a></div>
-		<div class="navi"><a href="playlist_zakaz.php">'. _('Orders').'</a></div>
+		<div class="navi"><a href="playlist_order.php">'. _('Orders').'</a></div>
 		<div class="navi"><a href="playlist_proverki.php">'. _('Checks').'</a></div>
 		<br><br>
 		<form method="POST" action="">
@@ -67,7 +67,7 @@ echo '
 					    	<div class="podpis">'._('Orders number').'</div>
 					    </td>
 				        <td>
-				        	<input size="40" type="text" name="zakazano" value="'.$line['zakazano'].'">
+				        	<input size="40" type="text" name="orderano" value="'.$line['orderano'].'">
 				        </td>
 				    </tr>
 				    <tr>

@@ -11,7 +11,7 @@
 	<div class="body">
 		<div class="navi"><a href="playlist.php"><?php echo _('Playlists');?></a></div>
 		<div class="navi"><a href="playlist_edit.php"><?php echo _('Create playlist');?></a></div>
-		<div class="navi_white"><a href="playlist_zakaz.php"><?php echo _('Orders');?></a></div>
+		<div class="navi_white"><a href="playlist_order.php"><?php echo _('Orders');?></a></div>
 		<div class="navi"><a href="playlist_proverki.php"><?php echo _('Checks');?></a></div>
 		<br><br>
 		<div class="polovina1">
@@ -68,7 +68,7 @@
 ?>
 					<tr>
 						<td <?=($i!=1) ? "bgcolor=#F5F4F7" : ''?>>
-							<?=$line['zakazano']?>
+							<?=$line['orderano']?>
 						</td>
 						<td <?=($i!=1) ? "bgcolor=#F5F4F7" : ''?>>
 							<?=$line['artist']." - ".$line['title']?>
@@ -89,7 +89,7 @@
 		</div>
 		<br>
 		<div class="bborder">
-			<a style="color: #333333;" href="?clear_zakaz=yes"><?php echo _('Reset orders counter');?></a></div>
+			<a style="color: #333333;" href="?clear_order=yes"><?php echo _('Reset orders counter');?></a></div>
 			<br><br>
 		</div>
 	</div>

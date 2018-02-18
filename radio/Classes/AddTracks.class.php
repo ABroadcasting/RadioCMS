@@ -9,7 +9,7 @@
 			$this->request = Request::create();
 			$this->db = MySql::create();
 			$this->ssh = Ssh::create();
-			$this->meneger = Manager::create();
+			$this->manager = Manager::create();
 			$this->song = $song;
 			$this->filter = Filter::create();
 		}
@@ -30,7 +30,7 @@
 			$playlistId = $this->request->getGetVar('playlist_id');
 			$filenameTemp = $this->getRealPath($filename);
 
-			if (!$this->meneger->isMp3($filenameTemp)) {
+			if (!$this->manager->isMp3($filenameTemp)) {
 				return false;
 			}
 			$filename = $this->filter->cleanFileName($filenameTemp);
@@ -95,12 +95,12 @@
 				exit;
 			}
 
-			// Checking for using track in other playlists, to have the same "zakazano" value for the same track
-			$query_zakazano = "SELECT * FROM `songlist` WHERE `filename`='".addslashes($filename)."'";
-			$zakazano = $this->db->getColumn($query_zakazano, 'zakazano');
+			// Checking for using track in other playlists, to have the same "orderano" value for the same track
+			$query_orderano = "SELECT * FROM `songlist` WHERE `filename`='".addslashes($filename)."'";
+			$orderano = $this->db->getColumn($query_orderano, 'orderano');
 
 			$query = "INSERT INTO `songlist`
-					( `id` , `filename` , `artist` , `title` , `album` , `genre` , `albumyear`, `duration` , `sort` , `zakazano`)
+					( `id` , `filename` , `artist` , `title` , `album` , `genre` , `albumyear`, `duration` , `sort` , `orderano`)
 						VALUES
 					(
 						'".$playlistId."',
@@ -112,7 +112,7 @@
 						'".addslashes($TagData['year'][0])."',
 						'".$dur."',
 						'".$this->song->getNextSort($playlistId)."',
-						'".$zakazano."'
+						'".$orderano."'
 					)";
 
 			$this->db->queryNull($query);

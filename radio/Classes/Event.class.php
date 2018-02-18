@@ -11,8 +11,8 @@
 			$this->db = MySql::create();
 		}
 
-		public function isAllowZakaz() {
-			$query = "SELECT * FROM `playlist` WHERE `now` = 1 AND `allow_zakaz` = 0 ";
+		public function isAlloworder() {
+			$query = "SELECT * FROM `playlist` WHERE `now` = 1 AND `allow_order` = 0 ";
 			$line = $this->db->getLine($query);
 
 			if (!empty($line)) {

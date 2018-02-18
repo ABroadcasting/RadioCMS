@@ -18,7 +18,7 @@
 					$id = $this->insert();
 				}
 				$id = !empty($id) ? $id : $this->request->getGetVar('playlist_id');
-				header("Location: meneger.php?playlist_id=".$id);
+				header("Location: manager.php?playlist_id=".$id);
 				exit;
 			}
 			if ($this->request->hasPostVar('submit')) {
@@ -35,9 +35,9 @@
 
 		private function insert() {
 			if ($this->request->getPostVar('playmode') == 3){
-				$allow_zakaz = 0;
+				$allow_order = 0;
 			} else {
-				$allow_zakaz = $this->request->getPostVar('playmode');
+				$allow_order = $this->request->getPostVar('playmode');
 			}
 
 			if ($this->request->hasPostVar('event') == 1) {
@@ -63,7 +63,7 @@
 						`event2` ,
 						`last_time` ,
 						`show` ,
-						`allow_zakaz`
+						`allow_order`
 					)
 				VALUES
 					(
@@ -75,7 +75,7 @@
 						'$event2',
 						'$last_time',
 						'".addslashes($this->request->getPostVar('show'))."',
-						".addslashes($this->request->getPostVar('allow_zakaz'))."
+						".addslashes($this->request->getPostVar('allow_order'))."
 					)";
 
 			$this->db->queryNull($query);
@@ -86,9 +86,9 @@
 
 		private function update() {
 			if ($this->request->getPostVar('playmode') == 3){
-				$allow_zakaz = 0;
+				$allow_order = 0;
 			} else {
-				$allow_zakaz = $this->request->getPostVar('allow_zakaz');
+				$allow_order = $this->request->getPostVar('allow_order');
 			}
 
 			if ($this->request->getPostVar('event') == 1) {
@@ -112,7 +112,7 @@
 					`event1` = '$event1',
 					`event2` = '$event2',
 					`show` = '".addslashes($this->request->getPostVar('show'))."',
-					`allow_zakaz` = '$allow_zakaz'
+					`allow_order` = '$allow_order'
 				WHERE
 					`id` = ".$this->request->getPostVar('playlist_id').";";
 
@@ -274,8 +274,8 @@
 		}
 
 		public function isAllowOrder() {
-			if (isset($this->playlist['allow_zakaz'])) {
-				if ($this->playlist['allow_zakaz'] == 1) {
+			if (isset($this->playlist['allow_order'])) {
+				if ($this->playlist['allow_order'] == 1) {
 					return true;
 				} else {
 					return false;
