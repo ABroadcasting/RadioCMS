@@ -16,12 +16,12 @@
 </limits>
 
 <authentication>
-<source-password>пароль</source-password>
-<relay-password>пароль</relay-password>
+<source-password>$sourcepassword$</source-password>
+<relay-password>$relaypassword$</relay-password>
 <admin-user>admin</admin-user>
-<admin-password>пароль</admin-password>
+<admin-password>$adminpassword$</admin-password>
 </authentication>
-<hostname>ip-сервера</hostname>
+<hostname>serverip</hostname>
 
 <listen-socket>
 <port>8000</port>
